@@ -1,0 +1,1 @@
+// Lista de softwares/tags (APT, ABN, EBK, etc.)
