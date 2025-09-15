@@ -1,0 +1,12 @@
+.progress-circle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-percentage {
+  position: relative;
+  font-size: 0.75rem;
+  font-weight: 500;
+}

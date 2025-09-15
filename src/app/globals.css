@@ -125,5 +125,51 @@
   }
   body {
     @apply bg-background text-foreground;
+    overflow: hidden;
+  }
+  
+  /* Esconde scrollbar da página */
+  html, body {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  html::-webkit-scrollbar, 
+  body::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 3px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  @keyframes pulse-border {
+    0% {
+      border-color: rgba(240, 68, 56, 0.1);
+    }
+    50% {
+      border-color: rgba(240, 68, 56, 0.8);
+    }
+    100% {
+      border-color: rgba(240, 68, 56, 0.1);
+    }
+  }
+
+  .alert-pulse {
+    animation: pulse-border 2s ease-in-out infinite;
   }
 }

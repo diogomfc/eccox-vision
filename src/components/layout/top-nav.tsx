@@ -3,7 +3,7 @@
 "use client";
 
 import Image from "next/image";
-import topDock from "@/assets/images/img-top-dock.png";
+import topDock from "@/assets/images/img-top-dock.svg";
 
 export function TopNav() {
     return (
@@ -17,12 +17,6 @@ export function TopNav() {
                     priority
                     sizes="100vw"
                 />
-            </div>
-
-            {/* Conteúdo do topo sobre a imagem */}
-            <div className="absolute top-7 left-1/2 transform -translate-x-1/2">
-                 {/* Aqui está o título posicionado acima da imagem */}
-                 <h1 className="text-sm font-normal text-gray-400">Monitoramento e Observabilidade</h1>
             </div>
         </nav>
     );
