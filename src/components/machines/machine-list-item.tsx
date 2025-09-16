@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { Machines } from "@/types/machines";
 import { motion } from "motion/react";
+import { useRouter } from "next/navigation";
 
 import ImgServerStatusConcluida from "../../assets/images/img-server-status-ok.svg";
 import ImgServerStatusPendente from "../../assets/images/img-server-status-warning.svg";
@@ -14,6 +15,7 @@ interface MachineListItemProps {
 }
 
 export function MachineListItem({ machine, index }: MachineListItemProps) {
+  const router = useRouter();
   const allServices = machine.applications.flatMap(app => app.services);
   const total = allServices.length;
   const installed = allServices.filter(s => s.status === "Concluida").length;
@@ -30,7 +32,8 @@ export function MachineListItem({ machine, index }: MachineListItemProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: index * 0.05, ease: "easeOut" }}
-      className={`grid grid-cols-[260px_1fr_140px_70px] items-center bg-[#1A1A1E] hover:bg-[#0F0F10] rounded-lg px-4 py-3 border ${borderClasses}`}
+      onClick={() => router.push(`/maquinas/${machine.id}`)}
+      className={`grid grid-cols-[260px_1fr_140px_70px] items-center bg-[#1A1A1E] hover:bg-[#0F0F10] rounded-lg px-4 py-3 border ${borderClasses} cursor-pointer transition-colors duration-200`}
     >
       {/* Column 1 - Icon and info */}
       <div className="flex items-center gap-3">

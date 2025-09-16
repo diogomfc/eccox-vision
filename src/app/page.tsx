@@ -57,7 +57,7 @@ export default function OverviewPage() {
       />
 
       {/* Conteúdo sobreposto */}
-      <section className="relative z-10 grid grid-cols-1 md:grid-cols-4 gap-4 mb-8 mt-4">
+      <section className="relative z-10 grid grid-cols-1 md:grid-cols-4 gap-4 mb-8 mt-0">
         {statsData.map((data, index) => (
          
           <motion.div
