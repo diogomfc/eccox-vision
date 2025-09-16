@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import {
     LayoutDashboard,
     HardDrive,
-    Package,
+    PackagePlus,
     Settings,
     FileText,
     ChevronDown,
@@ -19,13 +19,13 @@ import {
     TooltipTrigger,
 } from "../ui/tooltip";
 import { motion } from "motion/react";
-import "./main-nav.css";
+import "./footer-nav.css";
 
 const navItems = [
     { name: "Visão geral", href: "/", icon: LayoutDashboard },
-    { name: "Máquinas", href: "/maquinas", icon: HardDrive },
-    { name: "Softwares", href: "/softwares", icon: Package },
-    { name: "Serviços", href: "/servicos", icon: Settings },
+    // { name: "Máquinas", href: "/maquinas", icon: HardDrive },
+    // { name: "Softwares", href: "/softwares", icon: Package },
+    { name: "Configuração", href: "/configuracao", icon: PackagePlus },
     { name: "Relatórios", href: "/relatorios", icon: FileText },
 ];
 
@@ -79,7 +79,11 @@ export function FooterNav() {
                         const Icon = item.icon;
 
                         return (
-                            <Link href={item.href} passHref>
+                            <Link 
+                            key={item.href}
+                            href={item.href} 
+                            passHref
+                            >
                                 <div
                                     className={`flex flex-col items-center justify-center  mx-4 py-2 transition-colors duration-200
                                         ${isActive ? "text-[#20A6B9]" : "text-gray-400 hover:text-gray-200"}`}

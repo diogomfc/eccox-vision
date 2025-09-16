@@ -7,814 +7,1607 @@ export const mockMachines: Machines[] = [
         "description": "Homologação / Apresentações",
         "version": "z/OS 3.1",
         "status": "Pendente",
+        "updatedAt": null,
         "applications": [
             {
                 "name": "ABN",
                 "status": "Pendente",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Serviços",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "APT",
                 "status": "Pendente",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "APT Change Alert",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "Lucas/Milene",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT Datamover",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "Lucas/Milene",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Batch (JCL e PGM BATCH)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT For CICS (Multi region)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "Lucas/Milene",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for DDF (BND)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "Milene",
+                        "comments": "Db2 Conect não instalado",
+                        "typePendencia": "Db2 Conect não instalado",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery  Programs",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "Lucas/Milene",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery  Tables",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "Lucas/Milene",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery  Transaction",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "Lucas",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery Changeman",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "Lucas/Milene",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery DLI",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "Lucas/Milene",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery Endevor",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "Milene",
+                        "comments": "Não podemos instalar",
+                        "typePendencia": "Não podemos instalar",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery GIT",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery JOB",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "Lucas/Milene",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery Library",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "Lucas",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery Schedule",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery Typing",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discoverys Typing for BND",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "Milene",
+                        "comments": "Não testado ",
+                        "typePendencia": "Não testado ",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT For IMS (DB)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "Lucas/Milene",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT For IMS (DC)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "Lucas/Milene",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT Logstream",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "Lucas/Milene",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT SnapShot",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "Lucas/Milene",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "LDAP (YES/NO)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "Lucas/Milene",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "BITBUCKET",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Instalação e definição de branchs",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "CA-Endevor",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Instalação",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "CICS 5.2 (Multi Region)",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Conexão com DB2",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão com IMS DB",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão EXCI",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão MQ",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Eza TCP SOCKET",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "LOGIN via CESN",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "PLTPI",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "PLTPS",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "z/OS Connect",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "CICS 5.5 (Multi Region)",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Conexão com DB2",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão com IMS DB",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão EXCI",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão MQ",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Eza TCP SOCKET",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "LOGIN via CESN",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "PLTPI",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "PLTPS",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "z/OS Connect",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "CICS 5.6 (Multi Region)",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Conexão com DB2",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão com IMS DB",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão EXCI",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão MQ",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Eza TCP SOCKET",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "LOGIN via CESN",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "PLTPI",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "PLTPS",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "CICS 6.1 (Multi Region)",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Conexão com DB2",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão com IMS DB",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão EXCI",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão MQ",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Eza TCP SOCKET",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "LOGIN via CESN",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "PLTPI",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "PLTPS",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "Changeman (Simulador)",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Criação de pacotes",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Instalação",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Script de pacote",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "DB2 Connect",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Instalação",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "DB2 Connect Aplicativo",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Instalação( Deploy)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "DB2 V12 (C/Vírgula)",
                 "status": "Concluida",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Funcional",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "DB2 V12 (S/Vírgula)",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Funcional",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "DB2 V13 (C/Vírgula)",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Funcional",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "DB2 V13 (S/Vírgula)",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Funcional",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "EBK Mainframe",
                 "status": "Concluida",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Mainframe (SMPE, CICS, TABELAS)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "EBK Web",
                 "status": "Concluida",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "WEB (MYSQL, DEPLOY)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "ECS",
                 "status": "Concluida",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Instalação (SMPE, CICS)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "EQC",
                 "status": "Pendente",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Abono",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Avaliações",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Cadastro de Legado",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Delta",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Exceção",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Massa de teste para cada regra",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Nota Vigente",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "EQD",
                 "status": "Pendente",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Abono",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Avaliações",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Cadastro de Legado",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Delta",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Exceção",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Massa de teste para cada regra",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Nota Vigente",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "EQF",
                 "status": "Concluida",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Config Melhor Nota",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "ESV",
                 "status": "Concluida",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Instalação",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "ESX",
                 "status": "Pendente",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Instalação",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "GIT Azure",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Instalação e definição de branchs",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "GIT LAB",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Instalação e definição de branchs",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "IMS/DB 14",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "DBRC",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SPOC",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "IMS/DB 15",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "DBRC",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SPOC",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "IMS/DC 14",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Conexão DB2",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão MQ",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão z/OS Connect",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SPOC",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "IMS/DC 15",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Conexão DB2",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão MQ",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão z/OS Connect",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SPOC",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "IVP",
                 "status": "Concluida",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "IVP1, IVP2, IVP3",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "MQ CICS",
                 "status": "Concluida",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Instalação",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "MQ IMS",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Instalação",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "PMS",
                 "status": "Pendente",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Definir politicas",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "PWD",
                 "status": "Concluida",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Instalação",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "Produtos BMC",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Instalação",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "QCWEB",
                 "status": "Concluida",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Instalação (DEPLOY)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "SHP",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "SH01-SH20",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SH22-SH23 (CICS - IMS DB)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHPI01 e SHPI12 (IMS)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHPI22",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHPI90 (IMS)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHPIMQ2B-SHPIMQTB (IMS)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHPS",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHPS1 (IMS)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHPS1J (IMS)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHPS1X (IMS)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHPX ST03 ST13 STWQ STH3",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHQ2 SHQT",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHS1 SHS2 SHS3",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHSJ",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHSX",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SJ52",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SN01 SN02 SN03",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "z/OS Connect",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Conexão com Aplicativo de teste",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão com CICS",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão com DB2",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão com IMS",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "z/OS Connect Aplicativo",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Instalação( Deploy)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "z/OS Connect Aplicativo IMS",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Desenvolver, Instalação",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             }
         ]
     },
@@ -824,825 +1617,1607 @@ export const mockMachines: Machines[] = [
         "description": "Suporte / Apresentações",
         "version": "z/OS 2.4",
         "status": "Pendente",
+        "updatedAt": null,
         "applications": [
             {
                 "name": "ABN",
                 "status": "Concluida",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Instalação",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "APT",
                 "status": "Pendente",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "APT Change Alert",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT Datamover",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Batch (JCL e PGM BATCH)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT For CICS (Multi region)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for DDF (BND)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery  Programs",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery  Tables",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery  Transaction",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery Changeman",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery DLI",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery Endevor",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery GIT",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery JOB",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery Library",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery Schedule",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery Typing",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discoverys Typing for BND",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT For IMS (DB)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT For IMS (DC)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT Logstream",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT SnapShot",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "LDAP (YES/NO)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "BITBUCKET",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Instalação e definição de branchs",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "CA-Endevor",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Instalação",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "CICS 5.2 (Multi Region)",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Conexão com DB2",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão com IMS DB",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão EXCI",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão MQ",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Eza TCP SOCKET",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "LOGIN via CESN",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "PLTPI",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "PLTPS",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "z/OS Connect",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "CICS 5.5 (Multi Region)",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Conexão com DB2",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão com IMS DB",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão EXCI",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão MQ",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Eza TCP SOCKET",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "LOGIN via CESN",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "PLTPI",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "PLTPS",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "z/OS Connect",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "CICS 5.6 (Multi Region)",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Conexão com DB2",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão com IMS DB",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão EXCI",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão MQ",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Eza TCP SOCKET",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "LOGIN via CESN",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "PLTPI",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "PLTPS",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "CICS 6.1 (Multi Region)",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Conexão com DB2",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão com IMS DB",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão EXCI",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão MQ",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Eza TCP SOCKET",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "LOGIN via CESN",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "PLTPI",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "PLTPS",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "Changeman (Simulador)",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Criação de pacotes",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Instalação",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Script de pacote",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "DB2 Connect",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Instalação",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "DB2 Connect Aplicativo",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
-                        "name": "Instalação(Deploy)",
-                        "status": "Pendente"
+                        "name": "Instalação( Deploy)",
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "DB2 V12 (C/Vírgula)",
                 "status": "Concluida",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Funcional",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "DB2 V12 (S/Vírgula)",
-                "status": "Concluida",
+                "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Funcional",
-                        "status": "Concluida"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "DB2 V13 (C/Vírgula)",
-                "status": "Concluida",
+                "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Funcional",
-                        "status": "Concluida"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "DB2 V13 (S/Vírgula)",
-                "status": "Concluida",
+                "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Funcional",
-                        "status": "Concluida"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "EBK Mainframe",
                 "status": "Concluida",
+                "tipo": "ECCOX",
                 "services": [
                     {
-                        "name": "Instalação (CICS, TABELAS)",
-                        "status": "Concluida"
+                        "name": "Mainframe (SMPE, CICS, TABELAS)",
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "EBK Web",
                 "status": "Concluida",
+                "tipo": "ECCOX",
                 "services": [
                     {
-                        "name": "Instalação (MYSQL, DEPLOY)",
-                        "status": "Concluida"
+                        "name": "WEB (MYSQL, DEPLOY)",
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "ECS",
                 "status": "Concluida",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Instalação (SMPE, CICS)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "EQC",
                 "status": "Pendente",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Abono",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Avaliações",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Cadastro de Legado",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Delta",
-                        "status": "Concluida"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Exceção",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Massa de teste para cada regra",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Nota Vigente",
-                        "status": "Concluida"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "EQD",
                 "status": "Pendente",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Abono",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Avaliações",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Cadastro de Legado",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Delta",
-                        "status": "Concluida"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Exceção",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Massa de teste para cada regra",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Nota Vigente",
-                        "status": "Concluida"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "EQF",
                 "status": "Concluida",
+                "tipo": "ECCOX",
                 "services": [
                     {
-                        "name": "Instalaçao e Config Melhor Nota",
-                        "status": "Concluida"
+                        "name": "Config Melhor Nota",
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "ESV",
                 "status": "Concluida",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Instalação",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "ESX",
-                "status": "Concluida",
+                "status": "Pendente",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Instalação",
-                        "status": "Concluida"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "GIT Azure",
-                "status": "Concluida",
+                "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Instalação e definição de branchs",
-                        "status": "Concluida"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "GIT LAB",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Instalação e definição de branchs",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "IMS/DB 14",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "DBRC",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SPOC",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "IMS/DB 15",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "DBRC",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SPOC",
-                        "status": "Pendente"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "IMS/DC 14",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Conexão DB2",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão MQ",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão z/OS Connect",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SPOC",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "IMS/DC 15",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Conexão DB2",
-                        "status": "Pendente"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão MQ",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão z/OS Connect",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SPOC",
-                        "status": "Pendente"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "IVP",
                 "status": "Concluida",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "IVP1, IVP2, IVP3",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "MQ CICS",
                 "status": "Concluida",
+                "tipo": "IBM",
                 "services": [
                     {
-                        "name": "Instalação e configuração",
-                        "status": "Concluida"
+                        "name": "Instalação",
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "MQ IMS",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
-                        "name": "Instalação e configuração",
-                        "status": "Pendente"
+                        "name": "Instalação",
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "PMS",
                 "status": "Pendente",
+                "tipo": "ECCOX",
                 "services": [
                     {
-                        "name": "Instalação e Definir politicas",
-                        "status": "Pendente"
+                        "name": "Definir politicas",
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "PWD",
                 "status": "Concluida",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Instalação",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "Produtos BMC",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Instalação",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "QCWEB",
                 "status": "Concluida",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Instalação (DEPLOY)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "SHP",
-                "status": "Concluida",
+                "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
-                        "name": "SH01~SH20 (CICS)",
-                        "status": "Concluida"
+                        "name": "SH01-SH20",
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SH22-SH23 (CICS - IMS DB)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHPI01 e SHPI12 (IMS)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHPI22",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHPI90 (IMS)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHPIMQ2B-SHPIMQTB (IMS)",
-                        "status": "Concluida"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
-                        "name": "SHPS (CICS)",
-                        "status": "Concluida"
+                        "name": "SHPS",
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHPS1 (IMS)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHPS1J (IMS)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHPS1X (IMS)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
-                        "name": "SHPX ST03 ST13 STWQ STH3 (CICS)",
-                        "status": "Concluida"
+                        "name": "SHPX ST03 ST13 STWQ STH3",
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
-                        "name": "SHQ2 SHQT (CICS)",
-                        "status": "Concluida"
+                        "name": "SHQ2 SHQT",
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
-                        "name": "SHS1 SHS2 SHS3 (CICS)",
-                        "status": "Concluida"
+                        "name": "SHS1 SHS2 SHS3",
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
-                        "name": "SHSJ (CICS)",
-                        "status": "Concluida"
+                        "name": "SHSJ",
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
-                        "name": "SHSX (CICS)",
-                        "status": "Concluida"
+                        "name": "SHSX",
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
-                        "name": "SJ52 (CICS)",
-                        "status": "Concluida"
+                        "name": "SJ52",
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
-                        "name": "SN01 SN02 SN03 (CICS)",
-                        "status": "Concluida"
+                        "name": "SN01 SN02 SN03",
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "z/OS Connect",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Conexão com Aplicativo de teste",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão com CICS",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão com DB2",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão com IMS",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "z/OS Connect Aplicativo",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
-                        "name": "Instalação",
-                        "status": "Pendente"
+                        "name": "Instalação( Deploy)",
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
-            },
-            {
-                "name": "z/OS Connect Aplicativo CICS",
-                "status": "Pendente",
-                "services": [
-                    {
-                        "name": "Instalação",
-                        "status": "Pendente"
-                    }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "z/OS Connect Aplicativo IMS",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
-                        "name": "Instalação",
-                        "status": "Pendente"
+                        "name": "Desenvolver, Instalação",
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             }
         ]
     },
@@ -1652,814 +3227,1624 @@ export const mockMachines: Machines[] = [
         "description": " Suporte / Serviço",
         "version": "z/OS 2.4",
         "status": "Pendente",
+        "updatedAt": null,
         "applications": [
             {
                 "name": "ABN",
                 "status": "Pendente",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Instalação",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "APT",
                 "status": "Pendente",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "APT Change Alert",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT Datamover",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Batch (JCL e PGM BATCH)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT For CICS (Multi region)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for DDF (BND)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery  Programs",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery  Tables",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery  Transaction",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery Changeman",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery DLI",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery Endevor",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery GIT",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery JOB",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery Library",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery Schedule",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery Typing",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discoverys Typing for BND",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT For IMS (DB)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT For IMS (DC)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT Logstream",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT SnapShot",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "LDAP (YES/NO)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "BITBUCKET",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Instalação e definição de branchs",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "CA-Endevor",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Instalação",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "CICS 5.2 (Multi Region)",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Conexão com DB2",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão com IMS DB",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão EXCI",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão MQ",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Eza TCP SOCKET",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "LOGIN via CESN",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "PLTPI",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "PLTPS",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "z/OS Connect",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "CICS 5.5 (Multi Region)",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Conexão com DB2",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão com IMS DB",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão EXCI",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão MQ",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Eza TCP SOCKET",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "LOGIN via CESN",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "PLTPI",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "PLTPS",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "z/OS Connect",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "CICS 5.6 (Multi Region)",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Conexão com DB2",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão com IMS DB",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão EXCI",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão MQ",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Eza TCP SOCKET",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "LOGIN via CESN",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "PLTPI",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "PLTPS",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "CICS 6.1 (Multi Region)",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Conexão com DB2",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão com IMS DB",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão EXCI",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão MQ",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Eza TCP SOCKET",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "LOGIN via CESN",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "PLTPI",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "PLTPS",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "Changeman (Simulador)",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Criação de pacotes",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Instalação",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Script de pacote",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "DB2 Connect",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Instalação",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "DB2 Connect Aplicativo",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Instalação( Deploy)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "DB2 V12 (C/Vírgula)",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Funcional",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "DB2 V12 (S/Vírgula)",
                 "status": "Concluida",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Funcional",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "DB2 V13 (C/Vírgula)",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Funcional",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "DB2 V13 (S/Vírgula)",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Funcional",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "EBK Mainframe",
                 "status": "Pendente",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Instalação (CICS, TABELAS)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "EBK Web",
                 "status": "Pendente",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Instalação (MYSQL, DEPLOY)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "ECS",
                 "status": "Concluida",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Instalação (SMPE, CICS)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "EQC",
                 "status": "Pendente",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Abono",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Avaliações",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Cadastro de Legado",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Delta",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Exceção",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Massa de teste para cada regra",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Nota Vigente",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "EQD",
                 "status": "Pendente",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Abono",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Avaliações",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Cadastro de Legado",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Delta",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Exceção",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Massa de teste para cada regra",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Nota Vigente",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "EQF",
                 "status": "Pendente",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Config Melhor Nota",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "ESV",
                 "status": "Concluida",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Instalação",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "ESX",
                 "status": "Pendente",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Instalação",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "GIT Azure",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Instalação e definição de branchs",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "GIT LAB",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Instalação e definição de branchs",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "IMS/DB 14",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "DBRC",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SPOC",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "IMS/DB 15",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "DBRC",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SPOC",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "IMS/DC 14",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Conexão DB2",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão MQ",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão z/OS Connect",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SPOC",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "IMS/DC 15",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Conexão DB2",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão MQ",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão z/OS Connect",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SPOC",
-                        "status": "Concluida"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "IVP",
                 "status": "Pendente",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "IVP1, IVP2, IVP3",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "MQ CICS",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "nan",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "MQ IMS",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "nan",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "PMS",
                 "status": "Pendente",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Definir politicas",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "PWD",
                 "status": "Concluida",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Instalação",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "Produtos BMC",
                 "status": "Concluida",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Instalação",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "QCWEB",
                 "status": "Concluida",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Instalação (DEPLOY)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "SHP",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "SH01-SH20 (CICS)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SH22-SH23 (CICS - IMS DB)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHPI01 e SHPI12 (IMS)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHPI22",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHPI90 (IMS)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHPIMQ2B-SHPIMQTB (IMS)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHPS (CICS)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHPS1 (IMS)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHPS1J (IMS)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHPS1X (IMS)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHPX ST03 ST13 STWQ STH3 (CICS)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHQ2 SHQT (CICS)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHS1 SHS2 SHS3 (CICS)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHSJ (CICS)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHSX (CICS)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SJ52 (CICS)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SN01 SN02 SN03 (CICS)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "z/OS Connect",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Conexão com Aplicativo de teste",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão com CICS",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão com DB2",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão com IMS",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "z/OS Connect Aplicativo",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
-                        "name": "Instalação (Deploy)",
-                        "status": "Pendente"
+                        "name": "Instalação",
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
+            },
+            {
+                "name": "z/OS Connect Aplicativo CICS",
+                "status": "Pendente",
+                "tipo": "IBM",
+                "services": [
+                    {
+                        "name": "Instalação( Deploy)",
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
+                    }
+                ]
             },
             {
                 "name": "z/OS Connect Aplicativo IMS",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Desenvolver, Instalação",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             }
         ]
     },
@@ -2469,827 +4854,1626 @@ export const mockMachines: Machines[] = [
         "description": "Desenvolvimento",
         "version": "z/OS 2.2",
         "status": "Pendente",
+        "updatedAt": null,
         "applications": [
             {
                 "name": "ABN",
                 "status": "Pendente",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Instalação",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "APT",
                 "status": "Pendente",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "APT Change Alert",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT Datamover",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Batch (JCL e PGM BATCH)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT For CICS (Multi region)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for DDF (BND)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery  Programs",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery  Tables",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery  Transaction",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery Changeman",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery DLI",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery Endevor",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery GIT",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery JOB",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery Library",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery Schedule",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery Typing",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discoverys Typing for BND",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT For IMS (DB)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT For IMS (DC)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT Logstream",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT SnapShot",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "LDAP (YES/NO)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "BITBUCKET",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Instalação e definição de branchs",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "CA-Endevor",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Instalação",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "CICS 5.2 (Multi Region)",
                 "status": "Concluida",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Conexão com DB2",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão com IMS DB",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão EXCI",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão MQ",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Eza TCP SOCKET",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "LOGIN via CESN",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "PLTPI",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "PLTPS",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "z/OS Connect",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "CICS 5.5 (Multi Region)",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Conexão com DB2",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão com IMS DB",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão EXCI",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão MQ",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Eza TCP SOCKET",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "LOGIN via CESN",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "PLTPI",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "PLTPS",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "z/OS Connect",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "CICS 5.6 (Multi Region)",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Conexão com DB2",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão com IMS DB",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão EXCI",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão MQ",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Eza TCP SOCKET",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "LOGIN via CESN",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "PLTPI",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "PLTPS",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "CICS 6.1 (Multi Region)",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Conexão com DB2",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão com IMS DB",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão EXCI",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão MQ",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Eza TCP SOCKET",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "LOGIN via CESN",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "PLTPI",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "PLTPS",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "Changeman (Simulador)",
                 "status": "Concluida",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Criação de pacotes",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Instalação",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Script de pacote",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "DB2 Connect",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Instalação",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "DB2 Connect Aplicativo ",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Instalação( Deploy)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "DB2 V12 (C/Vírgula)",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Funcional",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "DB2 V12 (S/Vírgula)",
                 "status": "Concluida",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Funcional",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "DB2 V13 (C/Vírgula)",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Funcional",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "DB2 V13 (S/Vírgula)",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Funcional",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "EBK Mainframe",
                 "status": "Pendente",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Instalação (CICS, TABELAS)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "EBK Web",
                 "status": "Pendente",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Instalação (MYSQL, DEPLOY)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "ECS",
                 "status": "Concluida",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Instalação (SMPE, CICS)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "EQC",
                 "status": "Pendente",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Abono",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Avaliações",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Cadastro de Legado",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Delta",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Exceção",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Massa de teste para cada regra",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Nota Vigente",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "EQD",
                 "status": "Pendente",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Abono",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Avaliações",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Cadastro de Legado",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Delta",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Exceção",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Massa de teste para cada regra",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Nota Vigente",
-                        "status": "Pendente"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "EQF",
-                "status": "Concluida",
+                "status": "Pendente",
+                "tipo": "ECCOX",
                 "services": [
                     {
-                        "name": "Config Melhor Nota",
-                        "status": "Concluida"
+                        "name": "Instalaçao e Config Melhor Nota",
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "ESV",
                 "status": "Concluida",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Instalação",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "ESX",
                 "status": "Concluida",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Instalação",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "GIT Azure",
                 "status": "Concluida",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Instalação e definição de branchs",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "GIT LAB",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Instalação e definição de branchs",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "IMS/DB 14",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "DBRC",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SPOC",
-                        "status": "Concluida"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "IMS/DB 15",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "DBRC",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SPOC",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "IMS/DC 14",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Conexão DB2",
-                        "status": "Concluida"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão MQ",
-                        "status": "Concluida"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão z/OS Connect",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SPOC",
-                        "status": "Concluida"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "IMS/DC 15",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Conexão DB2",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão MQ",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão z/OS Connect",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SPOC",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "IVP",
                 "status": "Concluida",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "IVP1, IVP2, IVP3",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "MQ CICS",
                 "status": "Concluida",
+                "tipo": "IBM",
                 "services": [
                     {
-                        "name": "nan",
-                        "status": "Concluida"
+                        "name": "Instalação e configuração",
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "MQ IMS",
-                "status": "Concluida",
+                "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
-                        "name": "nan",
-                        "status": "Concluida"
+                        "name": "Instalação e configuração",
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "PMS",
-                "status": "Concluida",
+                "status": "Pendente",
+                "tipo": "ECCOX",
                 "services": [
                     {
-                        "name": "Definir politicas",
-                        "status": "Concluida"
+                        "name": "Instalação e Definir politicas",
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "PWD",
                 "status": "Concluida",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Instalação",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "Produtos BMC",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Instalação",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "QCWEB",
                 "status": "Concluida",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Instalação (DEPLOY)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "SHP",
                 "status": "Concluida",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "SH01~SH20 (CICS)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SH22-SH23 (CICS - IMS DB)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHPI01 e SHPI12 (IMS)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHPI22",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHPI90 (IMS)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHPIMQ2B-SHPIMQTB (IMS)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHPS (CICS)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHPS1 (IMS)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHPS1J (IMS)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHPS1X (IMS)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHPX ST03 ST13 STWQ STH3 (CICS)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHQ2 SHQT (CICS)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHS1 SHS2 SHS3 (CICS)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHSJ (CICS)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHSX (CICS)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SJ52 (CICS)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SN01 SN02 SN03 (CICS)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "z/OS Connect",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Conexão com Aplicativo de teste",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão com CICS",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão com DB2",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão com IMS",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "z/OS Connect Aplicativo",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
-                        "name": "nan",
-                        "status": "Pendente"
+                        "name": "Instalação( Deploy)",
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "z/OS Connect Aplicativo CICS",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Instalação( Deploy)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "z/OS Connect Aplicativo IMS",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
-                        "name": "Desenvolver, Instalação",
-                        "status": "Pendente"
-                    }
-                ],
-                "tipo": "IBM"
-            }
-        ]
+                         "name": "Desenvolver, Instalação",
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
+                    }  
+                ]
+            },
+        ],
     },
     {
         "id": "mf08",
@@ -3297,815 +6481,1625 @@ export const mockMachines: Machines[] = [
         "description": "Desenvolvimento",
         "version": "z/OS 2.4",
         "status": "Pendente",
+        "updatedAt": null,
         "applications": [
             {
                 "name": "ABN",
                 "status": "Pendente",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Instalação",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "APT",
                 "status": "Pendente",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "APT Change Alert",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT Datamover",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Batch (JCL e PGM BATCH)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT For CICS (Multi region)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for DDF (BND)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery  Programs",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery  Tables",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery  Transaction",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery Changeman",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery DLI",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery Endevor",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery GIT",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery JOB",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery Library",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery Schedule",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discovery Typing",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT for Discoverys Typing for BND",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT For IMS (DB)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT For IMS (DC)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT Logstream",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "APT SnapShot",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "LDAP (YES/NO)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "BITBUCKET",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Instalação e definição de branchs",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "CA-Endevor",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Instalação",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "CICS 5.2 (Multi Region)",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Conexão com DB2",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão com IMS DB",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão EXCI",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão MQ",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Eza TCP SOCKET",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "LOGIN via CESN",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "PLTPI",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "PLTPS",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "z/OS Connect",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "CICS 5.5 (Multi Region)",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Conexão com DB2",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão com IMS DB",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão EXCI",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão MQ",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Eza TCP SOCKET",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "LOGIN via CESN",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "PLTPI",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "PLTPS",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "z/OS Connect",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "CICS 5.6 (Multi Region)",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Conexão com DB2",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão com IMS DB",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão EXCI",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão MQ",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Eza TCP SOCKET",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "LOGIN via CESN",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "PLTPI",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "PLTPS",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "CICS 6.1 (Multi Region)",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Conexão com DB2",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão com IMS DB",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão EXCI",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão MQ",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Eza TCP SOCKET",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "LOGIN via CESN",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "PLTPI",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "PLTPS",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "Changeman (Simulador)",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Criação de pacotes",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Instalação",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Script de pacote",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "DB2 Connect",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Instalação",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "DB2 Connect Aplicativo",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Instalação( Deploy)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "DB2 V12 (C/Vírgula)",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Funcional",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "DB2 V12 (S/Vírgula)",
                 "status": "Concluida",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Funcional",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "DB2 V13 (C/Vírgula)",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Funcional",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "DB2 V13 (S/Vírgula)",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Funcional",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "EBK Mainframe",
                 "status": "Pendente",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Instalação (CICS, TABELAS)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "EBK Web",
                 "status": "Pendente",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Instalação (MYSQL, DEPLOY)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "ECS",
                 "status": "Concluida",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Instalação (SMPE, CICS)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "EQC",
                 "status": "Pendente",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Abono",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Avaliações",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Cadastro de Legado",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Delta",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Exceção",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Massa de teste para cada regra",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Nota Vigente",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "EQD",
                 "status": "Pendente",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Abono",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Avaliações",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Cadastro de Legado",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Delta",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Exceção",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Massa de teste para cada regra",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Nota Vigente",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "EQF",
                 "status": "Pendente",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Instalação e Config Melhor Nota",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "ESV",
                 "status": "Concluida",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Instalação",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "ESX",
                 "status": "Pendente",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Instalação",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "GIT Azure",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Instalação e definição de branchs",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "GIT LAB",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Instalação e definição de branchs",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "IMS/DB 14",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "DBRC",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SPOC",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "IMS/DB 15",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "DBRC",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SPOC",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "IMS/DC 14",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Conexão DB2",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão MQ",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão z/OS Connect",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SPOC",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "IMS/DC 15",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Conexão DB2",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão MQ",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão z/OS Connect",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SPOC",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "IVP",
                 "status": "Pendente",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "IVP1, IVP2, IVP3",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "MQ CICS",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "nan",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "MQ IMS",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "nan",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "PMS",
                 "status": "Pendente",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Definir politicas",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "PWD",
                 "status": "Concluida",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Instalação",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "Produtos BMC",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Instalação",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "QCWEB",
                 "status": "Pendente",
+                "tipo": "ECCOX",
                 "services": [
                     {
                         "name": "Instalação (DEPLOY)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "ECCOX"
+                ]
             },
             {
                 "name": "SHP",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "SH01-SH20 (CICS)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SH22-SH23 (CICS - IMS DB)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHPI01 e SHPI12 (IMS)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHPI22",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHPI90 (IMS)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHPIMQ2B-SHPIMQTB (IMS)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHPS (CICS)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHPS1 (IMS)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHPS1J (IMS)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHPS1X (IMS)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHPX ST03 ST13 STWQ STH3 (CICS)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHQ2 SHQT (CICS)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHS1 SHS2 SHS3 (CICS)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHSJ (CICS)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SHSX (CICS)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SJ52 (CICS)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "SN01 SN02 SN03 (CICS)",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "z/OS Connect",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Conexão com Aplicativo de teste",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão com CICS",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão com DB2",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     },
                     {
                         "name": "Conexão com IMS",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
+            },
+            {
+                "name": "z/OS Connect Aplicativo",
+                "status": "Pendente",
+                "tipo": "IBM",
+                "services": [
+                    {
+                        "name": "Instalação",
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
+                    }
+                ]
             },
             {
                 "name": "z/OS Connect Aplicativo CICS",
                 "status": "Concluida",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Instalação( Deploy)",
-                        "status": "Concluida"
+                        "status": "Concluida",
+                        "itemObrigatorio": "Sim",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             },
             {
                 "name": "z/OS Connect Aplicativo IMS",
                 "status": "Pendente",
+                "tipo": "IBM",
                 "services": [
                     {
                         "name": "Desenvolver, Instalação",
-                        "status": "Pendente"
+                        "status": "Pendente",
+                        "itemObrigatorio": "Não",
+                        "updatedAt": null,
+                        "responsible": "",
+                        "comments": "",
+                        "typePendencia": "",
+                        "responsibleHomologacao": ""
                     }
-                ],
-                "tipo": "IBM"
+                ]
             }
         ]
     }
-] as const;
+] as const; 

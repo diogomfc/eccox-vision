@@ -33,6 +33,6 @@
 
 /* Largura da doc quando o menu está aberto */
 .dock-notch.open {
-  width: 500px;
+  width: 350px;
   height: 84px; /* Altura para o estado aberto */
 }

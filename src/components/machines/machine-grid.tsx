@@ -1,7 +1,9 @@
 "use client";
 
-import Image from "next/image";
 
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import Image from "next/image";
 import ImgServerStatusOK from "../../assets/images/img-server-status-ok.svg";
 import ImgServerStatusWarning from "../../assets/images/img-server-status-warning.svg";
 import { ProgressCircle } from "@/components/ui/progress-circle";
@@ -12,9 +14,15 @@ interface MachineGridProps {
 }
 
 export function MachineGrid({ machines }: MachineGridProps) {
+
+  const router = useRouter();
+  const [loadingId, setLoadingId] = useState<string | null>(null);
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 min-h-min pb-4 cursor-pointer">
-      {machines.map((machine) => {
+    <div 
+      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 min-h-min pb-4"
+    >
+  {machines.map((machine) => {
         // Calcular totais dos serviços
         const allServices = machine.applications.flatMap(app => app.services);
         const total = allServices.length;
@@ -37,8 +45,18 @@ export function MachineGrid({ machines }: MachineGridProps) {
         return (
           <div
             key={machine.id}
-            className={`bg-[#1A1A1E] hover:bg-[#0F0F10] rounded-lg p-4 border ${borderColor}`}
+            className={`bg-[#1A1A1E] hover:bg-[#0F0F10] rounded-lg p-4 border ${borderColor} cursor-pointer relative`}
+            onClick={async () => {
+              setLoadingId(machine.id);
+              router.push(`/maquinas/${machine.id}`);
+            }}
           >
+            {/* Loading overlay */}
+            {loadingId === machine.id && (
+              <div className="absolute inset-0 bg-black/60 flex items-center justify-center z-10 rounded-lg">
+                <div className="w-8 h-8 border-4 border-[#298BFE] border-t-transparent rounded-full animate-spin"></div>
+              </div>
+            )}
             {/* Cabeçalho do Card */}
             <div className="flex items-center gap-3 mb-4">
               <Image
