@@ -4,13 +4,17 @@
   "version": "1.0.0",
   "description": "EccoxVision - Monitoramento e Observabilidade de Serviços e Recursos Mainframe. Aplicação desktop multiplataforma desenvolvida com Electron, Next.js, TailwindCSS e TypeScript.",
   "main": "electron/dist/main.js",
-  "scripts": {
-    "dev": "next dev",
-    "build:next": "next build",
-    "move:out": "node move-out.js",
-    "build:electron": "tsc -p electron/tsconfig.electron.json && node move-assets.js",
-    "dev:electron": "concurrently \"npm run dev\" \"wait-on http://localhost:3000 && cross-env NODE_ENV=development electron electron/dist/main.js\"",
-    "build:app": "npm run build:next && npm run move:out && npm run build:electron && electron-builder"
+ "scripts": {
+  "dev": "next dev",
+  "build:next": "next build",
+  "move:out": "node move-out.js",
+  "build:electron": "tsc -p electron/tsconfig.electron.json && node move-assets.js",
+  "dev:electron": "concurrently \"npm run dev\" \"wait-on http://localhost:3000 && cross-env NODE_ENV=development electron electron/dist/main.js\"",
+  "build:app": "npm run build:next && npm run move:out && npm run build:electron && electron-builder",
+
+  "db:setup": "ts-node scripts/setup-db.ts", 
+  "db:import-mock": "ts-node scripts/import-mock.ts",
+  "build:scripts": "tsc scripts/*.ts --outDir dist/scripts"
   },
   "build": {
     "appId": "com.eccox.eccoxvision",
@@ -41,6 +45,7 @@
   "dependencies": {
     "@radix-ui/react-hover-card": "^1.1.15",
     "@radix-ui/react-tooltip": "^1.2.8",
+    "better-sqlite3": "^12.2.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.544.0",
@@ -53,6 +58,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.11",
+    "@types/better-sqlite3": "^7.6.13",
     "@types/react": "19.1.8",
     "autoprefixer": "^10.4.21",
     "concurrently": "^8.2.0",

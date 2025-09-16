@@ -1,8 +1,11 @@
-// Nao ha "use client" aqui. Este arquivo e um Server Component.
-import { mockMachines } from "@/mocks/mockMachines";
-import { MachineDetailsClient } from "@/components/machines/machine-details-client";
+// src/app/maquinas/[id]/page.tsx
 
-// A função generateStaticParams deve estar neste arquivo
+import { getMachineById } from "@/server/machine-repository";
+import { MachineDetailsClient } from "@/components/machines/machine-details-client";
+import { mockMachines } from "@/mocks/mockMachines";
+
+// A função generateStaticParams continua a usar o mock para que o Next.js
+// saiba quais páginas pré-gerar durante o build.
 export async function generateStaticParams() {
     return mockMachines.map((machine) => ({
         id: machine.id,
@@ -12,7 +15,9 @@ export async function generateStaticParams() {
 export default async function MachineDetailsPage({ params }: { params: { id: string } }) {
     const awaitedParams = await params;
     const machineId = awaitedParams.id;
-    const machine = mockMachines.find((m) => m.id === machineId);
+    
+    // Substituímos a busca no mock pela busca no banco de dados
+    const machine = getMachineById(machineId);
 
     if (!machine) {
         return (
