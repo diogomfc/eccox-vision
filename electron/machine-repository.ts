@@ -1,6 +1,8 @@
 // src/server/machine-repository.ts
-import { getDatabase } from "../../electron/db";
-import type { Machines, Application, Service } from "../types/machines";
+
+import { Application, Machines, Service } from "./machines-types";
+import { getDatabase } from "./db";
+
 
 // Função para buscar todas as máquinas (útil para a página principal)
 export function getAllMachines(): Machines[] {
@@ -54,10 +56,17 @@ export function getMachineById(id: string): Machines | undefined {
 export function updateMachineInDb(machine: Machines): boolean {
   const db = getDatabase();
   const stmt = db.prepare(`
-    UPDATE machines 
-    SET name = ?, description = ?, version = ?, updatedAt = ?
+    UPDATE machines
+    SET name = ?, description = ?, version = ?, status = ?, updatedAt = ?
     WHERE id = ?
   `);
-  const result = stmt.run(machine.name, machine.description, machine.version, new Date().toISOString(), machine.id);
+  const result = stmt.run(
+    machine.name,
+    machine.description,
+    machine.version,
+    machine.status,
+    machine.updatedAt,
+    machine.id
+  );
   return result.changes > 0;
 }

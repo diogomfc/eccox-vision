@@ -1,10 +1,12 @@
 // src/components/machines/application-list.tsx
-
 "use client";
 
 import React, { useState } from "react";
-import { Layers } from "lucide-react";
+import { Layers, SquarePen, Trash2 } from "lucide-react";
 import type { Application as AppType } from "@/types/machines";
+import { motion } from "framer-motion";
+
+import { ApplicationEditModal } from "./application-edit-modal";
 
 interface ApplicationListProps {
     applications: (AppType & {
@@ -18,9 +20,11 @@ interface ApplicationListProps {
 }
 
 export function ApplicationList({ applications, onSelectApp, selectedApp }: ApplicationListProps) {
-    // Estado de busca e filtro local
     const [searchQuery, setSearchQuery] = useState("");
     const [statusFilter, setStatusFilter] = useState<string>("");
+    const [hoveredAppId, setHoveredAppId] = useState<string | null>(null);
+    const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+    const [selectedApplication, setSelectedApplication] = useState<AppType | null>(null);
 
     const filteredApplications = applications.filter((app) => {
         const matchesName = app.name.toLowerCase().includes(searchQuery.toLowerCase());
@@ -28,8 +32,14 @@ export function ApplicationList({ applications, onSelectApp, selectedApp }: Appl
         return matchesName && matchesStatus;
     });
 
+    const handleApplicationUpdated = () => {
+        setIsEditModalOpen(false);
+        setSelectedApplication(null);
+        // Lógica para recarregar a lista de aplicações no componente pai
+        // Isso pode ser feito chamando uma função passada via props, se necessário.
+    };
+    
     return (
-        //bg-[#18181B] rounded-lg p-4 h-full flex flex-col
         <div className="">
             <div className="mb-4">
                 <div className="flex justify-between items-center mb-2">
@@ -66,10 +76,12 @@ export function ApplicationList({ applications, onSelectApp, selectedApp }: Appl
                 {filteredApplications.map((app, index) => (
                     <li
                         key={index}
-                        className={`mb-2 cursor-pointer rounded p-2 hover:bg-[#23232B] transition ${selectedApp === app.name ? "bg-[#23232B]" : ""}`}
+                        className={`mb-2 cursor-pointer rounded p-2 hover:bg-[#23232B] transition ${selectedApp === app.name ? "bg-[#23232B]" : ""} relative`}
+                        onMouseEnter={() => setHoveredAppId(app.name)}
+                        onMouseLeave={() => setHoveredAppId(null)}
                         onClick={() => onSelectApp && onSelectApp(app.name)}
                     >
-                        <div className="flex justify-between items-center mb-1">
+                        <div className="flex justify-between items-center mb-1 pr-12">
                             <span className="text-white font-normal text-xs truncate max-w-[500px]">
                                 {app.name}
                             </span>
@@ -77,17 +89,56 @@ export function ApplicationList({ applications, onSelectApp, selectedApp }: Appl
                                 {app.instalados ?? 0}/{app.subItems ?? 0} serviços
                             </span>
                         </div>
-                        <div className="flex items-center gap-2">
-                            <div className="flex-1 h-2 bg-[#23232B] rounded-full overflow-hidden">
+                        <div className="flex items-center gap-2 pr-0">
+                            <div className="flex-1 h-2 bg-[#2f2f36] rounded-full overflow-hidden">
                                 <div
                                     className="h-2 bg-[#298BFE]/50 rounded-full transition-all duration-500"
                                     style={{ width: `${app.percent ?? 100}%` }}
                                 />
                             </div>
                         </div>
+                        {hoveredAppId === app.name && (
+                            <motion.div
+                                initial={{ opacity: 0, x: 10 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: 10 }}
+                                transition={{ duration: 0.2 }}
+                                className="absolute top-1/2 right-2 transform -translate-y-1/2 flex flex-col gap-1 z-10"
+                            >
+                                <button
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        setSelectedApplication(app);
+                                        setIsEditModalOpen(true);
+                                    }}
+                                    className="cursor-pointer"
+                                    aria-label="Editar aplicação"
+                                >
+                                    <SquarePen size={16} className="text-gray-400 hover:text-white" />
+                                </button>
+                                <button
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        alert('Deletar aplicação');
+                                    }}
+                                    className="cursor-pointer"
+                                    aria-label="Deletar aplicação"
+                                >
+                                    <Trash2 size={16} className="text-red-400 hover:text-red-300" />
+                                </button>
+                            </motion.div>
+                        )}
                     </li>
                 ))}
             </ul>
+
+            {isEditModalOpen && selectedApplication && (
+                <ApplicationEditModal
+                    application={selectedApplication}
+                    onClose={() => setIsEditModalOpen(false)}
+                    onUpdated={handleApplicationUpdated}
+                />
+            )}
         </div>
     );
 }
