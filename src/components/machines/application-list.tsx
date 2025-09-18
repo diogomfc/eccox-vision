@@ -9,6 +9,11 @@ import { motion } from "framer-motion";
 import { ApplicationEditModal } from "./application-edit-modal";
 
 interface ApplicationListProps {
+    machine:{
+        name: string;
+        system: string;
+        description: string;
+    };
     applications: (AppType & {
         subItems?: number;
         percent?: number;
@@ -19,7 +24,7 @@ interface ApplicationListProps {
     selectedApp?: string;
 }
 
-export function ApplicationList({ applications, onSelectApp, selectedApp }: ApplicationListProps) {
+export function ApplicationList({ machine, applications, onSelectApp, selectedApp }: ApplicationListProps) {
     const [searchQuery, setSearchQuery] = useState("");
     const [statusFilter, setStatusFilter] = useState<string>("");
     const [hoveredAppId, setHoveredAppId] = useState<string | null>(null);
@@ -81,7 +86,7 @@ export function ApplicationList({ applications, onSelectApp, selectedApp }: Appl
                         onMouseLeave={() => setHoveredAppId(null)}
                         onClick={() => onSelectApp && onSelectApp(app.name)}
                     >
-                        <div className="flex justify-between items-center mb-1 pr-12">
+                        <div className="flex justify-between items-center mb-1 pr-5">
                             <span className="text-white font-normal text-xs truncate max-w-[500px]">
                                 {app.name}
                             </span>
@@ -114,7 +119,7 @@ export function ApplicationList({ applications, onSelectApp, selectedApp }: Appl
                                     className="cursor-pointer"
                                     aria-label="Editar aplicação"
                                 >
-                                    <SquarePen size={16} className="text-gray-400 hover:text-white" />
+                                    <SquarePen size={16} className="text-gray-600/80 hover:text-amber-500" />
                                 </button>
                                 <button
                                     onClick={(e) => {
@@ -124,7 +129,7 @@ export function ApplicationList({ applications, onSelectApp, selectedApp }: Appl
                                     className="cursor-pointer"
                                     aria-label="Deletar aplicação"
                                 >
-                                    <Trash2 size={16} className="text-red-400 hover:text-red-300" />
+                                    <Trash2 size={16} className="text-red-400/50 hover:text-red-300" />
                                 </button>
                             </motion.div>
                         )}
@@ -135,6 +140,9 @@ export function ApplicationList({ applications, onSelectApp, selectedApp }: Appl
             {isEditModalOpen && selectedApplication && (
                 <ApplicationEditModal
                     application={selectedApplication}
+                    machine={
+                     { name: machine.name, system: machine.system, description: machine.description}
+                    }
                     onClose={() => setIsEditModalOpen(false)}
                     onUpdated={handleApplicationUpdated}
                 />

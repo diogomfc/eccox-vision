@@ -60,6 +60,7 @@ export function MachineListItem({ machine, index }: MachineListItemProps) {
                 transition={{ duration: 0.4, delay: index * 0.05, ease: "easeOut" }}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
+                onClick={handleViewDetails}
                 className={`grid grid-cols-[260px_1fr_140px_70px] items-center bg-[#1A1A1E] hover:bg-[#0F0F10] rounded-lg px-4 py-3 border ${borderClasses}  transition-colors duration-200 relative`}
             >
                 {loading && (
@@ -153,17 +154,7 @@ export function MachineListItem({ machine, index }: MachineListItemProps) {
                                 className="p-1  transition-colors cursor-pointer"
                                 aria-label="Editar máquina"
                             >
-                                <SquarePen size={16} className="text-gray-600/80 hover:text-white" />
-                            </button>
-                            <button
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    handleViewDetails();
-                                }}
-                                className="p-1  transition-colors cursor-pointer"
-                                aria-label="Ver detalhes da máquina"
-                            >
-                                <Eye size={16} className="text-gray-600/80 hover:text-white" />
+                                <SquarePen size={16} className="text-gray-600/80 hover:text-amber-500" />
                             </button>
                             <button
                                 onClick={(e) => {

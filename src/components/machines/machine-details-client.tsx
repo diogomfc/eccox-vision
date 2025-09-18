@@ -239,6 +239,12 @@ export function MachineDetailsClient({ machineId }: MachineDetailsClientProps) {
                 transition={{ duration: 0.6, ease: "easeOut" }}
             >
                 <ApplicationList
+                    machine={ 
+                        { 
+                            name: machine.name, 
+                            system: machine.version || "Desconhecido",
+                            description: machine.description || "Desconhecido"
+                        } }
                     applications={applicationsList}
                     onSelectApp={handleApplicationClick}
                     selectedApp={selectedApplicationName}

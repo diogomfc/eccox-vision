@@ -24,8 +24,6 @@ export function getAllMachines(): Machines[] {
     return machines;
 }
 
-
-
 // Função para buscar uma única máquina por ID (útil para a página de detalhes)
 export function getMachineById(id: string): Machines | undefined {
     const db = getDatabase();
@@ -52,7 +50,7 @@ export function getMachineById(id: string): Machines | undefined {
     return machine;
 }
 
-
+// Função para atualizar uma máquina no banco de dados
 export function updateMachineInDb(machine: Machines): boolean {
   const db = getDatabase();
   const stmt = db.prepare(`

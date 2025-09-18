@@ -161,20 +161,20 @@ export function ServiceList({ services }: ServiceListProps) {
                                         setSelectedService(service);
                                         setIsEditModalOpen(true);
                                     }}
-                                    className="p-1 rounded-full hover:bg-[#2A2A2E] transition-colors"
+                                    className="transition-colors cursor-pointer"
                                     aria-label="Editar serviço"
                                 >
-                                    <SquarePen size={16} className="text-gray-400 hover:text-white" />
+                                    <SquarePen size={16} className="text-gray-600/80 hover:text-amber-500" />
                                 </button>
                                 <button
                                     onClick={(e) => {
                                         e.stopPropagation();
                                         alert('Deletar serviço');
                                     }}
-                                    className="p-1 rounded-full hover:bg-[#2A2A2E] transition-colors"
+                                    className="transition-colors cursor-pointer"
                                     aria-label="Deletar serviço"
                                 >
-                                    <Trash2 size={16} className="text-red-400 hover:text-red-300" />
+                                    <Trash2 size={16} className="text-red-400/50 hover:text-red-300" />
                                 </button>
                             </motion.div>
                         )}
