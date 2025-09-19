@@ -12,9 +12,6 @@ import { ProgressCircle } from "@/components/ui/progress-circle";
 // Import icons for the new actions
 import { SquarePen, Eye, Trash2 } from "lucide-react";
 
-// Import the new modal component
-import { MachineEditModal } from "./machine-edit-modal";
-
 // Import image assets
 import ImgServerStatusConcluida from "@/assets/images/img-server-status-ok.svg";
 import ImgServerStatusPendente from "@/assets/images/img-server-status-warning.svg";
@@ -28,7 +25,7 @@ export function MachineListItem({ machine, index }: MachineListItemProps) {
     const router = useRouter();
     const [loading, setLoading] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
-    const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+
 
     const allServices = machine.applications.flatMap(app => app.services);
     const total = allServices.length;
@@ -45,11 +42,10 @@ export function MachineListItem({ machine, index }: MachineListItemProps) {
         router.push(`/machines/${machine.id}`);
     };
 
-    const handleMachineUpdated = () => {
-      setIsEditModalOpen(false);
-      // Você vai querer adicionar a lógica de recarregar a lista de máquinas aqui
-      // para que a página seja atualizada com os novos dados.
-    };
+     const handleEditClick = (e: React.MouseEvent) => {
+        e.stopPropagation();
+        router.push(`/machines/edit/${machine.id}`);
+    };
 
     return (
         <>
@@ -147,10 +143,7 @@ export function MachineListItem({ machine, index }: MachineListItemProps) {
                             className="absolute top-1/2 -translate-y-1/2 right-[-10px] flex flex-col gap-[2px] z-20"
                         >
                             <button
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    setIsEditModalOpen(true);
-                                }}
+                                onClick={handleEditClick}
                                 className="p-1  transition-colors cursor-pointer"
                                 aria-label="Editar máquina"
                             >
@@ -170,14 +163,6 @@ export function MachineListItem({ machine, index }: MachineListItemProps) {
                     )}
                 </div>
             </motion.div>
-
-            {isEditModalOpen && (
-                <MachineEditModal
-                    machine={machine}
-                    onClose={() => setIsEditModalOpen(false)}
-                    onUpdated={handleMachineUpdated}
-                />
-            )}
         </>
     );
 }

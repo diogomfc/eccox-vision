@@ -1,36 +1,27 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import {
     LayoutDashboard,
-    HardDrive,
     PackagePlus,
-    Settings,
     FileText,
     ChevronDown,
     ChevronUp
 } from "lucide-react";
-import {
-    Tooltip,
-    TooltipContent,
-    TooltipProvider,
-    TooltipTrigger,
-} from "../ui/tooltip";
+import { TooltipProvider } from "../ui/tooltip";
 import { motion } from "motion/react";
 import "./footer-nav.css";
 
 const navItems = [
     { name: "Visão geral", href: "/", icon: LayoutDashboard },
-    // { name: "Máquinas", href: "/machines", icon: HardDrive },
-    // { name: "Softwares", href: "/softwares", icon: Package },
     { name: "Nova Máquina", href: "/machines/create", icon: PackagePlus },
     { name: "Relatórios", href: "/reports", icon: FileText },
 ];
 
 export function FooterNav() {
     const pathname = usePathname();
+    const router = useRouter();
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleMenu = () => {
@@ -56,13 +47,13 @@ export function FooterNav() {
                             transition={{ delay: 0.3, duration: 0.3 }}
                             className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 flex flex-col items-center"
                         >
-                            <ChevronUp className="w-6 h-6  text-gray-400 hover:text-white transition-all duration-200 relative top-2" />
+                            <ChevronUp className="w-6 h-6 text-gray-400 hover:text-white transition-all duration-200 relative top-2" />
                             <span className="text-xs font-normal text-gray-400 pb-3">Menu</span>
                         </motion.div>
                     )}
                 </div>
             </div>
-            
+
             <motion.div
                 initial={{ y: 96, opacity: 0 }}
                 animate={{
@@ -71,7 +62,7 @@ export function FooterNav() {
                     pointerEvents: isOpen ? "auto" : "none"
                 }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
-                className="absolute flex justify-center items-center h-24 bottom-0 w-full"
+                className="absolute flex justify-center items-center h-24 bottom-0 w-full "
             >
                 <TooltipProvider>
                     {navItems.map((item) => {
@@ -79,32 +70,31 @@ export function FooterNav() {
                         const Icon = item.icon;
 
                         return (
-                            <Link 
-                            key={item.href}
-                            href={item.href} 
-                            passHref
+                            <button
+                                key={item.href}
+                                onClick={() => {
+                                    setIsOpen(false);
+                                    router.push(item.href);
+                                }}
+                                className={`flex flex-col items-center justify-center mx-4 py-2 transition-colors duration-200 cursor-pointer
+                                    ${isActive ? "text-[#20A6B9]" : "text-gray-400 hover:text-gray-200"}`}
                             >
-                                <div
-                                    className={`flex flex-col items-center justify-center  mx-4 py-2 transition-colors duration-200
-                                        ${isActive ? "text-[#20A6B9]" : "text-gray-400 hover:text-gray-200"}`}
+                                <Icon
+                                    size={24}
+                                    className={`mb-1 ${isActive ? "stroke-2" : "stroke-1"}`}
+                                />
+                                <span
+                                    className={`text-xs font-medium whitespace-nowrap
+                                        ${isActive ? "text-[#20A6B9] font-semibold" : "text-gray-400 font-normal"}`}
                                 >
-                                    <Icon
-                                        size={24}
-                                        className={`mb-1 ${isActive ? "stroke-2" : "stroke-1"}`}
-                                    />
-                                    <span
-                                        className={`text-xs font-medium whitespace-nowrap
-                                            ${isActive ? "text-[#20A6B9] font-semibold" : "text-gray-400 font-normal"}`}
-                                    >
-                                        {item.name}
-                                    </span>
-                                </div>
-                            </Link>
+                                    {item.name}
+                                </span>
+                            </button>
                         );
                     })}
                 </TooltipProvider>
             </motion.div>
-            
+
             {isOpen && (
                 <motion.button
                     initial={{ opacity: 0, y: 0 }}

@@ -2,7 +2,7 @@ export type ServiceStatus = "Concluida" | "Pendente" | "Em andamento";
 export type ApplicationType = "IBM" | "ECCOX"
 
 export interface Service {
-  id?: string;
+  id: string;
   name: string;
   status: ServiceStatus;
   itemObrigatorio: "Sim" | "Não";
@@ -14,7 +14,7 @@ export interface Service {
 }
 
 export interface Application {
-  id?: string;
+  id: string;
   name: string;
   status: ServiceStatus;
   tipo: ApplicationType;
@@ -26,7 +26,7 @@ export interface Machines {
   name: string;
   description: string;
   version: string;
-  status: Exclude<ServiceStatus, "Em andamento">;
+  status: ServiceStatus;
   applications: Application[];
   updatedAt: string | null;
 }
