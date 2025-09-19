@@ -3,13 +3,14 @@
 "use client";
 
 import React, { useState, useMemo, useEffect } from 'react';
-import { ApplicationList } from "./application-list";
-import { ServiceList } from "./service-list";
-import { MachineStats } from "./machine-stats";
-import { MachineImage } from "./machine-image";
+
 import { motion } from "framer-motion";
 import type { Service, Machines, Application as AppType } from "@/types/machines";
 import { Loader2 } from "lucide-react";
+import { ApplicationList } from './application-list';
+import { MachineStats } from './machine-stats';
+import { MachineImage } from './machine-image';
+import { ServiceList } from './service-list';
 
 interface MachineDetailsClientProps {
     machineId: string; // Recebe apenas o ID da máquina

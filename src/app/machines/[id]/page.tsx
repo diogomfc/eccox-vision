@@ -1,6 +1,5 @@
 // src/app/maquinas/[id]/page.tsx
-
-import { MachineDetailsClient } from "@/components/machines/machine-details-client";
+import { MachineDetailsClient } from "@/components/machines/details/machine-details-client";
 import { mockMachines } from "@/mocks/mockMachines";
 
 // A função generateStaticParams continua a usar o mock

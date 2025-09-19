@@ -20,7 +20,6 @@ import {
   Trash2,
   CalendarIcon,
   Save,
-  MoreVertical,
   SquarePen,
 } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
@@ -39,13 +38,10 @@ import { Card, CardContent } from "@/components/ui/card";
 import { motion, AnimatePresence } from "framer-motion";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+
+import {Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+
+
 
 interface ApplicationEditModalProps {
   application: Application;

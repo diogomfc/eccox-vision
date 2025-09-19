@@ -2,7 +2,6 @@
 import React, { SVGProps } from "react";
 import clsx from "clsx";
 
-//type ServerStatus = "ok" | "waiting" | "pending" | "offline";
 
 type ServerStatus = "Concluida" | "Pendente" | "Em andamento";
 

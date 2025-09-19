@@ -1,7 +1,7 @@
 // src/components/machines/machine-stats.tsx
 "use client";
 
-import { CustomGauge } from "../ui/custom-gauge";
+import { CustomGauge } from "../../ui/custom-gauge";
 
 
 interface MachineStatsProps {

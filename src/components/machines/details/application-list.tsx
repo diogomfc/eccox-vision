@@ -5,8 +5,9 @@ import React, { useState } from "react";
 import { Layers, SquarePen, Trash2 } from "lucide-react";
 import type { Application as AppType } from "@/types/machines";
 import { motion } from "framer-motion";
+import { ApplicationEditModal } from "../modals/application-edit-modal";
 
-import { ApplicationEditModal } from "./application-edit-modal";
+
 
 interface ApplicationListProps {
     machine:{

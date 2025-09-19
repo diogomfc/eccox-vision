@@ -47,6 +47,11 @@ export function MachineListItem({ machine, index }: MachineListItemProps) {
         router.push(`/machines/edit/${machine.id}`);
     };
 
+    const handleEyeClick = (e: React.MouseEvent) => {
+        e.stopPropagation();
+        router.push(`/machines/${machine.id}`);
+    }
+
     return (
         <>
             <motion.div
@@ -140,8 +145,16 @@ export function MachineListItem({ machine, index }: MachineListItemProps) {
                             initial={{ opacity: 0, x: -10 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.2 }}
-                            className="absolute top-1/2 -translate-y-1/2 right-[-10px] flex flex-col gap-[2px] z-20"
+                            className="absolute top-1/2 -translate-y-1/2 right-[-10px] flex flex-col  z-20"
                         >
+                            <button
+                                onClick={handleEyeClick}
+                                className="p-1 transition-colors cursor-pointer"
+                                aria-label="Ver detalhes da máquina"
+                            >
+                                <Eye size={16} className="text-gray-600/80 hover:text-blue-400" />
+                            </button>
+
                             <button
                                 onClick={handleEditClick}
                                 className="p-1  transition-colors cursor-pointer"
@@ -157,7 +170,7 @@ export function MachineListItem({ machine, index }: MachineListItemProps) {
                                 className="p-1  transition-colors cursor-pointer"
                                 aria-label="Deletar máquina"
                             >
-                                <Trash2 size={16} className="text-red-400/50 hover:text-red-300" />
+                                 <Trash2 size={16} className="text-gray-600/80 hover:text-red-300" />
                             </button>
                         </motion.div>
                     )}

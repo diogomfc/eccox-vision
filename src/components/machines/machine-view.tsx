@@ -7,8 +7,8 @@ import { motion } from "framer-motion";
 import { List, Grid, Search, ChevronDown, CaptionsOff, Loader2 } from "lucide-react";
 
 import { Machines } from "@/types/machines";
-import { MachineList } from "./machine-list";
-import { MachineGrid } from "./machine-grid";
+import { MachineList } from "./list/machine-list";
+import { MachineGrid } from "./grid/machine-grid";
 
 import { StatsClient } from "@/components/overview/stats-client";
 import Image from "next/image";
@@ -135,14 +135,14 @@ export function MachineView() {
                     <div className="flex items-center gap-2 relative" ref={dropdownRef}>
                         <button
                             onClick={() => setIsStatusDropdownOpen(!isStatusDropdownOpen)}
-                            className="flex items-center gap-2 px-4 py-2 bg-[#1A1A1E] rounded-lg hover:bg-[#0F0F10] transition-colors border border-transparent focus:border-[#2B62EC]/20"
+                            className="flex items-center gap-2 px-4 py-2 bg-[#1A1A1E] rounded-lg hover:bg-[#0F0F10] transition-colors border border-transparent cursor-pointer focus:border-[#2B62EC]/20"
                         >
                             <span className="text-gray-400">Status:</span>
                             <span className={`
                                 ${statusFilter === "all" ? "text-white" : ""}
                                 ${statusFilter === "Concluida" ? "text-[#32D583]" : ""}
                                 ${statusFilter === "Pendente" ? "text-[#F04438]" : ""}
-                            `}>
+                            `} >
                                 {statusFilter === "all" ? "Todos" : statusFilter}
                             </span>
                             <ChevronDown className={`w-4 h-4 text-gray-400 transition-transform ${isStatusDropdownOpen ? 'transform rotate-180' : ''}`} />
@@ -152,21 +152,21 @@ export function MachineView() {
                             <div className="absolute top-full right-0 mt-2 w-48 bg-[#1A1A1E] rounded-lg shadow-lg py-1 z-10 border border-[#2B62EC]/10">
                                 <button
                                     onClick={() => { setStatusFilter("all"); setIsStatusDropdownOpen(false); }}
-                                    className="w-full px-4 py-2 text-left text-white hover:bg-[#0F0F10] transition-colors flex items-center gap-2"
+                                    className="w-full px-4 py-2 text-left text-white hover:bg-[#0F0F10] transition-colors flex items-center gap-2  cursor-pointer"
                                 >
                                     <div className="w-2 h-2 rounded-full bg-white"></div>
                                     Todos
                                 </button>
                                 <button
                                     onClick={() => { setStatusFilter("Concluida"); setIsStatusDropdownOpen(false); }}
-                                    className="w-full px-4 py-2 text-left text-[#32D583] hover:bg-[#0F0F10] transition-colors flex items-center gap-2"
+                                    className="w-full px-4 py-2 text-left text-[#32D583] hover:bg-[#0F0F10] transition-colors flex items-center gap-2  cursor-pointer"
                                 >
                                     <div className="w-2 h-2 rounded-full bg-[#32D583]"></div>
                                     Concluida
                                 </button>
                                 <button
                                     onClick={() => { setStatusFilter("Pendente"); setIsStatusDropdownOpen(false); }}
-                                    className="w-full px-4 py-2 text-left text-[#F04438] hover:bg-[#0F0F10] transition-colors flex items-center gap-2"
+                                    className="w-full px-4 py-2 text-left text-[#F04438] hover:bg-[#0F0F10] transition-colors flex items-center gap-2  cursor-pointer"
                                 >
                                     <div className="w-2 h-2 rounded-full bg-[#F04438]"></div>
                                     Pendente
@@ -176,7 +176,7 @@ export function MachineView() {
                         
                         <button
                             onClick={() => setViewMode(viewMode === "list" ? "grid" : "list")}
-                            className="p-2 rounded-lg bg-[#1A1A1E] hover:bg-[#0F0F10] transition-colors"
+                            className="p-2 rounded-lg bg-[#1A1A1E] hover:bg-[#0F0F10] transition-colors  cursor-pointer"
                             title={viewMode === "list" ? "Visualizar em grade" : "Visualizar em lista"}
                         >
                             {viewMode === "list" ? (
@@ -187,8 +187,8 @@ export function MachineView() {
                         </button>
                     </div>
                 </motion.div>
-                 
-                 {/* Lista */}
+
+                 {/* Lista de Máquinas */}
                 <div className="flex-1 overflow-y-auto pr-2 pb-4 custom-scrollbar">
                     {filteredMachines.length === 0 ? (
                         <div className="flex flex-col items-center justify-center h-full text-center text-gray-500">

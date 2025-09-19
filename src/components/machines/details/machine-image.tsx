@@ -1,6 +1,6 @@
 import React from "react";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
-import ServerSvg from "./server-svg";
+import ServerSvg from "../shared/server-svg";
 
 interface MachineImageProps {
   name: string;

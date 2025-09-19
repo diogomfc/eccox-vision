@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/hover-card";
 
 // Importe o novo modal (vamos criar este em seguida)
-import { ServiceEditModal } from "./service-edit-modal";
+import { ServiceEditModal } from "../modals/service-edit-modal";
 
 interface ServiceListProps {
     services: Service[];
