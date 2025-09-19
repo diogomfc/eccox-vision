@@ -23,9 +23,9 @@ import "./footer-nav.css";
 
 const navItems = [
     { name: "Visão geral", href: "/", icon: LayoutDashboard },
-    // { name: "Máquinas", href: "/maquinas", icon: HardDrive },
+    // { name: "Máquinas", href: "/machines", icon: HardDrive },
     // { name: "Softwares", href: "/softwares", icon: Package },
-    { name: "Nova Máquina", href: "/maquinas/create", icon: PackagePlus },
+    { name: "Nova Máquina", href: "/machines/create", icon: PackagePlus },
     { name: "Relatórios", href: "/reports", icon: FileText },
 ];
 

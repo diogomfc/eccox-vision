@@ -1,1 +1,0 @@
-// Barra de progresso circular e resumo (instalados, pendentes, total)

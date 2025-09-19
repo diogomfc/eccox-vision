@@ -1,1 +1,0 @@
-// Card de cada máquina (Dallas, MF03, MF05, MF06)
