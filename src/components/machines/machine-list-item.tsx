@@ -42,7 +42,7 @@ export function MachineListItem({ machine, index }: MachineListItemProps) {
 
     const handleViewDetails = () => {
         setLoading(true);
-        router.push(`/maquinas/${machine.id}`);
+        router.push(`/machines/${machine.id}`);
     };
 
     const handleMachineUpdated = () => {

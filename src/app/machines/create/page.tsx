@@ -6,12 +6,12 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { 
-  Check, 
-  X, 
-  Loader2, 
-  CalendarIcon, 
-  Plus, 
+import {
+  Check,
+  X,
+  Loader2,
+  CalendarIcon,
+  Plus,
   ArrowLeft,
   Server,
   Layers,
@@ -58,11 +58,11 @@ interface NewService {
   name: string;
   status: "Concluida" | "Pendente" | "Em andamento";
   itemObrigatorio: "Sim" | "Não";
+  updatedAt: string | null;
   responsible: string;
   comments: string;
   typePendencia: string;
   responsibleHomologacao: string;
-  updatedAt: string | null;
 }
 
 export default function CreateMachinePage() {
@@ -94,10 +94,11 @@ export default function CreateMachinePage() {
   // Services data
   const [isAddingService, setIsAddingService] = useState<string | null>(null);
   const [editingServiceId, setEditingServiceId] = useState<string | null>(null);
-  const [newService, setNewService] = useState({
+  const [newService, setNewService] = useState<Partial<NewService>>({
     name: "",
     status: "Pendente" as "Concluida" | "Pendente" | "Em andamento",
     itemObrigatorio: "Sim" as "Sim" | "Não",
+    updatedAt: null,
     responsible: "",
     comments: "",
     typePendencia: "",
@@ -136,6 +137,13 @@ export default function CreateMachinePage() {
     }));
   };
 
+  const handleNewServiceDateChange = (date: Date | undefined) => {
+    setNewService((prev) => ({
+      ...prev,
+      updatedAt: date ? date.toISOString() : null,
+    }));
+  };
+
   // Application handlers
   const handleAddApplication = () => {
     if (!newApp.name.trim() || !newApp.tipo.trim()) {
@@ -163,20 +171,20 @@ export default function CreateMachinePage() {
 
   // Service handlers
   const handleAddService = (appId: string) => {
-    if (!newService.name.trim()) {
+    if (!newService.name?.trim()) {
       setMessage("Nome do serviço é obrigatório.");
       return;
     }
 
     const service: NewService = {
       id: `service-${Date.now()}`,
-      name: newService.name,
-      status: newService.status,
-      itemObrigatorio: newService.itemObrigatorio,
-      responsible: newService.responsible,
-      comments: newService.comments,
-      typePendencia: newService.typePendencia,
-      responsibleHomologacao: newService.responsibleHomologacao,
+      name: newService.name || "",
+      status: (newService.status as NewService["status"]) || "Pendente",
+      itemObrigatorio: (newService.itemObrigatorio as NewService["itemObrigatorio"]) || "Sim",
+      responsible: newService.responsible || "",
+      comments: newService.comments || "",
+      typePendencia: newService.typePendencia || "",
+      responsibleHomologacao: newService.responsibleHomologacao || "",
       updatedAt: new Date().toISOString(),
     };
 
@@ -218,7 +226,7 @@ export default function CreateMachinePage() {
         return;
       }
     }
-    
+
     setMessage(null);
     if (activeStep < 3) {
       setActiveStep(activeStep + 1);
@@ -246,10 +254,10 @@ export default function CreateMachinePage() {
       } as Machines;
 
       await new Promise(resolve => setTimeout(resolve, 2000));
-      
+
       setMessage("Máquina criada com sucesso!");
       setTimeout(() => {
-        router.push("/machines");
+        router.push("/");
       }, 2000);
     } catch (error) {
       console.error("Erro ao criar máquina:", error);
@@ -277,30 +285,28 @@ export default function CreateMachinePage() {
             {steps.map((step, index) => (
               <div key={step.id} className="flex items-center gap-4">
                 <div className="flex flex-col items-center gap-3">
-                   {step.id === 1 ? (
-                      <Image 
+                  {step.id === 1 ? (
+                    <Image
                       src={ImgServerNew}
                       alt="Servidor"
                       className="w-12 h-12 object-contain"
-                      />
-                    ) : (
-                  <div
-                    className={`flex items-center justify-center w-12 h-12 rounded-full border-2 transition-all duration-300 ${
-                      activeStep >= step.id
+                    />
+                  ) : (
+                    <div
+                      className={`flex items-center justify-center w-12 h-12 rounded-full border-2 transition-all duration-300 ${activeStep >= step.id
                         ? "bg-blue-600/20 border-blue-600/20 text-white shadow-lg shadow-blue-600/30"
                         : activeStep === step.id - 1
-                        ? "border-blue-400/20 text-blue-400/20 bg-blue-600/1"
-                        : "border-gray-600 text-gray-500 bg-[#1A1A1D]"
-                    }`}
-                  >
-                    <step.icon size={20} />
-                  </div>
+                          ? "border-blue-400/20 text-blue-400/20 bg-blue-600/1"
+                          : "border-gray-600 text-gray-500 bg-[#1A1A1D]"
+                        }`}
+                    >
+                      <step.icon size={20} />
+                    </div>
                   )}
                   <div className="text-center">
                     <p
-                      className={`text-sm font-medium transition-colors ${
-                        activeStep >= step.id ? "text-gray-100" : "text-gray-500"
-                      }`}
+                      className={`text-sm font-medium transition-colors ${activeStep >= step.id ? "text-gray-100" : "text-gray-500"
+                        }`}
                     >
                       {step.title}
                     </p>
@@ -311,11 +317,10 @@ export default function CreateMachinePage() {
                 </div>
                 {index < steps.length - 1 && (
                   <div
-                    className={`w-24 h-0.5 transition-all duration-300 ${
-                      activeStep > step.id
-                        ? "bg-gradient-to-r from-blue-600/50 to-blue-500"
-                        : "bg-gray-600"
-                    }`}
+                    className={`w-24 h-0.5 transition-all duration-300 ${activeStep > step.id
+                      ? "bg-gradient-to-r from-blue-600/50 to-blue-500"
+                      : "bg-gray-600"
+                      }`}
                   />
                 )}
               </div>
@@ -327,20 +332,20 @@ export default function CreateMachinePage() {
       {/* Main Content Area (Scrollable) */}
       <div className="flex-1 overflow-hidden p-4">
         <div className="max-w-4xl mx-auto h-full pb-20 flex flex-col">
-          <Card className="bg-gradient-to-br pt-0 from-[#111113] to-[#0F0F11] border-[#1F1F23] shadow-2xl flex flex-col flex-1 overflow-hidden">
+          <Card className="bg-gradient-to-br pt-0 from-[#111113] to-[#0F0F11] border-blue-500/30 shadow-2xl flex flex-col flex-1 overflow-hidden">
             {/* Header Fixo 2: Card Header */}
             <CardHeader className="bg-gradient-to-r from-blue-600/10 to-blue-700/5 border-b border-[#1F1F23] pt-6 flex-shrink-0">
               <CardTitle className="flex items-center gap-3 text-xl">
-                  {activeStep === 1 ? (
-                     <Image 
-                      src={ImgServerNew}
-                      alt="Servidor"
-                      className="w-16 h-16 object-contain"
-                      />
-                  ) : (
-                <div className="p-2 bg-blue-600/20 rounded-lg shadow-lg">
-                  {currentStep && <currentStep.icon size={24} className="text-white" />}
-                </div>
+                {activeStep === 1 ? (
+                  <Image
+                    src={ImgServerNew}
+                    alt="Servidor"
+                    className="w-16 h-16 object-contain"
+                  />
+                ) : (
+                  <div className="p-2 bg-blue-600/20 rounded-lg shadow-lg">
+                    {currentStep && <currentStep.icon size={24} className="text-white" />}
+                  </div>
                 )}
                 <div>
                   <h2 className="text-xl font-semibold text-gray-100">
@@ -365,7 +370,7 @@ export default function CreateMachinePage() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -30 }}
                       transition={{ duration: 0.4 }}
-                      className="space-y-8"
+                      className="space-y-5"
                     >
                       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                         <div className="space-y-3">
@@ -378,10 +383,9 @@ export default function CreateMachinePage() {
                             name="name"
                             value={newMachine.name || ""}
                             onChange={handleMachineInputChange}
-                            className="h-12 bg-[#1A1A1D] border-[#2A2A2D] focus:border-blue-500 focus:ring-1 focus:ring-blue-500/20 text-gray-100 text-base transition-all duration-200"
-                            placeholder="Ex: Dallas, Houston, Miami..."
+                            className="bg-[#1A1A1D] border-[#2A2A2D] w-full focus:!border-blue-500 text-gray-100 hover:bg-[#23232B] hover:text-gray-500"
                           />
-                          <p className="text-xs text-gray-500">Nome identificador único da máquina</p>
+                          <p className="text-xs text-gray-500">Nome identificador único da máquina Ex: Dallas, Houston, Miami...</p>
                         </div>
                         <div className="space-y-3">
                           <Label htmlFor="version" className="text-base font-medium text-gray-200 flex items-center gap-2">
@@ -393,10 +397,10 @@ export default function CreateMachinePage() {
                             name="version"
                             value={newMachine.version || ""}
                             onChange={handleMachineInputChange}
-                            className="h-12 bg-[#1A1A1D] border-[#2A2A2D] focus:border-blue-500 focus:ring-1 focus:ring-blue-500/20 text-gray-100 text-base transition-all duration-200"
-                            placeholder="Ex: z/OS 3.1, z/OS 2.4..."
+                            className="bg-[#1A1A1D] border-[#2A2A2D] w-full focus:!border-blue-500 text-gray-100 hover:bg-[#23232B] hover:text-gray-500"
+                            placeholder=""
                           />
-                          <p className="text-xs text-gray-500">Versão do sistema operacional</p>
+                          <p className="text-xs text-gray-500">Versão do sistema operacional Ex: z/OS 3.1, z/OS 2.4...</p>
                         </div>
                       </div>
                       <div className="space-y-3">
@@ -409,10 +413,10 @@ export default function CreateMachinePage() {
                           name="description"
                           value={newMachine.description || ""}
                           onChange={handleMachineInputChange}
-                          className="min-h-[100px] bg-[#1A1A1D] border-[#2A2A2D] focus:border-blue-500 focus:ring-1 focus:ring-blue-500/20 text-gray-100 text-base resize-none transition-all duration-200"
-                          placeholder="Descreva a finalidade e características desta máquina..."
+                          className="min-h-[50px] bg-[#1A1A1D] border-[#2A2A2D] focus:!border-blue-500 focus:ring-1 focus:ring-blue-500/20 text-gray-100 text-base resize-none transition-all duration-200"
+                          placeholder=""
                         />
-                        <p className="text-xs text-gray-500">Informações detalhadas sobre a máquina e sua função</p>
+                        <p className="text-xs text-gray-500">Breve descrição sobre a máquina e sua função</p>
                       </div>
                       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                         <div className="space-y-3">
@@ -423,27 +427,21 @@ export default function CreateMachinePage() {
                             value={newMachine.status}
                             onValueChange={handleStatusChange}
                           >
-                            <SelectTrigger className="h-12 bg-[#1A1A1D] border-[#2A2A2D] focus:border-blue-500 focus:ring-1 focus:ring-blue-500/20 text-base">
+                            <SelectTrigger className="bg-[#1A1A1D] border-[#2A2A2D] w-full focus:!border-blue-500 text-gray-100 hover:bg-[#23232B] hover:text-gray-500">
                               <SelectValue />
                             </SelectTrigger>
-                            <SelectContent className="bg-[#1A1A1D] border-[#2A2A2D]">
-                              <SelectItem value="Pendente" className="text-base py-3">
-                                <div className="flex items-center gap-2">
-                                  <div className="w-2 h-2 bg-red-400 rounded-full"></div>
-                                  Pendente
-                                </div>
+                            <SelectContent className="bg-[#1A1A1D] border-[#2A2A2D] ">
+                              <SelectItem value="Concluida" className="cursor-pointer focus:bg-green-600/10">
+                                <span className="text-green-400">Concluída</span>
                               </SelectItem>
-                              <SelectItem value="Concluida" className="text-base py-3">
-                                <div className="flex items-center gap-2">
-                                  <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                                  Concluída
-                                </div>
+                              <SelectItem value="Pendente" className="cursor-pointer focus:bg-red-600/10">
+                                <span className="text-red-400">Pendente</span>
                               </SelectItem>
                             </SelectContent>
                           </Select>
                           <p className="text-xs text-gray-500">Status atual da configuração</p>
                         </div>
-                        <div className="space-y-3">
+                        <div className="space-y-3 ">
                           <Label htmlFor="updatedAt" className="text-base font-medium text-gray-200">
                             Data de Criação
                           </Label>
@@ -451,7 +449,7 @@ export default function CreateMachinePage() {
                             <PopoverTrigger asChild>
                               <Button
                                 variant="outline"
-                                className="h-12 justify-start text-left font-normal bg-[#1A1A1D] border-[#2A2A2D] text-gray-100 focus:border-blue-500 focus:ring-1 focus:ring-blue-500/20 hover:bg-[#1A1A1D] w-full text-base"
+                                className="justify-start w-full text-left font-normal bg-[#1A1A1D] border-[#2A2A2D] text-gray-200 focus:!border-amber-500 hover:bg-[#23232B] hover:text-gray-500 cursor-pointer"
                               >
                                 <CalendarIcon className="mr-3 h-5 w-5 text-gray-400" />
                                 {newMachine.updatedAt ? (
@@ -463,7 +461,7 @@ export default function CreateMachinePage() {
                                 )}
                               </Button>
                             </PopoverTrigger>
-                            <PopoverContent className="w-auto p-0 bg-[#1A1A1D] border-[#2A2A2D]">
+                            <PopoverContent className="w-auto p-0 bg-[#1A1A1D] border-gray-700">
                               <Calendar
                                 mode="single"
                                 selected={
@@ -507,7 +505,7 @@ export default function CreateMachinePage() {
                           <h4 className="font-medium text-gray-100">Nova Aplicação</h4>
                           <Button
                             onClick={() => setIsAddingApp(prev => !prev)}
-                            className="bg-green-600 hover:bg-green-700"
+                            className="bg-green-600 hover:bg-green-700 cursor-pointer"
                           >
                             {isAddingApp ? (
                               <X size={16} className="mr-2" />
@@ -527,37 +525,41 @@ export default function CreateMachinePage() {
                             >
                               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                                 <div className="space-y-2">
-                                  <Label>Nome da Aplicação *</Label>
+                                  <Label className="text-gray-200">Nome da Aplicação *</Label>
                                   <Input
                                     value={newApp.name}
                                     onChange={(e) => setNewApp(prev => ({ ...prev, name: e.target.value }))}
-                                    className="bg-[#1A1A1D] border-[#2A2A2D] focus:border-green-500"
-                                    placeholder="Nome da aplicação"
+                                    className="bg-[#1A1A1D] border-[#2A2A2D] focus:!border-green-500 text-gray-100 hover:bg-[#23232B] hover:text-gray-500"
+                                    placeholder=""
                                   />
                                 </div>
                                 <div className="space-y-2">
-                                  <Label>Tipo da Aplicação *</Label>
+                                  <Label className="text-gray-200">Tipo da Aplicação *</Label>
                                   <Input
                                     value={newApp.tipo}
                                     onChange={(e) => setNewApp(prev => ({ ...prev, tipo: e.target.value }))}
-                                    className="bg-[#1A1A1D] border-[#2A2A2D] focus:border-green-500"
-                                    placeholder="Tipo da aplicação"
+                                    className="bg-[#1A1A1D] border-[#2A2A2D] focus:!border-green-500 text-gray-100 hover:bg-[#23232B] hover:text-gray-500"
+                                    placeholder=""
                                   />
                                 </div>
                                 <div className="space-y-2">
-                                  <Label>Status</Label>
+                                  <Label className="text-gray-200">Status</Label>
                                   <Select
                                     value={newApp.status}
                                     onValueChange={(value: "Concluida" | "Pendente") =>
                                       setNewApp(prev => ({ ...prev, status: value }))
                                     }
                                   >
-                                    <SelectTrigger className="bg-[#1A1A1D] border-[#2A2A2D] focus:border-green-500">
+                                    <SelectTrigger className="bg-[#1A1A1D] border-[#2A2A2D] focus:!border-green-500 text-gray-100 hover:bg-[#23232B] hover:text-gray-500">
                                       <SelectValue />
                                     </SelectTrigger>
-                                    <SelectContent className="bg-[#1A1A1D] border-[#2A2A2D]">
-                                      <SelectItem value="Pendente">Pendente</SelectItem>
-                                      <SelectItem value="Concluida">Concluída</SelectItem>
+                                    <SelectContent className="bg-[#1A1A1D] border-[#2A2A2D] ">
+                                      <SelectItem value="Concluida" className="cursor-pointer focus:bg-green-600/10">
+                                        <span className="text-green-400">Concluída</span>
+                                      </SelectItem>
+                                      <SelectItem value="Pendente" className="cursor-pointer focus:bg-red-600/10">
+                                        <span className="text-red-400">Pendente</span>
+                                      </SelectItem>
                                     </SelectContent>
                                   </Select>
                                 </div>
@@ -600,19 +602,18 @@ export default function CreateMachinePage() {
                                   </div>
                                   <div className="flex items-center gap-2">
                                     <Button
-                                      variant="ghost"
+
                                       size="sm"
                                       onClick={() => setIsAddingService(app.id)}
-                                      className="text-blue-400 hover:text-blue-300"
+                                      className="text-blue-400 hover:text-gray-200 cursor-pointer"
                                     >
                                       <Plus size={14} className="mr-1" />
                                       Serviço
                                     </Button>
                                     <Button
-                                      variant="ghost"
                                       size="sm"
                                       onClick={() => handleDeleteApplication(app.id)}
-                                      className="text-red-400 hover:text-red-300"
+                                      className="text-red-400 cursor-pointer hover:text-gray-200 bg-transparent hover:bg-red-600/10 h-8 w-8 p-0 rounded-full flex items-center justify-center"
                                     >
                                       <Trash2 size={14} />
                                     </Button>
@@ -626,74 +627,115 @@ export default function CreateMachinePage() {
                                       exit={{ opacity: 0, height: 0 }}
                                       className="p-3 bg-[#0F0F11] border border-blue-500/30 rounded-lg mb-3"
                                     >
-                                      <h5 className="text-sm font-medium text-gray-100 mb-3">Novo Serviço</h5>
-                                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 mb-3">
-                                        <div className="space-y-1">
-                                          <Label className="text-xs">Nome *</Label>
+                                      <h5 className="text-sm font-medium text-gray-200 mb-3">Novo Serviço</h5>
+                                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 mb-6">
+                                        <div className="space-y-2 col-span-2">
+                                          <Label className="text-xs text-gray-200 ">Nome *</Label>
                                           <Input
                                             value={newService.name}
                                             onChange={(e) => setNewService(prev => ({ ...prev, name: e.target.value }))}
-                                            className="bg-[#1A1A1D] border-[#2A2A2D] focus:border-blue-500 text-sm"
-                                            placeholder="Nome do serviço"
+                                            className="bg-[#1A1A1D] border-[#2A2A2D] w-full focus:!border-blue-500 text-gray-200 hover:bg-[#23232B] hover:text-gray-500"
+                                            placeholder=""
                                           />
                                         </div>
-                                        <div className="space-y-1">
-                                          <Label className="text-xs">Status</Label>
+                                        <div className="space-y-2">
+                                          <Label className="text-xs text-gray-200">Status</Label>
                                           <Select
                                             value={newService.status}
                                             onValueChange={(value: "Concluida" | "Pendente" | "Em andamento") =>
                                               setNewService(prev => ({ ...prev, status: value }))
                                             }
                                           >
-                                            <SelectTrigger className="bg-[#1A1A1D] border-[#2A2A2D] focus:border-blue-500 text-sm">
+                                            <SelectTrigger className="bg-[#1A1A1D] border-[#2A2A2D] w-full focus:!border-blue-500 text-gray-100 hover:bg-[#23232B] hover:text-gray-500">
                                               <SelectValue />
                                             </SelectTrigger>
-                                            <SelectContent className="bg-[#1A1A1D] border-[#2A2A2D]">
-                                              <SelectItem value="Pendente">Pendente</SelectItem>
-                                              <SelectItem value="Em andamento">Em Andamento</SelectItem>
-                                              <SelectItem value="Concluida">Concluída</SelectItem>
+                                            <SelectContent className="bg-[#1A1A1D] border-[#2A2A2D] ">
+                                              <SelectItem value="Concluida" className="cursor-pointer focus:bg-green-600/10">
+                                                <span className="text-green-400">Concluída</span>
+                                              </SelectItem>
+                                              <SelectItem value="Pendente" className="cursor-pointer focus:bg-red-600/10">
+                                                <span className="text-red-400">Pendente</span>
+                                              </SelectItem>
                                             </SelectContent>
                                           </Select>
                                         </div>
-                                        <div className="space-y-1">
-                                          <Label className="text-xs">Obrigatório</Label>
+                                        <div className="space-y-2">
+                                          <Label className="text-xs text-gray-200">Obrigatório</Label>
                                           <Select
                                             value={newService.itemObrigatorio}
                                             onValueChange={(value: "Sim" | "Não") =>
                                               setNewService(prev => ({ ...prev, itemObrigatorio: value }))
                                             }
                                           >
-                                            <SelectTrigger className="bg-[#1A1A1D] border-[#2A2A2D] focus:border-blue-500 text-sm">
+                                            <SelectTrigger className="bg-[#1A1A1D] border-[#2A2A2D] w-full focus:!border-blue-500 text-gray-100 hover:bg-[#23232B] hover:text-gray-500">
                                               <SelectValue />
                                             </SelectTrigger>
-                                            <SelectContent className="bg-[#1A1A1D] border-[#2A2A2D]">
-                                              <SelectItem value="Sim">Sim</SelectItem>
-                                              <SelectItem value="Não">Não</SelectItem>
+                                            <SelectContent className="bg-[#1A1A1D] border-[#2A2A2D] text-gray-100">
+                                              <SelectItem value="Sim" className="cursor-pointer focus:bg-green-600/10">
+                                                <span className="text-green-400">Sim</span>
+                                              </SelectItem>
+                                              <SelectItem value="Não" className="cursor-pointer focus:bg-red-600/10">
+                                                <span className="text-red-400">Não</span>
+                                              </SelectItem>
                                             </SelectContent>
                                           </Select>
                                         </div>
-                                        <div className="space-y-1">
-                                          <Label className="text-xs">Responsável</Label>
+                                        <div className="space-y-2">
+                                          <Label className="text-xs text-gray-200">Responsável</Label>
                                           <Input
                                             value={newService.responsible}
                                             onChange={(e) => setNewService(prev => ({ ...prev, responsible: e.target.value }))}
-                                            className="bg-[#1A1A1D] border-[#2A2A2D] focus:border-blue-500 text-sm"
-                                            placeholder="Responsável"
+                                            className="bg-[#1A1A1D] border-[#2A2A2D] w-full focus:!border-blue-500 text-gray-200 hover:bg-[#23232B] hover:text-gray-500"
+                                            placeholder=""
                                           />
+                                        </div>
+                                        <div className="space-y-2 ">
+                                          <Label className="text-sm text-gray-300">
+                                            Data de entrega
+                                          </Label>
+                                          <Popover>
+                                            <PopoverTrigger asChild>
+                                              <Button
+                                                variant="outline"
+                                                className="justify-start text-left font-normal bg-[#1A1A1E] border-gray-600 text-gray-200 hover:bg-[#1A1A1E] w-full"
+                                              >
+                                                <CalendarIcon className="mr-2 h-4 w-4 text-gray-400" />
+                                                {newService.updatedAt ? (
+                                                  format(
+                                                    new Date(newService.updatedAt),
+                                                    "dd/MM/yyyy",
+                                                    { locale: ptBR }
+                                                  )
+                                                ) : (
+                                                  <span className="text-gray-400">
+                                                    Selecione a data
+                                                  </span>
+                                                )}
+                                              </Button>
+                                            </PopoverTrigger>
+                                            <PopoverContent className="w-auto p-0 bg-[#1A1A1E] border-gray-700">
+                                              <Calendar
+                                                mode="single"
+                                                selected={newService.updatedAt ? new Date(newService.updatedAt) : undefined}
+                                                onSelect={handleNewServiceDateChange}
+                                                className="bg-[#1A1A1E] text-gray-200"
+                                              />
+                                            </PopoverContent>
+                                          </Popover>
                                         </div>
                                       </div>
                                       <div className="flex justify-end gap-2">
                                         <Button
-                                          variant="ghost"
                                           size="sm"
                                           onClick={() => setIsAddingService(null)}
+                                          className="bg-gray-800 hover:bg-gray-700 cursor-pointer"
                                         >
                                           Cancelar
                                         </Button>
                                         <Button
                                           size="sm"
                                           onClick={() => handleAddService(app.id)}
-                                          className="bg-blue-600 hover:bg-blue-700"
+                                          className="bg-blue-600 hover:bg-blue-700 cursor-pointer"
                                         >
                                           <Save size={14} className="mr-1" />
                                           Salvar
@@ -713,6 +755,8 @@ export default function CreateMachinePage() {
                                         >
                                           <div className="flex items-center gap-2">
                                             <span className="text-sm text-gray-300">{service.name}</span>
+                                            <span className="text-xs text-gray-500">|</span>
+                                            <span className="text-xs text-gray-500">{service.responsible}</span>
                                             <Badge variant="outline" className={getStatusBadgeColor(service.status)}>
                                               {service.status}
                                             </Badge>
@@ -721,7 +765,7 @@ export default function CreateMachinePage() {
                                             variant="ghost"
                                             size="sm"
                                             onClick={() => handleDeleteService(app.id, service.id)}
-                                            className="text-red-400 hover:text-red-300 h-6 w-6 p-0"
+                                            className="text-red-400 hover:text-red-300 h-6 w-6 p-0 cursor-pointer flex items-center justify-center rounded-full bg-transparent hover:bg-red-600/10"
                                           >
                                             <Trash2 size={12} />
                                           </Button>
@@ -831,11 +875,10 @@ export default function CreateMachinePage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
-                    className={`p-4 rounded-lg border ${
-                      message.includes("sucesso")
-                        ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/30"
-                        : "bg-red-500/10 text-red-400 border-red-500/30"
-                    } mt-4`}
+                    className={`p-4 rounded-lg border ${message.includes("sucesso")
+                      ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/30"
+                      : "bg-red-500/10 text-red-400 border-red-500/30"
+                      } mt-4`}
                   >
                     <p className="text-sm font-medium">{message}</p>
                   </motion.div>

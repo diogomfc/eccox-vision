@@ -242,7 +242,7 @@ export function ServiceEditModal({
                         }
                       >
                         <SelectTrigger className={`
-                            bg-[#8e8eaf] border-[#2A2A2D] focus:!border-amber-500 text-gray-100 transition-colors w-full cursor-pointer ${
+                             border-[#2A2A2D] focus:!border-amber-500 text-gray-100 transition-colors w-full cursor-pointer ${
                               editedService.status === "Concluida"
                                 ? "text-emerald-400"
                                 : editedService.status === "Pendente"
