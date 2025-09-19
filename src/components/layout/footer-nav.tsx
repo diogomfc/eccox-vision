@@ -25,8 +25,8 @@ const navItems = [
     { name: "Visão geral", href: "/", icon: LayoutDashboard },
     // { name: "Máquinas", href: "/maquinas", icon: HardDrive },
     // { name: "Softwares", href: "/softwares", icon: Package },
-    { name: "Configuração", href: "/configuracao", icon: PackagePlus },
-    { name: "Relatórios", href: "/relatorios", icon: FileText },
+    { name: "Nova Máquina", href: "/maquinas/create", icon: PackagePlus },
+    { name: "Relatórios", href: "/reports", icon: FileText },
 ];
 
 export function FooterNav() {

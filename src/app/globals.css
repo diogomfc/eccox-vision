@@ -169,6 +169,36 @@
     }
   }
 
+    @keyframes pulseSlow {
+    0%, 100% {
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.7;
+      transform: scale(1.1);
+    }
+  }
+
+   @keyframes pulseStrong {
+    0%, 100% {
+      opacity: 0.2;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+  }
+ 
+  .pulse-slow {
+    animation: pulseSlow 2s ease-in-out infinite;
+  }
+
+  .pulse-strong {
+    animation: pulseStrong 3s ease-in-out infinite;
+  }
+
   .alert-pulse {
     animation: pulse-border 2s ease-in-out infinite;
   }

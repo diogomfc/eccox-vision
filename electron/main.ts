@@ -1,21 +1,46 @@
 // electron/main.ts
-
-import { app, BrowserWindow, ipcMain, Menu } from 'electron';
+import { app, BrowserWindow, ipcMain, Menu, screen } from 'electron';
 import path from 'path';
-import { getAllMachines, getMachineById, updateMachineInDb } from './machine-repository'; // Importação atualizada
+import { getAllMachines, getMachineById, updateMachineInDb } from './machine-repository';
 
-// Função para criar a janela principal
 function createWindow() {
+    // Pega a tela principal
+    const primaryDisplay = screen.getPrimaryDisplay();
+    const { width: screenWidth } = primaryDisplay.workAreaSize;
+
+    // Define tamanho base dependendo da resolução
+    let winWidth = 1280;
+    let winHeight = 832;
+
+    // Se tela >= Full HD, abre maior
+    if (screenWidth >= 1920) {
+        winWidth = 1600;
+        winHeight = 900;
+    }
+
+    // Se tela >= 4K, abre em uma proporção confortável (não tela cheia)
+    if (screenWidth >= 3840) {
+        winWidth = 1920;
+        winHeight = 1080;
+    }
+
     const win = new BrowserWindow({
-        width: 1280,
-        height: 832,
+        width: winWidth,
+        height: winHeight,
+        minWidth: 1280,
+        minHeight: 832,
+        resizable: true,
+        roundedCorners: true,
         icon: path.join(__dirname, 'assets', 'logo.ico'),
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'),
         },
     });
 
-    // Remove o menu padrão para um visual mais limpo na aplicação final
+    // Centraliza a janela
+    win.center();
+
+    // Remove o menu padrão
     win.removeMenu();
 
     const startUrl = app.isPackaged
@@ -28,7 +53,29 @@ function createWindow() {
         win.loadURL(startUrl);
     }
 
-    // Chama a função para criar o menu de desenvolvimento
+    // ⚡ Botão temporário de reload para testes
+    // win.webContents.on("did-finish-load", () => {
+    //     win.webContents.executeJavaScript(`
+    //         if (!document.getElementById("temp-reload-btn")) {
+    //             const btn = document.createElement("button");
+    //             btn.id = "temp-reload-btn";
+    //             btn.innerText = "🔄 Reload App";
+    //             btn.style.position = "fixed";
+    //             btn.style.top = "10px";
+    //             btn.style.right = "10px";
+    //             btn.style.zIndex = 9999;
+    //             btn.style.padding = "8px 12px";
+    //             btn.style.borderRadius = "6px";
+    //             btn.style.background = "#1f1f1f";
+    //             btn.style.color = "#fff";
+    //             btn.style.border = "1px solid #444";
+    //             btn.style.cursor = "pointer";
+    //             btn.onclick = () => location.reload();
+    //             document.body.appendChild(btn);
+    //         }
+    //     `);
+    // });
+
     createDevMenu(win);
 }
 
@@ -48,42 +95,39 @@ function createDevMenu(win: BrowserWindow) {
         const menu = Menu.buildFromTemplate(template);
         Menu.setApplicationMenu(menu);
     } else {
-        // Em modo de produção, remove o menu da aplicação
         Menu.setApplicationMenu(null);
     }
 }
 
-// Eventos do ciclo de vida do Electron
+// Eventos do ciclo de vida
 app.whenReady().then(createWindow);
 
-// Gerencia a comunicação assíncrona com o processo principal
-// Manipulador para o evento de atualização da máquina
+// IPCs
 ipcMain.handle('update-machine', async (event, machine) => {
     try {
         const success = updateMachineInDb(machine);
         return { success, message: success ? "Máquina atualizada com sucesso!" : "Nenhuma alteração foi feita." };
     } catch (error) {
         console.error("Erro ao atualizar a máquina no processo principal:", error);
-        return { success: false, message: "Erro interno no servidor." };
+        const message = error instanceof Error ? error.message : 'Erro desconhecido.';
+        return { success: false, message: `Erro interno no servidor: ${message}` };
     }
 });
 
-// Manipulador para buscar todas as máquinas
 ipcMain.handle('get-all-machines', async () => {
-  try {
-    return getAllMachines();
-  } catch (error) {
-    console.error("Erro ao buscar máquinas:", error);
-    return [];
-  }
+    try {
+        return getAllMachines();
+    } catch (error) {
+        console.error("Erro ao buscar máquinas:", error);
+        return [];
+    }
 });
 
-// Manipulador para buscar uma máquina por ID
 ipcMain.handle('get-machine-by-id', async (event, id) => {
-  try {
-    return getMachineById(id);
-  } catch (error) {
-    console.error("Erro ao buscar máquina por ID:", error);
-    return null;
-  }
+    try {
+        return getMachineById(id);
+    } catch (error) {
+        console.error("Erro ao buscar máquina por ID:", error);
+        return null;
+    }
 });
