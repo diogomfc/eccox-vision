@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import { motion } from "framer-motion";
 import { SquarePen, Trash2, Eye } from "lucide-react";
 import { ProgressCircle } from "@/components/ui/progress-circle";
@@ -18,8 +18,9 @@ interface MachineGridItemProps {
 
 export function MachineGridItem({ machine, index }: MachineGridItemProps) {
   const router = useRouter();
-  const [loading, setLoading] = useState(false);
+  const [isPending, startTransition] = useTransition();
   const [isHovered, setIsHovered] = useState(false);
+  const [loadingAction, setLoadingAction] = useState<'view' | 'edit' | null>(null);
 
   const allServices = machine.applications.flatMap(app => app.services);
   const total = allServices.length;
@@ -36,19 +37,35 @@ export function MachineGridItem({ machine, index }: MachineGridItemProps) {
       ? "border-l-4 border-[#32D583]/50"
       : "border-l-4 border-[#F04438]/50 alert-pulse";
 
+  const isLoading = isPending || loadingAction !== null;
+
   const handleViewDetails = () => {
-    setLoading(true);
-    router.push(`/machines/${machine.id}`);
+    setLoadingAction('view');
+    startTransition(() => {
+      router.push(`/machines/${machine.id}`);
+    });
   };
 
   const handleEditClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-    router.push(`/machines/edit/${machine.id}`);
+    setLoadingAction('edit');
+    startTransition(() => {
+      router.push(`/machines/edit/${machine.id}`);
+    });
   };
 
   const handleEyeClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-    router.push(`/machines/${machine.id}`);
+    setLoadingAction('view');
+    startTransition(() => {
+      router.push(`/machines/${machine.id}`);
+    });
+  };
+
+  const handleDeleteClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    // Aqui você pode implementar a lógica de deleção
+    alert("Deletar máquina");
   };
 
   return (
@@ -60,47 +77,58 @@ export function MachineGridItem({ machine, index }: MachineGridItemProps) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={handleViewDetails}
-      className={`bg-[#1A1A1E] hover:bg-[#0F0F10] rounded-lg p-4 border ${borderColor} relative cursor-pointer`}
+      className={`bg-[#1A1A1E] hover:bg-[#0F0F10] rounded-lg p-4 border ${borderColor} relative cursor-pointer transition-colors duration-200`}
     >
-      {/* Overlay de loading */}
-      {loading && (
-        <div className="absolute inset-0 bg-black/60 flex items-center justify-center z-10 rounded-lg">
-          <div className="w-8 h-8 border-4 border-[#298BFE] border-t-transparent rounded-full animate-spin"></div>
-        </div>
+      {/* Loading Overlay */}
+      {isLoading && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="absolute inset-0 bg-black/60 flex items-center justify-center z-30 rounded-lg backdrop-blur-sm"
+        >
+          <div className="flex flex-col items-center gap-2">
+              <div className={`border-t-transparent rounded-full animate-spin w-8 h-8 border-4 ${loadingAction === 'edit' ? 'border-[#feb329]' : 'border-[#298BFE]'}`}></div>
+              <span className="text-xs text-white/80">
+                  {loadingAction === 'edit' ? 'Abrindo editor...' : 'Carregando detalhes...'}
+              </span>
+          </div>
+        </motion.div>
       )}
 
-      {/* Ações no hover */}
-      {isHovered && (
+      {/* Action Buttons */}
+      {isHovered && !isLoading && (
         <motion.div
-          initial={{ opacity: 0, x: -10 }}
-          animate={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.8 }}
           transition={{ duration: 0.2 }}
-          className="absolute top-2 right-2 flex flex-col gap-[2px] z-20"
+          className="absolute top-2 right-2 flex flex-col z-20 p-1 shadow-lg"
         >
           <button
-            onClick={handleEyeClick}
-            className="p-1 transition-colors cursor-pointer"
-            aria-label="Ver detalhes da máquina"
+              onClick={handleEyeClick}
+              className="p-2 transition-colors cursor-pointer"
+              aria-label="Ver detalhes da máquina"
+              disabled={isLoading}
           >
-            <Eye size={16} className="text-gray-600/80 hover:text-blue-400" />
+              <Eye size={16} className="text-gray-400/50 hover:text-blue-400 transition-colors" />
           </button>
+
           <button
-            onClick={handleEditClick}
-            className="p-1 transition-colors cursor-pointer"
-            aria-label="Editar máquina"
+              onClick={handleEditClick}
+              className="p-2 transition-colors cursor-pointer"
+              aria-label="Editar máquina"
+              disabled={isLoading}
           >
-            <SquarePen size={16} className="text-gray-600/80 hover:text-amber-500" />
+              <SquarePen size={16} className="text-gray-400/50 hover:text-amber-500 transition-colors" />
           </button>
-          
+
           <button
-            onClick={(e) => {
-              e.stopPropagation();
-              alert("Deletar máquina");
-            }}
-            className="p-1 transition-colors cursor-pointer"
-            aria-label="Deletar máquina"
+              onClick={handleDeleteClick}
+              className="p-2 transition-colors cursor-pointer"
+              aria-label="Deletar máquina"
+              disabled={isLoading}
           >
-            <Trash2 size={16} className="text-gray-600/80 hover:text-red-300" />
+              <Trash2 size={16} className="text-gray-400/50 hover:text-red-400 transition-colors" />
           </button>
         </motion.div>
       )}
@@ -123,11 +151,12 @@ export function MachineGridItem({ machine, index }: MachineGridItemProps) {
         </div>
       </div>
 
-      <p className="text-sm text-[#6C6C6C] mb-4">
+      <p className="text-sm text-[#6C6C6C] mb-4 line-clamp-2">
         {machine.description || "Sem descrição"}
       </p>
 
-      <div className="flex flex-wrap gap-1 mb-4">
+      {/* Badges */}
+      <div className="flex flex-wrap gap-1 mb-4 min-h-[20px]">
         {eccoxApps.map((app) => (
           <span
             key={`${machine.id}-${app.name}`}
@@ -153,6 +182,7 @@ export function MachineGridItem({ machine, index }: MachineGridItemProps) {
         )}
       </div>
 
+      {/* Stats and Progress */}
       <div className="flex justify-between items-end">
         <div className="flex flex-col text-xs gap-0.5 w-32">
           <div className="flex justify-between">
