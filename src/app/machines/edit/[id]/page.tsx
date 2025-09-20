@@ -1,6 +1,7 @@
 // src/app/machines/edit/[id]/page.tsx
 
-import MachineUpdateClient from "@/components/machines/machine-update-client";
+//import MachineUpdateClient from "@/components/machines/machine-update-client";
+import MachineUpdateClient from "@/components/machines/update/machine-update-client";
 import { mockMachines } from "@/mocks/mockMachines";
 
 // Gera os parâmetros estáticos para exportação
