@@ -33,7 +33,7 @@ import {
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import { Calendar } from "@/components/ui/calendar";
-import type { Application, Service, ServiceStatus } from "@/types/machines";
+import type { Application, Service, StatusType } from "@/types/machines";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion, AnimatePresence } from "framer-motion";
 import { Textarea } from "@/components/ui/textarea";
@@ -284,7 +284,7 @@ export function ApplicationEditModal({
                       <Input
                         id="appType"
                         name="tipo"
-                        value={editedApp.tipo}
+                        value={editedApp.tipo || ""}
                         onChange={handleAppInputChange}
                         className="bg-[#1A1A1D] border-[#2A2A2D] w-full focus:border-blue-500 text-gray-100 transition-colors"
                       />

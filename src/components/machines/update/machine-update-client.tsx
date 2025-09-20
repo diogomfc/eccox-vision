@@ -29,27 +29,28 @@ import MachineInfoStep from "./machine-info-step";
 import ApplicationsStep from "./applications-step";
 import ReviewStep from "./review-step";
 
+type StatusType = "Concluida" | "Pendente" | "Em andamento";
 
 // Tipos adaptados para o contexto de edição
-interface EditableApplication {
-  id: string;
-  name: string;
-  tipo: string;
-  status: "Concluida" | "Pendente";
-  services: EditableService[];
-}
+// interface EditableApplication {
+//   id: string;
+//   name: string;
+//   tipo: string;
+//   status: StatusType;
+//   services: EditableService[];
+// }
 
-interface EditableService {
-  id: string;
-  name: string;
-  status: "Concluida" | "Pendente" | "Em andamento";
-  itemObrigatorio: "Sim" | "Não";
-  updatedAt: string | null;
-  responsible: string;
-  comments: string;
-  typePendencia: string;
-  responsibleHomologacao: string;
-}
+// interface EditableService {
+//   id: string;
+//   name: string;
+//   status: StatusType;
+//   itemObrigatorio: "Sim" | "Não";
+//   updatedAt: string | null;
+//   responsible: string;
+//   comments: string;
+//   typePendencia: string;
+//   responsibleHomologacao: string;
+// }
 
 interface MachineUpdateClientProps {
   machineId: string;
@@ -68,7 +69,7 @@ export default function MachineUpdateClient({
   const [editingMachine, setEditingMachine] = useState<Machines>({} as Machines);
 
   // Applications data
-  const [applications, setApplications] = useState<EditableApplication[]>([]);
+  const [applications, setApplications] = useState<Application[]>([]);
 
   const steps = [
     { id: 1, title: "Informações da Máquina", icon: ImgServerNew },
@@ -96,7 +97,7 @@ export default function MachineUpdateClient({
 
         if (machineData) {
           setEditingMachine(machineData);
-          setApplications(machineData.applications as EditableApplication[]);
+          setApplications(machineData.applications as Application[]);
         } else {
           setMessage("Máquina não encontrada.");
         }
@@ -220,7 +221,7 @@ export default function MachineUpdateClient({
         <div className="max-w-6xl mx-auto h-full pb-20 flex flex-col">
           <Card className="bg-gradient-to-br pt-0 from-[#111113] to-[#0F0F11] border-amber-500/30 shadow-2xl flex flex-col flex-1 overflow-hidden">
             {/* Header Integrado: Progress Steps dentro do Card Header */}
-            <CardHeader className="bg-gradient-to-r from-amber-600/10 to-amber-700/5 border-b border-[#1F1F23] pt-6 flex-shrink-0">
+            <CardHeader className="bg-amber-600/10 border-b border-[#1F1F23] pt-6 flex-shrink-0">
               {/* Progress Steps */}
               <div className="">
                 <div className="flex items-center justify-center gap-8 lg:gap-12">

@@ -147,6 +147,12 @@ export function MachineListItem({ machine, index }: MachineListItemProps) {
                             transition={{ duration: 0.2 }}
                             className="absolute top-1/2 -translate-y-1/2 right-[-10px] flex flex-col  z-20"
                         >
+                             {loading && (
+                                <div className="absolute inset-0 bg-black/60 flex items-center justify-center z-10 rounded-lg">
+                                    <div className="w-8 h-8 border-4 border-[#298BFE] border-t-transparent rounded-full animate-spin"></div>
+                                </div>
+                             )}
+
                             <button
                                 onClick={handleEyeClick}
                                 className="p-1 transition-colors cursor-pointer"

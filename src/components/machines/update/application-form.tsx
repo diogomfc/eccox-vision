@@ -23,20 +23,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Application } from "@/types/machines";
 
-// Tipos
-interface EditableApplication {
-  id: string;
-  name: string;
-  tipo: string;
-  status: "Concluida" | "Pendente" | "Em andamento";
-}
 
 // Props do componente
 interface ApplicationFormProps {
   formTitle: string;
-  applicationState: Partial<EditableApplication>;
-  setApplicationState: React.Dispatch<React.SetStateAction<Partial<EditableApplication>>>;
+  applicationState: Partial<Application>;
+  setApplicationState: React.Dispatch<React.SetStateAction<Partial<Application>>>;
   onSave: () => void;
   onCancel: () => void;
   isNewApplication: boolean;
@@ -97,7 +91,7 @@ export default function ApplicationForm({
               onChange={(e) =>
                 setApplicationState((prev) => ({
                   ...prev,
-                  tipo: e.target.value,
+                  tipo: e.target.value as Application["tipo"],
                 }))
               }
               className={`bg-[#1A1A1D] border-[#2A2A2D] w-full ${focusBorderColor} text-gray-100 hover:bg-[#23232B] hover:text-gray-500`}

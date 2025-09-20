@@ -1,12 +1,10 @@
 // src/components/icons/ServerSvg.tsx
 import React, { SVGProps } from "react";
 import clsx from "clsx";
-
-
-type ServerStatus = "Concluida" | "Pendente" | "Em andamento";
+import { StatusType } from "@/types/machines";
 
 type ServerSvgProps = SVGProps<SVGSVGElement> & {
-    status?: ServerStatus;
+    status?: StatusType;
     className?: string;
 };
 

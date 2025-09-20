@@ -16,6 +16,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Badge } from "@/components/ui/badge";
 import {
   Select,
   SelectContent,
@@ -23,39 +24,17 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+
+// Importando os componentes de formulário e cartão de aplicação
 import ApplicationForm from "./application-form";
 import ApplicationCard from "./application-card";
+import { Application, ItemObrigatorioType, Service, StatusType } from "@/types/machines";
 
-// Importando os componentes já criados
-
-
-// Tipos
-interface EditableApplication {
-  id: string;
-  name: string;
-  tipo: string;
-  status: "Concluida" | "Pendente" | "Em andamento";
-  services: EditableService[];
-}
-
-interface EditableService {
-  id: string;
-  name: string;
-  status: "Concluida" | "Pendente" | "Em andamento";
-  itemObrigatorio: "Sim" | "Não";
-  updatedAt: string | null;
-  responsible: string;
-  comments: string;
-  typePendencia: string;
-  responsibleHomologacao: string;
-}
 
 // Props do componente
 interface ApplicationsStepProps {
-  applications: EditableApplication[];
-  setApplications: React.Dispatch<React.SetStateAction<EditableApplication[]>>;
+  applications: Application[];
+  setApplications: React.Dispatch<React.SetStateAction<Application[]>>;
   setMessage: (message: string | null) => void;
 }
 
@@ -67,15 +46,15 @@ export default function ApplicationsStep({
   // Applications data
   const [isAddingApp, setIsAddingApp] = useState(false);
   const [editingAppId, setEditingAppId] = useState<string | null>(null);
-  const [newApp, setNewApp] = useState<Partial<EditableApplication>>({
+  const [newApp, setNewApp] = useState<Partial<Application>>({
     name: "",
-    tipo: "",
-    status: "Pendente" as "Concluida" | "Pendente",
+    tipo: "" as Application["tipo"],
+    status: "Pendente" as StatusType,
   });
-  const [editApp, setEditApp] = useState<Partial<EditableApplication>>({
+  const [editApp, setEditApp] = useState<Partial<Application>>({
     name: "",
-    tipo: "",
-    status: "Pendente" as "Concluida" | "Pendente",
+    tipo: "" as Application["tipo"],
+    status: "Pendente" as StatusType,
   });
 
   // Services data
@@ -84,20 +63,20 @@ export default function ApplicationsStep({
   const [editingServiceAppId, setEditingServiceAppId] = useState<string | null>(
     null
   );
-  const [newService, setNewService] = useState<Partial<EditableService>>({
+  const [newService, setNewService] = useState<Partial<Service>>({
     name: "",
-    status: "Pendente" as "Concluida" | "Pendente" | "Em andamento",
-    itemObrigatorio: "Sim" as "Sim" | "Não",
+    status: "Pendente" as StatusType,
+    itemObrigatorio: "Sim" as ItemObrigatorioType,
     updatedAt: null,
     responsible: "",
     comments: "",
     typePendencia: "",
     responsibleHomologacao: "",
   });
-  const [editService, setEditService] = useState<Partial<EditableService>>({
+  const [editService, setEditService] = useState<Partial<Service>>({
     name: "",
-    status: "Pendente" as "Concluida" | "Pendente" | "Em andamento",
-    itemObrigatorio: "Sim" as "Sim" | "Não",
+    status: "Pendente" as StatusType,
+    itemObrigatorio: "Sim" as ItemObrigatorioType,
     updatedAt: null,
     responsible: "",
     comments: "",
@@ -107,9 +86,7 @@ export default function ApplicationsStep({
 
   // filtros
   const [searchTerm, setSearchTerm] = useState("");
-  const [statusFilter, setStatusFilter] = useState<
-    "all" | "Concluida" | "Pendente"
-  >("all");
+  const [statusFilter, setStatusFilter] = useState<StatusType | "all">("all");
   const [serviceSearchTerm, setServiceSearchTerm] = useState("");
 
   const getStatusBadgeColor = (status: string) => {
@@ -127,7 +104,7 @@ export default function ApplicationsStep({
 
   // Função para filtrar serviços
   const getFilteredServices = useCallback(
-    (services: EditableService[]) => {
+    (services: Service[]) => {
       if (!serviceSearchTerm) return services;
       return services.filter(
         (service) =>
@@ -156,7 +133,7 @@ export default function ApplicationsStep({
     return applications.filter((app) => {
       const matchesAppSearch =
         app.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        app.tipo.toLowerCase().includes(searchTerm.toLowerCase());
+        app.tipo?.toLowerCase().includes(searchTerm.toLowerCase());
       const matchesStatus =
         statusFilter === "all" || app.status === statusFilter;
       const hasMatchingServices = serviceSearchTerm
@@ -182,16 +159,20 @@ export default function ApplicationsStep({
       return;
     }
 
-    const app: EditableApplication = {
+    const app: Application = {
       id: `app-${Date.now()}`,
       name: newApp.name || "",
-      tipo: newApp.tipo || "",
-      status: (newApp.status as EditableApplication["status"]) || "Pendente",
+      tipo: (newApp.tipo as Application["tipo"]) || "IBM",
+      status: (newApp.status as Application["status"]) || "Pendente",
       services: [],
     };
 
     setApplications((prev) => [...prev, app]);
-    setNewApp({ name: "", tipo: "", status: "Pendente" });
+    setNewApp({
+      name: "",
+      tipo: "" as Application["tipo"],
+      status: "Pendente" as StatusType,
+     });
     setIsAddingApp(false);
     setMessage(null);
   };
@@ -221,20 +202,28 @@ export default function ApplicationsStep({
               ...app,
               name: editApp.name ?? app.name,
               tipo: editApp.tipo ?? app.tipo,
-              status: (editApp.status as EditableApplication["status"]) ?? app.status,
+              status: (editApp.status as Application["status"]) ?? app.status,
             }
           : app
       )
     );
 
     setEditingAppId(null);
-    setEditApp({ name: "", tipo: "", status: "Pendente" });
+    setEditApp({ 
+      name: "", 
+      tipo: "" as Application["tipo"], 
+      status: "Pendente" as StatusType
+    });
     setMessage(null);
   };
 
   const handleCancelEditApplication = () => {
     setEditingAppId(null);
-    setEditApp({ name: "", tipo: "", status: "Pendente" });
+    setEditApp({ 
+      name: "", 
+      tipo: "" as Application["tipo"], 
+      status: "Pendente" as StatusType 
+    });
   };
 
   const handleDeleteApplication = (appId: string) => {
@@ -249,12 +238,12 @@ export default function ApplicationsStep({
       return;
     }
 
-    const service: EditableService = {
+    const service: Service = {
       id: `service-${Date.now()}`,
       name: newService.name || "",
-      status: (newService.status as EditableService["status"]) || "Pendente",
+      status: (newService.status as Service["status"]) || "Pendente",
       itemObrigatorio:
-        (newService.itemObrigatorio as EditableService["itemObrigatorio"]) ||
+        (newService.itemObrigatorio as Service["itemObrigatorio"]) ||
         "Sim",
       responsible: newService.responsible || "",
       comments: newService.comments || "",
@@ -588,8 +577,8 @@ export default function ApplicationsStep({
         {isAddingApp && (
           <ApplicationForm
             formTitle="Adicionando Nova Aplicação"
-            applicationState={newApp}
-            setApplicationState={setNewApp}
+            applicationState={newApp as any}
+            setApplicationState={setNewApp as any}
             onSave={handleAddApplication}
             onCancel={() => setIsAddingApp(false)}
             isNewApplication={true}

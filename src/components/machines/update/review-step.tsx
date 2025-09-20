@@ -17,36 +17,7 @@ import ImgServerNew from "@/assets/images/img-server-status.svg";
 import ImgServerPendente from "@/assets/images/img-server-status-warning.svg";
 import ImgServerConcluida from "@/assets/images/img-server-status-ok.svg";
 
-// Tipos
-interface Machines {
-  id: string;
-  name: string;
-  description: string;
-  version: string;
-  status: "Concluida" | "Pendente" | "Em andamento";
-  updatedAt: string | null;
-  applications: Application[];
-}
-
-interface Application {
-  id: string;
-  name: string;
-  tipo: string;
-  status: "Concluida" | "Pendente" | "Em andamento";
-  services: Service[];
-}
-
-interface Service {
-  id: string;
-  name: string;
-  status: "Concluida" | "Pendente" | "Em andamento";
-  itemObrigatorio: "Sim" | "Não";
-  updatedAt: string | null;
-  responsible: string;
-  comments: string;
-  typePendencia: string;
-  responsibleHomologacao: string;
-}
+import { Application, Machines } from "@/types/machines";
 
 // Props do componente
 interface ReviewStepProps {

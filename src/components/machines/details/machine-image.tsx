@@ -1,12 +1,13 @@
 import React from "react";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import ServerSvg from "../shared/server-svg";
+import { StatusType } from "@/types/machines";
 
 interface MachineImageProps {
   name: string;
   description?: string;
   system: string;
-  status: "Concluida" | "Pendente" | "Em andamento";
+  status: StatusType
   update: string;
   offsetY?: number; // deslocamento vertical opcional em pixels
 }

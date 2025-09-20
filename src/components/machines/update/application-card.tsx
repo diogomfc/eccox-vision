@@ -40,50 +40,29 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
+import { Application, Service } from "@/types/machines";
 
-// Importando os componentes já criados
-
-// Tipos
-interface EditableApplication {
-  id: string;
-  name: string;
-  tipo: string;
-  status: "Concluida" | "Pendente" | "Em andamento";
-  services: EditableService[];
-}
-
-interface EditableService {
-  id: string;
-  name: string;
-  status: "Concluida" | "Pendente" | "Em andamento";
-  itemObrigatorio: "Sim" | "Não";
-  updatedAt: string | null;
-  responsible: string;
-  comments: string;
-  typePendencia: string;
-  responsibleHomologacao: string;
-}
 
 // Props do componente
 interface ApplicationCardProps {
-  app: EditableApplication;
+  app: Application;
   isAddingService: string | null;
   setIsAddingService: React.Dispatch<React.SetStateAction<string | null>>;
   editingAppId: string | null;
   setEditingAppId: React.Dispatch<React.SetStateAction<string | null>>;
-  editApp: Partial<EditableApplication>;
+  editApp: Partial<Application>;
   setEditApp: React.Dispatch<
-    React.SetStateAction<Partial<EditableApplication>>
+    React.SetStateAction<Partial<Application>>
   >;
-  newService: Partial<EditableService>;
-  setNewService: React.Dispatch<React.SetStateAction<Partial<EditableService>>>;
+  newService: Partial<Service>;
+  setNewService: React.Dispatch<React.SetStateAction<Partial<Service>>>;
   editingServiceId: string | null;
   setEditingServiceId: React.Dispatch<React.SetStateAction<string | null>>;
   editingServiceAppId: string | null;
   setEditingServiceAppId: React.Dispatch<React.SetStateAction<string | null>>;
-  editService: Partial<EditableService>;
+  editService: Partial<Service>;
   setEditService: React.Dispatch<
-    React.SetStateAction<Partial<EditableService>>
+    React.SetStateAction<Partial<Service>>
   >;
   handleEditApplication: (appId: string) => void;
   handleSaveEditApplication: () => void;
@@ -94,7 +73,7 @@ interface ApplicationCardProps {
   handleSaveEditService: () => void;
   handleCancelEditService: () => void;
   handleDeleteService: (appId: string, serviceId: string) => void;
-  getFilteredServices: (services: EditableService[]) => EditableService[];
+  getFilteredServices: (services: Service[]) => Service[];
   getStatusBadgeColor: (status: string) => string;
   serviceSearchTerm: string;
 }
@@ -159,19 +138,24 @@ export default function ApplicationCard({
             />
           ) : (
             // card da aplicação editar excluir e adicionar serviço
-            <div className="flex items-center justify-between mb-3">
-              <div className="flex items-center gap-3">
-                <h4 className="font-medium text-gray-100">{app.name}</h4>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <h5 className="text-sm font-medium text-gray-300">Aplicação:</h5>
+                <span className="font-medium text-gray-100">{app.name}</span>
                 <Badge
                   variant="outline"
                   className={getStatusBadgeColor(app.status)}
                 >
                   {app.status}
                 </Badge>
+
                 <span className="text-sm text-gray-400">
                   {app.services.length} serviços
                 </span>
               </div>
+             
+
+              {/* Buttons ações aplicação */}
               <div className="flex items-center gap-2">
                 <HoverCard>
                   <HoverCardTrigger>

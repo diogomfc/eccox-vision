@@ -2,7 +2,7 @@
 "use client";
 
 import React, { useState } from "react";
-import type { Service, ServiceStatus } from "@/types/machines";
+import type { Service, StatusType } from "@/types/machines";
 import { CheckCircle, Clock, LayoutList, MinusCircle, SquarePen, Trash2 } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -21,7 +21,7 @@ interface ServiceListProps {
 
 export function ServiceList({ services }: ServiceListProps) {
     const [searchQuery, setSearchQuery] = useState("");
-    const [statusFilter, setStatusFilter] = useState<ServiceStatus | "">("");
+    const [statusFilter, setStatusFilter] = useState<StatusType | "">("");
     const [hoveredServiceId, setHoveredServiceId] = useState<string | null>(null);
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
     const [selectedService, setSelectedService] = useState<Service | null>(null);
@@ -32,7 +32,7 @@ export function ServiceList({ services }: ServiceListProps) {
         return matchesName && matchesStatus;
     });
 
-    const getStatusIcon = (status: ServiceStatus) => {
+    const getStatusIcon = (status: StatusType) => {
         switch (status) {
             case "Concluida":
                 return <CheckCircle size={18} className="text-white" />;
@@ -75,7 +75,7 @@ export function ServiceList({ services }: ServiceListProps) {
                     <select
                         aria-label="Filtrar por status"
                         value={statusFilter}
-                        onChange={(e) => setStatusFilter(e.target.value as "" | ServiceStatus)}
+                        onChange={(e) => setStatusFilter(e.target.value as "" | StatusType)}
                         className="bg-[#23232B] text-white text-xs px-2 py-1 rounded outline-none border border-[#23232B] focus:border-gray-600 transition"
                     >
                         <option value="">Todos</option>

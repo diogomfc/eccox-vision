@@ -28,25 +28,13 @@ import {
 } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
 import { Textarea } from "@/components/ui/textarea";
-
-// Tipos
-interface EditableService {
-  id: string;
-  name: string;
-  status: "Concluida" | "Pendente" | "Em andamento";
-  itemObrigatorio: "Sim" | "Não";
-  updatedAt: string | null;
-  responsible: string;
-  comments: string;
-  typePendencia: string;
-  responsibleHomologacao: string;
-}
+import { Service } from "@/types/machines";
 
 // Props do componente
 interface ServiceFormProps {
   formTitle: string;
-  serviceState: Partial<EditableService>;
-  setServiceState: React.Dispatch<React.SetStateAction<Partial<EditableService>>>;
+  serviceState: Partial<Service>;
+  setServiceState: React.Dispatch<React.SetStateAction<Partial<Service>>>;
   onSave: () => void;
   onCancel: () => void;
   isNewService: boolean;

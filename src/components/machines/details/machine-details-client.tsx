@@ -5,7 +5,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 
 import { motion } from "framer-motion";
-import type { Service, Machines, Application as AppType } from "@/types/machines";
+import type { Machines} from "@/types/machines";
 import { Loader2 } from "lucide-react";
 import { ApplicationList } from './application-list';
 import { MachineStats } from './machine-stats';
