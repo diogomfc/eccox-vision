@@ -7,7 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Calendar } from '@/components/ui/calendar';
 import { Textarea } from '@/components/ui/textarea';
-import { Save, X, CalendarIcon } from 'lucide-react';
+import { Save, X, CalendarIcon, Loader2 } from 'lucide-react';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { ItemObrigatorioType, StatusType } from '@/types/machines';
@@ -27,6 +27,7 @@ interface ServiceFormProps {
   onSave: () => void;
   onCancel: () => void;
   isEditMode?: boolean;
+  isLoading?: boolean; // Nova prop para loading
 }
 
 export const ServiceForm = ({
@@ -35,12 +36,13 @@ export const ServiceForm = ({
   onSave,
   onCancel,
   isEditMode = false,
+  isLoading = false, // Valor padrão false
 }: ServiceFormProps) => {
   const handleDateChange = (date: Date | undefined) => {
     onChange(date, 'updatedAt');
   };
 
-      // Configuração de temas
+  // Configuração de temas
   const themeConfig = {
     focusColor: isEditMode ? "focus:!border-amber-500" : "focus:!border-blue-500",
     textAccent: isEditMode ? "text-amber-400" : "text-blue-400",
@@ -51,23 +53,25 @@ export const ServiceForm = ({
     selectFocusPrimary: isEditMode ? "focus:bg-amber-600/10" : "focus:bg-blue-600/10",
   };
 
-
-
   return (
     <motion.div
       initial={{ opacity: 0, height: 0 }}
       animate={{ opacity: 1, height: "auto" }}
       exit={{ opacity: 0, height: 0 }}
-      className={`p-4 bg-[#0F0F11] border ${themeConfig.borderAccent} rounded-lg`}
+      className={`p-4 bg-[#0F0F11] border ${themeConfig.borderAccent} rounded-lg ${isLoading ? 'opacity-75' : ''}`}
     >
       <div className="flex items-center justify-between mb-3">
-        <h5 className="text-sm font-medium text-gray-200">
+        <h5 className="text-sm font-medium text-gray-200 flex items-center gap-2">
           {isEditMode ? 'Editando Serviço' : 'Novo Serviço'}
+          {isLoading && (
+            <Loader2 className="w-4 h-4 animate-spin text-gray-400" />
+          )}
         </h5>
         <Button
-        variant={"ghost"}
+          variant={"ghost"}
           onClick={onCancel}
           className="cursor-pointer hover:bg-transparent hover:text-red-500 text-red-500/50"
+          disabled={isLoading}
         >
           <X size={12} className="" />
         </Button>
@@ -81,6 +85,7 @@ export const ServiceForm = ({
             onChange={(e) => onChange(e.target.value, 'name')}
             className={`bg-[#1A1A1D] border-[#2A2A2D] ${themeConfig.focusColor} text-gray-100 hover:bg-[#23232B] hover:text-gray-500`}
             placeholder=""
+            disabled={isLoading}
           />
         </div>
 
@@ -89,6 +94,7 @@ export const ServiceForm = ({
           <Select
             value={serviceData.status}
             onValueChange={(value) => onChange(value, 'status')}
+            disabled={isLoading}
           >
             <SelectTrigger className={`bg-[#1A1A1D] border-[#2A2A2D] ${themeConfig.focusColor} text-gray-100 hover:bg-[#23232B] hover:text-gray-500 w-full`}>
               <SelectValue />
@@ -112,6 +118,7 @@ export const ServiceForm = ({
           <Select
             value={serviceData.itemObrigatorio}
             onValueChange={(value) => onChange(value, 'itemObrigatorio')}
+            disabled={isLoading}
           >
             <SelectTrigger className={`bg-[#1A1A1D] border-[#2A2A2D] ${themeConfig.focusColor} text-gray-100 hover:bg-[#23232B] hover:text-gray-500 w-full`}>
               <SelectValue />
@@ -134,6 +141,7 @@ export const ServiceForm = ({
             onChange={(e) => onChange(e.target.value, 'responsible')}
             className={`bg-[#1A1A1D] border-[#2A2A2D] ${themeConfig.focusColor} text-gray-100 hover:bg-[#23232B] hover:text-gray-500`}
             placeholder=""
+            disabled={isLoading}
           />
         </div>
 
@@ -144,6 +152,7 @@ export const ServiceForm = ({
             onChange={(e) => onChange(e.target.value, 'responsibleHomologacao')}
             className={`bg-[#1A1A1D] border-[#2A2A2D] ${themeConfig.focusColor} text-gray-100 hover:bg-[#23232B] hover:text-gray-500`}
             placeholder=""
+            disabled={isLoading}
           />
         </div>
 
@@ -154,6 +163,7 @@ export const ServiceForm = ({
             onChange={(e) => onChange(e.target.value, 'typePendencia')}
             className={`bg-[#1A1A1D] border-[#2A2A2D] ${themeConfig.focusColor} text-gray-100 hover:bg-[#23232B] hover:text-gray-500`}
             placeholder=""
+            disabled={isLoading}
           />
         </div>
 
@@ -164,6 +174,7 @@ export const ServiceForm = ({
               <Button
                 variant="outline"
                 className={`justify-start text-left font-normal bg-[#1A1A1E] border-[#2A2A2D] ${themeConfig.focusColor} text-gray-100 hover:bg-[#23232B] hover:text-gray-500 w-full`}
+                disabled={isLoading}
               >
                 <CalendarIcon className="mr-2 h-4 w-4 text-gray-400" />
                 {serviceData.updatedAt ? (
@@ -181,6 +192,7 @@ export const ServiceForm = ({
                 selected={serviceData.updatedAt ? new Date(serviceData.updatedAt) : undefined}
                 onSelect={handleDateChange}
                 className="bg-[#1A1A1E] text-gray-200"
+                disabled={isLoading}
               />
             </PopoverContent>
           </Popover>
@@ -192,6 +204,7 @@ export const ServiceForm = ({
             value={serviceData.comments}
             onChange={(e) => onChange(e.target.value, 'comments')}
             className={`bg-[#1A1A1D] border-[#2A2A2D] ${themeConfig.focusColor} text-gray-100 resize-none min-h-[60px] w-full`}
+            disabled={isLoading}
           />
         </div>
       </div>
@@ -199,10 +212,20 @@ export const ServiceForm = ({
         <Button
           onClick={onSave}
           size="sm"
-          className={`${themeConfig.buttonPrimary} cursor-pointer text-xs`}
+          className={`${themeConfig.buttonPrimary} cursor-pointer text-xs min-w-[120px]`}
+          disabled={isLoading || !serviceData.name.trim()}
         >
-          <Save size={14} className="mr-1" />
-          {isEditMode ? 'Salvar Alterações' : 'Adicionar Serviço'}
+          {isLoading ? (
+            <>
+              <Loader2 className="w-3 h-3 animate-spin mr-1" />
+              {isEditMode ? 'Salvando...' : 'Adicionando...'}
+            </>
+          ) : (
+            <>
+              <Save size={14} className="mr-1" />
+              {isEditMode ? 'Salvar Alterações' : 'Adicionar Serviço'}
+            </>
+          )}
         </Button>
       </div>
     </motion.div>

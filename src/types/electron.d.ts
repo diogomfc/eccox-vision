@@ -13,6 +13,9 @@ declare global {
       createMachine: (machine: Machines) => Promise<{ success: boolean; message: string }>;
       deleteMachine: (machineId: string) => Promise<{ success: boolean; message: string }>;
       
+      // NOVO: Sincroniza uma máquina completa
+      syncMachineComplete: (machine: Machines) => Promise<{ success: boolean; message: string }>;
+      
       // ========================
       // APPLICATIONS APIs
       // ========================
@@ -24,6 +27,9 @@ declare global {
       createApplication: (application: Application) => Promise<{ success: boolean; message: string }>;
       deleteApplication: (applicationId: string) => Promise<{ success: boolean; message: string }>;
       
+      // NOVO: Sincroniza uma aplicação completa
+      syncApplication: (application: Application) => Promise<{ success: boolean; message: string }>;
+
       // ========================
       // SERVICES APIs
       // ========================

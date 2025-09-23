@@ -5,13 +5,11 @@ import { useState, useMemo, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 
 import {
-  X,
   Loader2,
-  ArrowLeft,
   Settings,
   Layers,
-  CheckCircle,
 } from "lucide-react";
+
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import {AnimatePresence } from "framer-motion";
 
@@ -58,17 +56,6 @@ export default function MachineUpdateClient({
   // Applications data
   const [applications, setApplications] = useState<Application[]>([]);
 
-  const steps = [
-    { id: 1, title: "Informações da Máquina", icon: ImgServerNew },
-    { id: 2, title: "Aplicações", icon: Layers },
-    { id: 3, title: "Revisão & Edição", icon: Settings },
-  ];
-
-  const currentStep = useMemo(
-    () => steps.find((s) => s.id === activeStep),
-    [activeStep, steps]
-  );
-
   // === LÓGICA DE CARREGAMENTO DOS DADOS DO BANCO DE DADOS ===
   useEffect(() => {
     async function fetchMachineData() {
@@ -99,59 +86,48 @@ export default function MachineUpdateClient({
     fetchMachineData();
   }, [machineId]);
 
+  
   // === LÓGICA DE ATUALIZAÇÃO DOS DADOS NO BANCO DE DADOS ===
   const handleUpdate = async () => {
     setIsSaving(true);
     setMessage(null);
 
     try {
-      if (!editingMachine.id) {
-        setMessage("ID da máquina é necessário para a atualização.");
-        setIsSaving(false);
-        return;
-      }
+        if (!editingMachine.id) {
+            setMessage("ID da máquina é necessário para a atualização.");
+            setIsSaving(false);
+            return;
+        }
 
-      const machineToUpdate = {
-        ...editingMachine,
-        applications: applications.map((app) => ({
-          ...app,
-          services: app.services,
-        })),
-      } as Machines;
+        const machineToUpdate = {
+            ...editingMachine,
+            applications: applications,
+            updatedAt: new Date().toISOString(),
+        } as Machines;
 
-      // Chama a função da Electron API para atualizar a máquina
-      const success = await window.electronAPI.updateMachine(machineToUpdate);
+        console.log("Sincronizando máquina completa:", machineToUpdate);
 
-      // Mock para demonstração:
-      // const success = await new Promise<boolean>((resolve) => {
-      //   setTimeout(() => resolve(true), 2000);
-      // });
-
-      if (success) {
-        setMessage("Máquina atualizada com sucesso!");
-        setTimeout(() => {
-          router.push("/");
-        }, 2000);
-      } else {
-        setMessage("A atualização falhou. Tente novamente.");
-      }
+        // Chama o NOVO IPC Handler
+        const result = await window.electronAPI.syncMachineComplete(machineToUpdate);
+        
+        if (result.success) {
+            setMessage("Máquina, aplicações e serviços atualizados com sucesso!");
+            setTimeout(() => {
+                router.push("/");
+            }, 2000);
+        } else {
+            setMessage(`Erro ao atualizar: ${result.message}`);
+        }
     } catch (error) {
-      console.error("Erro ao atualizar máquina:", error);
-      setMessage("Erro ao atualizar a máquina. Tente novamente.");
+        console.error("Erro ao sincronizar máquina:", error);
+        setMessage("Erro ao sincronizar a máquina. Tente novamente.");
     } finally {
-      setIsSaving(false);
+        setIsSaving(false);
     }
-  };
-
+};
+    
   const handleMachineChange = (updatedMachine: Partial<Machines>) => {
     setEditingMachine(updatedMachine);
-  };
-
-  const handleDateChange = (date: Date | undefined) => {
-    setEditingMachine((prev) => ({
-      ...prev,
-      updatedAt: date ? date.toISOString() : new Date().toISOString(),
-    }));
   };
 
   const handleNextStep = () => {

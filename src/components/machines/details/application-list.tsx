@@ -1,17 +1,17 @@
 // src/components/machines/application-list.tsx
 "use client";
 
-import React, { useState } from "react";
-import { Layers, SquarePen, Trash2 } from "lucide-react";
+import React, { useState, useCallback } from "react";
+import { Layers, SquarePen, Trash2, Plus } from "lucide-react";
 import type { Application as AppType } from "@/types/machines";
 import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
 import ApplicationEditModal from "../modals/application-edit-modal";
-//import { ApplicationEditModal } from "../modals/application-edit-modal_OLD";
-
 
 
 interface ApplicationListProps {
-    machine:{
+    machine: {
+        id: string;
         name: string;
         system: string;
         description: string;
@@ -24,14 +24,24 @@ interface ApplicationListProps {
     })[];
     onSelectApp?: (name: string) => void;
     selectedApp?: string;
+    onApplicationsUpdated?: (applications: AppType[]) => void; // Callback para notificar mudanças
 }
 
-export function ApplicationList({ machine, applications, onSelectApp, selectedApp }: ApplicationListProps) {
+export function ApplicationList({ 
+    machine, 
+    applications, 
+    onSelectApp, 
+    selectedApp,
+    onApplicationsUpdated 
+}: ApplicationListProps) {
     const [searchQuery, setSearchQuery] = useState("");
     const [statusFilter, setStatusFilter] = useState<string>("");
     const [hoveredAppId, setHoveredAppId] = useState<string | null>(null);
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+    const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
     const [selectedApplication, setSelectedApplication] = useState<AppType | null>(null);
+    const [message, setMessage] = useState<string | null>(null);
+    const [isLoading, setIsLoading] = useState(false);
 
     const filteredApplications = applications.filter((app) => {
         const matchesName = app.name.toLowerCase().includes(searchQuery.toLowerCase());
@@ -39,11 +49,129 @@ export function ApplicationList({ machine, applications, onSelectApp, selectedAp
         return matchesName && matchesStatus;
     });
 
-    const handleApplicationUpdated = () => {
-        setIsEditModalOpen(false);
+    // Função para criar nova aplicação
+    const handleCreateApplication = useCallback(async (newApplication: AppType) => {
+        setIsLoading(true);
+        setMessage(null);
+
+        try {
+            // Adicionar machine_id à aplicação
+            const applicationToCreate = {
+                ...newApplication,
+                machine_id: machine.id,
+                id: `app-${Date.now()}`, // Gerar ID temporário
+            };
+
+            console.log("Criando nova aplicação:", applicationToCreate);
+
+            // Chamar API do Electron para criar aplicação
+            const result = await window.electronAPI.createApplication(applicationToCreate);
+            
+            if (result.success) {
+                setMessage("Aplicação criada com sucesso!");
+                
+                // Atualizar lista local
+                const updatedApplications = [...applications, applicationToCreate];
+                onApplicationsUpdated?.(updatedApplications);
+                
+                setIsCreateModalOpen(false);
+                
+                // Limpar mensagem após 3 segundos
+                setTimeout(() => setMessage(null), 3000);
+            } else {
+                setMessage(`Erro ao criar aplicação: ${result.message}`);
+            }
+        } catch (error) {
+            console.error("Erro ao criar aplicação:", error);
+            setMessage("Erro ao criar aplicação. Tente novamente.");
+        } finally {
+            setIsLoading(false);
+        }
+    }, [machine.id, applications, onApplicationsUpdated]);
+
+    // Função para atualizar aplicação existente
+    const handleUpdateApplication = useCallback(async (updatedApplication: AppType) => {
+        setIsLoading(true);
+        setMessage(null);
+
+        try {
+            console.log("Atualizando aplicação:", updatedApplication);
+
+            // Chamar API do Electron para atualizar aplicação
+            const result = await window.electronAPI.updateApplication(updatedApplication);
+            
+            if (result.success) {
+                setMessage("Aplicação atualizada com sucesso!");
+                
+                // Atualizar lista local
+                const updatedApplications = applications.map(app =>
+                    app.id === updatedApplication.id ? updatedApplication : app
+                );
+                onApplicationsUpdated?.(updatedApplications);
+                
+                setIsEditModalOpen(false);
+                setSelectedApplication(null);
+                
+                // Limpar mensagem após 3 segundos
+                setTimeout(() => setMessage(null), 3000);
+            } else {
+                setMessage(`Erro ao atualizar aplicação: ${result.message}`);
+            }
+        } catch (error) {
+            console.error("Erro ao atualizar aplicação:", error);
+            setMessage("Erro ao atualizar aplicação. Tente novamente.");
+        } finally {
+            setIsLoading(false);
+        }
+    }, [applications, onApplicationsUpdated]);
+
+    // Função para deletar aplicação
+    const handleDeleteApplication = useCallback(async (applicationId: string) => {
+        if (!confirm("Tem certeza que deseja excluir esta aplicação?")) return;
+
+        setIsLoading(true);
+        setMessage(null);
+
+        try {
+            console.log("Deletando aplicação:", applicationId);
+
+            // Chamar API do Electron para deletar aplicação
+            const result = await window.electronAPI.deleteApplication(applicationId);
+            
+            if (result.success) {
+                setMessage("Aplicação excluída com sucesso!");
+                
+                // Atualizar lista local
+                const updatedApplications = applications.filter(app => app.id !== applicationId);
+                onApplicationsUpdated?.(updatedApplications);
+                
+                // Limpar mensagem após 3 segundos
+                setTimeout(() => setMessage(null), 3000);
+            } else {
+                setMessage(`Erro ao excluir aplicação: ${result.message}`);
+            }
+        } catch (error) {
+            console.error("Erro ao excluir aplicação:", error);
+            setMessage("Erro ao excluir aplicação. Tente novamente.");
+        } finally {
+            setIsLoading(false);
+        }
+    }, [applications, onApplicationsUpdated]);
+
+    const handleEditClick = (app: AppType) => {
+        setSelectedApplication(app);
+        setIsEditModalOpen(true);
+    };
+
+    const handleCreateClick = () => {
         setSelectedApplication(null);
-        // Lógica para recarregar a lista de aplicações no componente pai
-        // Isso pode ser feito chamando uma função passada via props, se necessário.
+        setIsCreateModalOpen(true);
+    };
+
+    const handleCloseModals = () => {
+        setIsEditModalOpen(false);
+        setIsCreateModalOpen(false);
+        setSelectedApplication(null);
     };
     
     return (
@@ -54,9 +182,20 @@ export function ApplicationList({ machine, applications, onSelectApp, selectedAp
                         <Layers size={20} className="text-gray-400" />
                         Aplicações
                     </h2>
-                    <span className="text-xs text-gray-400 font-normal">
-                        total {filteredApplications.length}
-                    </span>
+                    <div className="flex items-center gap-2">
+                        <span className="text-xs text-gray-400 font-normal">
+                            total {filteredApplications.length}
+                        </span>
+                        <Button
+                            onClick={handleCreateClick}
+                            size="sm"
+                            className="bg-blue-600/50 hover:bg-blue-700 text-xs h-7 px-2 cursor-pointer"
+                            disabled={isLoading}
+                        >
+                            <Plus size={12} className="mr-1" />
+                            Nova
+                        </Button>
+                    </div>
                 </div>
                 <div className="flex gap-2">
                     <input
@@ -65,12 +204,14 @@ export function ApplicationList({ machine, applications, onSelectApp, selectedAp
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                         className="bg-[#23232B] text-white text-xs px-2 py-1 rounded w-full outline-none border border-[#23232B] focus:border-gray-600 transition"
+                        disabled={isLoading}
                     />
                     <select
                         aria-label="Filtrar por status"
                         value={statusFilter}
                         onChange={(e) => setStatusFilter(e.target.value)}
                         className="bg-[#23232B] text-white text-xs px-2 py-1 rounded outline-none border border-[#23232B] focus:border-gray-600 transition"
+                        disabled={isLoading}
                     >
                         <option value="">Todos</option>
                         <option value="Concluida">Concluídos</option>
@@ -79,14 +220,38 @@ export function ApplicationList({ machine, applications, onSelectApp, selectedAp
                     </select>
                 </div>
             </div>
+
+            {/* Mensagem de feedback */}
+            {message && (
+                <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    className={`mb-4 p-2 rounded text-xs ${
+                        message.includes("Erro")
+                            ? "bg-red-500/20 text-red-400 border border-red-500/30"
+                            : "bg-green-500/20 text-green-400 border border-green-500/30"
+                    }`}
+                >
+                    {message}
+                </motion.div>
+            )}
+
             <ul className="space-y-2 max-h-[calc(100vh-190px)] overflow-y-auto pr-1 custom-scrollbar mb-4">
+                {isLoading && (
+                    <div className="text-center py-4 text-gray-400 text-xs">
+                        Processando...
+                    </div>
+                )}
                 {filteredApplications.map((app, index) => (
                     <li
                         key={index}
-                        className={`mb-2 cursor-pointer rounded p-2 hover:bg-[#23232B] transition ${selectedApp === app.name ? "bg-[#23232B]" : ""} relative`}
-                        onMouseEnter={() => setHoveredAppId(app.name)}
+                        className={`mb-2 cursor-pointer rounded p-2 hover:bg-[#23232B] transition ${
+                            selectedApp === app.name ? "bg-[#23232B]" : ""
+                        } relative ${isLoading ? "opacity-50" : ""}`}
+                        onMouseEnter={() => !isLoading && setHoveredAppId(app.name)}
                         onMouseLeave={() => setHoveredAppId(null)}
-                        onClick={() => onSelectApp && onSelectApp(app.name)}
+                        onClick={() => !isLoading && onSelectApp && onSelectApp(app.name)}
                     >
                         <div className="flex justify-between items-center mb-1 pr-5">
                             <span className="text-white font-normal text-xs truncate max-w-[500px]">
@@ -104,7 +269,7 @@ export function ApplicationList({ machine, applications, onSelectApp, selectedAp
                                 />
                             </div>
                         </div>
-                        {hoveredAppId === app.name && (
+                        {hoveredAppId === app.name && !isLoading && (
                             <motion.div
                                 initial={{ opacity: 0, x: 10 }}
                                 animate={{ opacity: 1, x: 0 }}
@@ -115,8 +280,7 @@ export function ApplicationList({ machine, applications, onSelectApp, selectedAp
                                 <button
                                     onClick={(e) => {
                                         e.stopPropagation();
-                                        setSelectedApplication(app);
-                                        setIsEditModalOpen(true);
+                                        handleEditClick(app);
                                     }}
                                     className="cursor-pointer"
                                     aria-label="Editar aplicação"
@@ -126,7 +290,7 @@ export function ApplicationList({ machine, applications, onSelectApp, selectedAp
                                 <button
                                     onClick={(e) => {
                                         e.stopPropagation();
-                                        alert('Deletar aplicação');
+                                        handleDeleteApplication(app.id);
                                     }}
                                     className="cursor-pointer"
                                     aria-label="Deletar aplicação"
@@ -139,13 +303,27 @@ export function ApplicationList({ machine, applications, onSelectApp, selectedAp
                 ))}
             </ul>
 
+            {/* Modal de Edição */}
             {isEditModalOpen && selectedApplication && (
                 <ApplicationEditModal
                     application={selectedApplication}
                     mode="edit"
-                    onSave={handleApplicationUpdated}
-                    onClose={() => setIsEditModalOpen(false)}
+                    onSave={handleUpdateApplication}
+                    onClose={handleCloseModals}
                     isOpen={isEditModalOpen}
+                    isLoading={isLoading}
+                />
+            )}
+
+            {/* Modal de Criação */}
+            {isCreateModalOpen && (
+                <ApplicationEditModal
+                    application={null}
+                    mode="create"
+                    onSave={handleCreateApplication}
+                    onClose={handleCloseModals}
+                    isOpen={isCreateModalOpen}
+                    isLoading={isLoading}
                 />
             )}
         </div>

@@ -1,52 +1,52 @@
-// electron/main.ts
 import { app, BrowserWindow, ipcMain, Menu, screen } from 'electron';
 import path from 'path';
-import { 
-    // Machine functions
-    getAllMachines, 
-    getMachineById, 
+import {
+    getAllMachines,
+    getMachineById,
     updateMachineInDb,
     createMachineInDb,
-    deleteMachineFromDb,
-    // Application functions
+    deleteMachineComplete,
+    syncMachineCompleteInDb,
+} from '../src/server/repositories/machine-repository';
+
+import {
     getApplicationById,
     getAllApplications,
     getApplicationsByMachineId,
     getApplicationWithMachineInfo,
     updateApplicationInDb,
     createApplicationInDb,
-    deleteApplicationFromDb,
-    // Service functions
+    syncApplicationInDb,
+    deleteApplicationAndServices,
+} from '../src/server/repositories/application-repository';
+
+import {
     getServicesByApplicationId,
     getServiceById,
     updateServiceInDb,
     createServiceInDb,
     deleteServiceFromDb,
-    updateServiceStatus
-} from './machine-repository';
-import type { Machines, Application, Service } from '../src/types/machines';
+    updateServiceStatus,
+} from '../src/server/repositories/service-repository';
 
+import type { Machines, Application, Service } from '../src/types/machines';
 
 // ========================
 // WINDOW MANAGEMENT
 // ========================
 
 function createWindow() {
-    // Pega a tela principal
     const primaryDisplay = screen.getPrimaryDisplay();
     const { width: screenWidth } = primaryDisplay.workAreaSize;
 
-    // Define tamanho base dependendo da resolução
     let winWidth = 1280;
     let winHeight = 832;
 
-    // Se tela >= Full HD, abre maior
     if (screenWidth >= 1920) {
         winWidth = 1600;
         winHeight = 900;
     }
 
-    // Se tela >= 4K, abre em uma proporção confortável (não tela cheia)
     if (screenWidth >= 3840) {
         winWidth = 1920;
         winHeight = 1080;
@@ -65,10 +65,7 @@ function createWindow() {
         },
     });
 
-    // Centraliza a janela
     win.center();
-
-    // Remove o menu padrão
     win.removeMenu();
 
     const startUrl = app.isPackaged
@@ -83,7 +80,6 @@ function createWindow() {
     createDevMenu(win);
 }
 
-// Função que cria o menu de desenvolvimento (apenas em modo dev)
 function createDevMenu(win: BrowserWindow) {
     if (!app.isPackaged) {
         const template = [
@@ -104,9 +100,31 @@ function createDevMenu(win: BrowserWindow) {
 }
 
 // ========================
+// HELPER FUNCTIONS FOR CONSISTENT ERROR HANDLING
+// ========================
+
+const createSuccessResponse = (message: string, data?: any) => ({
+    success: true,
+    message,
+    ...(data && { data })
+});
+
+const createErrorResponse = (message: string, error?: any) => {
+    if (error) {
+        console.error(message, error);
+    }
+    const errorMessage = error instanceof Error ? error.message : 'Erro desconhecido';
+    return {
+        success: false,
+        message: error ? `${message}: ${errorMessage}` : message
+    };
+};
+
+// ========================
 // IPC HANDLERS - MACHINES
 // ========================
 
+// Buscar todas as máquinas
 ipcMain.handle('get-all-machines', async () => {
     try {
         return getAllMachines();
@@ -116,6 +134,7 @@ ipcMain.handle('get-all-machines', async () => {
     }
 });
 
+// Buscar máquina por ID
 ipcMain.handle('get-machine-by-id', async (event, id: string) => {
     try {
         return getMachineById(id);
@@ -125,49 +144,53 @@ ipcMain.handle('get-machine-by-id', async (event, id: string) => {
     }
 });
 
+// Criar nova máquina
+ipcMain.handle('create-machine', async (event, machine: Machines) => {
+    try {
+        const success = createMachineInDb(machine);
+        return success 
+            ? createSuccessResponse("Máquina criada com sucesso!")
+            : createErrorResponse("Erro ao criar máquina.");
+    } catch (error) {
+        return createErrorResponse("Erro ao criar máquina", error);
+    }
+});
+
+// Atualizar máquina
 ipcMain.handle('update-machine', async (event, machine: Machines) => {
     try {
         const success = updateMachineInDb(machine);
-        return { 
-            success, 
-            message: success ? "Máquina atualizada com sucesso!" : "Nenhuma alteração foi feita." 
-        };
+        return success 
+            ? createSuccessResponse("Máquina atualizada com sucesso!")
+            : createErrorResponse("Nenhuma alteração foi feita.");
     } catch (error) {
-        console.error("Erro ao atualizar a máquina no processo principal:", error);
-        const message = error instanceof Error ? error.message : 'Erro desconhecido.';
-        return { success: false, message: `Erro interno no servidor: ${message}` };
+        return createErrorResponse("Erro ao atualizar máquina", error);
     }
 });
 
-ipcMain.handle('create-machine', async (event, machine: Machines): Promise<{ success: boolean; message: string }> => {
+// Sincronizar máquina completa
+ipcMain.handle('sync-machine-complete', async (event, machine: Machines) => {
     try {
-        console.log('Recebendo máquina para criar:', machine);
-        
-        const success = createMachineInDb(machine);
-        return { 
-            success, 
-            message: success ? "Máquina criada com sucesso!" : "Erro ao criar máquina." 
-        };
+        console.log('Sincronizando máquina completa:', machine.id);
+        const success = syncMachineCompleteInDb(machine);
+        return success 
+            ? createSuccessResponse("Máquina sincronizada com sucesso!")
+            : createErrorResponse("Erro ao sincronizar máquina.");
     } catch (error) {
-        console.error("Erro ao criar máquina:", error);
-        const message = error instanceof Error ? error.message : 'Erro desconhecido.';
-        return { success: false, message: `Erro interno: ${message}` };
+        return createErrorResponse("Erro ao sincronizar máquina completa", error);
     }
 });
 
-ipcMain.handle('delete-machine', async (event, machineId: string): Promise<{ success: boolean; message: string }> => {
+// Deletar máquina
+ipcMain.handle('delete-machine', async (event, machineId: string) => {
     try {
         console.log('Deletando máquina ID:', machineId);
-        
-        const success = deleteMachineFromDb(machineId);
-        return { 
-            success, 
-            message: success ? "Máquina deletada com sucesso!" : "Erro ao deletar máquina ou máquina não encontrada." 
-        };
+        const success = deleteMachineComplete(machineId);
+        return success 
+            ? createSuccessResponse("Máquina deletada com sucesso!")
+            : createErrorResponse("Erro ao deletar máquina ou máquina não encontrada.");
     } catch (error) {
-        console.error("Erro ao deletar máquina:", error);
-        const message = error instanceof Error ? error.message : 'Erro desconhecido.';
-        return { success: false, message: `Erro interno: ${message}` };
+        return createErrorResponse("Erro ao deletar máquina", error);
     }
 });
 
@@ -175,7 +198,18 @@ ipcMain.handle('delete-machine', async (event, machineId: string): Promise<{ suc
 // IPC HANDLERS - APPLICATIONS
 // ========================
 
-ipcMain.handle('get-application-by-id', async (event, applicationId: string): Promise<Application | null> => {
+// Buscar todas as aplicações
+ipcMain.handle('get-all-applications', async () => {
+    try {
+        return getAllApplications();
+    } catch (error) {
+        console.error('Erro ao buscar todas as aplicações:', error);
+        return [];
+    }
+});
+
+// Buscar aplicação por ID
+ipcMain.handle('get-application-by-id', async (event, applicationId: string) => {
     try {
         const application = getApplicationById(applicationId);
         return application || null;
@@ -185,34 +219,8 @@ ipcMain.handle('get-application-by-id', async (event, applicationId: string): Pr
     }
 });
 
-ipcMain.handle('update-application', async (event, updatedApplication: Application): Promise<{ success: boolean; message: string }> => {
-    try {
-        // Atualiza o timestamp (cria uma cópia do objeto para evitar atribuir propriedades que não existem no tipo Application)
-        const now = new Date().toISOString();
-        const applicationToUpdate = { ...updatedApplication, updatedAt: now };
-        
-        const success = updateApplicationInDb(applicationToUpdate);
-        return { 
-            success, 
-            message: success ? "Aplicação atualizada com sucesso!" : "Erro ao atualizar aplicação." 
-        };
-    } catch (error) {
-        console.error('Erro ao atualizar aplicação:', error);
-        const message = error instanceof Error ? error.message : 'Erro desconhecido';
-        return { success: false, message: `Erro interno: ${message}` };
-    }
-});
-
-ipcMain.handle('get-all-applications', async (): Promise<Application[]> => {
-    try {
-        return getAllApplications();
-    } catch (error) {
-        console.error('Erro ao buscar todas as aplicações:', error);
-        return [];
-    }
-});
-
-ipcMain.handle('get-applications-by-machine-id', async (event, machineId: string): Promise<Application[]> => {
+// Buscar aplicações por ID da máquina
+ipcMain.handle('get-applications-by-machine', async (event, machineId: string) => {
     try {
         return getApplicationsByMachineId(machineId);
     } catch (error) {
@@ -221,7 +229,8 @@ ipcMain.handle('get-applications-by-machine-id', async (event, machineId: string
     }
 });
 
-ipcMain.handle('get-application-with-machine-info', async (event, applicationId: string): Promise<{application: Application, machine: Machines} | null> => {
+// Buscar aplicação com informações da máquina
+ipcMain.handle('get-application-with-machine-info', async (event, applicationId: string) => {
     try {
         const result = getApplicationWithMachineInfo(applicationId);
         return result || null;
@@ -231,36 +240,108 @@ ipcMain.handle('get-application-with-machine-info', async (event, applicationId:
     }
 });
 
-ipcMain.handle('create-application', async (event, newApplication: Application): Promise<{ success: boolean; message: string }> => {
+// Criar nova aplicação
+ipcMain.handle('create-application', async (event, application: Application) => {
     try {
-        // Define timestamps
-        const now = new Date().toISOString();
-        // Create a new object merging the incoming application and a timestamp without mutating the typed parameter
-        const applicationToCreate = { ...newApplication, updatedAt: now } as unknown as Application;
+        console.log('Criando nova aplicação:', application);
         
-        const success = createApplicationInDb(applicationToCreate);
-        return { 
-            success, 
-            message: success ? "Aplicação criada com sucesso!" : "Erro ao criar aplicação." 
+        // Gerar ID se não existir
+        if (!application.id) {
+            application.id = `app-${Date.now()}`;
+        }
+
+        // Validação básica
+        if (!application.name || !application.machine_id) {
+            return createErrorResponse('Nome da aplicação e ID da máquina são obrigatórios');
+        }
+
+        const applicationToCreate = { 
+            ...application, 
+            updatedAt: new Date().toISOString() 
         };
+
+        const success = createApplicationInDb(applicationToCreate);
+        
+        if (success) {
+            // Buscar a aplicação criada para retornar os dados completos
+            const createdApp = getApplicationById(application.id);
+            return createSuccessResponse("Aplicação criada com sucesso!", createdApp);
+        } else {
+            return createErrorResponse("Erro ao criar aplicação no banco de dados");
+        }
     } catch (error) {
-        console.error('Erro ao criar aplicação:', error);
-        const message = error instanceof Error ? error.message : 'Erro desconhecido';
-        return { success: false, message: `Erro interno: ${message}` };
+        return createErrorResponse("Erro ao criar aplicação", error);
     }
 });
 
-ipcMain.handle('delete-application', async (event, applicationId: string): Promise<{ success: boolean; message: string }> => {
+// Atualizar aplicação
+ipcMain.handle('update-application', async (event, application: Application) => {
     try {
-        const success = deleteApplicationFromDb(applicationId);
-        return { 
-            success, 
-            message: success ? "Aplicação deletada com sucesso!" : "Erro ao deletar aplicação." 
+        console.log('Atualizando aplicação:', application);
+
+        if (!application.id) {
+            return createErrorResponse('ID da aplicação é obrigatório para atualização');
+        }
+
+        // Verificar se a aplicação existe
+        const existingApp = getApplicationById(application.id);
+        if (!existingApp) {
+            return createErrorResponse('Aplicação não encontrada');
+        }
+
+        const applicationToUpdate = { 
+            ...application, 
+            updatedAt: new Date().toISOString() 
         };
+
+        const success = updateApplicationInDb(applicationToUpdate);
+        
+        if (success) {
+            // Buscar a aplicação atualizada para retornar os dados completos
+            const updatedApp = getApplicationById(application.id);
+            return createSuccessResponse("Aplicação atualizada com sucesso!", updatedApp);
+        } else {
+            return createErrorResponse("Erro ao atualizar aplicação no banco de dados");
+        }
     } catch (error) {
-        console.error('Erro ao deletar aplicação:', error);
-        const message = error instanceof Error ? error.message : 'Erro desconhecido';
-        return { success: false, message: `Erro interno: ${message}` };
+        return createErrorResponse("Erro ao atualizar aplicação", error);
+    }
+});
+
+// Sincronizar aplicação
+ipcMain.handle('sync-application', async (event, application: Application) => {
+    try {
+        const success = syncApplicationInDb(application);
+        return success 
+            ? createSuccessResponse("Aplicação sincronizada com sucesso!")
+            : createErrorResponse("Erro ao sincronizar aplicação.");
+    } catch (error) {
+        return createErrorResponse("Erro ao sincronizar aplicação", error);
+    }
+});
+
+// Deletar aplicação
+ipcMain.handle('delete-application', async (event, applicationId: string) => {
+    try {
+        console.log('Deletando aplicação ID:', applicationId);
+
+        if (!applicationId) {
+            return createErrorResponse('ID da aplicação é obrigatório');
+        }
+
+        // Verificar se a aplicação existe
+        const existingApp = getApplicationById(applicationId);
+        if (!existingApp) {
+            return createErrorResponse('Aplicação não encontrada');
+        }
+
+        const success = deleteApplicationAndServices(applicationId);
+        
+        return success 
+            ? createSuccessResponse("Aplicação excluída com sucesso!")
+            : createErrorResponse("Erro ao excluir aplicação do banco de dados");
+    } catch (error) {
+        return createErrorResponse("Erro ao excluir aplicação", error);
     }
 });
 
@@ -268,7 +349,8 @@ ipcMain.handle('delete-application', async (event, applicationId: string): Promi
 // IPC HANDLERS - SERVICES
 // ========================
 
-ipcMain.handle('get-services-by-application-id', async (event, applicationId: string): Promise<Service[]> => {
+// Buscar serviços por ID da aplicação
+ipcMain.handle('get-services-by-application', async (event, applicationId: string) => {
     try {
         return getServicesByApplicationId(applicationId);
     } catch (error) {
@@ -277,7 +359,8 @@ ipcMain.handle('get-services-by-application-id', async (event, applicationId: st
     }
 });
 
-ipcMain.handle('get-service-by-id', async (event, serviceId: string): Promise<Service | null> => {
+// Buscar serviço por ID
+ipcMain.handle('get-service-by-id', async (event, serviceId: string) => {
     try {
         const service = getServiceById(serviceId);
         return service || null;
@@ -287,66 +370,184 @@ ipcMain.handle('get-service-by-id', async (event, serviceId: string): Promise<Se
     }
 });
 
-ipcMain.handle('update-service', async (event, updatedService: Service): Promise<{ success: boolean; message: string }> => {
+// Criar novo serviço
+ipcMain.handle('create-service', async (event, service: Service) => {
     try {
-        // Atualiza o timestamp
-        updatedService.updatedAt = new Date().toISOString();
-        
-        const success = updateServiceInDb(updatedService);
-        return { 
-            success, 
-            message: success ? "Serviço atualizado com sucesso!" : "Erro ao atualizar serviço." 
+        console.log('Criando novo serviço:', service);
+
+        // Gerar ID se não existir
+        if (!service.id) {
+            service.id = `service-${Date.now()}`;
+        }
+
+        if (!service.name || !service.application_id) {
+            return createErrorResponse('Nome do serviço e ID da aplicação são obrigatórios');
+        }
+
+        // Verificar se a aplicação existe
+        const existingApp = getApplicationById(service.application_id);
+        if (!existingApp) {
+            return createErrorResponse('Aplicação não encontrada');
+        }
+
+        const serviceToCreate = {
+            ...service,
+            updatedAt: new Date().toISOString()
         };
+
+        const success = createServiceInDb(serviceToCreate, service.application_id);
+        
+        if (success) {
+            // Buscar o serviço criado para retornar os dados completos
+            const createdService = getServiceById(service.id);
+            return createSuccessResponse("Serviço criado com sucesso!", createdService);
+        } else {
+            return createErrorResponse("Erro ao criar serviço no banco de dados");
+        }
     } catch (error) {
-        console.error('Erro ao atualizar serviço:', error);
-        const message = error instanceof Error ? error.message : 'Erro desconhecido';
-        return { success: false, message: `Erro interno: ${message}` };
+        return createErrorResponse("Erro ao criar serviço", error);
     }
 });
 
-ipcMain.handle('create-service', async (event, newService: Service, applicationId: string): Promise<{ success: boolean; message: string }> => {
+// Atualizar serviço
+ipcMain.handle('update-service', async (event, service: Service) => {
     try {
-        // Define timestamps
-        const now = new Date().toISOString();
-        newService.updatedAt = now;
-        
-        const success = createServiceInDb(newService, applicationId);
-        return { 
-            success, 
-            message: success ? "Serviço criado com sucesso!" : "Erro ao criar serviço." 
+        console.log('Atualizando serviço:', service);
+
+        if (!service.id) {
+            return createErrorResponse('ID do serviço é obrigatório para atualização');
+        }
+
+        // Verificar se o serviço existe
+        const existingService = getServiceById(service.id);
+        if (!existingService) {
+            return createErrorResponse('Serviço não encontrado');
+        }
+
+        const serviceToUpdate = {
+            ...service,
+            updatedAt: new Date().toISOString()
         };
+
+        const success = updateServiceInDb(serviceToUpdate);
+        
+        if (success) {
+            // Buscar o serviço atualizado para retornar os dados completos
+            const updatedService = getServiceById(service.id);
+            return createSuccessResponse("Serviço atualizado com sucesso!", updatedService);
+        } else {
+            return createErrorResponse("Erro ao atualizar serviço no banco de dados");
+        }
     } catch (error) {
-        console.error('Erro ao criar serviço:', error);
-        const message = error instanceof Error ? error.message : 'Erro desconhecido';
-        return { success: false, message: `Erro interno: ${message}` };
+        return createErrorResponse("Erro ao atualizar serviço", error);
     }
 });
 
-ipcMain.handle('delete-service', async (event, serviceId: string): Promise<{ success: boolean; message: string }> => {
+// Deletar serviço
+ipcMain.handle('delete-service', async (event, serviceId: string) => {
     try {
+        console.log('Deletando serviço:', serviceId);
+
+        if (!serviceId) {
+            return createErrorResponse('ID do serviço é obrigatório');
+        }
+
+        // Verificar se o serviço existe
+        const existingService = getServiceById(serviceId);
+        if (!existingService) {
+            return createErrorResponse('Serviço não encontrado');
+        }
+
         const success = deleteServiceFromDb(serviceId);
-        return { 
-            success, 
-            message: success ? "Serviço deletado com sucesso!" : "Erro ao deletar serviço." 
-        };
+        
+        return success 
+            ? createSuccessResponse("Serviço excluído com sucesso!")
+            : createErrorResponse("Erro ao excluir serviço do banco de dados");
     } catch (error) {
-        console.error('Erro ao deletar serviço:', error);
-        const message = error instanceof Error ? error.message : 'Erro desconhecido';
-        return { success: false, message: `Erro interno: ${message}` };
+        return createErrorResponse("Erro ao excluir serviço", error);
     }
 });
 
-ipcMain.handle('update-service-status', async (event, serviceId: string, newStatus: 'Concluida' | 'Pendente' | 'Em andamento'): Promise<{ success: boolean; message: string }> => {
+// Atualizar apenas o status do serviço
+ipcMain.handle('update-service-status', async (event, serviceId: string, newStatus: 'Concluida' | 'Pendente' | 'Em andamento') => {
     try {
+        console.log('Atualizando status do serviço:', serviceId, 'para:', newStatus);
+
+        if (!serviceId) {
+            return createErrorResponse('ID do serviço é obrigatório');
+        }
+
+        // Verificar se o serviço existe
+        const existingService = getServiceById(serviceId);
+        if (!existingService) {
+            return createErrorResponse('Serviço não encontrado');
+        }
+
         const success = updateServiceStatus(serviceId, newStatus);
+        
+        return success 
+            ? createSuccessResponse("Status do serviço atualizado com sucesso!")
+            : createErrorResponse("Erro ao atualizar status do serviço.");
+    } catch (error) {
+        return createErrorResponse("Erro ao atualizar status do serviço", error);
+    }
+});
+
+// ========================
+// ADDITIONAL UTILITY HANDLERS
+// ========================
+
+// Handler para estatísticas de uma aplicação
+ipcMain.handle('get-application-stats', async (event, applicationId: string) => {
+    try {
+        const services = getServicesByApplicationId(applicationId);
+        
+        const stats = {
+            totalServices: services.length,
+            completedServices: services.filter(s => s.status === 'Concluida').length,
+            pendingServices: services.filter(s => s.status === 'Pendente').length,
+            inProgressServices: services.filter(s => s.status === 'Em andamento').length,
+            mandatoryServices: services.filter(s => s.itemObrigatorio === 'Sim').length
+        };
+
+        return stats;
+    } catch (error) {
+        console.error('Erro ao buscar estatísticas da aplicação:', error);
+        return {
+            totalServices: 0,
+            completedServices: 0,
+            pendingServices: 0,
+            inProgressServices: 0,
+            mandatoryServices: 0
+        };
+    }
+});
+
+// Handler para validar uma aplicação
+ipcMain.handle('validate-application', async (event, applicationId: string) => {
+    try {
+        const app = getApplicationById(applicationId);
+        if (!app) {
+            return { valid: false, message: 'Aplicação não encontrada' };
+        }
+
+        if (!app.machine_id) {
+            return { valid: false, message: 'Aplicação não tem máquina associada' };
+        }
+
+        const machine = getMachineById(app.machine_id);
+        if (!machine) {
+            return { valid: false, message: 'Máquina associada não encontrada' };
+        }
+
         return { 
-            success, 
-            message: success ? "Status do serviço atualizado com sucesso!" : "Erro ao atualizar status." 
+            valid: true, 
+            message: 'Aplicação válida',
+            data: { application: app, machine }
         };
     } catch (error) {
-        console.error('Erro ao atualizar status do serviço:', error);
-        const message = error instanceof Error ? error.message : 'Erro desconhecido';
-        return { success: false, message: `Erro interno: ${message}` };
+        console.error('Erro no handler validate-application:', error);
+        return { valid: false, message: 'Erro na validação' };
     }
 });
 

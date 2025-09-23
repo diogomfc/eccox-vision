@@ -2,10 +2,10 @@
 
 "use client";
 
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useCallback } from 'react';
 
 import { motion } from "framer-motion";
-import type { Machines} from "@/types/machines";
+import type { Machines, Application, Service } from "@/types/machines";
 import { Loader2 } from "lucide-react";
 import { ApplicationList } from './application-list';
 import { MachineStats } from './machine-stats';
@@ -13,7 +13,7 @@ import { MachineImage } from './machine-image';
 import { ServiceList } from './service-list';
 
 interface MachineDetailsClientProps {
-    machineId: string; // Recebe apenas o ID da máquina
+    machineId: string;
 }
 
 export function MachineDetailsClient({ machineId }: MachineDetailsClientProps) {
@@ -21,7 +21,8 @@ export function MachineDetailsClient({ machineId }: MachineDetailsClientProps) {
     const [isLoading, setIsLoading] = useState(true);
     const [selectedApplicationName, setSelectedApplicationName] = useState("");
 
-    const fetchMachineDetails = async () => {
+    // Função para buscar os detalhes completos da máquina
+    const fetchMachineDetails = useCallback(async () => {
         setIsLoading(true);
         try {
             const fetchedMachine = await window.electronAPI.getMachineById(machineId);
@@ -31,26 +32,50 @@ export function MachineDetailsClient({ machineId }: MachineDetailsClientProps) {
         } finally {
             setIsLoading(false);
         }
-    };
-
-    useEffect(() => {
-        fetchMachineDetails();
     }, [machineId]);
 
+    // Efeito para carregar os dados iniciais da máquina
+    useEffect(() => {
+        fetchMachineDetails();
+    }, [fetchMachineDetails]);
+
+    // Callback para lidar com atualizações nas aplicações
+    const handleApplicationsUpdated = useCallback(() => {
+        // Quando as aplicações são atualizadas (criadas, editadas ou excluídas),
+        // recarregamos a máquina inteira para garantir que o estado seja consistente.
+        fetchMachineDetails();
+    }, [fetchMachineDetails]);
+    
+    // Callback para lidar com atualizações nos serviços
+    const handleServicesUpdated = useCallback((updatedServices: Service[]) => {
+        // Encontra a aplicação selecionada para atualizar sua lista de serviços
+        const updatedMachine = { ...machine! };
+        const appIndex = updatedMachine.applications.findIndex(app => app.name === selectedApplicationName);
+
+        if (appIndex !== -1) {
+            updatedMachine.applications[appIndex].services = updatedServices;
+            setMachine(updatedMachine);
+        }
+        
+        // Embora a atualização local seja rápida, a melhor prática é recarregar
+        // os dados do banco de dados para garantir consistência.
+        fetchMachineDetails();
+    }, [machine, selectedApplicationName, fetchMachineDetails]);
+
+    // Outras lógicas (filtragem, estatísticas, etc.)
     const handleApplicationClick = (appName: string) => {
         setSelectedApplicationName(appName === selectedApplicationName ? "" : appName);
     };
-
+    
     const allServices = useMemo(() => {
         return machine?.applications.flatMap((app) => app.services) || [];
     }, [machine]);
-
+    
     const statsData = useMemo(() => {
         const totalServices = allServices.length;
         const okServices = allServices.filter((service) => service.status === "Concluida").length;
         const pendentes = totalServices - okServices;
         const healthPercentage = totalServices > 0 ? Math.round((okServices / totalServices) * 100) : 0;
-
         return {
             total: totalServices,
             percent: healthPercentage,
@@ -58,7 +83,7 @@ export function MachineDetailsClient({ machineId }: MachineDetailsClientProps) {
             instalados: okServices
         };
     }, [allServices]);
-
+    
     const applicationsList = useMemo(() => {
         return machine?.applications.map(app => {
             const total = app.services.length;
@@ -73,7 +98,7 @@ export function MachineDetailsClient({ machineId }: MachineDetailsClientProps) {
             };
         }) || [];
     }, [machine]);
-
+    
     const mainInfo = useMemo(() => {
         if (!machine) return null;
         return {
@@ -100,7 +125,7 @@ export function MachineDetailsClient({ machineId }: MachineDetailsClientProps) {
             </div>
         );
     }
-
+    
     if (!machine || !mainInfo) {
         return (
             <div className="flex items-center justify-center h-screen">
@@ -119,7 +144,8 @@ export function MachineDetailsClient({ machineId }: MachineDetailsClientProps) {
             >
                 <ApplicationList
                     machine={ 
-                        { 
+                        {   
+                            id: machine.id,
                             name: machine.name, 
                             system: machine.version || "Desconhecido",
                             description: machine.description || "Desconhecido"
@@ -127,7 +153,7 @@ export function MachineDetailsClient({ machineId }: MachineDetailsClientProps) {
                     applications={applicationsList}
                     onSelectApp={handleApplicationClick}
                     selectedApp={selectedApplicationName}
-                    
+                    onApplicationsUpdated={handleApplicationsUpdated}
                 />
             </motion.div>
             <motion.div
@@ -157,7 +183,10 @@ export function MachineDetailsClient({ machineId }: MachineDetailsClientProps) {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
             >
-                <ServiceList services={displayedServices} />
+                <ServiceList 
+                    services={displayedServices} 
+                    onServicesUpdated={handleServicesUpdated}
+                />
             </motion.div>
         </div>
     );

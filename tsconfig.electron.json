@@ -6,7 +6,7 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "outDir": "./electron/dist",
-    "rootDir": ".",
+    "rootDir": "./",
     "lib": [
       "ES2020",
       "DOM"
@@ -15,8 +15,16 @@
       "./node_modules/@types"
     ]
   },
-   "include": [
+  "include": [
     "./electron/**/*",
-    "./src/types/**/*"
+    "./src/types/**/*",
+    "./src/server/repositories/**/*",
+    "./src/server/db.ts"
+  ],
+  "exclude": [
+    "./electron/dist/**/*",
+    "./node_modules",
+    "**/*.spec.ts",
+    "**/*.test.ts"
   ]
 }
