@@ -18,6 +18,8 @@ import ImgServerStatus from '@/assets/images/img-server-status.svg';
 import ImgServerStatusWarning from '@/assets/images/img-server-status-warning.svg';
 import AppStatusOk from '@/assets/images/img-app-status-ok.svg';
 import AppStatusWarning from '@/assets/images/img-app-status-warning.svg';
+import { useRouter } from "next/navigation";
+import { DeleteMachineModal } from "./modals/delete-machine-modal";
 
 export function MachineView() {
     const [machines, setMachines] = useState<Machines[]>([]);
@@ -26,7 +28,14 @@ export function MachineView() {
     const [searchQuery, setSearchQuery] = useState("");
     const [statusFilter, setStatusFilter] = useState<"all" | "Concluida" | "Pendente">("all");
     const [isStatusDropdownOpen, setIsStatusDropdownOpen] = useState(false);
+
+    // Estados do Modal de Deleção - Gerenciados aqui no componente pai
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedMachine, setSelectedMachine] = useState<Machines | null>(null);
+    const [isDeleting, setIsDeleting] = useState(false);
+
     const dropdownRef = useRef<HTMLDivElement>(null);
+    const router = useRouter();
 
     const fetchMachines = async () => {
         setIsLoading(true);
@@ -53,30 +62,31 @@ export function MachineView() {
     }, [machines, searchQuery, statusFilter]);
 
     const statsData = useMemo(() => {
-        const totalMachines = machines.length;
-        const appStats = machines.reduce((acc, machine) => {
-            const okApps = machine.applications?.filter(app => app.status === "Concluida").length || 0;
-            const warningApps = machine.applications?.filter(app => app.status === "Pendente").length || 0;
-            return {
-                okApps: acc.okApps + okApps,
-                warningApps: acc.warningApps + warningApps
-            };
-        }, { okApps: 0, warningApps: 0 });
-    
-        const criticalMachines = machines.filter(machine => {
-            const allServicesInMachine = machine.applications?.flatMap(app => app.services) || [];
-            const totalServices = allServicesInMachine.length;
-            const okServices = allServicesInMachine.filter(service => service.status === "Concluida").length;
-            const percentComplete = totalServices > 0 ? (okServices / totalServices) * 100 : 0;
-            return percentComplete < 50;
-        }).length;
+      // ... (código existente para estatísticas) ...
+      const totalMachines = machines.length;
+      const appStats = machines.reduce((acc, machine) => {
+          const okApps = machine.applications?.filter(app => app.status === "Concluida").length || 0;
+          const warningApps = machine.applications?.filter(app => app.status === "Pendente").length || 0;
+          return {
+              okApps: acc.okApps + okApps,
+              warningApps: acc.warningApps + warningApps
+          };
+      }, { okApps: 0, warningApps: 0 });
+  
+      const criticalMachines = machines.filter(machine => {
+          const allServicesInMachine = machine.applications?.flatMap(app => app.services) || [];
+          const totalServices = allServicesInMachine.length;
+          const okServices = allServicesInMachine.filter(service => service.status === "Concluida").length;
+          const percentComplete = totalServices > 0 ? (okServices / totalServices) * 100 : 0;
+          return percentComplete < 50;
+      }).length;
 
-        return [
-            { title: 'Total de Máquinas', value: totalMachines, description: 'Mainframe monitorados', imageSrc: ImgServerStatus },
-            { title: 'Aplicações instaladas', value: appStats.okApps, description: 'Configuração concluída', imageSrc: AppStatusOk },
-            { title: 'Aplicações pendentes', value: appStats.warningApps, description: 'Aguardando configuração', imageSrc: AppStatusWarning },
-            { title: 'Máquinas críticas', value: criticalMachines, description: 'Menos de 50% completas', imageSrc: ImgServerStatusWarning },
-        ];
+      return [
+          { title: 'Total de Máquinas', value: totalMachines, description: 'Mainframe monitorados', imageSrc: ImgServerStatus },
+          { title: 'Aplicações instaladas', value: appStats.okApps, description: 'Configuração concluída', imageSrc: AppStatusOk },
+          { title: 'Aplicações pendentes', value: appStats.warningApps, description: 'Aguardando configuração', imageSrc: AppStatusWarning },
+          { title: 'Máquinas críticas', value: criticalMachines, description: 'Menos de 50% completas', imageSrc: ImgServerStatusWarning },
+      ];
     }, [machines]);
     
     useEffect(() => {
@@ -93,6 +103,37 @@ export function MachineView() {
       };
     }, [isStatusDropdownOpen]);
 
+    const handleOpenDeleteModal = (machine: Machines) => {
+        setSelectedMachine(machine);
+        setIsModalOpen(true);
+    };
+
+    const handleCloseDeleteModal = () => {
+        setIsModalOpen(false);
+        setSelectedMachine(null);
+    };
+
+    const handleDeleteConfirmed = async (machineId: string) => {
+        setIsDeleting(true);
+        try {
+            const result = await window.electronAPI.deleteMachine(machineId);
+
+            if (result.success) {
+                // Atualização reativa: remove a máquina da lista local
+                setMachines(prevMachines => prevMachines.filter(m => m.id !== machineId));
+                //alert("Máquina deletada com sucesso!");
+            } else {
+                alert(`Erro ao deletar máquina: ${result.message}`);
+            }
+        } catch (error) {
+            console.error('Erro ao deletar a máquina:', error);
+            alert('Ocorreu um erro inesperado ao tentar deletar a máquina.');
+        } finally {
+            setIsDeleting(false);
+            handleCloseDeleteModal();
+        }
+    };
+    
     if (isLoading) {
         return (
             <main className="relative flex flex-col min-h-screen text-gray-100 pt-8 px-6">
@@ -116,7 +157,7 @@ export function MachineView() {
                 {/* Cards */}
                 <StatsClient statsData={statsData} />
                 
-                {/*  Filtros */}
+                {/* Filtros */}
                 <motion.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -153,21 +194,21 @@ export function MachineView() {
                             <div className="absolute top-full right-0 mt-2 w-48 bg-[#1A1A1E] rounded-lg shadow-lg py-1 z-10 border border-[#2B62EC]/10">
                                 <button
                                     onClick={() => { setStatusFilter("all"); setIsStatusDropdownOpen(false); }}
-                                    className="w-full px-4 py-2 text-left text-white hover:bg-[#0F0F10] transition-colors flex items-center gap-2  cursor-pointer"
+                                    className="w-full px-4 py-2 text-left text-white hover:bg-[#0F0F10] transition-colors flex items-center gap-2 cursor-pointer"
                                 >
                                     <div className="w-2 h-2 rounded-full bg-white"></div>
                                     Todos
                                 </button>
                                 <button
                                     onClick={() => { setStatusFilter("Concluida"); setIsStatusDropdownOpen(false); }}
-                                    className="w-full px-4 py-2 text-left text-[#32D583] hover:bg-[#0F0F10] transition-colors flex items-center gap-2  cursor-pointer"
+                                    className="w-full px-4 py-2 text-left text-[#32D583] hover:bg-[#0F0F10] transition-colors flex items-center gap-2 cursor-pointer"
                                 >
                                     <div className="w-2 h-2 rounded-full bg-[#32D583]"></div>
                                     Concluida
                                 </button>
                                 <button
                                     onClick={() => { setStatusFilter("Pendente"); setIsStatusDropdownOpen(false); }}
-                                    className="w-full px-4 py-2 text-left text-[#F04438] hover:bg-[#0F0F10] transition-colors flex items-center gap-2  cursor-pointer"
+                                    className="w-full px-4 py-2 text-left text-[#F04438] hover:bg-[#0F0F10] transition-colors flex items-center gap-2 cursor-pointer"
                                 >
                                     <div className="w-2 h-2 rounded-full bg-[#F04438]"></div>
                                     Pendente
@@ -177,7 +218,7 @@ export function MachineView() {
                         
                         <button
                             onClick={() => setViewMode(viewMode === "list" ? "grid" : "list")}
-                            className="p-2 rounded-lg bg-[#1A1A1E] hover:bg-[#0F0F10] transition-colors  cursor-pointer"
+                            className="p-2 rounded-lg bg-[#1A1A1E] hover:bg-[#0F0F10] transition-colors cursor-pointer"
                             title={viewMode === "list" ? "Visualizar em grade" : "Visualizar em lista"}
                         >
                             {viewMode === "list" ? (
@@ -189,7 +230,7 @@ export function MachineView() {
                     </div>
                 </motion.div>
 
-                 {/* Lista de Máquinas */}
+                {/* Lista de Máquinas */}
                 <div className="flex-1 overflow-y-auto pr-2 pb-15 custom-scrollbar">
                     {filteredMachines.length === 0 ? (
                         <div className="flex flex-col items-center justify-center h-full text-center text-gray-500">
@@ -208,14 +249,30 @@ export function MachineView() {
                             className="space-y-2"
                         >
                             {viewMode === "list" ? (
-                                <MachineList machines={filteredMachines} />
+                                <MachineList
+                                    machines={filteredMachines}
+                                    handleOpenDeleteModal={handleOpenDeleteModal}
+                                />
                             ) : (
-                                <MachineGrid machines={filteredMachines} />
+                                <MachineGrid
+                                    machines={filteredMachines}
+                                    handleOpenDeleteModal={handleOpenDeleteModal}
+                                />
                             )}
                         </motion.div>
                     )}
                 </div>
             </div>
+
+            {/* Modal de Exclusão */}
+            <DeleteMachineModal
+                machine={selectedMachine}
+                isOpen={isModalOpen}
+                onClose={handleCloseDeleteModal}
+                onConfirmDelete={handleDeleteConfirmed}
+                isDeleting={isDeleting}
+            />
+          
         </main>
     );
 }

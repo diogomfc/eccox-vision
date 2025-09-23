@@ -19,9 +19,10 @@ import ImgServerStatusPendente from "@/assets/images/img-server-status-warning.s
 interface MachineListItemProps {
     machine: Machines;
     index: number;
+    onDelete: () => void;
 }
 
-export function MachineListItem({ machine, index }: MachineListItemProps) {
+export function MachineListItem({ machine, index, onDelete }: MachineListItemProps) {
     const router = useRouter();
     const [isPending, startTransition] = useTransition();
     const [isHovered, setIsHovered] = useState(false);
@@ -64,8 +65,7 @@ export function MachineListItem({ machine, index }: MachineListItemProps) {
 
     const handleDeleteClick = (e: React.MouseEvent) => {
         e.stopPropagation();
-        // Aqui você pode implementar a lógica de deleção
-        alert('Deletar máquina');
+        onDelete(); 
     };
 
     return (
