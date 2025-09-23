@@ -4,17 +4,17 @@
   "version": "1.0.0",
   "description": "EccoxVision - Monitoramento e Observabilidade de Serviços e Recursos Mainframe. Aplicação desktop multiplataforma desenvolvida com Electron, Next.js, TailwindCSS e TypeScript.",
   "main": "electron/dist/main.js",
-  "scripts": {
+ "scripts": {
     "dev": "next dev",
     "build:next": "next build",
     "move:out": "node move-out.js",
-    "build:electron": "tsc -p electron/tsconfig.electron.json && node move-assets.js",
+    "build:electron": "tsc -p tsconfig.electron.json && node move-assets.js",
     "dev:electron": "concurrently \"npm run dev\" \"wait-on http://localhost:3000 && cross-env NODE_ENV=development electron electron/dist/main.js\"",
     "rebuild": "electron-rebuild -f -w better-sqlite3",
     "postinstall": "electron-rebuild -f -w better-sqlite3",
     "build:app": "npm run build:next && npm run move:out && npm run build:electron && electron-builder",
-    "db:setup": "ts-node scripts/setup-db.ts",
-    "db:import-mock": "ts-node scripts/import-mock.ts",
+    "db:setup": "python scripts/setup_db.py",
+    "db:import-mock": "python scripts/setup_db.py",
     "build:scripts": "tsc scripts/*.ts --outDir dist/scripts"
   },
   "build": {
@@ -80,6 +80,7 @@
     "fs-extra": "^11.3.0",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.11",
+    "ts-node": "^10.9.2",
     "tw-animate-css": "^1.3.8",
     "typescript": "^5.4.5",
     "wait-on": "^7.0.1"

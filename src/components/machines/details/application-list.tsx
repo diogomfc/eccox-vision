@@ -5,7 +5,8 @@ import React, { useState } from "react";
 import { Layers, SquarePen, Trash2 } from "lucide-react";
 import type { Application as AppType } from "@/types/machines";
 import { motion } from "framer-motion";
-import { ApplicationEditModal } from "../modals/application-edit-modal";
+import ApplicationEditModal from "../modals/application-edit-modal";
+//import { ApplicationEditModal } from "../modals/application-edit-modal_OLD";
 
 
 
@@ -141,11 +142,10 @@ export function ApplicationList({ machine, applications, onSelectApp, selectedAp
             {isEditModalOpen && selectedApplication && (
                 <ApplicationEditModal
                     application={selectedApplication}
-                    machine={
-                     { name: machine.name, system: machine.system, description: machine.description}
-                    }
+                    mode="edit"
+                    onSave={handleApplicationUpdated}
                     onClose={() => setIsEditModalOpen(false)}
-                    onUpdated={handleApplicationUpdated}
+                    isOpen={isEditModalOpen}
                 />
             )}
         </div>

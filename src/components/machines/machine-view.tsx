@@ -2,6 +2,7 @@
 
 "use client";
 
+import Image from "next/image";
 import { useState, useMemo, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { List, Grid, Search, ChevronDown, CaptionsOff, Loader2 } from "lucide-react";
@@ -11,7 +12,7 @@ import { MachineList } from "./list/machine-list";
 import { MachineGrid } from "./grid/machine-grid";
 
 import { StatsClient } from "@/components/overview/stats-client";
-import Image from "next/image";
+
 import BgImage from '@/assets/images/bg-overview.svg';
 import ImgServerStatus from '@/assets/images/img-server-status.svg';
 import ImgServerStatusWarning from '@/assets/images/img-server-status-warning.svg';
@@ -189,7 +190,7 @@ export function MachineView() {
                 </motion.div>
 
                  {/* Lista de Máquinas */}
-                <div className="flex-1 overflow-y-auto pr-2 pb-4 custom-scrollbar">
+                <div className="flex-1 overflow-y-auto pr-2 pb-15 custom-scrollbar">
                     {filteredMachines.length === 0 ? (
                         <div className="flex flex-col items-center justify-center h-full text-center text-gray-500">
                             <CaptionsOff className="w-12 h-12 text-gray-600 mb-4" />

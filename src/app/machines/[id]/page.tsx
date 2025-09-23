@@ -1,13 +1,13 @@
 // src/app/maquinas/[id]/page.tsx
 import { MachineDetailsClient } from "@/components/machines/details/machine-details-client";
-import { mockMachines } from "@/mocks/mockMachines";
+//import { mockMachines } from "@/mocks/mockMachines";
 
 // A função generateStaticParams continua a usar o mock
-export async function generateStaticParams() {
-    return mockMachines.map((machine) => ({
-        id: machine.id,
-    }));
-}
+// export async function generateStaticParams() {
+//     return mockMachines.map((machine) => ({
+//         id: machine.id,
+//     }));
+// }
 
 export default async function MachineDetailsPage({ params }: { params: { id: string } }) {
     const awaitedParams = await params;

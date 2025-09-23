@@ -13,7 +13,9 @@ import {
 } from "@/components/ui/hover-card";
 
 // Importe o novo modal (vamos criar este em seguida)
-import { ServiceEditModal } from "../modals/service-edit-modal";
+import ServiceEditModal from "../modals/service-edit-modal";
+import { format } from "date-fns";
+import { ptBR } from "date-fns/locale";
 
 interface ServiceListProps {
     services: Service[];
@@ -112,7 +114,10 @@ export function ServiceList({ services }: ServiceListProps) {
                                             {service.name}
                                         </span>
                                         <span className="text-xs text-gray-400">
-                                            Data entrega: {service.updatedAt || 'N/A'}
+                                            Data entrega:{" "}
+                                            {service.updatedAt
+                                                ? format(new Date(service.updatedAt), "dd/MM/yy", { locale: ptBR })
+                                                : "N/A"}
                                         </span>
                                     </div>
                                 </div>
@@ -129,7 +134,13 @@ export function ServiceList({ services }: ServiceListProps) {
                                         Item Obrigatório: <span className="font-semibold text-white">{service.itemObrigatorio}</span>
                                     </p>
                                     <p className="text-xs text-gray-400">
-                                        Última Atualização: <span className="font-semibold text-white">{service.updatedAt || 'N/A'}</span>
+                                        Última Atualização: 
+                                        <span className="font-semibold text-white pl-1">
+                                            {service.updatedAt
+                                                ? format(new Date(service.updatedAt), "dd/MM/yyyy 'às' HH:mm", { locale: ptBR })
+                                                : "N/A"
+                                            }
+                                        </span>
                                     </p>
                                     <p className="text-xs text-gray-400">
                                         Responsável: <span className="font-semibold text-white">{service.responsible || 'N/A'}</span>
@@ -185,7 +196,9 @@ export function ServiceList({ services }: ServiceListProps) {
                 <ServiceEditModal
                     service={selectedService}
                     onClose={() => setIsEditModalOpen(false)}
-                    onUpdated={handleServiceUpdated}
+                    isOpen={isEditModalOpen}
+                    onSave={handleServiceUpdated}
+                    mode="edit"
                 />
             )}
         </div>

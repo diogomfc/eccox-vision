@@ -1,7 +1,4 @@
-// scripts/import-mock.ts
-import { Machines } from "@/types/machines";
-
-export const mockMachines: Machines[] = [
+[
     {
         "id": "machine-dallas",
         "name": "Dallas",
@@ -9331,4 +9328,4 @@ export const mockMachines: Machines[] = [
             }
         ]
     }
-] as const;
+]

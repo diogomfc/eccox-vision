@@ -127,6 +127,7 @@ export function MachineDetailsClient({ machineId }: MachineDetailsClientProps) {
                     applications={applicationsList}
                     onSelectApp={handleApplicationClick}
                     selectedApp={selectedApplicationName}
+                    
                 />
             </motion.div>
             <motion.div

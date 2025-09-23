@@ -1,25 +1,6 @@
 export type StatusType = "Concluida" | "Pendente" | "Em andamento";
 export type ApplicationType = "IBM" | "ECCOX"
 export type ItemObrigatorioType = "Sim" | "Não";
-export interface Service {
-  id: string;
-  name: string;
-  status: StatusType;
-  itemObrigatorio: ItemObrigatorioType;
-  updatedAt: string | null;
-  responsible: string;
-  comments: string;
-  typePendencia: string;
-  responsibleHomologacao: string;
-}
-
-export interface Application {
-  id: string;
-  name: string;
-  status: StatusType;
-  tipo: ApplicationType;
-  services: Service[];
-}
 
 export interface Machines {
   id: string;
@@ -27,6 +8,29 @@ export interface Machines {
   description: string;
   version: string;
   status: StatusType;
+  updatedAt: string;
   applications: Application[];
-  updatedAt: string | null;
 }
+
+export interface Application {
+  id: string;
+  machine_id?: string;
+  name: string;
+  status: StatusType;
+  tipo: ApplicationType;
+  services: Service[];
+}
+
+export interface Service {
+  id: string;
+  application_id?: string;
+  name: string;
+  status: StatusType;
+  itemObrigatorio?: ItemObrigatorioType;
+  updatedAt?: string;
+  responsible?: string;
+  comments?: string;
+  typePendencia?: string;
+  responsibleHomologacao?: string;
+}
+
