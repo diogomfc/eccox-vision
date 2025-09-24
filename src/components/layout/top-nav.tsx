@@ -7,7 +7,7 @@ import topDock from "@/assets/images/img-top-dock.svg";
 
 export function TopNav() {
     return (
-        <nav className="fixed top-0 z-50 h-24 w-full flex justify-center items-center ">
+        <nav className="fixed top-0 z-10 h-24 w-full flex justify-center items-center ">
             {/* Imagem de fundo da dock superior */}
             <div className="relative w-fit h-24">
                 <Image

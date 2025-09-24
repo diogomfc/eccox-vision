@@ -2,12 +2,11 @@
 "use client";
 
 import React, { useState, useCallback } from "react";
-import { Layers, SquarePen, Trash2, Plus } from "lucide-react";
+import { Layers, SquarePen, Trash2, Plus, Loader2 } from "lucide-react";
 import type { Application as AppType } from "@/types/machines";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import ApplicationEditModal from "../modals/application-edit-modal";
-
 
 interface ApplicationListProps {
     machine: {
@@ -24,15 +23,15 @@ interface ApplicationListProps {
     })[];
     onSelectApp?: (name: string) => void;
     selectedApp?: string;
-    onApplicationsUpdated?: (applications: AppType[]) => void; // Callback para notificar mudanças
+    onApplicationsUpdated?: (applications: AppType[]) => void;
 }
 
-export function ApplicationList({ 
-    machine, 
-    applications, 
-    onSelectApp, 
+export function ApplicationList({
+    machine,
+    applications,
+    onSelectApp,
     selectedApp,
-    onApplicationsUpdated 
+    onApplicationsUpdated
 }: ApplicationListProps) {
     const [searchQuery, setSearchQuery] = useState("");
     const [statusFilter, setStatusFilter] = useState<string>("");
@@ -49,34 +48,27 @@ export function ApplicationList({
         return matchesName && matchesStatus;
     });
 
-    // Função para criar nova aplicação
-    const handleCreateApplication = useCallback(async (newApplication: AppType) => {
+   const handleCreateApplication = useCallback(async (newApplication: AppType) => {
         setIsLoading(true);
         setMessage(null);
 
         try {
-            // Adicionar machine_id à aplicação
+            // O ID é gerado na modal, mas vamos garantir o machine_id aqui
             const applicationToCreate = {
                 ...newApplication,
                 machine_id: machine.id,
-                id: `app-${Date.now()}`, // Gerar ID temporário
             };
 
             console.log("Criando nova aplicação:", applicationToCreate);
 
-            // Chamar API do Electron para criar aplicação
-            const result = await window.electronAPI.createApplication(applicationToCreate);
-            
+            // Chama a API do Electron para criar a aplicação e todos os seus serviços de uma só vez
+            const result = await window.electronAPI.syncApplication(applicationToCreate);
+
             if (result.success) {
                 setMessage("Aplicação criada com sucesso!");
-                
-                // Atualizar lista local
-                const updatedApplications = [...applications, applicationToCreate];
-                onApplicationsUpdated?.(updatedApplications);
-                
+                // O componente pai (machine-details-client) deve recarregar os dados
+                onApplicationsUpdated?.(applications);
                 setIsCreateModalOpen(false);
-                
-                // Limpar mensagem após 3 segundos
                 setTimeout(() => setMessage(null), 3000);
             } else {
                 setMessage(`Erro ao criar aplicação: ${result.message}`);
@@ -89,7 +81,7 @@ export function ApplicationList({
         }
     }, [machine.id, applications, onApplicationsUpdated]);
 
-    // Função para atualizar aplicação existente
+
     const handleUpdateApplication = useCallback(async (updatedApplication: AppType) => {
         setIsLoading(true);
         setMessage(null);
@@ -97,22 +89,16 @@ export function ApplicationList({
         try {
             console.log("Atualizando aplicação:", updatedApplication);
 
-            // Chamar API do Electron para atualizar aplicação
-            const result = await window.electronAPI.updateApplication(updatedApplication);
-            
+            const result = await window.electronAPI.syncApplication(updatedApplication);
+
             if (result.success) {
                 setMessage("Aplicação atualizada com sucesso!");
-                
-                // Atualizar lista local
                 const updatedApplications = applications.map(app =>
                     app.id === updatedApplication.id ? updatedApplication : app
                 );
                 onApplicationsUpdated?.(updatedApplications);
-                
                 setIsEditModalOpen(false);
                 setSelectedApplication(null);
-                
-                // Limpar mensagem após 3 segundos
                 setTimeout(() => setMessage(null), 3000);
             } else {
                 setMessage(`Erro ao atualizar aplicação: ${result.message}`);
@@ -125,7 +111,6 @@ export function ApplicationList({
         }
     }, [applications, onApplicationsUpdated]);
 
-    // Função para deletar aplicação
     const handleDeleteApplication = useCallback(async (applicationId: string) => {
         if (!confirm("Tem certeza que deseja excluir esta aplicação?")) return;
 
@@ -135,17 +120,12 @@ export function ApplicationList({
         try {
             console.log("Deletando aplicação:", applicationId);
 
-            // Chamar API do Electron para deletar aplicação
             const result = await window.electronAPI.deleteApplication(applicationId);
-            
+
             if (result.success) {
                 setMessage("Aplicação excluída com sucesso!");
-                
-                // Atualizar lista local
                 const updatedApplications = applications.filter(app => app.id !== applicationId);
                 onApplicationsUpdated?.(updatedApplications);
-                
-                // Limpar mensagem após 3 segundos
                 setTimeout(() => setMessage(null), 3000);
             } else {
                 setMessage(`Erro ao excluir aplicação: ${result.message}`);
@@ -173,7 +153,7 @@ export function ApplicationList({
         setIsCreateModalOpen(false);
         setSelectedApplication(null);
     };
-    
+
     return (
         <div className="">
             <div className="mb-4">
@@ -189,7 +169,7 @@ export function ApplicationList({
                         <Button
                             onClick={handleCreateClick}
                             size="sm"
-                            className="bg-blue-600/50 hover:bg-blue-700 text-xs h-7 px-2 cursor-pointer"
+                            className="bg-blue-600/50 hover:bg-blue-700 text-xs h-7 px-2 cursor-pointer z-10"
                             disabled={isLoading}
                         >
                             <Plus size={12} className="mr-1" />
@@ -214,14 +194,13 @@ export function ApplicationList({
                         disabled={isLoading}
                     >
                         <option value="">Todos</option>
-                        <option value="Concluida">Concluídos</option>
+                        <option value="Concluída">Concluídos</option>
                         <option value="Pendente">Pendentes</option>
                         <option value="Em andamento">Em andamento</option>
                     </select>
                 </div>
             </div>
 
-            {/* Mensagem de feedback */}
             {message && (
                 <motion.div
                     initial={{ opacity: 0, y: -10 }}
@@ -239,9 +218,9 @@ export function ApplicationList({
 
             <ul className="space-y-2 max-h-[calc(100vh-190px)] overflow-y-auto pr-1 custom-scrollbar mb-4">
                 {isLoading && (
-                    <div className="text-center py-4 text-gray-400 text-xs">
-                        Processando...
-                    </div>
+                    <li className="text-center py-4 text-gray-400 text-xs flex items-center justify-center gap-2">
+                        <Loader2 className="animate-spin w-4 h-4" /> Processando...
+                    </li>
                 )}
                 {filteredApplications.map((app, index) => (
                     <li
@@ -303,11 +282,11 @@ export function ApplicationList({
                 ))}
             </ul>
 
-            {/* Modal de Edição */}
             {isEditModalOpen && selectedApplication && (
                 <ApplicationEditModal
+                    machineId={machine.id}
                     application={selectedApplication}
-                    mode="edit"
+                    isEditMode={isEditModalOpen}
                     onSave={handleUpdateApplication}
                     onClose={handleCloseModals}
                     isOpen={isEditModalOpen}
@@ -315,11 +294,18 @@ export function ApplicationList({
                 />
             )}
 
-            {/* Modal de Criação */}
             {isCreateModalOpen && (
                 <ApplicationEditModal
-                    application={null}
-                    mode="create"
+                    machineId={machine.id}
+                    application={{
+                        id: `app-${Date.now()}`,
+                        machine_id: machine.id,
+                        name: '',
+                        tipo: 'IBM',
+                        status: 'Pendente',
+                        services: [],
+                    }}
+                    isEditMode={false}
                     onSave={handleCreateApplication}
                     onClose={handleCloseModals}
                     isOpen={isCreateModalOpen}

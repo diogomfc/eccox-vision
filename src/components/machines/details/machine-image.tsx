@@ -66,16 +66,20 @@ export function MachineImage({
               <div className="flex justify-between">
                 <span className="text-gray-400">Status</span>
                 <span className={`font-semibold ${
-                  status === "Concluida" ? "text-green-400" : status === "Pendente" ? "text-red-400" : "text-yellow-400"
+                  status === "Concluída" ? "text-green-400" : status === "Pendente" ? "text-red-400" : "text-yellow-400"
                 }`}>{status}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-400">update</span>
-                <span className="text-white font-semibold">
-                  {update
-                    ? format(new Date(update), "dd/MM/yy", { locale: ptBR })
-                    : "N/A"}
-                </span>
+              <span className="text-gray-400">
+                {update && new Date(update).getTime() >= Date.now()
+                  ? "Update Previsto:"
+                  : "Última update:"}
+              </span>
+              <span className="text-white font-semibold">
+                {update
+                  ? format(new Date(update), "dd/MM/yy", { locale: ptBR })
+                  : "N/A"}
+              </span>
               </div>
             </div>
           </HoverCardContent>

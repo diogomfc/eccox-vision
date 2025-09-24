@@ -30,11 +30,11 @@ export function MachineListItem({ machine, index, onDelete }: MachineListItemPro
 
     const allServices = machine.applications.flatMap(app => app.services);
     const total = allServices.length;
-    const installed = allServices.filter(s => s.status === "Concluida").length;
-    const pending = allServices.filter(s => s.status !== "Concluida").length;
+    const installed = allServices.filter(s => s.status === "Concluída").length;
+    const pending = allServices.filter(s => s.status !== "Concluída").length;
     const percent = total > 0 ? Math.round((installed / total) * 100) : 0;
 
-    const borderClasses = machine.status === "Concluida"
+    const borderClasses = machine.status === "Concluída"
         ? "border-l-4 border-[#32D583]/50"
         : "border-l-4 border-[#F04438]/50 alert-pulse";
 
@@ -98,7 +98,7 @@ export function MachineListItem({ machine, index, onDelete }: MachineListItemPro
             {/* Column 1 - Icon and info */}
             <div className="flex items-center gap-3">
                 <Image
-                    src={machine.status === "Concluida" ? ImgServerStatusConcluida : ImgServerStatusPendente}
+                    src={machine.status === "Concluída" ? ImgServerStatusConcluida : ImgServerStatusPendente}
                     alt="Machine Icon"
                     width={38}
                     height={38}
@@ -162,7 +162,7 @@ export function MachineListItem({ machine, index, onDelete }: MachineListItemPro
             <div className="flex items-center justify-end relative">
                 <ProgressCircle
                     percentage={percent}
-                    status={machine.status === "Concluida" ? "Concluida" : "Pendente"}
+                    status={machine.status === "Concluída" ? "Concluída" : "Pendente"}
                     size="md"
                 />
             </div>

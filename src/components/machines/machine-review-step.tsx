@@ -43,7 +43,7 @@ export default function MachineReviewStep({
   // Função para obter a cor do badge de status
   const getStatusBadgeColor = (status: string) => {
     switch (status) {
-      case 'Concluida': return 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30';
+      case 'Concluída': return 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30';
       case 'Pendente': return 'bg-red-500/20 text-red-400 border-red-500/30';
       case 'Em andamento': return 'bg-amber-500/20 text-amber-400 border-amber-500/30';
       default: return 'bg-gray-500/20 text-gray-400 border-gray-500/30';
@@ -53,7 +53,7 @@ export default function MachineReviewStep({
   // Função para obter a imagem do servidor baseada no status
   const getServerImage = () => {
     switch (machine.status) {
-      case "Concluida": return ImgServerConcluida;
+      case "Concluída": return ImgServerConcluida;
       case "Pendente": return ImgServerPendente;
       default: return ImgServerNew;
     }
@@ -61,7 +61,7 @@ export default function MachineReviewStep({
 
   // Cálculos estatísticos
   const totalServices = applications.reduce((acc, app) => acc + app.services.length, 0);
-  const completedServices = applications.reduce((acc, app) => acc + app.services.filter(s => s.status === 'Concluida').length, 0);
+  const completedServices = applications.reduce((acc, app) => acc + app.services.filter(s => s.status === 'Concluída').length, 0);
   const pendingServices = applications.reduce((acc, app) => acc + app.services.filter(s => s.status === 'Pendente').length, 0);
   const progressPercentage = totalServices > 0 ? Math.round((completedServices / totalServices) * 100) : 0;
 
@@ -235,7 +235,7 @@ export default function MachineReviewStep({
                               <span
                                 key={service.id}
                                 className={`text-xs px-2 py-1 rounded-full border ${
-                                  service.status === 'Concluida'
+                                  service.status === 'Concluída'
                                     ? 'bg-green-500/20 text-green-400 border-green-500/30'
                                     : service.status === 'Em andamento'
                                     ? 'bg-amber-500/20 text-amber-400 border-amber-500/30'
@@ -261,7 +261,7 @@ export default function MachineReviewStep({
                         <div>
                           <p className="text-xs text-gray-500">Concluídos</p>
                           <p className="text-lg font-bold text-green-400">
-                            {app.services.filter(s => s.status === 'Concluida').length}
+                            {app.services.filter(s => s.status === 'Concluída').length}
                           </p>
                         </div>
                         <div>

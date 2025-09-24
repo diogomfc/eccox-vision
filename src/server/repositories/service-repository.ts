@@ -2,6 +2,21 @@
 import { getDatabase } from "../db";
 import { Service } from "../../types/machines";
 
+// Importa a função do repositório de aplicações
+import { getApplicationById } from "./application-repository";
+
+// Importa a função do repositório de máquinas
+import { updateMachineInDb } from "./machine-repository";
+
+// Importa as regras de negócio
+import { 
+    createServiceInDbWithRules,
+    updateServiceInDbWithRules,
+    updateServiceStatusWithRules,
+    deleteServiceInDbWithRules,
+    propagateStatusAndDateUpdates
+} from './business-rules';
+
 // ========================
 // OPERAÇÕES DE CONSULTA
 // ========================
@@ -37,29 +52,7 @@ export function getServiceById(id: string): Service | undefined {
  * @returns {boolean} True se a operação for bem-sucedida, false caso contrário.
  */
 export function createServiceInDb(service: Service, applicationId: string): boolean {
-    const db = getDatabase();
-    try {
-        const stmt = db.prepare(`
-            INSERT INTO services (id, application_id, name, status, itemObrigatorio, updatedAt, responsible, comments, typePendencia, responsibleHomologacao)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        `);
-        const result = stmt.run(
-            service.id,
-            applicationId,
-            service.name || 'Nome não definido',
-            service.status || 'Pendente',
-            service.itemObrigatorio || null,
-            service.updatedAt || new Date().toISOString(),
-            service.responsible || null,
-            service.comments || null,
-            service.typePendencia || null,
-            service.responsibleHomologacao || null
-        );
-        return result.changes > 0;
-    } catch (error) {
-        console.error('Erro ao criar serviço:', error);
-        return false;
-    }
+    return createServiceInDbWithRules(service, applicationId);
 }
 
 /**
@@ -68,28 +61,7 @@ export function createServiceInDb(service: Service, applicationId: string): bool
  * @returns {boolean} True se a operação for bem-sucedida, false caso contrário.
  */
 export function updateServiceInDb(service: Service): boolean {
-    const db = getDatabase();
-    try {
-        const stmt = db.prepare(`
-            UPDATE services
-            SET name = ?, status = ?, updatedAt = ?, responsible = ?, comments = ?, typePendencia = ?, responsibleHomologacao = ?
-            WHERE id = ?
-        `);
-        const result = stmt.run(
-            service.name,
-            service.status,
-            service.updatedAt,
-            service.responsible || null,
-            service.comments || null,
-            service.typePendencia || null,
-            service.responsibleHomologacao || null,
-            service.id
-        );
-        return result.changes > 0;
-    } catch (error) {
-        console.error('Erro ao atualizar serviço:', error);
-        return false;
-    }
+    return updateServiceInDbWithRules(service);
 }
 
 /**
@@ -98,20 +70,8 @@ export function updateServiceInDb(service: Service): boolean {
  * @param {'Concluida' | 'Pendente' | 'Em andamento'} newStatus O novo status.
  * @returns {boolean} True se a operação for bem-sucedida, false caso contrário.
  */
-export function updateServiceStatus(serviceId: string, newStatus: 'Concluida' | 'Pendente' | 'Em andamento'): boolean {
-    const db = getDatabase();
-    try {
-        const stmt = db.prepare(`
-            UPDATE services
-            SET status = ?, updatedAt = ?
-            WHERE id = ?
-        `);
-        const result = stmt.run(newStatus, new Date().toISOString(), serviceId);
-        return result.changes > 0;
-    } catch (error) {
-        console.error('Erro ao atualizar status do serviço:', error);
-        return false;
-    }
+export function updateServiceStatus(serviceId: string, newStatus: 'Concluída' | 'Pendente' | 'Em andamento'): boolean {
+    return updateServiceStatusWithRules(serviceId, newStatus);
 }
 
 /**
@@ -119,16 +79,8 @@ export function updateServiceStatus(serviceId: string, newStatus: 'Concluida' | 
  * @param {string} serviceId O ID do serviço a ser deletado.
  * @returns {boolean} True se a operação for bem-sucedida, false caso contrário.
  */
-export function deleteServiceFromDb(serviceId: string): boolean {
-    const db = getDatabase();
-    try {
-        const stmt = db.prepare("DELETE FROM services WHERE id = ?");
-        const result = stmt.run(serviceId);
-        return result.changes > 0;
-    } catch (error) {
-        console.error('Erro ao deletar serviço:', error);
-        return false;
-    }
+export function deleteServiceInDb(serviceId: string): boolean {
+    return deleteServiceInDbWithRules(serviceId);
 }
 
 /**
@@ -136,21 +88,61 @@ export function deleteServiceFromDb(serviceId: string): boolean {
  * @param {Service[]} services A lista de serviços a ser sincronizada.
  * @returns {boolean} True se a operação for bem-sucedida, false caso contrário.
  */
-export function syncServicesBatch(services: Service[]): boolean {
+export function syncServicesInDb(services: Service[]): boolean {
     const db = getDatabase();
+    const affectedApplicationIds = new Set<string>();
+    
     try {
         db.transaction(() => {
             for (const service of services) {
+                if (!service.application_id) {
+                    console.error('Erro: Serviço sem ID da aplicação. Ignorando sincronização.');
+                    continue; 
+                }
+                affectedApplicationIds.add(service.application_id);
+
                 const existingService = getServiceById(service.id);
                 if (existingService) {
-                    updateServiceInDb(service);
+                    const stmt = db.prepare(`
+                        UPDATE services
+                        SET name = ?, status = ?, updatedAt = ?, responsible = ?, comments = ?, typePendencia = ?, responsibleHomologacao = ?
+                        WHERE id = ?
+                    `);
+                    stmt.run(
+                        service.name,
+                        service.status,
+                        service.updatedAt || new Date().toISOString(),
+                        service.responsible || null,
+                        service.comments || null,
+                        service.typePendencia || null,
+                        service.responsibleHomologacao || null,
+                        service.id
+                    );
                 } else {
-                    if (service.application_id) {
-                        createServiceInDb(service, service.application_id);
-                    }
+                    const stmt = db.prepare(`
+                        INSERT INTO services (id, application_id, name, status, itemObrigatorio, updatedAt, responsible, comments, typePendencia, responsibleHomologacao)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    `);
+                    stmt.run(
+                        service.id,
+                        service.application_id,
+                        service.name || 'Nome não definido',
+                        service.status || 'Pendente',
+                        service.itemObrigatorio || null,
+                        service.updatedAt || new Date().toISOString(), // Usar a data do serviço!
+                        service.responsible || null,
+                        service.comments || null,
+                        service.typePendencia || null,
+                        service.responsibleHomologacao || null
+                    );
                 }
             }
         })();
+        
+        for (const appId of affectedApplicationIds) {
+            propagateStatusAndDateUpdates(appId);
+        }
+        
         return true;
     } catch (error) {
         console.error('Erro ao sincronizar serviços:', error);

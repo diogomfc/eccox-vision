@@ -42,7 +42,7 @@ export function DeleteMachineModal({ machine, isOpen, onClose, onConfirmDelete, 
           </p>
           <div className="flex items-center space-x-3 bg-[#0F0F11] p-3 rounded-md border border-gray-700">
             <Image
-              src={machine.status === "Concluida" ? ImgServerStatusConcluida : ImgServerStatusPendente}
+              src={machine.status === "Concluída" ? ImgServerStatusConcluida : ImgServerStatusPendente}
               alt="Server Status"
                 className="h-8 w-8"
                 width={32}

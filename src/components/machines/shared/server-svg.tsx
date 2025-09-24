@@ -10,21 +10,21 @@ type ServerSvgProps = SVGProps<SVGSVGElement> & {
 
 const ServerSvg: React.FC<ServerSvgProps> = ({ status = "offline", className, ...props }) => {
     const statusColor = {
-        Concluida: "#4AE5B6",
+        Concluída: "#4AE5B6",
         "Em andamento": "#FBBF24",
         Pendente: "#EF4343",
         offline: "#9CA3AF",
     }[status];
 
     const glowColor = {
-        Concluida: "bg-emerald-400/30",
+        Concluída: "bg-emerald-400/30",
         "Em andamento": "bg-orange-400/30",
         Pendente: "bg-red-400/30",
         offline: "bg-gray-500/20",
     }[status];
 
     const glowAnimation = {
-        Concluida: "pulse-slow",
+        Concluída: "pulse-slow",
         "Em andamento": "pulse-slow",
         Pendente: "pulse-strong",
         offline: "pulse-slow",

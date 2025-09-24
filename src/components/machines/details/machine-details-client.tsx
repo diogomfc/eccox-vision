@@ -73,7 +73,7 @@ export function MachineDetailsClient({ machineId }: MachineDetailsClientProps) {
     
     const statsData = useMemo(() => {
         const totalServices = allServices.length;
-        const okServices = allServices.filter((service) => service.status === "Concluida").length;
+        const okServices = allServices.filter((service) => service.status === "Concluída").length;
         const pendentes = totalServices - okServices;
         const healthPercentage = totalServices > 0 ? Math.round((okServices / totalServices) * 100) : 0;
         return {
@@ -87,7 +87,7 @@ export function MachineDetailsClient({ machineId }: MachineDetailsClientProps) {
     const applicationsList = useMemo(() => {
         return machine?.applications.map(app => {
             const total = app.services.length;
-            const concluidos = app.services.filter(s => s.status === "Concluida").length;
+            const concluidos = app.services.filter(s => s.status === "Concluída").length;
             const percent = total > 0 ? Math.round((concluidos / total) * 100) : 0;
             return {
                 ...app,
@@ -105,7 +105,7 @@ export function MachineDetailsClient({ machineId }: MachineDetailsClientProps) {
             name: machine.name,
             description: machine.description || "",
             system: machine.version || "Z/OS 3.1",
-            status: machine.status || "Concluida",
+            status: machine.status || "Concluída",
             update: machine.updatedAt || "12/09/2025"
         };
     }, [machine]);

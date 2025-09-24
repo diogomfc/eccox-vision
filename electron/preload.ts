@@ -20,20 +20,21 @@ contextBridge.exposeInMainWorld('electronAPI', {
     getApplicationById: (id: string) => ipcRenderer.invoke('get-application-by-id', id),
     getApplicationsByMachineId: (machineId: string) => ipcRenderer.invoke('get-applications-by-machine', machineId),
     getApplicationWithMachineInfo: (applicationId: string) => ipcRenderer.invoke('get-application-with-machine-info', applicationId),
-    createApplication: (application: Application) => ipcRenderer.invoke('create-application', application),
-    updateApplication: (application: Application) => ipcRenderer.invoke('update-application', application),
-    deleteApplication: (applicationId: string) => ipcRenderer.invoke('delete-application', applicationId),
+    
+    // Unifica a criação e atualização de uma aplicação
     syncApplication: (application: Application) => ipcRenderer.invoke('sync-application', application),
+    deleteApplication: (applicationId: string) => ipcRenderer.invoke('delete-application', applicationId),
     
     // ========================
     // SERVICES APIs
     // ========================
     getServicesByApplicationId: (applicationId: string) => ipcRenderer.invoke('get-services-by-application', applicationId),
     getServiceById: (serviceId: string) => ipcRenderer.invoke('get-service-by-id', serviceId),
-    createService: (service: Service) => ipcRenderer.invoke('create-service', service),
-    updateService: (service: Service) => ipcRenderer.invoke('update-service', service),
+
+    // Unifica a criação e atualização de um serviço
+    syncService: (service: Service) => ipcRenderer.invoke('sync-service', service),
     deleteService: (serviceId: string) => ipcRenderer.invoke('delete-service', serviceId),
-    updateServiceStatus: (serviceId: string, newStatus: 'Concluida' | 'Pendente' | 'Em andamento') => ipcRenderer.invoke('update-service-status', serviceId, newStatus),
+    updateServiceStatus: (serviceId: string, newStatus: 'Concluída' | 'Pendente' | 'Em andamento') => ipcRenderer.invoke('update-service-status', serviceId, newStatus),
 
     // ========================
     // UTILITY APIs

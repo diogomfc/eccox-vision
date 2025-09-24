@@ -41,6 +41,7 @@ export function setupDatabase() {
       machine_id TEXT,
       name TEXT,
       status TEXT,
+      updatedAt TEXT
       tipo TEXT,
       FOREIGN KEY(machine_id) REFERENCES machines(id)
     );

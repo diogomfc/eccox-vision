@@ -1,4 +1,6 @@
 // src/components/machines/machine-form-footer.tsx
+"use client";
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Loader2, Check, CheckCircle } from 'lucide-react';

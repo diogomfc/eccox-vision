@@ -7,7 +7,7 @@ import "./progress-circle.css";
 interface ProgressCircleProps {
   percentage: number;
   size?: "sm" | "md" | "lg";
-  status: "Concluida" | "Pendente";
+  status: "Concluída" | "Pendente";
 }
 
 export function ProgressCircle({ percentage, size = "md", status }: ProgressCircleProps) {

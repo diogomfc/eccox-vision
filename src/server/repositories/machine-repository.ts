@@ -3,6 +3,13 @@ import { getDatabase } from "../db";
 import { Machines, Application, Service } from "../../types/machines";
 import { deleteApplicationAndServices, syncApplicationInDb } from "./application-repository";
 
+// Importa a função de regra de negócio para atualização de máquinas
+import { 
+    updateMachineInDbWithRules,
+    propagateStatusAndDateUpdates,
+    // A importação de 'getLatestServiceUpdateForMachine' foi removida daqui
+} from './business-rules';
+
 // ========================
 // OPERAÇÕES DE CONSULTA
 // ========================
@@ -66,38 +73,89 @@ export function getMachineById(id: string): Machines | undefined {
  */
 export function createMachineInDb(machine: Machines): boolean {
     const db = getDatabase();
+    
     try {
-        const stmt = db.prepare(`
-            INSERT INTO machines (id, name, description, version, status, updatedAt)
-            VALUES (?, ?, ?, ?, ?, ?)
-        `);
-        const result = stmt.run(machine.id, machine.name, machine.description, machine.version, machine.status, machine.updatedAt);
-        return result.changes > 0;
+        return db.transaction(() => {
+            // 1. Cria a máquina principal (status e updatedAt serão calculados depois)
+            const machineStmt = db.prepare(`
+                INSERT INTO machines (id, name, description, version, status, updatedAt)
+                VALUES (?, ?, ?, ?, ?, ?)
+            `);
+            machineStmt.run(
+                machine.id,
+                machine.name,
+                machine.description,
+                machine.version,
+                'Pendente', // Status inicial
+                new Date().toISOString() // Data inicial
+            );
+            
+            // 2. Cria as aplicações e seus serviços
+            if (machine.applications && machine.applications.length > 0) {
+                const appStmt = db.prepare(`
+                    INSERT INTO applications (id, machine_id, name, status, tipo, updatedAt)
+                    VALUES (?, ?, ?, ?, ?, ?)
+                `);
+                
+                const serviceStmt = db.prepare(`
+                    INSERT INTO services (id, application_id, name, status, itemObrigatorio, updatedAt, responsible, comments, typePendencia, responsibleHomologacao)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                `);
+                
+                for (const app of machine.applications) {
+                    const appId = app.id || `app-${Date.now()}`;
+                    
+                    // Cria a aplicação
+                    appStmt.run(
+                        appId,
+                        machine.id,
+                        app.name,
+                        'Pendente', // Status inicial
+                        app.tipo || null,
+                        new Date().toISOString()
+                    );
+                    
+                    // Cria os serviços para a aplicação
+                    if (app.services && app.services.length > 0) {
+                        for (const service of app.services) {
+                            const serviceId = service.id || `service-${Date.now()}`;
+                            
+                            serviceStmt.run(
+                                serviceId,
+                                appId,
+                                service.name || 'Nome não definido',
+                                service.status || 'Pendente',
+                                service.itemObrigatorio || null,
+                                service.updatedAt || new Date().toISOString(),
+                                service.responsible || null,
+                                service.comments || null,
+                                service.typePendencia || null,
+                                service.responsibleHomologacao || null
+                            );
+                        }
+                    }
+                }
+            }
+            
+            // 3. Recalcula status e datas após criar toda a estrutura
+            propagateStatusAndDateUpdates(undefined, machine.id);
+            
+            return true;
+        })();
     } catch (error) {
-        console.error('Erro ao criar máquina:', error);
+        console.error('Erro ao criar máquina completa:', error);
         return false;
     }
 }
 
 /**
  * Atualiza uma máquina existente no banco de dados.
+ * Esta função agora lida com a lógica de data, evitando duplicação.
  * @param {Machines} machine O objeto Machine com os dados atualizados.
  * @returns {boolean} True se a operação for bem-sucedida, false caso contrário.
  */
 export function updateMachineInDb(machine: Machines): boolean {
-    const db = getDatabase();
-    try {
-        const stmt = db.prepare(`
-            UPDATE machines
-            SET name = ?, description = ?, version = ?, status = ?, updatedAt = ?
-            WHERE id = ?
-        `);
-        const result = stmt.run(machine.name, machine.description, machine.version, machine.status, machine.updatedAt, machine.id);
-        return result.changes > 0;
-    } catch (error) {
-        console.error('Erro ao atualizar máquina:', error);
-        return false;
-    }
+    return updateMachineInDbWithRules(machine);
 }
 
 /**
@@ -138,10 +196,10 @@ export function syncMachineCompleteInDb(machine: Machines): boolean {
     const db = getDatabase();
     try {
         db.transaction(() => {
-            // Atualiza a máquina principal
+            // 1. Atualiza a máquina principal
             updateMachineInDb(machine);
 
-            // Deleta aplicações que não estão mais na lista de sincronização
+            // 2. Deleta aplicações que não estão mais na lista de sincronização
             const existingAppsInDb = db.prepare("SELECT id FROM applications WHERE machine_id = ?").all(machine.id) as { id: string }[];
             const appIdsFromUi = new Set(machine.applications.map(app => app.id));
 
@@ -151,9 +209,9 @@ export function syncMachineCompleteInDb(machine: Machines): boolean {
                 }
             }
 
-            // Sincroniza as aplicações restantes
+            // 3. Sincroniza as aplicações restantes (criação e atualização)
             for (const app of machine.applications) {
-                const appToSync = { ...app, machine_id: machine.id }; // <--- Linha corrigida
+                const appToSync = { ...app, machine_id: machine.id };
                 syncApplicationInDb(appToSync);
             }
         })();

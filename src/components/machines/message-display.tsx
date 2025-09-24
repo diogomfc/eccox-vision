@@ -1,5 +1,6 @@
 // src/components/machines/message-display.tsx
-import React from 'react';
+"use client";
+
 import { AnimatePresence, motion } from 'framer-motion';
 
 interface MessageDisplayProps {

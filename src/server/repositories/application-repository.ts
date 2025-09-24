@@ -2,7 +2,12 @@
 import { getDatabase } from "../db";
 import { Service } from "../../types/machines";
 import { Application, Machines } from "../../types/machines";
-import { deleteServiceFromDb, syncServicesBatch } from "./service-repository";
+import { createServiceInDb, deleteServiceInDb, syncServicesInDb, updateServiceInDb } from "./service-repository";
+import { getMachineById, updateMachineInDb } from "./machine-repository";
+import { 
+    updateApplicationInDbWithRules,
+    propagateStatusAndDateUpdates 
+} from './business-rules';
 
 // ========================
 // OPERAÇÕES DE CONSULTA
@@ -83,19 +88,78 @@ export function getApplicationWithMachineInfo(applicationId: string): { applicat
 // ========================
 
 /**
+ * Função utilitária para atualizar a data de updatedAt da aplicação e da máquina.
+ * @param {string} applicationId O ID da aplicação para a qual os serviços foram atualizados.
+ */
+export function updateApplicationAndMachineDates(applicationId?: string) {
+    if (!applicationId) return;
+    const db = getDatabase();
+    const application = getApplicationById(applicationId);
+
+    if (application && application.machine_id) {
+        const machine = getMachineById(application.machine_id);
+        if (machine) {
+            updateMachineInDb(machine);
+        }
+    }
+}
+
+
+
+/**
  * Cria uma nova aplicação no banco de dados.
  * @param {Application} application O objeto Application a ser criado.
  * @returns {boolean} True se a operação for bem-sucedida, false caso contrário.
  */
 export function createApplicationInDb(application: Application): boolean {
     const db = getDatabase();
+    
     try {
-        const stmt = db.prepare(`
-            INSERT INTO applications (id, machine_id, name, status, tipo)
-            VALUES (?, ?, ?, ?, ?)
-        `);
-        const result = stmt.run(application.id, application.machine_id, application.name, application.status, application.tipo || null);
-        return result.changes > 0;
+        db.transaction(() => {
+            // Insere a aplicação
+            const appStmt = db.prepare(`
+                INSERT INTO applications (id, machine_id, name, status, tipo, updatedAt)
+                VALUES (?, ?, ?, ?, ?, ?)
+            `);
+            appStmt.run(
+                application.id,
+                application.machine_id || null,
+                application.name,
+                application.status,
+                application.tipo || null,
+                new Date().toISOString() // Adiciona a data de criação/atualização inicial
+            );
+
+            // Insere serviços se fornecidos
+            if (application.services && application.services.length > 0) {
+                const serviceStmt = db.prepare(`
+                    INSERT INTO services (id, application_id, name, status, itemObrigatorio, updatedAt, responsible, comments, typePendencia, responsibleHomologacao)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                `);
+                
+                for (const service of application.services) {
+                    serviceStmt.run(
+                        service.id,
+                        application.id, // Usa o ID da aplicação que acabou de ser criada
+                        service.name,
+                        service.status,
+                        service.itemObrigatorio,
+                        service.updatedAt || new Date().toISOString(),
+                        service.responsible || null,
+                        service.comments || null,
+                        service.typePendencia || null,
+                        service.responsibleHomologacao || null
+                    );
+                }
+            }
+        })();
+        
+        // Após a criação, propaga o status para garantir que a máquina seja atualizada
+        if (application.machine_id) {
+            propagateStatusAndDateUpdates(application.id, application.machine_id);
+        }
+
+        return true;
     } catch (error) {
         console.error('Erro ao criar aplicação:', error);
         return false;
@@ -108,20 +172,9 @@ export function createApplicationInDb(application: Application): boolean {
  * @returns {boolean} True se a operação for bem-sucedida, false caso contrário.
  */
 export function updateApplicationInDb(application: Application): boolean {
-    const db = getDatabase();
-    try {
-        const stmt = db.prepare(`
-            UPDATE applications
-            SET machine_id = ?, name = ?, status = ?, tipo = ?
-            WHERE id = ?
-        `);
-        const result = stmt.run(application.machine_id, application.name, application.status, application.tipo || null, application.id);
-        return result.changes > 0;
-    } catch (error) {
-        console.error('Erro ao atualizar aplicação:', error);
-        return false;
-    }
+    return updateApplicationInDbWithRules(application);
 }
+
 
 /**
  * Deleta uma aplicação e todos os seus serviços.
@@ -170,12 +223,12 @@ export function syncApplicationInDb(application: Application): boolean {
                 
                 for (const serviceId of existingServiceIds) {
                     if (!incomingServiceIds.has(serviceId)) {
-                        deleteServiceFromDb(serviceId);
+                        deleteServiceInDb(serviceId);
                     }
                 }
                 
                 // Sincroniza os serviços restantes
-                syncServicesBatch(application.services);
+                syncServicesInDb(application.services);
             }
         })();
         return true;

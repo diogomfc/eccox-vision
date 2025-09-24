@@ -1,23 +1,21 @@
-import React from 'react';
+"use client";
+
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Save, X } from 'lucide-react';
-import { ApplicationType, StatusType } from '@/types/machines';
+import { Application, ApplicationType, StatusType } from '@/types/machines'; // Importar Application completa
+import { Loader2 } from 'lucide-react'; // Adicionar Loader2 para isLoading
 
 interface ApplicationFormProps {
-  appData: {
-    name: string;
-    tipo: ApplicationType;
-    status: StatusType;
-  };
-  // Simplificamos o onChange para aceitar apenas o valor final
-  onChange: (value: string, key: string) => void;
+  appData: Partial<Application>; // Usar Partial para mais flexibilidade
+  onChange: (value: any, key: keyof Application) => void;
   onSave: () => void;
   onCancel: () => void;
   isEditMode?: boolean;
+  isLoading?: boolean; // Adicionar prop isLoading
 }
 
 export const ApplicationForm = ({
@@ -26,8 +24,8 @@ export const ApplicationForm = ({
   onSave,
   onCancel,
   isEditMode = false,
+  isLoading = false,
 }: ApplicationFormProps) => {
-    // Configuração de temas
   const themeConfig = {
     focusColor: isEditMode ? "focus:!border-amber-500" : "focus:!border-blue-500",
     textAccent: isEditMode ? "text-amber-400" : "text-blue-400",
@@ -38,26 +36,30 @@ export const ApplicationForm = ({
     selectFocusPrimary: isEditMode ? "focus:bg-amber-600/10" : "focus:bg-blue-600/10",
   };
 
-  
-    return (
+  // Valores padrão para evitar erros
+  const data = {
+    name: appData.name ?? '',
+    tipo: appData.tipo ?? 'IBM',
+    status: appData.status ?? 'Pendente',
+  };
+
+  return (
     <motion.div
-      initial={{ opacity: 0, height: 0 }}
-      animate={{ opacity: 1, height: "auto" }}
-      exit={{ opacity: 0, height: 0 }}
-      className="overflow-hidden"
+      // MELHORIA 2: Animação mais performática
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ duration: 0.3, ease: "easeInOut" }}
+      className={`overflow-hidden ${isLoading ? 'opacity-75 pointer-events-none' : ''}`}
     >
       <div className={`p-4 bg-[#0F0F11] rounded-lg border ${themeConfig.borderAccent} shadow-lg`}>
         <div className="flex items-center justify-between mb-4">
-          <h4 className="font-medium text-gray-100">
+          <h4 className="font-medium text-gray-100 flex items-center gap-2">
             {isEditMode ? 'Editando Aplicação' : 'Nova Aplicação'}
+            {isLoading && <Loader2 className="w-4 h-4 animate-spin text-gray-400" />}
           </h4>
-          <Button
-            variant={"ghost"}
-            onClick={onCancel}
-            className="cursor-pointer hover:bg-transparent hover:text-red-500 text-red-500/50"
-          >
-            <X size={16} className="" />
-            {/* Cancelar */}
+          <Button variant="ghost" onClick={onCancel} className="cursor-pointer hover:bg-transparent hover:text-red-500 text-red-500/50 h-6 w-6 p-0" disabled={isLoading}>
+            <X size={16} />
           </Button>
         </div>
 
@@ -65,25 +67,23 @@ export const ApplicationForm = ({
           <div className="space-y-2 col-span-2">
             <Label className="text-gray-200">Nome da Aplicação *</Label>
             <Input
-              value={appData.name}
-              // Chamamos a função com o valor diretamente
+              value={data.name}
               onChange={(e) => onChange(e.target.value, 'name')}
-              className={`bg-[#1A1A1D] border-[#2A2A2D] ${themeConfig.focusColor} text-gray-100 hover:bg-[#23232B] hover:text-gray-500`}
-              placeholder=""
+              className={`bg-[#1A1A1D] border-[#2A2A2D] ${themeConfig.focusColor} text-gray-100`}
+              placeholder="Digite o nome da aplicação"
+              disabled={isLoading}
+              // MELHORIA 1: Foco automático
+              autoFocus
             />
           </div>
           <div className="space-y-2">
             <Label className="text-gray-200">Tipo da Aplicação *</Label>
-            <Select
-              value={appData.tipo}
-              // Chamamos a função com o valor diretamente
-              onValueChange={(value) => onChange(value, 'tipo')}
-            >
-             <SelectTrigger className={`bg-[#1A1A1D] border-[#2A2A2D] ${themeConfig.focusColor} text-gray-100 hover:bg-[#23232B] hover:text-gray-500 w-full`}>
+            <Select value={data.tipo} onValueChange={(value: ApplicationType) => onChange(value, 'tipo')} disabled={isLoading}>
+             <SelectTrigger className={`bg-[#1A1A1D] border-[#2A2A2D] ${themeConfig.focusColor} text-gray-100 w-full`}>
                 <SelectValue />
               </SelectTrigger>
               <SelectContent className="bg-[#1A1A1D] border-[#2A2A2D]">
-                      <SelectItem value="IBM" className={`cursor-pointer ${themeConfig.selectFocusPrimary}`}>
+                <SelectItem value="IBM" className={`cursor-pointer ${themeConfig.selectFocusPrimary}`}>
                   <span className="text-blue-400">IBM</span>
                 </SelectItem>
                 <SelectItem value="ECCOX" className={`cursor-pointer ${themeConfig.selectFocusPrimary}`}>
@@ -94,16 +94,12 @@ export const ApplicationForm = ({
           </div>
           <div className="space-y-2">
             <Label className="text-gray-200">Status</Label>
-            <Select
-              value={appData.status}
-              // Chamamos a função com o valor diretamente
-              onValueChange={(value) => onChange(value, 'status')}
-            >
-                <SelectTrigger className={`bg-[#1A1A1D] border-[#2A2A2D] ${themeConfig.focusColor} text-gray-100 hover:bg-[#23232B] hover:text-gray-500 w-full`}>
+            <Select value={data.status} onValueChange={(value: StatusType) => onChange(value, 'status')} disabled>
+                <SelectTrigger className={`bg-[#1A1A1D] border-[#2A2A2D] ${themeConfig.focusColor} text-gray-100 w-full`}>
                 <SelectValue />
               </SelectTrigger>
               <SelectContent className="bg-[#1A1A1D] border-[#2A2A2D]">
-                <SelectItem value="Concluida" className={`cursor-pointer ${themeConfig.selectFocusGreen}`}>
+                <SelectItem value="Concluída" className={`cursor-pointer ${themeConfig.selectFocusGreen}`}>
                   <span className="text-green-400">Concluída</span>
                 </SelectItem>
                 <SelectItem value="Pendente" className={`cursor-pointer ${themeConfig.selectFocusRed}`}>
@@ -114,12 +110,12 @@ export const ApplicationForm = ({
           </div>
         </div>
         <div className="flex justify-end gap-2">
-          <Button
-            onClick={onSave}
-            className={`${themeConfig.buttonPrimary} cursor-pointer`}
-          >
-            <Save size={16} className="mr-2" />
-            {isEditMode ? 'Salvar Alterações' : 'Adicionar Aplicação'}
+          <Button onClick={onSave} className={`${themeConfig.buttonPrimary} cursor-pointer min-w-[150px]`} disabled={isLoading || !data.name.trim()}>
+            {isLoading ? (
+                <><Loader2 className="w-4 h-4 animate-spin mr-2" />{isEditMode ? 'Salvando...' : 'Adicionando...'}</>
+            ) : (
+                <><Save size={16} className="mr-2" />{isEditMode ? 'Salvar Alterações' : 'Adicionar Aplicação'}</>
+            )}
           </Button>
         </div>
       </div>

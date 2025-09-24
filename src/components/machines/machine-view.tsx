@@ -26,7 +26,7 @@ export function MachineView() {
     const [isLoading, setIsLoading] = useState(true);
     const [viewMode, setViewMode] = useState<"list" | "grid">("list");
     const [searchQuery, setSearchQuery] = useState("");
-    const [statusFilter, setStatusFilter] = useState<"all" | "Concluida" | "Pendente">("all");
+    const [statusFilter, setStatusFilter] = useState<"all" | "Concluída" | "Pendente">("all");
     const [isStatusDropdownOpen, setIsStatusDropdownOpen] = useState(false);
 
     // Estados do Modal de Deleção - Gerenciados aqui no componente pai
@@ -65,7 +65,7 @@ export function MachineView() {
       // ... (código existente para estatísticas) ...
       const totalMachines = machines.length;
       const appStats = machines.reduce((acc, machine) => {
-          const okApps = machine.applications?.filter(app => app.status === "Concluida").length || 0;
+          const okApps = machine.applications?.filter(app => app.status === "Concluída").length || 0;
           const warningApps = machine.applications?.filter(app => app.status === "Pendente").length || 0;
           return {
               okApps: acc.okApps + okApps,
@@ -76,7 +76,7 @@ export function MachineView() {
       const criticalMachines = machines.filter(machine => {
           const allServicesInMachine = machine.applications?.flatMap(app => app.services) || [];
           const totalServices = allServicesInMachine.length;
-          const okServices = allServicesInMachine.filter(service => service.status === "Concluida").length;
+          const okServices = allServicesInMachine.filter(service => service.status === "Concluída").length;
           const percentComplete = totalServices > 0 ? (okServices / totalServices) * 100 : 0;
           return percentComplete < 50;
       }).length;
@@ -182,7 +182,7 @@ export function MachineView() {
                             <span className="text-gray-400">Status:</span>
                             <span className={`
                                 ${statusFilter === "all" ? "text-white" : ""}
-                                ${statusFilter === "Concluida" ? "text-[#32D583]" : ""}
+                                ${statusFilter === "Concluída" ? "text-[#32D583]" : ""}
                                 ${statusFilter === "Pendente" ? "text-[#F04438]" : ""}
                             `} >
                                 {statusFilter === "all" ? "Todos" : statusFilter}
@@ -200,11 +200,11 @@ export function MachineView() {
                                     Todos
                                 </button>
                                 <button
-                                    onClick={() => { setStatusFilter("Concluida"); setIsStatusDropdownOpen(false); }}
+                                    onClick={() => { setStatusFilter("Concluída"); setIsStatusDropdownOpen(false); }}
                                     className="w-full px-4 py-2 text-left text-[#32D583] hover:bg-[#0F0F10] transition-colors flex items-center gap-2 cursor-pointer"
                                 >
                                     <div className="w-2 h-2 rounded-full bg-[#32D583]"></div>
-                                    Concluida
+                                    Concluída
                                 </button>
                                 <button
                                     onClick={() => { setStatusFilter("Pendente"); setIsStatusDropdownOpen(false); }}

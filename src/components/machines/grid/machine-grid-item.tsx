@@ -25,16 +25,16 @@ export function MachineGridItem({ machine, index, onDelete }: MachineGridItemPro
 
   const allServices = machine.applications.flatMap(app => app.services);
   const total = allServices.length;
-  const installed = allServices.filter(s => s.status === "Concluida").length;
-  const pending = allServices.filter(s => s.status !== "Concluida").length;
+  const installed = allServices.filter(s => s.status === "Concluída").length;
+  const pending = allServices.filter(s => s.status !== "Concluída").length;
   const percent = total > 0 ? Math.round((installed / total) * 100) : 0;
 
   const eccoxApps = machine.applications.filter(app => app.tipo === "ECCOX");
   const ibmApps = machine.applications.filter(app => app.tipo === "IBM");
-  const ibmWarnings = ibmApps.filter(app => app.status !== "Concluida").length;
+  const ibmWarnings = ibmApps.filter(app => app.status !== "Concluída").length;
 
   const borderColor =
-    machine.status === "Concluida"
+    machine.status === "Concluída"
       ? "border-l-4 border-[#32D583]/50"
       : "border-l-4 border-[#F04438]/50 alert-pulse";
 
@@ -137,7 +137,7 @@ export function MachineGridItem({ machine, index, onDelete }: MachineGridItemPro
       <div className="flex items-center gap-3 mb-4">
         <Image
           src={
-            machine.status === "Concluida"
+            machine.status === "Concluída"
               ? ImgServerStatusConcluida
               : ImgServerStatusPendente
           }
@@ -200,7 +200,7 @@ export function MachineGridItem({ machine, index, onDelete }: MachineGridItemPro
         </div>
         <ProgressCircle
           percentage={percent}
-          status={machine.status === "Concluida" ? "Concluida" : "Pendente"}
+          status={machine.status === "Concluída" ? "Concluída" : "Pendente"}
           size="md"
         />
       </div>

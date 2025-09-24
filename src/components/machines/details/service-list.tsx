@@ -39,12 +39,12 @@ export function ServiceList({ services, onServicesUpdated }: ServiceListProps) {
 
     const getStatusIcon = (status: StatusType) => {
         switch (status) {
-            case "Concluida":
+            case "Concluída":
                 return <CheckCircle size={18} className="text-white" />;
             case "Pendente":
-                return <Clock size={18} className="text-white" />;
-            case "Em andamento":
                 return <MinusCircle size={18} className="text-white" />;
+            case "Em andamento":
+                return <Clock size={18} className="text-white" />;
             default:
                 return null;
         }
@@ -58,7 +58,7 @@ export function ServiceList({ services, onServicesUpdated }: ServiceListProps) {
             console.log("Atualizando serviço:", updatedService);
             
             // Chama a API do Electron para atualizar o serviço
-            const result = await window.electronAPI.updateService(updatedService);
+            const result = await window.electronAPI.syncService(updatedService);
 
             if (result.success) {
                 setMessage("Serviço atualizado com sucesso!");
@@ -147,7 +147,7 @@ export function ServiceList({ services, onServicesUpdated }: ServiceListProps) {
                         disabled={isLoading}
                     >
                         <option value="">Todos</option>
-                        <option value="Concluida">Concluídos</option>
+                        <option value="Concluída">Concluídos</option>
                         <option value="Pendente">Pendentes</option>
                         <option value="Em andamento">Em andamento</option>
                     </select>
@@ -189,11 +189,11 @@ export function ServiceList({ services, onServicesUpdated }: ServiceListProps) {
                                 <div className="flex items-center gap-3 flex-1">
                                     <span
                                         className={`w-5 h-5 rounded-full flex items-center justify-center border-2 ${
-                                            service.status === "Concluida"
+                                            service.status === "Concluída"
                                                 ? "bg-green-500 border-green-500"
                                                 : service.status === "Pendente"
                                                     ? "bg-red-500 border-red-500 animate-pulse"
-                                                    : "bg-gray-500 border-gray-500"
+                                                    : "bg-amber-500 border-amber-500 animate-pulse"
                                         }`}
                                     >
                                         {getStatusIcon(service.status)}
@@ -217,7 +217,11 @@ export function ServiceList({ services, onServicesUpdated }: ServiceListProps) {
                                     <h4 className="font-bold text-sm">{service.name}</h4>
                                     <p className="text-xs text-gray-400">
                                         Status: <span className={`font-semibold ${
-                                            service.status === "Concluida" ? "text-green-400" : "text-red-400"
+                                            service.status === "Concluída" 
+                                            ? "text-green-400"
+                                            : service.status === "Pendente"
+                                                ? "text-red-400"
+                                                : "text-amber-400"
                                         }`}>{service.status}</span>
                                     </p>
                                     <p className="text-xs text-gray-400">

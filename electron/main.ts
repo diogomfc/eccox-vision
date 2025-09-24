@@ -1,5 +1,8 @@
+// main.ts
 import { app, BrowserWindow, ipcMain, Menu, screen } from 'electron';
 import path from 'path';
+
+// Importa funções do repositório de máquinas
 import {
     getAllMachines,
     getMachineById,
@@ -9,24 +12,23 @@ import {
     syncMachineCompleteInDb,
 } from '../src/server/repositories/machine-repository';
 
+// Importa funções do repositório de aplicações
 import {
     getApplicationById,
     getAllApplications,
     getApplicationsByMachineId,
     getApplicationWithMachineInfo,
-    updateApplicationInDb,
-    createApplicationInDb,
     syncApplicationInDb,
     deleteApplicationAndServices,
 } from '../src/server/repositories/application-repository';
 
+// Importa funções do repositório de serviços
 import {
     getServicesByApplicationId,
     getServiceById,
-    updateServiceInDb,
-    createServiceInDb,
-    deleteServiceFromDb,
+    deleteServiceInDb,
     updateServiceStatus,
+    syncServicesInDb, 
 } from '../src/server/repositories/service-repository';
 
 import type { Machines, Application, Service } from '../src/types/machines';
@@ -127,7 +129,8 @@ const createErrorResponse = (message: string, error?: any) => {
 // Buscar todas as máquinas
 ipcMain.handle('get-all-machines', async () => {
     try {
-        return getAllMachines();
+        const machines = getAllMachines();
+        return machines;
     } catch (error) {
         console.error("Erro ao buscar máquinas:", error);
         return [];
@@ -137,7 +140,8 @@ ipcMain.handle('get-all-machines', async () => {
 // Buscar máquina por ID
 ipcMain.handle('get-machine-by-id', async (event, id: string) => {
     try {
-        return getMachineById(id);
+        const machine = getMachineById(id);
+        return machine || null;
     } catch (error) {
         console.error("Erro ao buscar máquina por ID:", error);
         return null;
@@ -148,7 +152,7 @@ ipcMain.handle('get-machine-by-id', async (event, id: string) => {
 ipcMain.handle('create-machine', async (event, machine: Machines) => {
     try {
         const success = createMachineInDb(machine);
-        return success 
+        return success
             ? createSuccessResponse("Máquina criada com sucesso!")
             : createErrorResponse("Erro ao criar máquina.");
     } catch (error) {
@@ -160,7 +164,7 @@ ipcMain.handle('create-machine', async (event, machine: Machines) => {
 ipcMain.handle('update-machine', async (event, machine: Machines) => {
     try {
         const success = updateMachineInDb(machine);
-        return success 
+        return success
             ? createSuccessResponse("Máquina atualizada com sucesso!")
             : createErrorResponse("Nenhuma alteração foi feita.");
     } catch (error) {
@@ -173,7 +177,7 @@ ipcMain.handle('sync-machine-complete', async (event, machine: Machines) => {
     try {
         console.log('Sincronizando máquina completa:', machine.id);
         const success = syncMachineCompleteInDb(machine);
-        return success 
+        return success
             ? createSuccessResponse("Máquina sincronizada com sucesso!")
             : createErrorResponse("Erro ao sincronizar máquina.");
     } catch (error) {
@@ -186,7 +190,7 @@ ipcMain.handle('delete-machine', async (event, machineId: string) => {
     try {
         console.log('Deletando máquina ID:', machineId);
         const success = deleteMachineComplete(machineId);
-        return success 
+        return success
             ? createSuccessResponse("Máquina deletada com sucesso!")
             : createErrorResponse("Erro ao deletar máquina ou máquina não encontrada.");
     } catch (error) {
@@ -201,7 +205,8 @@ ipcMain.handle('delete-machine', async (event, machineId: string) => {
 // Buscar todas as aplicações
 ipcMain.handle('get-all-applications', async () => {
     try {
-        return getAllApplications();
+        const applications = getAllApplications();
+        return applications;
     } catch (error) {
         console.error('Erro ao buscar todas as aplicações:', error);
         return [];
@@ -222,7 +227,8 @@ ipcMain.handle('get-application-by-id', async (event, applicationId: string) => 
 // Buscar aplicações por ID da máquina
 ipcMain.handle('get-applications-by-machine', async (event, machineId: string) => {
     try {
-        return getApplicationsByMachineId(machineId);
+        const applications = getApplicationsByMachineId(machineId);
+        return applications;
     } catch (error) {
         console.error('Erro ao buscar aplicações da máquina:', error);
         return [];
@@ -240,79 +246,12 @@ ipcMain.handle('get-application-with-machine-info', async (event, applicationId:
     }
 });
 
-// Criar nova aplicação
-ipcMain.handle('create-application', async (event, application: Application) => {
-    try {
-        console.log('Criando nova aplicação:', application);
-        
-        // Gerar ID se não existir
-        if (!application.id) {
-            application.id = `app-${Date.now()}`;
-        }
-
-        // Validação básica
-        if (!application.name || !application.machine_id) {
-            return createErrorResponse('Nome da aplicação e ID da máquina são obrigatórios');
-        }
-
-        const applicationToCreate = { 
-            ...application, 
-            updatedAt: new Date().toISOString() 
-        };
-
-        const success = createApplicationInDb(applicationToCreate);
-        
-        if (success) {
-            // Buscar a aplicação criada para retornar os dados completos
-            const createdApp = getApplicationById(application.id);
-            return createSuccessResponse("Aplicação criada com sucesso!", createdApp);
-        } else {
-            return createErrorResponse("Erro ao criar aplicação no banco de dados");
-        }
-    } catch (error) {
-        return createErrorResponse("Erro ao criar aplicação", error);
-    }
-});
-
-// Atualizar aplicação
-ipcMain.handle('update-application', async (event, application: Application) => {
-    try {
-        console.log('Atualizando aplicação:', application);
-
-        if (!application.id) {
-            return createErrorResponse('ID da aplicação é obrigatório para atualização');
-        }
-
-        // Verificar se a aplicação existe
-        const existingApp = getApplicationById(application.id);
-        if (!existingApp) {
-            return createErrorResponse('Aplicação não encontrada');
-        }
-
-        const applicationToUpdate = { 
-            ...application, 
-            updatedAt: new Date().toISOString() 
-        };
-
-        const success = updateApplicationInDb(applicationToUpdate);
-        
-        if (success) {
-            // Buscar a aplicação atualizada para retornar os dados completos
-            const updatedApp = getApplicationById(application.id);
-            return createSuccessResponse("Aplicação atualizada com sucesso!", updatedApp);
-        } else {
-            return createErrorResponse("Erro ao atualizar aplicação no banco de dados");
-        }
-    } catch (error) {
-        return createErrorResponse("Erro ao atualizar aplicação", error);
-    }
-});
-
-// Sincronizar aplicação
+// Sincronizar aplicação (unifica create/update)
 ipcMain.handle('sync-application', async (event, application: Application) => {
     try {
+        console.log('Sincronizando aplicação:', application);
         const success = syncApplicationInDb(application);
-        return success 
+        return success
             ? createSuccessResponse("Aplicação sincronizada com sucesso!")
             : createErrorResponse("Erro ao sincronizar aplicação.");
     } catch (error) {
@@ -329,15 +268,14 @@ ipcMain.handle('delete-application', async (event, applicationId: string) => {
             return createErrorResponse('ID da aplicação é obrigatório');
         }
 
-        // Verificar se a aplicação existe
         const existingApp = getApplicationById(applicationId);
         if (!existingApp) {
             return createErrorResponse('Aplicação não encontrada');
         }
 
         const success = deleteApplicationAndServices(applicationId);
-        
-        return success 
+
+        return success
             ? createSuccessResponse("Aplicação excluída com sucesso!")
             : createErrorResponse("Erro ao excluir aplicação do banco de dados");
     } catch (error) {
@@ -352,7 +290,8 @@ ipcMain.handle('delete-application', async (event, applicationId: string) => {
 // Buscar serviços por ID da aplicação
 ipcMain.handle('get-services-by-application', async (event, applicationId: string) => {
     try {
-        return getServicesByApplicationId(applicationId);
+        const services = getServicesByApplicationId(applicationId);
+        return services;
     } catch (error) {
         console.error('Erro ao buscar serviços da aplicação:', error);
         return [];
@@ -370,78 +309,20 @@ ipcMain.handle('get-service-by-id', async (event, serviceId: string) => {
     }
 });
 
-// Criar novo serviço
-ipcMain.handle('create-service', async (event, service: Service) => {
+// Sincronizar serviços (unifica create/update)
+ipcMain.handle('sync-service', async (event, services: Service[] | Service) => {
     try {
-        console.log('Criando novo serviço:', service);
-
-        // Gerar ID se não existir
-        if (!service.id) {
-            service.id = `service-${Date.now()}`;
-        }
-
-        if (!service.name || !service.application_id) {
-            return createErrorResponse('Nome do serviço e ID da aplicação são obrigatórios');
-        }
-
-        // Verificar se a aplicação existe
-        const existingApp = getApplicationById(service.application_id);
-        if (!existingApp) {
-            return createErrorResponse('Aplicação não encontrada');
-        }
-
-        const serviceToCreate = {
-            ...service,
-            updatedAt: new Date().toISOString()
-        };
-
-        const success = createServiceInDb(serviceToCreate, service.application_id);
-        
-        if (success) {
-            // Buscar o serviço criado para retornar os dados completos
-            const createdService = getServiceById(service.id);
-            return createSuccessResponse("Serviço criado com sucesso!", createdService);
-        } else {
-            return createErrorResponse("Erro ao criar serviço no banco de dados");
-        }
+        console.log('Sincronizando serviços em lote:', services);
+        const servicesArray = Array.isArray(services) ? services : [services];
+        const success = syncServicesInDb(servicesArray);
+        return success
+            ? createSuccessResponse("Serviços sincronizados com sucesso!")
+            : createErrorResponse("Erro ao sincronizar serviços.");
     } catch (error) {
-        return createErrorResponse("Erro ao criar serviço", error);
+        return createErrorResponse("Erro ao sincronizar serviços", error);
     }
 });
 
-// Atualizar serviço
-ipcMain.handle('update-service', async (event, service: Service) => {
-    try {
-        console.log('Atualizando serviço:', service);
-
-        if (!service.id) {
-            return createErrorResponse('ID do serviço é obrigatório para atualização');
-        }
-
-        // Verificar se o serviço existe
-        const existingService = getServiceById(service.id);
-        if (!existingService) {
-            return createErrorResponse('Serviço não encontrado');
-        }
-
-        const serviceToUpdate = {
-            ...service,
-            updatedAt: new Date().toISOString()
-        };
-
-        const success = updateServiceInDb(serviceToUpdate);
-        
-        if (success) {
-            // Buscar o serviço atualizado para retornar os dados completos
-            const updatedService = getServiceById(service.id);
-            return createSuccessResponse("Serviço atualizado com sucesso!", updatedService);
-        } else {
-            return createErrorResponse("Erro ao atualizar serviço no banco de dados");
-        }
-    } catch (error) {
-        return createErrorResponse("Erro ao atualizar serviço", error);
-    }
-});
 
 // Deletar serviço
 ipcMain.handle('delete-service', async (event, serviceId: string) => {
@@ -452,15 +333,14 @@ ipcMain.handle('delete-service', async (event, serviceId: string) => {
             return createErrorResponse('ID do serviço é obrigatório');
         }
 
-        // Verificar se o serviço existe
         const existingService = getServiceById(serviceId);
         if (!existingService) {
             return createErrorResponse('Serviço não encontrado');
         }
 
-        const success = deleteServiceFromDb(serviceId);
-        
-        return success 
+        const success = deleteServiceInDb(serviceId);
+
+        return success
             ? createSuccessResponse("Serviço excluído com sucesso!")
             : createErrorResponse("Erro ao excluir serviço do banco de dados");
     } catch (error) {
@@ -469,7 +349,7 @@ ipcMain.handle('delete-service', async (event, serviceId: string) => {
 });
 
 // Atualizar apenas o status do serviço
-ipcMain.handle('update-service-status', async (event, serviceId: string, newStatus: 'Concluida' | 'Pendente' | 'Em andamento') => {
+ipcMain.handle('update-service-status', async (event, serviceId: string, newStatus: 'Concluída' | 'Pendente' | 'Em andamento') => {
     try {
         console.log('Atualizando status do serviço:', serviceId, 'para:', newStatus);
 
@@ -477,15 +357,14 @@ ipcMain.handle('update-service-status', async (event, serviceId: string, newStat
             return createErrorResponse('ID do serviço é obrigatório');
         }
 
-        // Verificar se o serviço existe
         const existingService = getServiceById(serviceId);
         if (!existingService) {
             return createErrorResponse('Serviço não encontrado');
         }
 
         const success = updateServiceStatus(serviceId, newStatus);
-        
-        return success 
+
+        return success
             ? createSuccessResponse("Status do serviço atualizado com sucesso!")
             : createErrorResponse("Erro ao atualizar status do serviço.");
     } catch (error) {
@@ -501,10 +380,10 @@ ipcMain.handle('update-service-status', async (event, serviceId: string, newStat
 ipcMain.handle('get-application-stats', async (event, applicationId: string) => {
     try {
         const services = getServicesByApplicationId(applicationId);
-        
+
         const stats = {
             totalServices: services.length,
-            completedServices: services.filter(s => s.status === 'Concluida').length,
+            completedServices: services.filter(s => s.status === 'Concluída').length,
             pendingServices: services.filter(s => s.status === 'Pendente').length,
             inProgressServices: services.filter(s => s.status === 'Em andamento').length,
             mandatoryServices: services.filter(s => s.itemObrigatorio === 'Sim').length
@@ -540,8 +419,8 @@ ipcMain.handle('validate-application', async (event, applicationId: string) => {
             return { valid: false, message: 'Máquina associada não encontrada' };
         }
 
-        return { 
-            valid: true, 
+        return {
+            valid: true,
             message: 'Aplicação válida',
             data: { application: app, machine }
         };

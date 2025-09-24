@@ -1,5 +1,6 @@
 // src/components/machines/machine-form-header.tsx
-import React from 'react';
+"use client";
+
 import Image from 'next/image';
 import { Layers, Settings } from 'lucide-react';
 import { CardHeader } from '@/components/ui/card';
@@ -60,7 +61,7 @@ const MachineFormHeader: React.FC<MachineFormHeaderProps> = ({
     if (stepId === 1) {
         if (!machineData.status) return `Passo ${stepId} de ${steps.length}`;
         switch(machineData.status) {
-            case 'Concluida': return <span className="text-green-400">Concluída</span>;
+            case 'Concluída': return <span className="text-green-400">Concluída</span>;
             case 'Pendente': return <span className="text-red-400">Pendente</span>;
             default: return <span className="text-amber-400">{machineData.status}</span>;
         }
@@ -81,7 +82,7 @@ const MachineFormHeader: React.FC<MachineFormHeaderProps> = ({
   const getStepIcon = (stepId: number) => {
     if (stepId === 1) {
         switch(machineData.status) {
-            case 'Concluida': return ImgServerConcluida;
+            case 'Concluída': return ImgServerConcluida;
             case 'Pendente': return ImgServerPendente;
             default: return ImgServerNew;
         }
