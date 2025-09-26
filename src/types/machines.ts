@@ -11,6 +11,7 @@ export interface Machines {
   status: StatusType;
   updatedAt: string;
   applications: Application[];
+  machineResponsible?: string; 
 }
 
 export interface Application {

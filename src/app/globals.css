@@ -1,7 +1,9 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-/* Configuração global da fonte Segoe UI */
+/* ===================================================================
+   CONFIGURAÇÃO GLOBAL DA FONTE
+   =================================================================== */
 @layer base {
   html {
     font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
@@ -11,7 +13,9 @@
 
 @custom-variant dark (&:is(.dark *));
 
-
+/* ===================================================================
+   VARIÁVEIS DE DESIGN TOKENS
+   =================================================================== */
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -50,6 +54,9 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+/* ===================================================================
+   TEMA CLARO (PADRÃO)
+   =================================================================== */
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
@@ -85,6 +92,9 @@
   --sidebar-ring: oklch(0.704 0.04 256.788);
 }
 
+/* ===================================================================
+   TEMA ESCURO
+   =================================================================== */
 .dark {
   --background: oklch(0.129 0.042 264.695);
   --foreground: oklch(0.984 0.003 247.858);
@@ -119,87 +129,237 @@
   --sidebar-ring: oklch(0.551 0.027 264.364);
 }
 
+/* ===================================================================
+   ESTILOS BASE GLOBAIS
+   =================================================================== */
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
     overflow: hidden;
   }
-  
-  /* Esconde scrollbar da página */
-  html, body {
+
+  html,
+  body {
     scrollbar-width: none;
     -ms-overflow-style: none;
   }
-  
-  html::-webkit-scrollbar, 
+
+  html::-webkit-scrollbar,
   body::-webkit-scrollbar {
     display: none;
   }
-  
-  .custom-scrollbar::-webkit-scrollbar {
-    width: 6px;
-  }
-  
-  .custom-scrollbar::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 3px;
-  }
-  
-  .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 3px;
-  }
-  
-  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.15);
-  }
+}
 
-  @keyframes pulse-border {
-    0% {
-      border-color: rgba(240, 68, 56, 0.1);
-    }
-    50% {
-      border-color: rgba(240, 68, 56, 0.8);
-    }
-    100% {
-      border-color: rgba(240, 68, 56, 0.1);
-    }
-  }
+/* ===================================================================
+   SISTEMA DE SCROLLBAR
+   =================================================================== */
 
-    @keyframes pulseSlow {
-    0%, 100% {
-      opacity: 0.3;
-      transform: scale(1);
-    }
-    50% {
-      opacity: 0.7;
-      transform: scale(1.1);
-    }
-  }
+/* Padrão global */
+.custom-scrollbar,
+.table-scrollbar,
+.table-scrollbar-minimal,
+.scrollbar-dark {
+  scrollbar-width: thin;
+}
 
-   @keyframes pulseStrong {
-    0%, 100% {
-      opacity: 0.2;
-      transform: scale(1);
-    }
-    50% {
-      opacity: 1;
-      transform: scale(1.2);
-    }
-  }
- 
-  .pulse-slow {
-    animation: pulseSlow 2s ease-in-out infinite;
-  }
+.custom-scrollbar::-webkit-scrollbar,
+.table-scrollbar::-webkit-scrollbar,
+.table-scrollbar-minimal::-webkit-scrollbar,
+.scrollbar-dark::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
 
-  .pulse-strong {
-    animation: pulseStrong 3s ease-in-out infinite;
-  }
+/* Scrollbar clara padrão */
+.custom-scrollbar {
+  scrollbar-color: rgba(255, 255, 255, 0.15) rgba(255, 255, 255, 0.05);
+}
 
-  .alert-pulse {
-    animation: pulse-border 2s ease-in-out infinite;
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: background-color 0.2s ease;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Scrollbar para tabelas */
+.table-scrollbar {
+  scrollbar-color: rgba(107, 114, 128, 0.8) #1A1A1E;
+}
+
+.table-scrollbar::-webkit-scrollbar-track {
+  background: #1A1A1E;
+  border-radius: 4px;
+}
+
+.table-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(107, 114, 128, 0.8);
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.table-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(107, 114, 128, 1);
+}
+
+/* Scrollbar minimalista */
+.table-scrollbar-minimal {
+  scrollbar-color: rgba(107, 114, 128, 0.6) #1A1A1E;
+}
+
+.table-scrollbar-minimal::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.table-scrollbar-minimal::-webkit-scrollbar-track {
+  background: rgba(26, 26, 30, 0.8);
+}
+
+.table-scrollbar-minimal::-webkit-scrollbar-thumb {
+  background: rgba(107, 114, 128, 0.6);
+  border-radius: 3px;
+}
+
+.table-scrollbar-minimal::-webkit-scrollbar-thumb:hover {
+  background: rgba(107, 114, 128, 0.8);
+}
+
+/* Scrollbar escura */
+.scrollbar-dark {
+  scrollbar-color: #4b5563 #0F0F11;
+}
+
+.scrollbar-dark::-webkit-scrollbar-track {
+  background-color: #0F0F11;
+}
+
+.scrollbar-dark::-webkit-scrollbar-thumb {
+  background-color: #4b5563;
+}
+
+.scrollbar-dark::-webkit-scrollbar-thumb:hover {
+  background-color: #6b7280;
+}
+
+/* ===================================================================
+   UTILITÁRIOS DE SCROLL
+   =================================================================== */
+.smooth-scroll {
+  scroll-behavior: smooth;
+}
+
+.table-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.table-scroll {
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: var(--background);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ===================================================================
+   ANIMAÇÕES
+   =================================================================== */
+@keyframes pulse-border {
+  0% { border-color: rgba(240, 68, 56, 0.1); }
+  50% { border-color: rgba(240, 68, 56, 0.8); }
+  100% { border-color: rgba(240, 68, 56, 0.1); }
+}
+
+@keyframes pulseSlow {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.1); }
+}
+
+@keyframes pulseStrong {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+.pulse-slow { animation: pulseSlow 2s ease-in-out infinite; }
+.pulse-strong { animation: pulseStrong 3s ease-in-out infinite; }
+.alert-pulse { animation: pulse-border 2s ease-in-out infinite; }
+
+/* ===================================================================
+   COMPONENTES ESPECÍFICOS
+   =================================================================== */
+.status-icon-column {
+  width: 40px !important;
+  min-width: 40px !important;
+  max-width: 40px !important;
+  flex: 0 0 40px !important;
+}
+
+.spinner { animation: spin 1s linear infinite; }
+@keyframes spin { from { transform: rotate(0); } to { transform: rotate(360deg); } }
+
+.btn-hover-scale {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-hover-scale:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.status-indicator { position: relative; overflow: hidden; }
+
+.status-indicator::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.status-indicator:hover::before { left: 100%; }
+
+/* ===================================================================
+   RESPONSIVIDADE DESKTOP
+   =================================================================== */
+@media (min-width: 1280px) and (max-height: 900px) {
+  .desktop-optimized { font-size: 14px; }
+  .desktop-table { font-size: 13px; }
+  .desktop-compact { padding: 0.5rem; }
+}
+
+/* ===================================================================
+   ACESSIBILIDADE
+   =================================================================== */
+.focus-enhanced:focus {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
+  .smooth-scroll { scroll-behavior: auto; }
 }

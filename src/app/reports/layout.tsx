@@ -1,5 +1,5 @@
 import Image from "next/image";
-import BgImage from '@/assets/images/bg-detalhes-machine.svg';
+import BgImage from '@/assets/images/bg-overview.svg';
 
 export default function MachineDetailsLayout({ children }: { children: React.ReactNode }) {
   return (
