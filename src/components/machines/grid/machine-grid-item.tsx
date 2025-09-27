@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import { motion } from "framer-motion";
-import { SquarePen, Trash2, Eye } from "lucide-react";
+import { SquarePen, Trash2, Eye, User } from "lucide-react";
 import { ProgressCircle } from "@/components/ui/progress-circle";
 import { Machines } from "@/types/machines";
 
@@ -17,21 +17,29 @@ interface MachineGridItemProps {
   onDelete: () => void;
 }
 
-export function MachineGridItem({ machine, index, onDelete }: MachineGridItemProps) {
+export function MachineGridItem({
+  machine,
+  index,
+  onDelete,
+}: MachineGridItemProps) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
   const [isHovered, setIsHovered] = useState(false);
-  const [loadingAction, setLoadingAction] = useState<'view' | 'edit' | null>(null);
+  const [loadingAction, setLoadingAction] = useState<"view" | "edit" | null>(
+    null
+  );
 
-  const allServices = machine.applications.flatMap(app => app.services);
+  const allServices = machine.applications.flatMap((app) => app.services);
   const total = allServices.length;
-  const installed = allServices.filter(s => s.status === "Concluída").length;
-  const pending = allServices.filter(s => s.status !== "Concluída").length;
+  const installed = allServices.filter((s) => s.status === "Concluída").length;
+  const pending = allServices.filter((s) => s.status !== "Concluída").length;
   const percent = total > 0 ? Math.round((installed / total) * 100) : 0;
 
-  const eccoxApps = machine.applications.filter(app => app.tipo === "ECCOX");
-  const ibmApps = machine.applications.filter(app => app.tipo === "IBM");
-  const ibmWarnings = ibmApps.filter(app => app.status !== "Concluída").length;
+  const eccoxApps = machine.applications.filter((app) => app.tipo === "ECCOX");
+  const ibmApps = machine.applications.filter((app) => app.tipo === "IBM");
+  const ibmWarnings = ibmApps.filter(
+    (app) => app.status !== "Concluída"
+  ).length;
 
   const borderColor =
     machine.status === "Concluída"
@@ -41,7 +49,7 @@ export function MachineGridItem({ machine, index, onDelete }: MachineGridItemPro
   const isLoading = isPending || loadingAction !== null;
 
   const handleViewDetails = () => {
-    setLoadingAction('view');
+    setLoadingAction("view");
     startTransition(() => {
       router.push(`/machines/${machine.id}`);
     });
@@ -49,7 +57,7 @@ export function MachineGridItem({ machine, index, onDelete }: MachineGridItemPro
 
   const handleEditClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-    setLoadingAction('edit');
+    setLoadingAction("edit");
     startTransition(() => {
       router.push(`/machines/edit/${machine.id}`);
     });
@@ -57,7 +65,7 @@ export function MachineGridItem({ machine, index, onDelete }: MachineGridItemPro
 
   const handleEyeClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-    setLoadingAction('view');
+    setLoadingAction("view");
     startTransition(() => {
       router.push(`/machines/${machine.id}`);
     });
@@ -87,10 +95,18 @@ export function MachineGridItem({ machine, index, onDelete }: MachineGridItemPro
           className="absolute inset-0 bg-black/60 flex items-center justify-center z-30 rounded-lg backdrop-blur-sm"
         >
           <div className="flex flex-col items-center gap-2">
-              <div className={`border-t-transparent rounded-full animate-spin w-8 h-8 border-4 ${loadingAction === 'edit' ? 'border-[#feb329]' : 'border-[#298BFE]'}`}></div>
-              <span className="text-xs text-white/80">
-                  {loadingAction === 'edit' ? 'Abrindo editor...' : 'Carregando detalhes...'}
-              </span>
+            <div
+              className={`border-t-transparent rounded-full animate-spin w-8 h-8 border-4 ${
+                loadingAction === "edit"
+                  ? "border-[#feb329]"
+                  : "border-[#298BFE]"
+              }`}
+            ></div>
+            <span className="text-xs text-white/80">
+              {loadingAction === "edit"
+                ? "Abrindo editor..."
+                : "Carregando detalhes..."}
+            </span>
           </div>
         </motion.div>
       )}
@@ -105,30 +121,39 @@ export function MachineGridItem({ machine, index, onDelete }: MachineGridItemPro
           className="absolute top-2 right-2 flex flex-col z-20 p-1 shadow-lg"
         >
           <button
-              onClick={handleEyeClick}
-              className="p-2 transition-colors cursor-pointer"
-              aria-label="Ver detalhes da máquina"
-              disabled={isLoading}
+            onClick={handleEyeClick}
+            className="p-2 transition-colors cursor-pointer"
+            aria-label="Ver detalhes da máquina"
+            disabled={isLoading}
           >
-              <Eye size={16} className="text-gray-400/50 hover:text-blue-400 transition-colors" />
+            <Eye
+              size={16}
+              className="text-gray-400/50 hover:text-blue-400 transition-colors"
+            />
           </button>
 
           <button
-              onClick={handleEditClick}
-              className="p-2 transition-colors cursor-pointer"
-              aria-label="Editar máquina"
-              disabled={isLoading}
+            onClick={handleEditClick}
+            className="p-2 transition-colors cursor-pointer"
+            aria-label="Editar máquina"
+            disabled={isLoading}
           >
-              <SquarePen size={16} className="text-gray-400/50 hover:text-amber-500 transition-colors" />
+            <SquarePen
+              size={16}
+              className="text-gray-400/50 hover:text-amber-500 transition-colors"
+            />
           </button>
 
           <button
-              onClick={handleDeleteClick}
-              className="p-2 transition-colors cursor-pointer"
-              aria-label="Deletar máquina"
-              disabled={isLoading}
+            onClick={handleDeleteClick}
+            className="p-2 transition-colors cursor-pointer"
+            aria-label="Deletar máquina"
+            disabled={isLoading}
           >
-              <Trash2 size={16} className="text-gray-400/50 hover:text-red-400 transition-colors" />
+            <Trash2
+              size={16}
+              className="text-gray-400/50 hover:text-red-400 transition-colors"
+            />
           </button>
         </motion.div>
       )}
@@ -147,13 +172,30 @@ export function MachineGridItem({ machine, index, onDelete }: MachineGridItemPro
         />
         <div>
           <h3 className="text-white font-medium">{machine.name}</h3>
-          <span className="text-xs text-[#6C6C6C]">{machine.version || "v1.0"}</span>
+          <span className="text-xs text-[#6C6C6C]">
+            {machine.version || "v1.0"}
+          </span>
         </div>
       </div>
 
       <p className="text-sm text-[#6C6C6C] mb-4 line-clamp-2">
         {machine.description || "Sem descrição"}
       </p>
+
+      {/* ====================================================== */}
+      {/* INÍCIO DO NOVO CAMPO ADICIONADO                      */}
+      {/* ====================================================== */}
+      {machine.machineResponsible && (
+        <div className="flex items-center gap-2 mb-4">
+          <User size={14} className="text-gray-500" />
+          <p className="text-xs font-medium text-gray-400">
+            {machine.machineResponsible}
+          </p>
+        </div>
+      )}
+      {/* ====================================================== */}
+      {/* FIM DO NOVO CAMPO ADICIONADO                         */}
+      {/* ====================================================== */}
 
       {/* Badges */}
       <div className="flex flex-wrap gap-1 mb-4 min-h-[20px]">

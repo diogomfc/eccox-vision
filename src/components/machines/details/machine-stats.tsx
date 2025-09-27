@@ -15,11 +15,12 @@ interface MachineStatsProps {
 export function MachineStats({ total, percent, pendentes, instalados, offsetY = 0  }: MachineStatsProps) {
     // Definimos as cores para cada velocímetro
     const installedColor = "#45D18C"; // Cor para "Serviços Instalados"
-    const completeColor = "#F9BE46"; // Cor para "Instalação Completa"
+    const completeColor = "#45D18C"; // Cor para "Instalação Completa"
+    const inProgressColor = "#F9BE46"; // Cor para "Em Andamento"
 
     // Lógica para a cor do velocímetro de "Serviços Pendentes"
-    const pendingColor = pendentes === 0 ? "#45D18C" : "#F96666";
-    const pendingBackgroundColor = pendentes === 0 ? "#45D18C" : "#2D3748";
+    const pendingColor = pendentes === 0 ? "#2D3748" : "#F96666";
+    const pendingBackgroundColor = pendentes === 0 ? "#2D3748" : "#2D3748";
   
     return (
         <div className="flex justify-around items-center w-full max-w-4xl" style={{ transform: `translateY(${offsetY}px)` }}>
@@ -39,7 +40,7 @@ export function MachineStats({ total, percent, pendentes, instalados, offsetY = 
                 total={100}
                 description="instalação completa"
                 percentage={percent}
-                colorProgresso={completeColor}
+                colorProgresso={percent === 100 ? completeColor : inProgressColor}
             />
             
             {/* Velocímetro para Serviços Pendentes */}

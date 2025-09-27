@@ -34,7 +34,9 @@ export function setupDatabase() {
       description TEXT,
       version TEXT,
       status TEXT,
-      updatedAt TEXT
+      productionType TEXT,
+      updatedAt TEXT,
+      machineResponsible TEXT
     );
     CREATE TABLE IF NOT EXISTS applications (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -43,6 +45,7 @@ export function setupDatabase() {
       status TEXT,
       updatedAt TEXT
       tipo TEXT,
+      applicationResponsible TEXT,
       FOREIGN KEY(machine_id) REFERENCES machines(id)
     );
     CREATE TABLE IF NOT EXISTS services (

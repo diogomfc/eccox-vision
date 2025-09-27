@@ -162,7 +162,16 @@ export function createServiceInDbWithRules(service: Service, applicationId: stri
             INSERT INTO services (id, application_id, name, status, itemObrigatorio, updatedAt, responsible, comments, typePendencia, responsibleHomologacao)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         `).run(
-            service.id, applicationId, service.name || 'Nome não definido', service.status || 'Pendente', service.itemObrigatorio || null, service.updatedAt || new Date().toISOString(), service.responsible || null, service.comments || null, service.typePendencia || null, service.responsibleHomologacao || null
+            service.id, 
+            applicationId, 
+            service.name || 'Nome não definido', 
+            service.status || 'Pendente', 
+            service.itemObrigatorio || null, 
+            service.updatedAt || new Date().toISOString(), 
+            service.responsible || null, 
+            service.comments || null, 
+            service.typePendencia || null, 
+            service.responsibleHomologacao || null
         );
         
         if (result.changes > 0) {
@@ -243,9 +252,13 @@ export function updateApplicationInDbWithRules(application: Application): boolea
     try {
         return db.transaction(() => {
             db.prepare(`
-                UPDATE applications SET machine_id = ?, name = ?, tipo = ? WHERE id = ?
+                UPDATE applications SET machine_id = ?, name = ?, tipo = ?, applicationResponsible = ? WHERE id = ?
             `).run(
-                application.machine_id || null, application.name, application.tipo || null, application.id
+                application.machine_id || null, 
+                application.name, 
+                application.tipo || null, 
+                application.applicationResponsible || null, 
+                application.id
             );
 
             const existingServicesInDb = db.prepare("SELECT id FROM services WHERE application_id = ?").all(application.id) as { id: string }[];
@@ -285,9 +298,15 @@ export function updateMachineInDbWithRules(machine: Machines): boolean {
     const db = getDatabase();
     try {
         const result = db.prepare(`
-            UPDATE machines SET name = ?, description = ?, version = ? WHERE id = ?
+            UPDATE machines 
+            SET name = ?, description = ?, version = ?, machineResponsible = ?
+            WHERE id = ?
         `).run(
-            machine.name, machine.description, machine.version, machine.id
+            machine.name, 
+            machine.description, 
+            machine.version, 
+            machine.machineResponsible || null,
+            machine.id 
         );
         
         if (result.changes > 0) {

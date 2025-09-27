@@ -48,6 +48,7 @@ export default function MachineUpdateClient({
     name: "",
     description: "",
     version: "",
+    machineResponsible: "",
     status: "Pendente" as StatusType,
     updatedAt: new Date().toISOString(),
     applications: [],

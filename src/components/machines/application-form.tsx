@@ -1,3 +1,5 @@
+// src/components/ApplicationForm.tsx (ou onde quer que o seu componente esteja)
+
 "use client";
 
 import { motion } from 'framer-motion';
@@ -6,16 +8,16 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Save, X } from 'lucide-react';
-import { Application, ApplicationType, StatusType } from '@/types/machines'; // Importar Application completa
-import { Loader2 } from 'lucide-react'; // Adicionar Loader2 para isLoading
+import { Application, ApplicationType, StatusType } from '@/types/machines';
+import { Loader2 } from 'lucide-react';
 
 interface ApplicationFormProps {
-  appData: Partial<Application>; // Usar Partial para mais flexibilidade
+  appData: Partial<Application>;
   onChange: (value: any, key: keyof Application) => void;
   onSave: () => void;
   onCancel: () => void;
   isEditMode?: boolean;
-  isLoading?: boolean; // Adicionar prop isLoading
+  isLoading?: boolean;
 }
 
 export const ApplicationForm = ({
@@ -36,16 +38,16 @@ export const ApplicationForm = ({
     selectFocusPrimary: isEditMode ? "focus:bg-amber-600/10" : "focus:bg-blue-600/10",
   };
 
-  // Valores padrão para evitar erros
+  // ALTERADO: Adicionado 'applicationResponsible' ao objeto de dados
   const data = {
     name: appData.name ?? '',
     tipo: appData.tipo ?? 'IBM',
     status: appData.status ?? 'Pendente',
+    applicationResponsible: appData.applicationResponsible ?? '', // NOVO
   };
 
   return (
     <motion.div
-      // MELHORIA 2: Animação mais performática
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
@@ -63,8 +65,9 @@ export const ApplicationForm = ({
           </Button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
-          <div className="space-y-2 col-span-2">
+        {/* ALTERADO: Layout do grid ajustado para um 2x2 mais limpo */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div className="space-y-2">
             <Label className="text-gray-200">Nome da Aplicação *</Label>
             <Input
               value={data.name}
@@ -72,10 +75,22 @@ export const ApplicationForm = ({
               className={`bg-[#1A1A1D] border-[#2A2A2D] ${themeConfig.focusColor} text-gray-100`}
               placeholder="Digite o nome da aplicação"
               disabled={isLoading}
-              // MELHORIA 1: Foco automático
               autoFocus
             />
           </div>
+
+          {/* NOVO: Campo de input para o Responsável pela Aplicação */}
+          <div className="space-y-2">
+            <Label className="text-gray-200">Responsável</Label>
+            <Input
+              value={data.applicationResponsible}
+              onChange={(e) => onChange(e.target.value, 'applicationResponsible')}
+              className={`bg-[#1A1A1D] border-[#2A2A2D] ${themeConfig.focusColor} text-gray-100`}
+              placeholder="Nome do responsável"
+              disabled={isLoading}
+            />
+          </div>
+
           <div className="space-y-2">
             <Label className="text-gray-200">Tipo da Aplicação *</Label>
             <Select value={data.tipo} onValueChange={(value: ApplicationType) => onChange(value, 'tipo')} disabled={isLoading}>
@@ -89,9 +104,14 @@ export const ApplicationForm = ({
                 <SelectItem value="ECCOX" className={`cursor-pointer ${themeConfig.selectFocusPrimary}`}>
                   <span className="text-blue-400">ECCOX</span>
                 </SelectItem>
+                {/* NOVO: Adicionando o tipo DISTRIBUÍDA que estava nos seus types */}
+                <SelectItem value="DISTRIBUÍDA" className={`cursor-pointer ${themeConfig.selectFocusPrimary}`}>
+                  <span className="text-blue-400">DISTRIBUÍDA</span>
+                </SelectItem>
               </SelectContent>
             </Select>
           </div>
+          
           <div className="space-y-2">
             <Label className="text-gray-200">Status</Label>
             <Select value={data.status} onValueChange={(value: StatusType) => onChange(value, 'status')} disabled>
@@ -104,6 +124,10 @@ export const ApplicationForm = ({
                 </SelectItem>
                 <SelectItem value="Pendente" className={`cursor-pointer ${themeConfig.selectFocusRed}`}>
                   <span className="text-red-400">Pendente</span>
+                </SelectItem>
+                {/* NOVO: Adicionando o status 'Em andamento' que estava nos seus types */}
+                <SelectItem value="Em andamento" className={`cursor-pointer ${themeConfig.selectFocusPrimary}`}>
+                  <span className="text-yellow-400">Em andamento</span>
                 </SelectItem>
               </SelectContent>
             </Select>

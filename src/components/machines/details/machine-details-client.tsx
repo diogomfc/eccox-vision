@@ -104,6 +104,7 @@ export function MachineDetailsClient({ machineId }: MachineDetailsClientProps) {
         return {
             name: machine.name,
             description: machine.description || "",
+            responsible: machine.machineResponsible || "Não definido",
             system: machine.version || "Z/OS 3.1",
             status: machine.status || "Concluída",
             update: machine.updatedAt || "12/09/2025"

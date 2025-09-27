@@ -1,10 +1,7 @@
-// src/app/machines/create/page.tsx
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
 import {
   Loader2,
   Plus,
@@ -13,17 +10,11 @@ import {
   Settings,
   Check,
 } from "lucide-react";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { motion, AnimatePresence } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
+import { AnimatePresence } from "framer-motion";
 import type { Machines, Application, StatusType } from "@/types/machines";
 
-// Importar as imagens
-import ImgServerNew from "@/assets/images/img-server-status.svg";
-import ImgServerPendente from "@/assets/images/img-server-status-warning.svg";
-import ImgServerConcluida from "@/assets/images/img-server-status-ok.svg";
-
 // Importar os componentes criados
-
 import MachineInfoStep from "@/components/machines/machine-info-step";
 import MachineReviewStep from "@/components/machines/machine-review-step";
 import MachineApplicationStep from "@/components/machines/machine-application-step";
@@ -39,24 +30,19 @@ export default function CreateMachinePage() {
   const [isSaving, setIsSaving] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
 
-  // Machine data
+  // Estado dos dados da Máquina
   const [newMachine, setNewMachine] = useState<Partial<Machines>>({
     name: "",
     description: "",
     version: "",
+    machineResponsible: "",
     status: "Pendente" as StatusType,
     updatedAt: new Date().toISOString(),
     applications: [],
   });
 
-  // Applications data
+  // Estado dos dados das Aplicações
   const [applications, setApplications] = useState<Application[]>([]);
-
-  const steps = [
-    { id: 1, title: "Cadastro da Máquina", icon: ImgServerNew },
-    { id: 2, title: "Aplicações", icon: Layers },
-    { id: 3, title: "Revisão & Criação", icon: Settings },
-  ];
 
   const handleMachineChange = (updatedMachine: Partial<Machines>) => {
     setNewMachine(updatedMachine);
@@ -69,7 +55,6 @@ export default function CreateMachinePage() {
         return;
       }
     }
-
     setMessage(null);
     if (activeStep < 3) {
       setActiveStep(activeStep + 1);
@@ -88,35 +73,35 @@ export default function CreateMachinePage() {
     setMessage(null);
 
     try {
-      // Validações antes de salvar
       if (!newMachine.name?.trim() || !newMachine.description?.trim() || !newMachine.version?.trim()) {
         setMessage("Todos os campos da máquina são obrigatórios.");
         setIsSaving(false);
         return;
       }
 
-      // Criar objeto da máquina com todas as informações
+      // *** CORREÇÃO DE BUG: Gerar o ID da máquina uma única vez ***
+      const machineId = `machine-${Date.now()}`;
+
       const machineToCreate: Machines = {
-        id: `machine-${Date.now()}`,
+        id: machineId, // Usar o ID gerado
         name: newMachine.name.trim(),
         description: newMachine.description.trim(),
         version: newMachine.version.trim(),
+        machineResponsible: newMachine.machineResponsible?.trim() || "",
         status: newMachine.status || "Pendente",
         updatedAt: new Date().toISOString(),
+        // O campo 'applicationResponsible' já vem no objeto 'app' do estado 'applications'
         applications: applications.map(app => ({
           ...app,
-          machine_id: `machine-${Date.now()}`, // Garantir que o machine_id está correto
+          machine_id: machineId, // Reutilizar o mesmo ID para garantir a consistência
           services: app.services.map(service => ({
             ...service,
-            application_id: app.id, // Garantir que o application_id está correto
+            application_id: app.id,
             updatedAt: service.updatedAt || new Date().toISOString()
           }))
         }))
       };
 
-      console.log('Tentando criar máquina:', machineToCreate);
-
-      // Chamar a API do Electron para criar a máquina
       const result = await window.electronAPI.createMachine(machineToCreate);
 
       if (result.success) {
@@ -137,11 +122,9 @@ export default function CreateMachinePage() {
 
   return (
     <div className="h-screen text-gray-100 flex flex-col">
-      {/* Main Content Area (Scrollable) */}
       <div className="flex-1 overflow-hidden pb-10">
         <div className="max-w-6xl mx-auto h-full pb-20 flex flex-col">
           <Card className="bg-gradient-to-br pt-0 from-[#111113] to-[#0F0F11] border-blue-500/30 shadow-2xl flex flex-col flex-1 overflow-hidden">
-            {/* Header Integrado: Progress Steps dentro do Card Header */}
             <MachineFormHeader
               activeStep={activeStep}
               onStepClick={setActiveStep}
@@ -149,8 +132,6 @@ export default function CreateMachinePage() {
               applications={applications}
               mode="create"
             />
-
-            {/* Card Content (Scrollable) */}
             <CardContent className="h-full overflow-y-auto custom-scrollbar flex-1 flex flex-col">
               <div className="flex-1">
                 <AnimatePresence mode="wait">
@@ -180,11 +161,9 @@ export default function CreateMachinePage() {
                   )}
                 </AnimatePresence>
               </div>
-
-              {/* Message Display */}
+              
               <MessageDisplay message={message} />
-
-              {/* Footer Navigation */}
+              
               <MachineFormFooter
                 activeStep={activeStep}
                 stepsCount={3}

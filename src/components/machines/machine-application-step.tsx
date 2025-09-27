@@ -26,6 +26,7 @@ import {
   CalendarIcon,
   Edit3,
   SquarePen,
+  User,
 } from "lucide-react";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
@@ -70,6 +71,7 @@ export default function MachineApplicationStep({
     name: "",
     tipo: "IBM" as ApplicationType,
     status: "Pendente" as StatusType,
+    applicationResponsible: "", 
   });
 
   const [newService, setNewService] = useState({
@@ -98,6 +100,7 @@ export default function MachineApplicationStep({
     name: "",
     tipo: "IBM" as ApplicationType,
     status: "Pendente" as StatusType,
+    applicationResponsible: "",
   });
 
   const [searchTerm, setSearchTerm] = useState("");
@@ -117,10 +120,11 @@ export default function MachineApplicationStep({
       name: newApp.name,
       tipo: newApp.tipo,
       status: newApp.status,
+      applicationResponsible: newApp.applicationResponsible,
       services: [],
     };
     setApplications((prev) => [...prev, app]);
-    setNewApp({ name: "", tipo: "IBM", status: "Pendente" });
+    setNewApp({ name: "", tipo: "IBM", status: "Pendente", applicationResponsible: "" });
     setIsAddingApp(false);
     setMessage(null);
   };
@@ -137,6 +141,7 @@ export default function MachineApplicationStep({
         name: app.name,
         tipo: app.tipo,
         status: app.status,
+        applicationResponsible: app.applicationResponsible || "",
       });
       setEditingAppId(appId);
     }
@@ -155,18 +160,19 @@ export default function MachineApplicationStep({
               name: editApp.name,
               tipo: editApp.tipo,
               status: editApp.status,
+              applicationResponsible: editApp.applicationResponsible,
             }
           : app
       )
     );
     setEditingAppId(null);
-    setEditApp({ name: "", tipo: "IBM", status: "Pendente" });
+    setEditApp({ name: "", tipo: "IBM", status: "Pendente", applicationResponsible: "" });
     setMessage(null);
   };
 
   const handleCancelEditApplication = () => {
     setEditingAppId(null);
-    setEditApp({ name: "", tipo: "IBM", status: "Pendente" });
+    setEditApp({ name: "", tipo: "IBM", status: "Pendente", applicationResponsible: "" });
   };
 
   const handleAddService = (appId: string) => {
@@ -327,7 +333,9 @@ export default function MachineApplicationStep({
     return applications.filter((app) => {
       const matchesAppSearch =
         app.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        app.tipo?.toLowerCase().includes(searchTerm.toLowerCase());
+        app.tipo?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        app.applicationResponsible?.toLowerCase().includes(searchTerm.toLowerCase());
+
       const matchesStatus =
         statusFilter === "all" || app.status === statusFilter;
       const hasMatchingServices = serviceSearchTerm
@@ -413,13 +421,16 @@ export default function MachineApplicationStep({
                 Pesquisar Aplicação
               </Label>
               <div className="relative">
+               
+
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
                 <Input
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  placeholder="Nome ou tipo de aplicação..."
-                  className="bg-[#1A1A1D] border-[#2A2A2D] pl-10 focus:!border-amber-500 text-gray-100 placeholder-gray-500 hover:bg-[#23232B] hover:text-gray-500"
+                  placeholder="Nome, tipo ou responsável..."
+                  className="bg-[#1A1A1D] border-[#2A2A2D] pl-10 focus:!border-blue-500 text-gray-100 placeholder-gray-500 hover:bg-[#23232B] hover:text-gray-500"
                 />
+
                 {searchTerm && (
                   <Button
                     variant="ghost"
@@ -443,7 +454,7 @@ export default function MachineApplicationStep({
                   setStatusFilter(value)
                 }
               >
-                <SelectTrigger className="bg-[#1A1A1D] border-[#2A2A2D] cursor-pointer focus:!border-amber-500 text-gray-100 w-full hover:bg-[#23232B] hover:text-gray-500">
+                <SelectTrigger className="bg-[#1A1A1D] border-[#2A2A2D] cursor-pointer focus:!border-blue-500 text-gray-100 w-full hover:bg-[#23232B] hover:text-gray-500">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent className="bg-[#1A1A1D] border-[#2A2A2D] cursor-pointer">
@@ -683,6 +694,18 @@ export default function MachineApplicationStep({
                                   </h4>
                                 </span>
                               </div>
+
+
+                               {app.applicationResponsible && (
+                                <>
+                                  <div className="w-1 h-1 bg-gray-500 rounded-full translate-y-[1px]"></div>
+                                  <div className="flex items-center text-gray-400 text-sm">
+                                    <User size={14} className="mr-1" />
+                                    {app.applicationResponsible}
+                                  </div>
+                                </>
+                              )}
+
                               <div className="w-1 h-1 bg-gray-500 rounded-full translate-y-[1px]"></div>
                               <p className="text-gray-400 text-sm">
                                 {app.tipo}

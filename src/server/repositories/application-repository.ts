@@ -15,7 +15,6 @@ import {
 
 /**
  * Busca todas as aplicações com seus serviços aninhados.
- * @returns {Application[]} Uma lista de objetos Application.
  */
 export function getAllApplications(): Application[] {
     const db = getDatabase();
@@ -30,8 +29,6 @@ export function getAllApplications(): Application[] {
 
 /**
  * Busca uma única aplicação por ID com seus serviços.
- * @param {string} id O ID da aplicação.
- * @returns {Application | undefined} O objeto Application ou undefined.
  */
 export function getApplicationById(id: string): Application | undefined {
     const db = getDatabase();
@@ -47,8 +44,6 @@ export function getApplicationById(id: string): Application | undefined {
 
 /**
  * Busca aplicações por ID da máquina.
- * @param {string} machineId O ID da máquina.
- * @returns {Application[]} Uma lista de objetos Application.
  */
 export function getApplicationsByMachineId(machineId: string): Application[] {
     const db = getDatabase();
@@ -63,8 +58,6 @@ export function getApplicationsByMachineId(machineId: string): Application[] {
 
 /**
  * Busca uma aplicação e as informações da máquina associada.
- * @param {string} applicationId O ID da aplicação.
- * @returns {{application: Application, machine: Machines} | undefined} Objeto com aplicação e máquina.
  */
 export function getApplicationWithMachineInfo(applicationId: string): { application: Application, machine: Machines } | undefined {
     const db = getDatabase();
@@ -89,7 +82,6 @@ export function getApplicationWithMachineInfo(applicationId: string): { applicat
 
 /**
  * Função utilitária para atualizar a data de updatedAt da aplicação e da máquina.
- * @param {string} applicationId O ID da aplicação para a qual os serviços foram atualizados.
  */
 export function updateApplicationAndMachineDates(applicationId?: string) {
     if (!applicationId) return;
@@ -104,22 +96,18 @@ export function updateApplicationAndMachineDates(applicationId?: string) {
     }
 }
 
-
-
 /**
  * Cria uma nova aplicação no banco de dados.
- * @param {Application} application O objeto Application a ser criado.
- * @returns {boolean} True se a operação for bem-sucedida, false caso contrário.
  */
 export function createApplicationInDb(application: Application): boolean {
     const db = getDatabase();
     
     try {
         db.transaction(() => {
-            // Insere a aplicação
+            // CORRIGIDO: Ordem correta dos parâmetros na query INSERT
             const appStmt = db.prepare(`
-                INSERT INTO applications (id, machine_id, name, status, tipo, updatedAt)
-                VALUES (?, ?, ?, ?, ?, ?)
+                INSERT INTO applications (id, machine_id, name, status, tipo, updatedAt, applicationResponsible)
+                VALUES (?, ?, ?, ?, ?, ?, ?)
             `);
             appStmt.run(
                 application.id,
@@ -127,7 +115,8 @@ export function createApplicationInDb(application: Application): boolean {
                 application.name,
                 application.status,
                 application.tipo || null,
-                new Date().toISOString() // Adiciona a data de criação/atualização inicial
+                new Date().toISOString(), // updatedAt
+                application.applicationResponsible || null // applicationResponsible
             );
 
             // Insere serviços se fornecidos
@@ -140,11 +129,11 @@ export function createApplicationInDb(application: Application): boolean {
                 for (const service of application.services) {
                     serviceStmt.run(
                         service.id,
-                        application.id, // Usa o ID da aplicação que acabou de ser criada
+                        application.id,
                         service.name,
                         service.status,
                         service.itemObrigatorio,
-                        service.updatedAt || new Date().toISOString(),
+                        service.updatedAt || null, // CORRIGIDO: não forçar data atual
                         service.responsible || null,
                         service.comments || null,
                         service.typePendencia || null,
@@ -168,18 +157,13 @@ export function createApplicationInDb(application: Application): boolean {
 
 /**
  * Atualiza uma aplicação existente no banco de dados.
- * @param {Application} application O objeto Application com os dados atualizados.
- * @returns {boolean} True se a operação for bem-sucedida, false caso contrário.
  */
 export function updateApplicationInDb(application: Application): boolean {
     return updateApplicationInDbWithRules(application);
 }
 
-
 /**
  * Deleta uma aplicação e todos os seus serviços.
- * @param {string} applicationId O ID da aplicação a ser deletada.
- * @returns {boolean} True se a operação for bem-sucedida, false caso contrário.
  */
 export function deleteApplicationAndServices(applicationId: string): boolean {
     const db = getDatabase();
@@ -200,8 +184,6 @@ export function deleteApplicationAndServices(applicationId: string): boolean {
 
 /**
  * Sincroniza uma aplicação (cria ou atualiza) e seus serviços.
- * @param {Application} application O objeto Application a ser sincronizado.
- * @returns {boolean} True se a operação for bem-sucedida, false caso contrário.
  */
 export function syncApplicationInDb(application: Application): boolean {
     const db = getDatabase();

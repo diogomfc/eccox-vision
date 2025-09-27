@@ -76,7 +76,13 @@ export default function ApplicationEditModal({
   };
 
   const [editApp, setEditApp] = useState<Application>({
-    id: "", machine_id: "", name: "", tipo: "IBM", status: "Pendente", services: [],
+    id: "", 
+    machine_id: "", 
+    name: "", 
+    tipo: "IBM", 
+    status: "Pendente", 
+    services: [], 
+    applicationResponsible: "",
   });
 
   const [isAddingService, setIsAddingService] = useState(false);
@@ -91,7 +97,10 @@ export default function ApplicationEditModal({
   useEffect(() => {
     if (isOpen) {
       if (application) {
-        setEditApp({ ...application });
+        setEditApp({ 
+          ...application,
+           applicationResponsible: application.applicationResponsible || "",
+        });
       } else {
         setEditApp({
           id: `app-${Date.now()}`,
@@ -99,6 +108,7 @@ export default function ApplicationEditModal({
           name: "",
           tipo: "IBM",
           status: "Pendente",
+          applicationResponsible: "",
           services: [],
         });
       }
@@ -219,8 +229,20 @@ export default function ApplicationEditModal({
                         <SelectContent className="bg-[#1A1A1D] border-[#2A2A2D]">
                             <SelectItem value="IBM" className={`cursor-pointer ${themeConfig.selectFocusPrimary}`}><span className="text-blue-400">IBM</span></SelectItem>
                             <SelectItem value="ECCOX" className={`cursor-pointer ${themeConfig.selectFocusPrimary}`}><span className="text-blue-400">ECCOX</span></SelectItem>
+                            <SelectItem value="DISTRIBUÍDA" className={`cursor-pointer ${themeConfig.selectFocusPrimary}`}><span className="text-blue-400">DISTRIBUÍDA</span></SelectItem>
                         </SelectContent>
                     </Select>
+                </div>
+                  {/* NOVO: Campo de input para o Responsável */}
+                <div className="space-y-2">
+                    <Label className="text-gray-200">Responsável</Label>
+                    <Input 
+                        value={editApp.applicationResponsible} 
+                        onChange={(e) => setEditApp((prev) => ({ ...prev, applicationResponsible: e.target.value }))} 
+                        className={`bg-[#1A1A1D] border-[#2A2A2D] ${themeConfig.focusColor} text-gray-100 hover:bg-[#23232B]`} 
+                        placeholder="Nome do responsável"
+                        disabled={isLoading}
+                    />
                 </div>
                 <div className="space-y-2">
                     <Label className="text-gray-200">Status</Label>

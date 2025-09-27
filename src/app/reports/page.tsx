@@ -1,24 +1,25 @@
-// src/app/reports/page.tsx
 "use client";
 
 import { useEffect, useState } from "react";
-
 import { ReportsTable } from "@/components/reports/reports-table";
 import { toast } from "sonner";
-import { Machines } from "@/types/machines"; // Assumindo que o tipo existe aqui
+import { Machines } from "@/types/machines";
 import { DashboardStats } from "@/components/reports/dashboard-stats";
 
+// ALTERADO: Adicionado 'applicationResponsible' à interface de dados do relatório
 export interface ReportData {
   serviceId: string;
   machineName: string;
+  machineResponsible: string;
   applicationName: string;
+  applicationResponsible: string; // NOVO
   serviceName: string;
   applicationType: string;
   status: "Concluída" | "Pendente" | "Em andamento";
   itemObrigatorio: "Sim" | "Não";
   responsible: string;
   responsibleHomologacao: string;
-  updatedAt: string;
+  updatedAt: string | null; // ALTERADO: Permitir null
   comments: string;
 }
 
@@ -47,10 +48,8 @@ export default function ReportsPage() {
     try {
       setIsLoading(true);
       
-      // Carregar todos os dados em uma única chamada
       const machines: Machines[] = await window.electronAPI.getAllMachines();
 
-      // Processar dados para a tabela - percorrer máquinas -> aplicações -> serviços
       const processedData: ReportData[] = [];
       let totalApplications = 0;
 
@@ -61,17 +60,20 @@ export default function ReportsPage() {
           machine.applications.forEach((application) => {
             if (application.services && application.services.length > 0) {
               application.services.forEach((service) => {
+                // CORRIGIDO: Não usar data atual como fallback, manter null quando não há data
                 processedData.push({
                   serviceId: service.id,
                   machineName: machine.name || "N/A",
+                  machineResponsible: machine.machineResponsible || "N/A",
                   applicationName: application.name || "N/A",
+                  applicationResponsible: application.applicationResponsible || "N/A",
                   serviceName: service.name || "N/A",
                   applicationType: application.tipo || "N/A",
                   status: service.status || "Pendente",
                   itemObrigatorio: service.itemObrigatorio || "Não",
                   responsible: service.responsible || "N/A",
                   responsibleHomologacao: service.responsibleHomologacao || "N/A",
-                  updatedAt: service.updatedAt || new Date().toISOString(),
+                  updatedAt: service.updatedAt || null, 
                   comments: service.comments || "",
                 });
               });
@@ -82,7 +84,6 @@ export default function ReportsPage() {
 
       setReportData(processedData);
 
-      // Calcular estatísticas de forma mais eficiente
       const completedCount = processedData.filter(item => item.status === "Concluída").length;
       const pendingCount = processedData.filter(item => item.status === "Pendente").length;
       const inProgressCount = processedData.filter(item => item.status === "Em andamento").length;
@@ -110,7 +111,7 @@ export default function ReportsPage() {
 
   if (isLoading) {
     return (
-      <div className="h-screen flex items-center justify-center">
+      <div className="h-screen flex items-center justify-center bg-[#111113]">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
           <p className="text-gray-400">Carregando relatórios...</p>
@@ -120,14 +121,14 @@ export default function ReportsPage() {
   }
 
   return (
-    <div className="h-screen text-gray-100 flex flex-col">
+    <div className="h-screen bg-[#111113] text-gray-100 flex flex-col">
       {/* Header com Stats */}
       <div className="flex-none px-6 border-gray-800">
         <DashboardStats {...stats} />
       </div>
 
       {/* Tabela */}
-      <div className="flex-1 overflow-hidden pb-30">
+      <div className="flex-1 overflow-hidden p-6 pb-30">
         <ReportsTable initialData={reportData} />
       </div>
     </div>

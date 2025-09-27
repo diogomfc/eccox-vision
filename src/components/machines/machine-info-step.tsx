@@ -124,9 +124,6 @@ export default function MachineInfoStep({
                 </Button>
               </div>
             </PopoverTrigger>
-            {/* ====================================================== */}
-            {/* CORREÇÃO DE ESTILO APLICADA AQUI                      */}
-            {/* ====================================================== */}
             <PopoverContent className="w-[--radix-popover-trigger-width] p-0 bg-[#0F0F11] border-gray-700">
               <Command className="bg-[#0F0F11] text-gray-200">
                 <CommandInput
@@ -174,7 +171,7 @@ export default function MachineInfoStep({
         />
         <p className="text-xs text-gray-500">Breve descrição sobre a máquina e sua função</p>
       </div>
-      
+
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div className="space-y-3">
           <Label htmlFor="status" className="text-base font-medium text-gray-200">

@@ -1,6 +1,6 @@
 // src/server/machines-types.ts
 export type StatusType = "Concluída" | "Pendente" | "Em andamento";
-export type ApplicationType = "ECCOX" | "IBM";
+export type ApplicationType = "ECCOX" | "IBM" | "DISTRIBUÍDA";
 export type ItemObrigatorioType = "Sim" | "Não";
 
 export interface Machines {
@@ -11,7 +11,7 @@ export interface Machines {
   status: StatusType;
   updatedAt: string;
   applications: Application[];
-  machineResponsible?: string; 
+  machineResponsible?: string;
 }
 
 export interface Application {
@@ -22,6 +22,7 @@ export interface Application {
   tipo: ApplicationType;
   services: Service[];
   updatedAt?: string;
+  applicationResponsible?: string;
 }
 
 export interface Service {

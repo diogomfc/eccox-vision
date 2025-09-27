@@ -7,7 +7,6 @@ import { deleteApplicationAndServices, syncApplicationInDb } from "./application
 import { 
     updateMachineInDbWithRules,
     propagateStatusAndDateUpdates,
-    // A importação de 'getLatestServiceUpdateForMachine' foi removida daqui
 } from './business-rules';
 
 // ========================
@@ -16,7 +15,6 @@ import {
 
 /**
  * Busca todas as máquinas com suas aplicações e serviços aninhados.
- * @returns {Machines[]} Uma lista de objetos Machines.
  */
 export function getAllMachines(): Machines[] {
     const db = getDatabase();
@@ -39,8 +37,6 @@ export function getAllMachines(): Machines[] {
 
 /**
  * Busca uma única máquina por ID com suas aplicações e serviços aninhados.
- * @param {string} id O ID da máquina.
- * @returns {Machines | undefined} O objeto Machine ou undefined se não for encontrado.
  */
 export function getMachineById(id: string): Machines | undefined {
     const db = getDatabase();
@@ -68,8 +64,6 @@ export function getMachineById(id: string): Machines | undefined {
 
 /**
  * Cria uma nova máquina no banco de dados.
- * @param {Machines} machine O objeto Machine a ser criado.
- * @returns {boolean} True se a operação for bem-sucedida, false caso contrário.
  */
 export function createMachineInDb(machine: Machines): boolean {
     const db = getDatabase();
@@ -78,8 +72,8 @@ export function createMachineInDb(machine: Machines): boolean {
         return db.transaction(() => {
             // 1. Cria a máquina principal (status e updatedAt serão calculados depois)
             const machineStmt = db.prepare(`
-                INSERT INTO machines (id, name, description, version, status, updatedAt)
-                VALUES (?, ?, ?, ?, ?, ?)
+                INSERT INTO machines (id, name, description, version, status, updatedAt, machineResponsible)
+                VALUES (?, ?, ?, ?, ?, ?, ?)
             `);
             machineStmt.run(
                 machine.id,
@@ -87,14 +81,15 @@ export function createMachineInDb(machine: Machines): boolean {
                 machine.description,
                 machine.version,
                 'Pendente', // Status inicial
-                new Date().toISOString() // Data inicial
+                new Date().toISOString(), // Data inicial
+                machine.machineResponsible || null
             );
             
             // 2. Cria as aplicações e seus serviços
             if (machine.applications && machine.applications.length > 0) {
                 const appStmt = db.prepare(`
-                    INSERT INTO applications (id, machine_id, name, status, tipo, updatedAt)
-                    VALUES (?, ?, ?, ?, ?, ?)
+                    INSERT INTO applications (id, machine_id, name, status, tipo, updatedAt, applicationResponsible)
+                    VALUES (?, ?, ?, ?, ?, ?, ?)
                 `);
                 
                 const serviceStmt = db.prepare(`
@@ -105,14 +100,15 @@ export function createMachineInDb(machine: Machines): boolean {
                 for (const app of machine.applications) {
                     const appId = app.id || `app-${Date.now()}`;
                     
-                    // Cria a aplicação
+                    // CORRIGIDO: Ordem correta dos parâmetros para aplicação
                     appStmt.run(
                         appId,
                         machine.id,
                         app.name,
                         'Pendente', // Status inicial
                         app.tipo || null,
-                        new Date().toISOString()
+                        new Date().toISOString(),
+                        app.applicationResponsible || null // CORRIGIDO: parâmetro na ordem certa
                     );
                     
                     // Cria os serviços para a aplicação
@@ -126,7 +122,7 @@ export function createMachineInDb(machine: Machines): boolean {
                                 service.name || 'Nome não definido',
                                 service.status || 'Pendente',
                                 service.itemObrigatorio || null,
-                                service.updatedAt || new Date().toISOString(),
+                                service.updatedAt || null, // CORRIGIDO: não forçar data atual
                                 service.responsible || null,
                                 service.comments || null,
                                 service.typePendencia || null,
@@ -151,8 +147,6 @@ export function createMachineInDb(machine: Machines): boolean {
 /**
  * Atualiza uma máquina existente no banco de dados.
  * Esta função agora lida com a lógica de data, evitando duplicação.
- * @param {Machines} machine O objeto Machine com os dados atualizados.
- * @returns {boolean} True se a operação for bem-sucedida, false caso contrário.
  */
 export function updateMachineInDb(machine: Machines): boolean {
     return updateMachineInDbWithRules(machine);
@@ -160,8 +154,6 @@ export function updateMachineInDb(machine: Machines): boolean {
 
 /**
  * Deleta uma máquina e todas as suas aplicações e serviços.
- * @param {string} machineId O ID da máquina a ser deletada.
- * @returns {boolean} True se a operação for bem-sucedida, false caso contrário.
  */
 export function deleteMachineComplete(machineId: string): boolean {
     const db = getDatabase();
@@ -189,8 +181,6 @@ export function deleteMachineComplete(machineId: string): boolean {
 /**
  * Sincroniza uma máquina completa (máquina, aplicações e serviços).
  * Esta é uma operação complexa que coordena a atualização, criação e exclusão.
- * @param {Machines} machine O objeto Machine a ser sincronizado.
- * @returns {boolean} True se a operação for bem-sucedida, false caso contrário.
  */
 export function syncMachineCompleteInDb(machine: Machines): boolean {
     const db = getDatabase();
