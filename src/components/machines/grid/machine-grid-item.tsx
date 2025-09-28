@@ -36,7 +36,7 @@ export function MachineGridItem({
   const percent = total > 0 ? Math.round((installed / total) * 100) : 0;
 
   const eccoxApps = machine.applications.filter((app) => app.tipo === "ECCOX");
-  const ibmApps = machine.applications.filter((app) => app.tipo === "IBM");
+  const ibmApps = machine.applications.filter((app) => app.tipo === "MAINFRAME");
   const ibmWarnings = ibmApps.filter(
     (app) => app.status !== "Concluída"
   ).length;
@@ -219,7 +219,7 @@ export function MachineGridItem({
                 : "bg-[#252728] text-[#6C6C6C]"
             }`}
           >
-            +{ibmApps.length} IBM
+            +{ibmApps.length} MAINFRAME
           </span>
         )}
       </div>

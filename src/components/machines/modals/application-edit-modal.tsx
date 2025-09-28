@@ -66,7 +66,7 @@ export default function ApplicationEditModal({
   isLoading = false,
 }: ApplicationEditModalProps) {
   const themeConfig = {
-    focusColor: isEditMode ? "focus:!border-amber-500" : "focus:!border-blue-500",
+    focusColor: isEditMode ? "focus:!border-amber-500 focus:!ring-transparent" : "focus:!border-blue-500 focus:!ring-transparent",
     textAccent: isEditMode ? "text-amber-400" : "text-blue-400",
     borderAccent: isEditMode ? "border-amber-500/30" : "border-blue-500/30",
     buttonPrimary: isEditMode ? "bg-amber-600/50 hover:bg-amber-700" : "bg-blue-600/50 hover:bg-blue-700",
@@ -79,7 +79,7 @@ export default function ApplicationEditModal({
     id: "", 
     machine_id: "", 
     name: "", 
-    tipo: "IBM", 
+    tipo: "MAINFRAME", 
     status: "Pendente", 
     services: [], 
     applicationResponsible: "",
@@ -106,7 +106,7 @@ export default function ApplicationEditModal({
           id: `app-${Date.now()}`,
           machine_id: machineId,
           name: "",
-          tipo: "IBM",
+          tipo: "MAINFRAME",
           status: "Pendente",
           applicationResponsible: "",
           services: [],
@@ -218,7 +218,7 @@ export default function ApplicationEditModal({
             <div className={`p-4 bg-[#0F0F11] border ${themeConfig.borderAccent} rounded-lg`}>
               <h3 className="font-medium text-gray-100 mb-4">Informações da Aplicação</h3>
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                <div className="space-y-2 col-span-2">
+                <div className="space-y-2 ">
                   <Label className="text-gray-200">Nome da Aplicação *</Label>
                   <Input value={editApp.name} onChange={(e) => setEditApp((prev) => ({ ...prev, name: e.target.value }))} className={`bg-[#1A1A1D] border-[#2A2A2D] ${themeConfig.focusColor} text-gray-100 hover:bg-[#23232B]`} disabled={isLoading}/>
                 </div>
@@ -227,7 +227,7 @@ export default function ApplicationEditModal({
                     <Select value={editApp.tipo} onValueChange={(value: ApplicationType) => setEditApp((prev) => ({ ...prev, tipo: value }))} disabled={isLoading}>
                         <SelectTrigger className={`bg-[#1A1A1D] border-[#2A2A2D] ${themeConfig.focusColor} text-gray-100 hover:bg-[#23232B] w-full`}><SelectValue /></SelectTrigger>
                         <SelectContent className="bg-[#1A1A1D] border-[#2A2A2D]">
-                            <SelectItem value="IBM" className={`cursor-pointer ${themeConfig.selectFocusPrimary}`}><span className="text-blue-400">IBM</span></SelectItem>
+                            <SelectItem value="MAINFRAME" className={`cursor-pointer ${themeConfig.selectFocusPrimary}`}><span className="text-blue-400">MAINFRAME</span></SelectItem>
                             <SelectItem value="ECCOX" className={`cursor-pointer ${themeConfig.selectFocusPrimary}`}><span className="text-blue-400">ECCOX</span></SelectItem>
                             <SelectItem value="DISTRIBUÍDA" className={`cursor-pointer ${themeConfig.selectFocusPrimary}`}><span className="text-blue-400">DISTRIBUÍDA</span></SelectItem>
                         </SelectContent>

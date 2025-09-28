@@ -70,11 +70,14 @@ export default function ServiceEditModal({
     return null;
   }
 
-  const themeConfig = {
-    focusColor: "focus:!border-amber-500",
+ const themeConfig = {
+    focusColor: "focus:!border-amber-500 focus:!ring-transparent",
     textAccent: "text-amber-400",
     borderAccent: "border-amber-500/30",
     buttonPrimary: "bg-amber-600/50 hover:bg-amber-700",
+    selectFocusGreen: "focus:bg-amber-600/10",
+    selectFocusRed: "focus:bg-amber-600/10",
+    selectFocusPrimary: "focus:bg-amber-600/10",
   };
 
   return (
@@ -112,9 +115,9 @@ export default function ServiceEditModal({
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent className="bg-[#1A1A1D] border-[#2A2A2D]">
-                  <SelectItem value="Concluída"><span className="text-green-400">Concluída</span></SelectItem>
-                  <SelectItem value="Pendente"><span className="text-red-400">Pendente</span></SelectItem>
-                  <SelectItem value="Em andamento"><span className="text-amber-400">Em andamento</span></SelectItem>
+                  <SelectItem value="Concluída" className={`cursor-pointer hover:!bg-[#23232B] hover:!text-green-400 `}><span className="text-green-400">Concluída</span></SelectItem>
+                  <SelectItem value="Pendente" className={`cursor-pointer hover:!bg-[#23232B] hover:!text-red-400 `}><span className="text-red-400">Pendente</span></SelectItem>
+                  <SelectItem value="Em andamento" className={`cursor-pointer hover:!bg-[#23232B] hover:!text-amber-400 `}><span className="text-amber-400">Em andamento</span></SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -130,8 +133,8 @@ export default function ServiceEditModal({
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent className="bg-[#1A1A1D] border-[#2A2A2D] text-gray-100">
-                  <SelectItem value="Sim"><span className="text-green-400">Sim</span></SelectItem>
-                  <SelectItem value="Não"><span className="text-red-400">Não</span></SelectItem>
+                  <SelectItem value="Sim" className={`cursor-pointer hover:!bg-[#23232B] hover:!text-green-400 text-green-400`}><span className="text-green-400">Sim</span></SelectItem>
+                  <SelectItem value="Não" className={`cursor-pointer hover:!bg-[#23232B] hover:!text-red-400 text-red-400`}><span className="text-red-400">Não</span></SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -207,7 +210,7 @@ export default function ServiceEditModal({
           </div>
 
           <div className="flex justify-end gap-3 pt-4 border-t border-gray-700/50">
-            <Button onClick={onClose} variant="ghost" className="text-gray-400 hover:text-gray-200 hover:bg-[#1A1A1D] cursor-pointe" disabled={isLoading}>
+            <Button onClick={onClose} variant="ghost" className="text-gray-400 cursor-pointer hover:text-gray-200 hover:bg-[#1A1A1D]" disabled={isLoading}>
               Cancelar
             </Button>
             <Button onClick={handleSave} className="bg-amber-600 hover:bg-amber-700 min-w-[140px] cursor-pointer" disabled={!isFormValid || isLoading}>

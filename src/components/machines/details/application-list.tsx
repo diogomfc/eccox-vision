@@ -354,7 +354,7 @@ export function ApplicationList({
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
-                      handleDeleteApplication(app.name);
+                      handleDeleteApplication(app.id);
                     }}
                     className="cursor-pointer"
                     aria-label="Deletar aplicação"
@@ -390,7 +390,7 @@ export function ApplicationList({
             id: `app-${Date.now()}`,
             machine_id: machine.id,
             name: "",
-            tipo: "IBM",
+            tipo: "MAINFRAME",
             status: "Pendente",
             applicationResponsible: "",
             services: [],

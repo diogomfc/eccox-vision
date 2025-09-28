@@ -168,6 +168,10 @@ export function updateApplicationInDb(application: Application): boolean {
 export function deleteApplicationAndServices(applicationId: string): boolean {
     const db = getDatabase();
     try {
+        // Busca o machine_id ANTES de deletar a aplicação
+        const application = db.prepare("SELECT machine_id FROM applications WHERE id = ?").get(applicationId) as { machine_id: string | null } | undefined;
+        const machineId = application?.machine_id;
+        
         db.transaction(() => {
             // Deleta todos os serviços desta aplicação
             db.prepare("DELETE FROM services WHERE application_id = ?").run(applicationId);
@@ -175,6 +179,12 @@ export function deleteApplicationAndServices(applicationId: string): boolean {
             // Deleta a aplicação
             db.prepare("DELETE FROM applications WHERE id = ?").run(applicationId);
         })();
+        
+        // NOVA LÓGICA: Propaga as atualizações para a máquina após a exclusão
+        if (machineId) {
+            propagateStatusAndDateUpdates(undefined, machineId);
+        }
+        
         return true;
     } catch (error) {
         console.error('Erro ao deletar aplicação e serviços:', error);

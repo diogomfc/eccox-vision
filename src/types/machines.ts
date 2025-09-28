@@ -1,6 +1,6 @@
 // src/server/machines-types.ts
 export type StatusType = "Concluída" | "Pendente" | "Em andamento";
-export type ApplicationType = "ECCOX" | "IBM" | "DISTRIBUÍDA";
+export type ApplicationType = "ECCOX" | "MAINFRAME" | "DISTRIBUÍDA";
 export type ItemObrigatorioType = "Sim" | "Não";
 
 export interface Machines {

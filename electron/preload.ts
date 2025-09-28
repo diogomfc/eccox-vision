@@ -3,6 +3,49 @@ import { contextBridge, ipcRenderer } from "electron";
 import { Application, Machines, Service } from "../src/types/machines";
 
 contextBridge.exposeInMainWorld('electronAPI', {
+
+     // ========================
+    // APIs - CONFIGURATION MANAGEMENT
+    // ========================
+    
+    isFirstRun: (): Promise<boolean> => ipcRenderer.invoke('is-first-run'),
+
+    completeInitialSetup: (databasePath: string): Promise<{
+        success: boolean;
+        message: string;
+    }> => ipcRenderer.invoke('complete-initial-setup', databasePath),
+
+    getAppConfig: (): Promise<{
+        databasePath: string;
+        isFirstRun: boolean;
+        lastConfigUpdate: string;
+    }> => ipcRenderer.invoke('get-app-config'),
+
+
+    // ========================
+    // DB APIs - DATABASE MANAGEMENT
+    // ========================
+    getDatabaseStatus: (): Promise<{
+        status: 'online' | 'offline' | 'error';
+        lastUpdate: string | null;
+        currentPath: string;
+        message?: string;
+    }> => ipcRenderer.invoke('get-database-status'),
+
+    setDatabasePath: (path: string): Promise<{
+        success: boolean;
+        message: string;
+        newPath?: string;
+    }> => ipcRenderer.invoke('set-database-path', path),
+
+    testDatabaseConnection: (path: string): Promise<{
+        success: boolean;
+        message: string;
+    }> => ipcRenderer.invoke('test-database-connection', path),
+
+    selectDatabasePath: (): Promise<string | null> => ipcRenderer.invoke('select-database-path'),
+
+
     // ========================
     // MACHINES APIs
     // ========================

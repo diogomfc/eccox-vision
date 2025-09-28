@@ -36,7 +36,7 @@ export const ServiceForm = ({
   };
 
   const themeConfig = {
-    focusColor: isEditMode ? "focus:!border-amber-500" : "focus:!border-blue-500",
+    focusColor: isEditMode ? "focus:!border-amber-500 focus:!ring-transparent" : "focus:!border-blue-500 focus:!ring-transparent",
     textAccent: isEditMode ? "text-amber-400" : "text-blue-400",
     borderAccent: isEditMode ? "border-amber-500/30" : "border-blue-500/30",
     buttonPrimary: isEditMode ? "bg-amber-600/50 hover:bg-amber-700" : "bg-blue-600/50 hover:bg-blue-700",

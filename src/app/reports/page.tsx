@@ -121,14 +121,14 @@ export default function ReportsPage() {
   }
 
   return (
-    <div className="h-screen bg-[#111113] text-gray-100 flex flex-col">
+    <div className="h-screen  text-gray-100 flex flex-col">
       {/* Header com Stats */}
-      <div className="flex-none px-6 border-gray-800">
+      <div className="flex-none px-6 pt-2 border-gray-800">
         <DashboardStats {...stats} />
       </div>
 
       {/* Tabela */}
-      <div className="flex-1 overflow-hidden p-6 pb-30">
+      <div className="flex-1  overflow-hidden px-6 pb-30">
         <ReportsTable initialData={reportData} />
       </div>
     </div>

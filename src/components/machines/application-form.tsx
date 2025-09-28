@@ -41,7 +41,7 @@ export const ApplicationForm = ({
   // ALTERADO: Adicionado 'applicationResponsible' ao objeto de dados
   const data = {
     name: appData.name ?? '',
-    tipo: appData.tipo ?? 'IBM',
+    tipo: appData.tipo ?? 'MAINFRAME',
     status: appData.status ?? 'Pendente',
     applicationResponsible: appData.applicationResponsible ?? '', // NOVO
   };
@@ -98,8 +98,8 @@ export const ApplicationForm = ({
                 <SelectValue />
               </SelectTrigger>
               <SelectContent className="bg-[#1A1A1D] border-[#2A2A2D]">
-                <SelectItem value="IBM" className={`cursor-pointer ${themeConfig.selectFocusPrimary}`}>
-                  <span className="text-blue-400">IBM</span>
+                <SelectItem value="MAINFRAME" className={`cursor-pointer ${themeConfig.selectFocusPrimary}`}>
+                  <span className="text-blue-400">MAINFRAME</span>
                 </SelectItem>
                 <SelectItem value="ECCOX" className={`cursor-pointer ${themeConfig.selectFocusPrimary}`}>
                   <span className="text-blue-400">ECCOX</span>

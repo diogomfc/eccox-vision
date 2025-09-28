@@ -4,6 +4,46 @@ import { Machines, Application, Service } from "./machines";
 declare global {
     interface Window {
         electronAPI: {
+
+
+            // ========================
+            //  APIs - CONFIGURATION MANAGEMENT
+            // ========================
+            isFirstRun: () => Promise<boolean>;
+            completeInitialSetup: (databasePath: string) => Promise<{
+                success: boolean;
+                message: string;
+            }>;
+            getAppConfig: () => Promise<{
+                databasePath: string;
+                isFirstRun: boolean;
+                lastConfigUpdate: string;
+            }>;
+
+
+            // ========================
+            // DATABASE APIs
+            // ========================
+            getDatabaseStatus: () => Promise<{
+                status: 'online' | 'offline' | 'error';
+                lastUpdate: string | null;
+                currentPath: string;
+                message?: string;
+            }>;
+
+            setDatabasePath: (path: string) => Promise<{
+                success: boolean;
+                message: string;
+                newPath?: string;
+            }>;
+
+            testDatabaseConnection: (path: string) => Promise<{
+                success: boolean;
+                message: string;
+            }>;
+
+            selectDatabasePath: () => Promise<string | null>;
+
             // ========================
             // MACHINES APIs
             // ========================

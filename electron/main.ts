@@ -1,5 +1,5 @@
 // main.ts
-import { app, BrowserWindow, ipcMain, Menu, screen } from 'electron';
+import { app, BrowserWindow, dialog, ipcMain, Menu, screen } from 'electron';
 import path from 'path';
 
 // Importa funções do repositório de máquinas
@@ -30,6 +30,26 @@ import {
     updateServiceStatus,
     syncServicesInDb, 
 } from '../src/server/repositories/service-repository';
+
+// Importa funções do banco de dados
+import { 
+  getDatabaseStatus, 
+  setDatabasePath, 
+  testDatabaseConnection,
+  initializeDefaultPath,
+  setupDatabase,
+  closeDatabaseConnection
+} from '../src/server/db';
+
+
+// Importa funções do gerenciador de configuração
+import { 
+  isFirstRun, 
+  markAsConfigured, 
+  loadConfig,
+  initConfigPath
+} from '../src/server/config-manager';
+
 
 import type { Machines, Application, Service } from '../src/types/machines';
 
@@ -79,27 +99,189 @@ function createWindow() {
     } else {
         win.loadURL(startUrl);
     }
-    createDevMenu(win);
+    // createDevMenu(win);
 }
 
-function createDevMenu(win: BrowserWindow) {
-    if (!app.isPackaged) {
-        const template = [
-            {
-                label: 'Recarregar',
-                accelerator: 'CmdOrCtrl+R',
-                click: () => {
-                    win.reload();
-                },
-            },
-        ];
+// function createDevMenu(win: BrowserWindow) {
+//     if (!app.isPackaged) {
+//         const template = [
+//             {
+//                 label: 'Recarregar',
+//                 accelerator: 'CmdOrCtrl+R',
+//                 click: () => {
+//                     win.reload();
+//                 },
+//             },
+//         ];
 
-        const menu = Menu.buildFromTemplate(template);
-        Menu.setApplicationMenu(menu);
+//         const menu = Menu.buildFromTemplate(template);
+//         Menu.setApplicationMenu(menu);
+//     } else {
+//         Menu.setApplicationMenu(null);
+//     }
+// }
+
+// ========================
+// IPC HANDLERS - CONFIGURATION
+// ========================
+
+// Handler para verificar se é primeira execução
+ipcMain.handle('is-first-run', async () => {
+  try {
+    return isFirstRun();
+  } catch (error) {
+    console.error('Erro ao verificar primeira execução:', error);
+    return true; // Em caso de erro, assume que é primeira execução
+  }
+});
+
+// Handler para completar configuração inicial
+ipcMain.handle('complete-initial-setup', async (event, databasePath: string) => {
+  try {
+    console.log('Completando configuração inicial com caminho:', databasePath);
+    
+    // Testa e define o caminho do banco
+    const dbResult = setDatabasePath(databasePath);
+    
+    if (dbResult.success) {
+      // Marca como configurado
+      const configResult = markAsConfigured(databasePath);
+      
+      return {
+        success: configResult,
+        message: configResult 
+          ? 'Configuração inicial concluída com sucesso!' 
+          : 'Banco configurado, mas erro ao salvar configuração'
+      };
     } else {
-        Menu.setApplicationMenu(null);
+      return {
+        success: false,
+        message: `Erro na configuração do banco: ${dbResult.message}`
+      };
     }
-}
+  } catch (error) {
+    console.error('Erro na configuração inicial:', error);
+    return {
+      success: false,
+      message: `Erro inesperado: ${error instanceof Error ? error.message : 'Erro desconhecido'}`
+    };
+  }
+});
+
+// Handler para obter configurações atuais
+ipcMain.handle('get-app-config', async () => {
+  try {
+    const config = loadConfig();
+    return config;
+  } catch (error) {
+    console.error('Erro ao obter configurações:', error);
+    return {
+      databasePath: '',
+      isFirstRun: true,
+      lastConfigUpdate: new Date().toISOString()
+    };
+  }
+});
+
+
+// ========================
+// IPC HANDLERS - Gerenciamento do Banco de Dados
+// ========================
+
+// Handler para obter status do banco
+ipcMain.handle('get-database-status', async () => {
+  try {
+    const status = getDatabaseStatus();
+    return status;
+  } catch (error) {
+    console.error('Erro ao obter status do banco:', error);
+    return {
+      status: 'error' as const,
+      lastUpdate: null,
+      currentPath: '',
+      message: `Erro ao obter status: ${error instanceof Error ? error.message : 'Erro desconhecido'}`
+    };
+  }
+});
+
+// Handler para alterar caminho do banco
+ipcMain.handle('set-database-path', async (event, newPath: string) => {
+  try {
+    console.log('Alterando caminho do banco para:', newPath);
+    const result = setDatabasePath(newPath);
+    
+    if (result.success) {
+      console.log('Caminho do banco alterado com sucesso');
+    } else {
+      console.error('Erro ao alterar caminho do banco:', result.message);
+    }
+    
+    return result;
+  } catch (error) {
+    console.error('Erro inesperado ao alterar caminho do banco:', error);
+    return {
+      success: false,
+      message: `Erro inesperado: ${error instanceof Error ? error.message : 'Erro desconhecido'}`
+    };
+  }
+});
+
+// Handler para testar conexão
+ipcMain.handle('test-database-connection', async (event, testPath: string) => {
+  try {
+    console.log('Testando conexão com:', testPath);
+    const result = testDatabaseConnection(testPath);
+    
+    if (result.success) {
+      console.log('Teste de conexão bem-sucedido');
+    } else {
+      console.log('Teste de conexão falhou:', result.message);
+    }
+    
+    return result;
+  } catch (error) {
+    console.error('Erro no teste de conexão:', error);
+    return {
+      success: false,
+      message: `Erro no teste: ${error instanceof Error ? error.message : 'Erro desconhecido'}`
+    };
+  }
+});
+
+// Handler para selecionar caminho do arquivo
+ipcMain.handle('select-database-path', async () => {
+  try {
+    const result = await dialog.showSaveDialog({
+      title: 'Selecionar localização do banco de dados',
+      defaultPath: 'eccox-vision.db',
+      filters: [
+        { name: 'Banco de Dados SQLite', extensions: ['db'] },
+        { name: 'Todos os arquivos', extensions: ['*'] }
+      ],
+      properties: ['createDirectory']
+    });
+
+    if (result.canceled || !result.filePath) {
+      return null;
+    }
+
+    let selectedPath = result.filePath;
+    
+    // Garante que tem extensão .db
+    if (!selectedPath.toLowerCase().endsWith('.db')) {
+      selectedPath += '.db';
+    }
+
+    console.log('Caminho selecionado:', selectedPath);
+    return selectedPath;
+    
+  } catch (error) {
+    console.error('Erro ao abrir dialog de seleção:', error);
+    return null;
+  }
+});
+
+
 
 // ========================
 // HELPER FUNCTIONS FOR CONSISTENT ERROR HANDLING
@@ -434,13 +616,54 @@ ipcMain.handle('validate-application', async (event, applicationId: string) => {
 // APP LIFECYCLE
 // ========================
 
-app.whenReady().then(createWindow);
+app.whenReady().then(async () => {
+  // Inicializa o sistema de configurações
+  try {
+    initConfigPath();
+    console.log('Sistema de configurações inicializado');
+  } catch (error) {
+    console.error('Erro ao inicializar configurações:', error);
+  }
+
+  // Carrega a configuração salva
+  const config = loadConfig();
+  
+  // Se não é primeira execução, inicializa o banco com o caminho salvo
+  if (!config.isFirstRun && config.databasePath) {
+    try {
+      initializeDefaultPath(); // Vai usar getSavedDatabasePath()
+      const setupSuccess = setupDatabase();
+      if (setupSuccess) {
+        console.log('Banco de dados inicializado com caminho salvo:', config.databasePath);
+      } else {
+        console.warn('Falha na inicialização do banco de dados salvo');
+      }
+    } catch (error) {
+      console.error('Erro na inicialização do banco salvo:', error);
+    }
+  } else {
+    console.log('Primeira execução detectada - aguardando configuração inicial');
+  }
+  
+  // Cria a janela principal
+  createWindow();
+});
+
 
 app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin') {
-        app.quit();
-    }
+  // Fecha a conexão com o banco antes de sair
+  try {
+    closeDatabaseConnection();
+    console.log('Conexão com banco fechada no encerramento da aplicação');
+  } catch (error) {
+    console.error('Erro ao fechar conexão no encerramento:', error);
+  }
+
+  if (process.platform !== 'darwin') {
+    app.quit();
+  }
 });
+
 
 app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {

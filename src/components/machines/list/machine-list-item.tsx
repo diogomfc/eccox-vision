@@ -162,10 +162,10 @@ export function MachineListItem({
             </span>
           ))}
 
-        {/* A lógica para os apps IBM permanece a mesma */}
+        {/* A lógica para os apps MAINFRAME permanece a mesma */}
         {(() => {
           const ibmApps = machine.applications.filter(
-            (app) => app.tipo === "IBM"
+            (app) => app.tipo === "MAINFRAME"
           );
           if (ibmApps.length > 0) {
             const ibmPendentes = ibmApps.filter(
@@ -179,7 +179,7 @@ export function MachineListItem({
                     : "bg-[#252728] text-[#6C6C6C]"
                 }`}
               >
-                +{ibmApps.length} IBM
+                +{ibmApps.length} MAINFRAME
               </span>
             );
           }

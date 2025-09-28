@@ -48,6 +48,10 @@ import {
   Filter,
   Download,
   MoreVertical,
+  MessageSquare,
+  Edit3,
+  X,
+  Save,
 } from "lucide-react";
 import {
   Select,
@@ -72,6 +76,8 @@ import {
 } from "@/types/machines";
 import { Badge } from "@/components/ui/badge";
 import { logoBase64 } from "../machines/shared/logo-base64";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "../ui/dialog";
+import { Textarea } from "../ui/textarea";
 
 const FilterDropdown = ({
   label,
@@ -231,7 +237,7 @@ const EditableDateCell = (props: CellContext<ReportData, unknown>) => {
                 variant="outline"
                 size="sm"
                 onClick={handleClearDate}
-                className="w-full text-gray-300 hover:text-gray-100"
+                className="w-full text-gray-300 hover:text-gray-100 bg-[#1A1A1E] border-gray-600 hover:bg-gray-700/50 cursor-pointer"
               >
                 Limpar Data
               </Button>
@@ -278,24 +284,9 @@ const EditableCell = (props: CellContext<ReportData, unknown>) => {
           </Badge>
         </SelectTrigger>
         <SelectContent className="bg-[#1A1A1D] border-gray-700">
-          <SelectItem
-            className="cursor-pointer text-gray-100 hover:!bg-gray-700 hover:!text-gray-200"
-            value="Pendente"
-          >
-            Pendente
-          </SelectItem>
-          <SelectItem
-            className="cursor-pointer text-gray-100 hover:!bg-gray-700 hover:!text-gray-200"
-            value="Em andamento"
-          >
-            Em andamento
-          </SelectItem>
-          <SelectItem
-            className="cursor-pointer text-gray-100 hover:!bg-gray-700 hover:!text-gray-200"
-            value="Concluída"
-          >
-            Concluída
-          </SelectItem>
+          <SelectItem value="Concluída" className={`cursor-pointer hover:!bg-[#23232B] hover:!text-green-400 `}><span className="text-green-400">Concluída</span></SelectItem>
+          <SelectItem value="Pendente" className={`cursor-pointer hover:!bg-[#23232B] hover:!text-red-400 `}><span className="text-red-400">Pendente</span></SelectItem>
+          <SelectItem value="Em andamento" className={`cursor-pointer hover:!bg-[#23232B] hover:!text-amber-400 `}><span className="text-amber-400">Em andamento</span></SelectItem>
         </SelectContent>
       </Select>
     );
@@ -316,17 +307,45 @@ const EditableCell = (props: CellContext<ReportData, unknown>) => {
           <SelectValue />
         </SelectTrigger>
         <SelectContent className="bg-[#1A1A1D] border-gray-700">
+          <SelectItem value="Sim" className={`cursor-pointer hover:!bg-[#23232B] hover:!text-green-400 text-green-400`}><span className="text-green-400">Sim</span></SelectItem>
+          <SelectItem value="Não" className={`cursor-pointer hover:!bg-[#23232B] hover:!text-red-400 text-red-400`}><span className="text-red-400">Não</span></SelectItem>
+        </SelectContent>
+      </Select>
+    );
+  }
+  if (id === "applicationType") {
+    return (
+      <Select
+        value={value}
+        onValueChange={(newValue: ApplicationType) => {
+          (table.options.meta as any)?.updateData(
+            original.serviceId,
+            id,
+            newValue
+          );
+        }}
+      >
+        <SelectTrigger className="bg-transparent border-none focus:ring-1 focus:ring-blue-500 h-auto p-1 text-left cursor-pointer">
+          <SelectValue />
+        </SelectTrigger>
+        <SelectContent className="bg-[#1A1A1D] border-gray-700">
           <SelectItem
-            value="Sim"
             className="cursor-pointer text-gray-100 hover:!bg-gray-700 hover:!text-gray-200"
+            value="ECCOX"
           >
-            Sim
+            ECCOX
           </SelectItem>
           <SelectItem
-            value="Não"
             className="cursor-pointer text-gray-100 hover:!bg-gray-700 hover:!text-gray-200"
+            value="MAINFRAME"
           >
-            Não
+            MAINFRAME
+          </SelectItem>
+          <SelectItem
+            className="cursor-pointer text-gray-100 hover:!bg-gray-700 hover:!text-gray-200"
+            value="DISTRIBUÍDA"
+          >
+            DISTRIBUÍDA
           </SelectItem>
         </SelectContent>
       </Select>
@@ -356,9 +375,9 @@ const EditableCell = (props: CellContext<ReportData, unknown>) => {
           </SelectItem>
           <SelectItem
             className="cursor-pointer text-gray-100 hover:!bg-gray-700 hover:!text-gray-200"
-            value="IBM"
+            value="MAINFRAME"
           >
-            IBM
+            MAINFRAME
           </SelectItem>
           <SelectItem
             className="cursor-pointer text-gray-100 hover:!bg-gray-700 hover:!text-gray-200"
@@ -375,7 +394,7 @@ const EditableCell = (props: CellContext<ReportData, unknown>) => {
       value={(value as string) ?? ""}
       onChange={(e) => setValue(e.target.value)}
       onBlur={onBlur}
-      className="bg-transparent border-none focus-visible:ring-1 focus-visible:ring-blue-500 p-1 h-auto w-full cursor-pointer"
+      className="bg-transparent border-none focus-visible:ring-1 focus-visible:ring-amber-500 p-1 h-auto w-full cursor-pointer"
     />
   );
 };
@@ -420,6 +439,140 @@ const generateDynamicFilename = (table: TanstackTable<ReportData>): string => {
   fileName += `_${date}`;
   return fileName;
 };
+
+const CommentsCell = (props: CellContext<ReportData, unknown>) => {
+  const {
+    getValue,
+    row: { original },
+    column: { id },
+    table,
+  } = props;
+  
+  const initialValue = getValue() as string;
+  const [value, setValue] = React.useState<string>(initialValue || "");
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [tempValue, setTempValue] = React.useState<string>("");
+
+  React.useEffect(() => {
+    setValue(initialValue || "");
+  }, [initialValue]);
+
+  const handleOpen = () => {
+    setTempValue(value);
+    setIsOpen(true);
+  };
+
+  const handleSave = () => {
+    if (tempValue !== initialValue) {
+      (table.options.meta as any)?.updateData(original.serviceId, id, tempValue);
+      setValue(tempValue);
+    }
+    setIsOpen(false);
+  };
+
+  const handleCancel = () => {
+    setTempValue(value);
+    setIsOpen(false);
+  };
+
+  // Função para truncar o texto na tabela
+  const getTruncatedText = (text: string, maxLength: number = 50) => {
+    if (!text) return "";
+    return text.length > maxLength ? `${text.substring(0, maxLength)}...` : text;
+  };
+
+  const hasContent = value && value.trim().length > 0;
+  const isLongText = value && value.length > 50;
+
+  return (
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+      <DialogTrigger asChild>
+        <div 
+          className="flex items-center gap-2 cursor-pointer hover:bg-gray-700/20 rounded p-1 transition-colors group"
+          onClick={handleOpen}
+          title={hasContent ? value : "Clique para adicionar observação"}
+        >
+          <div className="flex items-center gap-1.5">
+            {hasContent ? (
+              <>
+                <MessageSquare className="w-3 h-3 text-blue-400 flex-shrink-0" />
+                <span className="text-xs text-gray-300 flex-1 min-w-0">
+                  {getTruncatedText(value)}
+                </span>
+                {isLongText && (
+                  <span className="text-xs text-gray-500 flex-shrink-0">...</span>
+                )}
+              </>
+            ) : (
+              <>
+                <MessageSquare className="w-3 h-3 text-gray-500 flex-shrink-0" />
+                <span className="text-xs text-gray-500 italic">
+                  Sem observação
+                </span>
+              </>
+            )}
+            <Edit3 className="w-3 h-3 text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
+          </div>
+        </div>
+      </DialogTrigger>
+      
+      <DialogContent className="bg-[#0F0F11] border-gray-700/50 max-w-2xl">
+        <DialogHeader>
+          <DialogTitle className="text-gray-100 flex items-center gap-2">
+            <MessageSquare className="w-4 h-4 text-blue-400" />
+            Observação do Serviço
+          </DialogTitle>
+          <div className="text-sm text-gray-400 mt-1">
+            <div className="flex flex-col gap-1">
+              <span><strong>Máquina:</strong> {original.machineName}</span>
+              <span><strong>Aplicação:</strong> {original.applicationName}</span>
+              <span><strong>Serviço:</strong> {original.serviceName}</span>
+            </div>
+          </div>
+        </DialogHeader>
+        
+        <div className="space-y-4 mt-4">
+          <div className="space-y-2">
+            <label className="text-sm font-medium text-gray-300">
+              Observação
+            </label>
+            <Textarea
+              value={tempValue}
+              onChange={(e) => setTempValue(e.target.value)}
+              placeholder="Digite aqui suas observações sobre o serviço..."
+              className="min-h-[150px] bg-[#1A1A1D] border-[#2A2A2D] focus:!border-amber-500 text-gray-100 placeholder-gray-400 focus:ring-2 focus:!ring-transparent  resize-none"
+              maxLength={1000}
+            />
+            <div className="flex justify-between items-center text-xs text-gray-500">
+              <span>Máximo 1000 caracteres</span>
+              <span>{tempValue.length}/1000</span>
+            </div>
+          </div>
+          
+          <div className="flex justify-end gap-3 pt-4 border-t border-gray-700">
+            <Button
+              variant="outline"
+              onClick={handleCancel}
+              className="bg-gray-800 border-gray-600 text-gray-300 hover:bg-gray-700 hover:text-gray-100 cursor-pointer"
+            >
+              <X className="w-4 h-4 mr-2" />
+              Cancelar
+            </Button>
+            <Button
+              onClick={handleSave}
+              className="bg-amber-600 hover:bg-amber-700 text-white cursor-pointer"
+            >
+              <Save className="w-4 h-4 mr-2" />
+              Salvar
+            </Button>
+          </div>
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+};
+
+
 
 export function ReportsTable({ initialData }: { initialData: ReportData[] }) {
   const [data, setData] = React.useState(initialData);
@@ -554,31 +707,31 @@ export function ReportsTable({ initialData }: { initialData: ReportData[] }) {
         header: "Data Entrega",
         cell: EditableDateCell,
       },
-      { accessorKey: "comments", header: "Observação", cell: EditableCell },
-      {
-        id: "actions",
-        header: "",
-        cell: () => (
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button
-                variant="ghost"
-                size="sm"
-                className="h-8 w-8 p-0 opacity-0 group-hover:opacity-100 transition-opacity"
-              >
-                <MoreVertical className="h-4 w-4" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent
-              align="end"
-              className="bg-[#1A1A1D] border-gray-700"
-            >
-              <div className="p-2 text-sm text-gray-300">Ações em breve</div>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        ),
-        size: 40,
-      },
+      { accessorKey: "comments", header: "Observação", cell: CommentsCell },
+      // {
+      //   id: "actions",
+      //   header: "",
+      //   cell: () => (
+      //     <DropdownMenu>
+      //       <DropdownMenuTrigger asChild>
+      //         <Button
+      //           variant="ghost"
+      //           size="sm"
+      //           className="h-8 w-8 p-0 opacity-0 group-hover:opacity-100 transition-opacity"
+      //         >
+      //           <MoreVertical className="h-4 w-4" />
+      //         </Button>
+      //       </DropdownMenuTrigger>
+      //       <DropdownMenuContent
+      //         align="end"
+      //         className="bg-[#1A1A1D] border-gray-700"
+      //       >
+      //         <div className="p-2 text-sm text-gray-300">Ações em breve</div>
+      //       </DropdownMenuContent>
+      //     </DropdownMenu>
+      //   ),
+      //   size: 40,
+      // },
     ],
     []
   );
@@ -950,7 +1103,7 @@ export function ReportsTable({ initialData }: { initialData: ReportData[] }) {
         )} */}
       </div>
       <div className="flex-1 overflow-hidden">
-        <div className="h-full w-full overflow-x-auto overflow-y-auto table-scrollbar">
+        <div className="h-full w-full overflow-x-auto overflow-y-auto reports-table-container">
           <Table className="min-w-full">
             <TableHeader className="sticky top-0 bg-[#0F0F11] z-10">
               {table.getHeaderGroups().map((headerGroup) => (
@@ -979,7 +1132,7 @@ export function ReportsTable({ initialData }: { initialData: ReportData[] }) {
                 table.getRowModel().rows.map((row) => (
                   <TableRow
                     key={row.id}
-                    className={` border-b border-gray-800 hover:bg-gray-800/30 transition-colors group `}
+                    className={` border-b bg-gray-900 border-gray-800 hover:bg-gray-800/30 transition-colors group `}
                   >
                     {row.getVisibleCells().map((cell) => (
                       <TableCell

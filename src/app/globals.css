@@ -363,3 +363,148 @@
   }
   .smooth-scroll { scroll-behavior: auto; }
 }
+
+/* ===================================================================
+   SCROLLBAR DISCRETO PARA TABELAS 
+   =================================================================== */
+
+/* Scrollbar ultra-discreto para tabelas */
+.table-scrollbar-discrete {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(75, 85, 99, 0.3) rgba(17, 17, 19, 0.8);
+}
+
+.table-scrollbar-discrete::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.table-scrollbar-discrete::-webkit-scrollbar-track {
+  background: rgba(17, 17, 19, 0.5);
+  border-radius: 3px;
+}
+
+.table-scrollbar-discrete::-webkit-scrollbar-thumb {
+  background: rgba(75, 85, 99, 0.3);
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.table-scrollbar-discrete::-webkit-scrollbar-thumb:hover {
+  background: rgba(75, 85, 99, 0.6);
+}
+
+/* Scrollbar quase invisível */
+.table-scrollbar-minimal {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(107, 114, 128, 0.2) transparent;
+}
+
+.table-scrollbar-minimal::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+.table-scrollbar-minimal::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.table-scrollbar-minimal::-webkit-scrollbar-thumb {
+  background: rgba(107, 114, 128, 0.2);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.table-scrollbar-minimal::-webkit-scrollbar-thumb:hover {
+  background: rgba(107, 114, 128, 0.5);
+}
+
+/* Scrollbar só aparece no hover */
+.table-scrollbar-hover {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  transition: scrollbar-color 0.3s ease;
+}
+
+.table-scrollbar-hover::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.table-scrollbar-hover::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.table-scrollbar-hover::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.table-scrollbar-hover:hover {
+  scrollbar-color: rgba(107, 114, 128, 0.4) rgba(17, 17, 19, 0.3);
+}
+
+.table-scrollbar-hover:hover::-webkit-scrollbar-thumb {
+  background: rgba(107, 114, 128, 0.4);
+}
+
+.table-scrollbar-hover:hover::-webkit-scrollbar-track {
+  background: rgba(17, 17, 19, 0.3);
+}
+
+/* Scrollbar moderno com gradiente */
+.table-scrollbar-gradient {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(59, 130, 246, 0.3) rgba(17, 17, 19, 0.5);
+}
+
+.table-scrollbar-gradient::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.table-scrollbar-gradient::-webkit-scrollbar-track {
+  background: rgba(17, 17, 19, 0.5);
+  border-radius: 4px;
+}
+
+.table-scrollbar-gradient::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(147, 51, 234, 0.3));
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.table-scrollbar-gradient::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.6), rgba(147, 51, 234, 0.6));
+}
+
+/* Scrollbar customizado para área específica da tabela */
+.reports-table-container {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(75, 85, 99, 0.2) rgba(26, 26, 30, 0.8);
+}
+
+.reports-table-container::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.reports-table-container::-webkit-scrollbar-track {
+  background: rgba(26, 26, 30, 0.4);
+  border-radius: 2px;
+}
+
+.reports-table-container::-webkit-scrollbar-thumb {
+  background: rgba(75, 85, 99, 0.2);
+  border-radius: 2px;
+  transition: all 0.2s ease;
+}
+
+.reports-table-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(75, 85, 99, 0.4);
+}
+
+.reports-table-container::-webkit-scrollbar-corner {
+  background: rgba(26, 26, 30, 0.4);
+}

@@ -69,7 +69,7 @@ export default function MachineApplicationStep({
 
   const [newApp, setNewApp] = useState({
     name: "",
-    tipo: "IBM" as ApplicationType,
+    tipo: "MAINFRAME" as ApplicationType,
     status: "Pendente" as StatusType,
     applicationResponsible: "", 
   });
@@ -98,7 +98,7 @@ export default function MachineApplicationStep({
 
   const [editApp, setEditApp] = useState({
     name: "",
-    tipo: "IBM" as ApplicationType,
+    tipo: "MAINFRAME" as ApplicationType,
     status: "Pendente" as StatusType,
     applicationResponsible: "",
   });
@@ -124,7 +124,7 @@ export default function MachineApplicationStep({
       services: [],
     };
     setApplications((prev) => [...prev, app]);
-    setNewApp({ name: "", tipo: "IBM", status: "Pendente", applicationResponsible: "" });
+    setNewApp({ name: "", tipo: "MAINFRAME", status: "Pendente", applicationResponsible: "" });
     setIsAddingApp(false);
     setMessage(null);
   };
@@ -166,13 +166,13 @@ export default function MachineApplicationStep({
       )
     );
     setEditingAppId(null);
-    setEditApp({ name: "", tipo: "IBM", status: "Pendente", applicationResponsible: "" });
+    setEditApp({ name: "", tipo: "MAINFRAME", status: "Pendente", applicationResponsible: "" });
     setMessage(null);
   };
 
   const handleCancelEditApplication = () => {
     setEditingAppId(null);
-    setEditApp({ name: "", tipo: "IBM", status: "Pendente", applicationResponsible: "" });
+    setEditApp({ name: "", tipo: "MAINFRAME", status: "Pendente", applicationResponsible: "" });
   };
 
   const handleAddService = (appId: string) => {

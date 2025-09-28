@@ -5,6 +5,7 @@ import "./globals.css";
 import Loader from "./Loader";
 import { FooterNav } from "@/components/layout/footer-nav";
 import { TopNav } from "@/components/layout/top-nav";
+import AppInitializer from "@/components/layout/app-initializer";
 
 export const metadata: Metadata = {
   title: "EccoxVision - Monitoramento de Serviços Mainframe",
@@ -24,9 +25,11 @@ export default function RootLayout({
         className={`antialiased bg-[#121214]`}
       >
         <Suspense fallback={<Loader />}>
-          <TopNav />
-          {children}
-          <FooterNav />
+         <AppInitializer>
+            <TopNav />
+            {children}
+            <FooterNav />
+          </AppInitializer>
         </Suspense>
       </body>
     </html>
