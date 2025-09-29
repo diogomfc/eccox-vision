@@ -81,7 +81,7 @@ function createWindow() {
         minHeight: 832,
         resizable: true,
         roundedCorners: true,
-        icon: path.join(__dirname, 'assets', 'logo.ico'),
+        icon: path.join(__dirname, 'logo.ico'),
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'),
         },

@@ -3,8 +3,9 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Loader } from 'lucide-react';
 import InitialSetupScreen from '../setup/Initial-setup-screen';
+import AppLoader from '@/components/layout/app-loader';
+
 
 
 interface AppInitializerProps {
@@ -30,7 +31,10 @@ const AppInitializer: React.FC<AppInitializerProps> = ({ children }) => {
         console.error('Erro ao verificar primeira execução:', error);
         setIsFirstRun(false);
       } finally {
+        // setIsLoading(false);
+        setTimeout(() => {
         setIsLoading(false);
+      }, 3000);
       }
     };
 
@@ -42,17 +46,18 @@ const AppInitializer: React.FC<AppInitializerProps> = ({ children }) => {
   };
 
   // Loading inicial
+ 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-[#121214] flex items-center justify-center">
-        <div className="text-center">
-          <Loader className="w-8 h-8 text-blue-500 animate-spin mx-auto mb-4" />
-          <p className="text-gray-400">Inicializando EccoxVision...</p>
-        </div>
-      </div>
+      // <div className="min-h-screen bg-[#121214] flex items-center justify-center">
+      //   <div className="text-center">
+      //     <Loader className="w-8 h-8 text-blue-500 animate-spin mx-auto mb-4" />
+      //     <p className="text-gray-400">Inicializando EccoxVision...</p>
+      //   </div>
+      // </div>
+      <AppLoader />
     );
   }
-
   // Se é primeira execução, mostra tela de configuração
   if (isFirstRun) {
     return <InitialSetupScreen onSetupComplete={handleSetupComplete} />;

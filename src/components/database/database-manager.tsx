@@ -1,4 +1,4 @@
-// src/components/database/DatabaseManager.tsx - COM AUTO-REFRESH
+// src/components/database/DatabaseManager.tsx 
 
 import React, { useState, useEffect } from 'react';
 import { Database, Settings, WifiOff, AlertCircle, CheckCircle, Clock, FolderOpen, X, RefreshCw } from 'lucide-react';
@@ -92,7 +92,7 @@ const DatabaseConfigModal: React.FC<{
 }> = ({ isOpen, onClose, currentStatus, onStatusUpdate }) => {
   const [newPath, setNewPath] = useState(currentStatus.currentPath);
   const [isLoading, setIsLoading] = useState(false);
-  const [showRefreshPrompt, setShowRefreshPrompt] = useState(false);
+
   const [testResult, setTestResult] = useState<{
     success: boolean;
     message: string;
@@ -102,7 +102,6 @@ const DatabaseConfigModal: React.FC<{
     if (isOpen) {
       setNewPath(currentStatus.currentPath);
       setTestResult(null);
-      setShowRefreshPrompt(false);
     }
   }, [isOpen, currentStatus.currentPath]);
 
@@ -160,19 +159,25 @@ const DatabaseConfigModal: React.FC<{
         const result = await window.electronAPI.setDatabasePath(newPath);
         
         if (result.success) {
-          // Atualiza o status
+          // Atualiza o status primeiro
           if (window.electronAPI.getDatabaseStatus) {
             const newStatus = await window.electronAPI.getDatabaseStatus();
             onStatusUpdate(newStatus);
           }
           
-          // Se o caminho mudou, mostra o prompt de refresh
-          if (newPath !== currentStatus.currentPath) {
-            setShowRefreshPrompt(true);
-            return; // Não fecha o modal ainda
-          }
+          // Verifica se o caminho mudou para decidir se precisa recarregar
+          const pathChanged = newPath !== currentStatus.currentPath;
           
-          onClose();
+          if (pathChanged) {
+            console.log('Caminho do banco alterado, iniciando reload automático...');
+
+            handleAutoReload();
+            
+            return; // Não fecha o modal ainda
+          } else {
+            // Se não mudou o caminho, apenas fecha o modal
+            onClose();
+          }
         } else {
           setTestResult({ success: false, message: result.message });
         }
@@ -184,71 +189,50 @@ const DatabaseConfigModal: React.FC<{
     }
   };
 
-  const handleRefresh = () => {
-    // Recarrega a página/aplicação
-    if (typeof window !== 'undefined' && window.location) {
-      window.location.reload();
-    }
+  const handleAutoReload = () => {
+     if (typeof window !== 'undefined') {
+        try {
+          // Primeira tentativa: redirecionar para rota raiz
+          if (window.location && window.location.href) {
+            const baseUrl = window.location.origin;
+            window.location.href = baseUrl + '/';
+            return;
+          }
+          
+          // Segunda tentativa: replace para rota raiz
+          if (window.location && window.location.replace) {
+            const baseUrl = window.location.origin;
+            window.location.replace(baseUrl + '/');
+            return;
+          }
+          
+          // Terceira tentativa: reload simples (fallback)
+          if (window.location && window.location.reload) {
+            window.location.reload();
+            return;
+          }
+        } catch (reloadError) {
+          console.error('Erro ao recarregar automaticamente:', reloadError);
+          // Se falhar, mantém o prompt manual
+          //setIsReloading(false);
+        }
+      }
   };
-
-  const handleSkipRefresh = () => {
-    setShowRefreshPrompt(false);
-    onClose();
-  };
-
-  // Se deve mostrar o prompt de refresh
-  if (showRefreshPrompt) {
-    return (
-      <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-[100]">
-        <div className="bg-gray-900 border border-gray-700 rounded-xl shadow-2xl w-full max-w-md mx-4">
-          <div className="p-6 text-center">
-            <div className="mx-auto flex items-center justify-center w-12 h-12 rounded-full bg-blue-100 mb-4">
-              <RefreshCw className="w-6 h-6 text-blue-600" />
-            </div>
-            
-            <h3 className="text-lg font-semibold text-white mb-2">
-              Banco alterado com sucesso!
-            </h3>
-            
-            <p className="text-sm text-gray-300 mb-6">
-              Para carregar os dados do novo banco, é recomendado recarregar a aplicação.
-            </p>
-            
-            <div className="flex space-x-3">
-              <button
-                onClick={handleSkipRefresh}
-                className="flex-1 px-4 py-2 text-gray-300 border border-gray-600 rounded-lg hover:bg-gray-800 transition-colors"
-              >
-                Continuar sem recarregar
-              </button>
-              
-              <button
-                onClick={handleRefresh}
-                className="flex-1 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors flex items-center justify-center space-x-2"
-              >
-                <RefreshCw className="w-4 h-4" />
-                <span>Recarregar agora</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   return (
+    
     <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-[100]">
-      <div className="bg-gray-900 border border-gray-700 rounded-xl shadow-2xl w-full max-w-lg mx-4">
+      <div className="bg-gradient-to-br from-[#111113] to-[#0F0F11] border border-blue-500/30 rounded-xl shadow-2xl w-full max-w-lg mx-4">
         
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-700">
+        <div className="flex items-center justify-between p-6 border-b bg-gradient-to-r from-blue-600/10 to-blue-700/5  border-blue-500/30">
           <h2 className="text-xl font-semibold text-white flex items-center space-x-3">
             <Database className="w-6 h-6 text-blue-400" />
             <span>Configurar Banco de Dados</span>
           </h2>
           <Button
             onClick={onClose}
-            className="text-gray-400 hover:text-white p-1 rounded-lg hover:bg-gray-700 transition-colors"
+            className="text-gray-400 hover:text-white p-1 rounded-lg hover:bg-gray-700 cursor-pointer transition-colors"
           >
             <X className="w-5 h-5" />
           </Button>
@@ -297,7 +281,7 @@ const DatabaseConfigModal: React.FC<{
               />
               <button
                 onClick={handleSelectPath}
-                className="px-3 py-2.5 bg-gray-700 hover:bg-gray-600 text-white rounded-lg flex items-center justify-center transition-colors"
+                className="px-3 py-2.5 bg-gray-700 hover:bg-gray-600 cursor-pointer text-white rounded-lg flex items-center justify-center transition-colors"
                 title="Selecionar arquivo"
               >
                 <FolderOpen className="w-4 h-4" />
@@ -305,14 +289,14 @@ const DatabaseConfigModal: React.FC<{
             </div>
           </div>
 
-          {/* Aviso sobre refresh */}
+          {/* Aviso sobre refresh - MELHORADO */}
           {newPath !== currentStatus.currentPath && newPath.trim() && (
             <div className="p-3 bg-blue-900/20 border border-blue-700 rounded-lg">
               <div className="flex items-start space-x-2">
                 <RefreshCw className="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0" />
                 <div className="text-sm text-blue-300">
                   <p className="font-medium">Atenção:</p>
-                  <p>Ao alterar o banco, a aplicação será recarregada para mostrar os novos dados.</p>
+                  <p>Ao alterar o banco, a aplicação será recarregada <strong>automaticamente</strong> para mostrar os novos dados.</p>
                 </div>
               </div>
             </div>
@@ -351,7 +335,7 @@ const DatabaseConfigModal: React.FC<{
             <button
               onClick={handleTestConnection}
               disabled={isLoading || !newPath.trim()}
-              className="px-4 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-600 disabled:cursor-not-allowed text-white rounded-lg text-sm font-medium transition-colors"
+              className="px-4 py-2 bg-blue-600 cursor-pointer hover:bg-blue-700 disabled:bg-gray-600 disabled:cursor-not-allowed text-white rounded-lg text-sm font-medium transition-colors"
             >
               {isLoading ? 'Testando...' : 'Testar'}
             </button>
@@ -359,7 +343,7 @@ const DatabaseConfigModal: React.FC<{
             <button
               onClick={handleSave}
               disabled={isLoading || !testResult?.success}
-              className="px-4 py-2 bg-green-600 hover:bg-green-700 disabled:bg-gray-600 disabled:cursor-not-allowed text-white rounded-lg text-sm font-medium transition-colors"
+              className="px-4 py-2 bg-green-600 cursor-pointer hover:bg-green-700 disabled:bg-gray-600 disabled:cursor-not-allowed text-white rounded-lg text-sm font-medium transition-colors"
             >
               {isLoading ? 'Salvando...' : 'Aplicar'}
             </button>

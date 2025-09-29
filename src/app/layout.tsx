@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 
 import "./globals.css";
-import Loader from "./Loader";
+import Loader from "../components/layout/app-loader";
 import { FooterNav } from "@/components/layout/footer-nav";
 import { TopNav } from "@/components/layout/top-nav";
 import AppInitializer from "@/components/layout/app-initializer";
