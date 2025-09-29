@@ -10,6 +10,7 @@ import { DashboardStats } from "@/components/reports/dashboard-stats";
 export interface ReportData {
   serviceId: string;
   machineName: string;
+  machineId: string;
   machineResponsible: string;
   applicationName: string;
   applicationResponsible: string; // NOVO
@@ -63,6 +64,7 @@ export default function ReportsPage() {
                 // CORRIGIDO: Não usar data atual como fallback, manter null quando não há data
                 processedData.push({
                   serviceId: service.id,
+                  machineId: machine.id,
                   machineName: machine.name || "N/A",
                   machineResponsible: machine.machineResponsible || "N/A",
                   applicationName: application.name || "N/A",

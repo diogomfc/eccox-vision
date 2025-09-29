@@ -78,6 +78,8 @@ import { Badge } from "@/components/ui/badge";
 import { logoBase64 } from "../machines/shared/logo-base64";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "../ui/dialog";
 import { Textarea } from "../ui/textarea";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const FilterDropdown = ({
   label,
@@ -313,44 +315,7 @@ const EditableCell = (props: CellContext<ReportData, unknown>) => {
       </Select>
     );
   }
-  if (id === "applicationType") {
-    return (
-      <Select
-        value={value}
-        onValueChange={(newValue: ApplicationType) => {
-          (table.options.meta as any)?.updateData(
-            original.serviceId,
-            id,
-            newValue
-          );
-        }}
-      >
-        <SelectTrigger className="bg-transparent border-none focus:ring-1 focus:ring-blue-500 h-auto p-1 text-left cursor-pointer">
-          <SelectValue />
-        </SelectTrigger>
-        <SelectContent className="bg-[#1A1A1D] border-gray-700">
-          <SelectItem
-            className="cursor-pointer text-gray-100 hover:!bg-gray-700 hover:!text-gray-200"
-            value="ECCOX"
-          >
-            ECCOX
-          </SelectItem>
-          <SelectItem
-            className="cursor-pointer text-gray-100 hover:!bg-gray-700 hover:!text-gray-200"
-            value="MAINFRAME"
-          >
-            MAINFRAME
-          </SelectItem>
-          <SelectItem
-            className="cursor-pointer text-gray-100 hover:!bg-gray-700 hover:!text-gray-200"
-            value="DISTRIBUÍDA"
-          >
-            DISTRIBUÍDA
-          </SelectItem>
-        </SelectContent>
-      </Select>
-    );
-  }
+  
   if (id === "applicationType") {
     return (
       <Select
@@ -572,6 +537,21 @@ const CommentsCell = (props: CellContext<ReportData, unknown>) => {
   );
 };
 
+const MachineLinkCell = (props: CellContext<ReportData, unknown>) => {
+  const router = useRouter();
+  const { row: { original } } = props;
+
+  return (
+    <button
+      onClick={() => router.push(`/machines/${original.machineId}`)}
+      className="text-blue-400 hover:underline cursor-pointer"
+      title={`Ver detalhes da máquina ${original.machineName}`}
+    >
+      {original.machineName}
+    </button>
+  );
+}
+
 
 
 export function ReportsTable({ initialData }: { initialData: ReportData[] }) {
@@ -672,7 +652,7 @@ export function ReportsTable({ initialData }: { initialData: ReportData[] }) {
 
   const columns: ColumnDef<ReportData>[] = React.useMemo(
     () => [
-      { accessorKey: "machineName", header: "Máquina" },
+      { accessorKey: "machineName", header: "Máquina", cell: MachineLinkCell },
       // {
       //   accessorKey: "machineResponsible",
       //   header: "Responsável Máquina",

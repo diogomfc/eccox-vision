@@ -1,10 +1,13 @@
 // src/app/machines/edit/[id]/page.tsx
 import MachineUpdateClient from "@/components/machines/machine-update-client";
 
+interface PageProps {
+  params: Promise<{ id: string }>;
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
+}
 
-export default async function MachineUpdatePage({ params }: { params: { id: string } }) {
-    const awaitedParams = await params;
-    const machineId = awaitedParams.id;
+export default async function MachineUpdatePage({ params }: PageProps) {
+    const { id } = await params;
 
-    return <MachineUpdateClient machineId={machineId} />;
+    return <MachineUpdateClient machineId={id} />;
 }

@@ -13,10 +13,7 @@
     "dev:electron-ts-watch": "tsc -p tsconfig.electron.json --watch",
     "rebuild": "electron-rebuild -f -w better-sqlite3",
     "postinstall": "electron-rebuild -f -w better-sqlite3",
-    "build:app": "npm run build:next && npm run move:out && npm run build:electron && electron-builder",
-    "db:setup": "python scripts/setup_db.py",
-    "db:import-mock": "python scripts/setup_db.py",
-    "build:scripts": "tsc scripts/*.ts --outDir dist/scripts"
+    "build:app": "npm run build:next && npm run move:out && npm run build:electron && electron-builder"
   },
   "build": {
     "appId": "com.eccox.eccoxvision",
@@ -83,7 +80,7 @@
     "autoprefixer": "^10.4.21",
     "concurrently": "^8.2.0",
     "cross-env": "^7.0.3",
-    "electron": "^29.0.0",
+    "electron": "^38.2.0",
     "electron-builder": "^24.6.3",
     "electron-rebuild": "^3.2.9",
     "fs-extra": "^11.3.0",
