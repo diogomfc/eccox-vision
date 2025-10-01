@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { TooltipProvider } from "../ui/tooltip";
 import { motion, AnimatePresence } from "framer-motion";
+import AppLoader from "./app-loader";
 import "./footer-nav.css";
 
 const navItems = [
@@ -30,7 +31,7 @@ export function FooterNav() {
         if (!isPending && loadingRoute) {
             const timer = setTimeout(() => {
                 setLoadingRoute(null);
-            }, 300); // Delay mais curto
+            }, 2000); // Aumentado para 2 segundos para dar tempo de carregar
             
             return () => clearTimeout(timer);
         }
@@ -54,39 +55,40 @@ export function FooterNav() {
     const handleNavigation = (href: string, itemName: string) => {
         if (pathname === href) return; // Não navega se já está na página atual
         
-        setLoadingRoute(itemName);
         setIsOpen(false);
         
-        startTransition(() => {
-            push(href);
-        });
+        // Mostra o loading imediatamente
+        setLoadingRoute(itemName);
+        
+        // Pequeno delay antes de navegar para dar tempo do loading aparecer
+        setTimeout(() => {
+            startTransition(() => {
+                push(href);
+            });
+        }, 150);
     };
 
     const isLoading = isPending || loadingRoute !== null;
 
     return (
         <>
-            {/* Loading Overlay Global */}
-            <AnimatePresence>
+            {/* Loading Overlay Global - Usando AppLoader */}
+            <AnimatePresence mode="wait">
                 {isLoading && (
                     <motion.div
+                        key={loadingRoute || 'loading'}
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.2 }}
-                        className="fixed inset-0 bg-black/60 flex items-center justify-center z-[100] backdrop-blur-sm"
                     >
-                        <div className="flex flex-col items-center gap-4">
-                            <div className="w-12 h-12 border-4 border-[#20A6B9] border-t-transparent rounded-full animate-spin"></div>
-                            <div className="text-center">
-                                <p className="text-white font-medium">
-                                    {loadingRoute ? `Carregando ${loadingRoute}...` : 'Carregando...'}
-                                </p>
-                                <p className="text-gray-400 text-sm mt-1">
-                                    Aguarde um momento
-                                </p>
-                            </div>
-                        </div>
+                        <AppLoader
+                            title="EccoxVision"
+                            subtitle={loadingRoute ? `Carregando ${loadingRoute}...` : 'Navegando...'}
+                            size="medium"
+                            showParticles={true}
+                            overlay={true}
+                        />
                     </motion.div>
                 )}
             </AnimatePresence>
@@ -142,30 +144,18 @@ export function FooterNav() {
                                     className={`flex flex-col items-center justify-center mx-4 py-2 transition-all duration-200 cursor-pointer relative
                                         ${isActive ? "text-[#20A6B9]" : "text-gray-400 hover:text-gray-200"}
                                         ${isLoading && !isActive ? "opacity-50" : ""}
-                                        ${isItemLoading ? "scale-95" : ""}
                                     `}
                                 >
-                                    {/* Loading indicator no botão específico */}
-                                    {isItemLoading && (
-                                        <motion.div
-                                            initial={{ opacity: 0 }}
-                                            animate={{ opacity: 1 }}
-                                            className="absolute inset-0 flex items-center justify-center"
-                                        >
-                                            <div className="w-6 h-6 border-2 border-[#20A6B9] border-t-transparent rounded-full animate-spin"></div>
-                                        </motion.div>
-                                    )}
-                                    
                                     <Icon
                                         size={24}
-                                        className={`mb-1 transition-opacity duration-200 ${
+                                        className={`mb-1 transition-all duration-200 ${
                                             isActive ? "stroke-2" : "stroke-1"
-                                        } ${isItemLoading ? "opacity-0" : "opacity-100"}`}
+                                        }`}
                                     />
                                     <span
-                                        className={`text-xs font-medium whitespace-nowrap transition-opacity duration-200 ${
+                                        className={`text-xs font-medium whitespace-nowrap transition-all duration-200 ${
                                             isActive ? "text-[#20A6B9] font-semibold" : "text-gray-400 font-normal"
-                                        } ${isItemLoading ? "opacity-0" : "opacity-100"}`}
+                                        }`}
                                     >
                                         {item.name}
                                     </span>

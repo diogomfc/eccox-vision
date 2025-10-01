@@ -1,8 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { useElectronHashRouter } from "@/lib/simple-hash-router";
 import { ElectronDebug } from "@/lib/electron-debug";
+import BgOverview from '@/assets/images/bg-overview.svg';
 import {
   Loader2,
   Plus,
@@ -126,8 +128,15 @@ export default function CreateMachinePage() {
   };
 
   return (
-    <div className="h-screen text-gray-100 flex flex-col pt-15">
-      <div className="flex-1 overflow-hidden">
+    <main className="relative h-screen text-gray-100 flex flex-col pt-15">
+      <Image
+        src={BgOverview}
+        alt="Background"
+        fill
+        className="object-cover z-0"
+        priority
+      />
+      <div className="relative z-10 flex-1 overflow-hidden">
         <div className="max-w-6xl mx-auto h-full pb-20 flex flex-col">
           <Card className="bg-gradient-to-br pt-0 from-[#111113] to-[#0F0F11] border-blue-500/30 shadow-2xl flex flex-col flex-1 overflow-hidden">
             <MachineFormHeader
@@ -182,6 +191,6 @@ export default function CreateMachinePage() {
           </Card>
         </div>
       </div>
-    </div>
+    </main>
   );
 }

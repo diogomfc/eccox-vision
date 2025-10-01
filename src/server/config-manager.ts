@@ -4,10 +4,20 @@ import fs from 'fs';
 import path from 'path';
 import { app } from 'electron';
 
+// Suporte para múltiplos bancos salvos
+export interface SavedDatabaseEntry {
+  id: string;
+  name: string;
+  path: string;
+  addedAt: string;
+}
+
 interface AppConfig {
   databasePath: string;
   isFirstRun: boolean;
   lastConfigUpdate: string;
+  savedDatabases?: SavedDatabaseEntry[];
+  activeDatabase?: string | null;
 }
 
 let configPath: string;
@@ -37,7 +47,9 @@ export function loadConfig(): AppConfig {
   const defaultConfig: AppConfig = {
     databasePath: '',
     isFirstRun: true,
-    lastConfigUpdate: new Date().toISOString()
+    lastConfigUpdate: new Date().toISOString(),
+    savedDatabases: [],
+    activeDatabase: null,
   };
 
   try {
@@ -107,4 +119,55 @@ export function markAsConfigured(databasePath: string): boolean {
 export function getSavedDatabasePath(): string {
   const config = loadConfig();
   return config.databasePath;
+}
+
+// Novas funções para suportar múltiplos bancos
+export function getSavedDatabases(): SavedDatabaseEntry[] {
+  const cfg = loadConfig();
+  return cfg.savedDatabases || [];
+}
+
+export function addSavedDatabase(entry: SavedDatabaseEntry): boolean {
+  try {
+    const cfg = loadConfig();
+    const list = cfg.savedDatabases || [];
+    list.push(entry);
+    saveConfig({ savedDatabases: list });
+    return true;
+  } catch (error) {
+    console.error('Erro ao adicionar saved database:', error);
+    return false;
+  }
+}
+
+export function removeSavedDatabase(id: string): boolean {
+  try {
+    const cfg = loadConfig();
+    const list = (cfg.savedDatabases || []).filter(d => d.id !== id);
+    saveConfig({ savedDatabases: list });
+    if (cfg.activeDatabase === id) {
+      saveConfig({ activeDatabase: null, databasePath: '' });
+    }
+    return true;
+  } catch (error) {
+    console.error('Erro ao remover saved database:', error);
+    return false;
+  }
+}
+
+export function setActiveDatabase(id: string | null): boolean {
+  try {
+    const cfg = loadConfig();
+    const entry = (cfg.savedDatabases || []).find(d => d.id === id);
+    if (!entry && id !== null) {
+      console.error('Entrada de banco não encontrada para ativação:', id);
+      return false;
+    }
+    const pathToSet = entry ? entry.path : '';
+    saveConfig({ activeDatabase: id, databasePath: pathToSet });
+    return true;
+  } catch (error) {
+    console.error('Erro ao setActiveDatabase:', error);
+    return false;
+  }
 }

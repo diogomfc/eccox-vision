@@ -1,11 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { ReportsTable } from "@/components/reports/reports-table";
 import { toast } from "sonner";
 import { Machines } from "@/types/machines";
 import { DashboardStats } from "@/components/reports/dashboard-stats";
 import { ElectronDebug } from "@/lib/electron-debug";
+import BgOverview from '@/assets/images/bg-overview.svg';
 
 // ALTERADO: Adicionado 'applicationResponsible' à interface de dados do relatório
 export interface ReportData {
@@ -122,28 +124,28 @@ export default function ReportsPage() {
     loadData();
   }, []);
 
-  if (isLoading) {
-    return (
-      <div className="h-screen flex items-center justify-center bg-[#111113]">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
-          <p className="text-gray-400">Carregando relatórios...</p>
-        </div>
-      </div>
-    );
-  }
+
 
   return (
-    <div className="h-screen  text-gray-100 flex flex-col py-15 px-5">
-      {/* Header com Stats */}
-      <div className="flex-none px-6 pt-2 border-gray-800">
+    <main className="relative h-screen text-gray-100 flex flex-col py-16 px-6 overflow-hidden">
+      <Image
+        src={BgOverview}
+        alt="Background"
+        fill
+        className="object-cover z-0"
+        priority
+      />
+      <div className="relative z-10 flex flex-col h-full">
+        {/* Header com Stats */}
+      <div className="flex-none pt-2 border-gray-800">
         <DashboardStats {...stats} />
       </div>
 
-      {/* Tabela */}
-      <div className="flex-1 overflow-hidden px-6">
-        <ReportsTable initialData={reportData} />
+        {/* Tabela */}
+        <div className="flex-1 overflow-hidden">
+          <ReportsTable initialData={reportData} />
+        </div>
       </div>
-    </div>
+    </main>
   );
 }

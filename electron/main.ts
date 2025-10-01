@@ -50,6 +50,13 @@ import {
   initConfigPath
 } from '../src/server/config-manager';
 
+import {
+  getSavedDatabases,
+  addSavedDatabase,
+  removeSavedDatabase,
+  setActiveDatabase
+} from '../src/server/config-manager';
+
 
 import type { Machines, Application, Service } from '../src/types/machines';
 
@@ -59,28 +66,16 @@ import type { Machines, Application, Service } from '../src/types/machines';
 
 function createWindow() {
     const primaryDisplay = screen.getPrimaryDisplay();
-    const { width: screenWidth } = primaryDisplay.workAreaSize;
-
-    let winWidth = 1280;
-    let winHeight = 832;
-
-    if (screenWidth >= 1920) {
-        winWidth = 1600;
-        winHeight = 900;
-    }
-
-    if (screenWidth >= 3840) {
-        winWidth = 1920;
-        winHeight = 1080;
-    }
+    const { width: screenWidth, height: screenHeight } = primaryDisplay.workAreaSize;
 
     const win = new BrowserWindow({
-        width: winWidth,
-        height: winHeight,
+        width: screenWidth,
+        height: screenHeight,
         minWidth: 1280,
         minHeight: 832,
         resizable: true,
-        roundedCorners: true,
+        show: false, // Não mostra imediatamente
+        roundedCorners: true, // Mantém bordas arredondadas
         icon: path.join(__dirname, 'logo.ico'),
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'),
@@ -90,8 +85,12 @@ function createWindow() {
         },
     });
 
-    win.center();
+    // Maximiza a janela ao invés de fullscreen
+    win.maximize();
     win.removeMenu();
+    
+    // Mostra a janela após maximizar
+    win.show();
 
     // Detecção melhorada do modo de desenvolvimento
     const isDev = !app.isPackaged && process.env.NODE_ENV !== 'production';
@@ -113,24 +112,6 @@ function createWindow() {
     // createDevMenu(win);
 }
 
-// function createDevMenu(win: BrowserWindow) {
-//     if (!app.isPackaged) {
-//         const template = [
-//             {
-//                 label: 'Recarregar',
-//                 accelerator: 'CmdOrCtrl+R',
-//                 click: () => {
-//                     win.reload();
-//                 },
-//             },
-//         ];
-
-//         const menu = Menu.buildFromTemplate(template);
-//         Menu.setApplicationMenu(menu);
-//     } else {
-//         Menu.setApplicationMenu(null);
-//     }
-// }
 
 // ========================
 // IPC HANDLERS - CONFIGURATION
@@ -289,6 +270,59 @@ ipcMain.handle('select-database-path', async () => {
   } catch (error) {
     console.error('Erro ao abrir dialog de seleção:', error);
     return null;
+  }
+});
+
+// ========================
+// IPC HANDLERS - SAVED DATABASES
+// ========================
+
+ipcMain.handle('get-saved-databases', async () => {
+  try {
+    return getSavedDatabases();
+  } catch (error) {
+    console.error('Erro ao obter saved databases:', error);
+    return [];
+  }
+});
+
+ipcMain.handle('add-saved-database', async (event, entry) => {
+  try {
+    const success = addSavedDatabase(entry);
+    return { success };
+  } catch (error) {
+    console.error('Erro ao adicionar saved database:', error);
+    return { success: false };
+  }
+});
+
+ipcMain.handle('remove-saved-database', async (event, id: string) => {
+  try {
+    const success = removeSavedDatabase(id);
+    return { success };
+  } catch (error) {
+    console.error('Erro ao remover saved database:', error);
+    return { success: false };
+  }
+});
+
+ipcMain.handle('set-active-database', async (event, id: string | null) => {
+  try {
+    const success = setActiveDatabase(id);
+    if (success && id) {
+      // se ativado, também atualiza o DB path em runtime
+      const cfg = loadConfig();
+      const entry = (cfg.savedDatabases || []).find((d:any)=>d.id===id);
+      if (entry) {
+        // usa setDatabasePath para abrir o banco
+        const dbRes = setDatabasePath(entry.path);
+        return { success: !!dbRes.success, message: dbRes.message || '' };
+      }
+    }
+    return { success };
+  } catch (error) {
+    console.error('Erro ao set active database:', error);
+    return { success: false, message: error instanceof Error ? error.message : 'Erro desconhecido' };
   }
 });
 

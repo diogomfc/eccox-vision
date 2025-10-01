@@ -134,15 +134,6 @@ export function MachineView() {
         }
     };
     
-    if (isLoading) {
-        return (
-            <main className="relative flex flex-col min-h-screen text-gray-100 pt-8 px-6">
-                <div className="flex-1 flex items-center justify-center text-gray-400">
-                    <Loader2 className="animate-spin mr-2" /> Carregando máquinas...
-                </div>
-            </main>
-        );
-    }
     
     return (
         <main className="relative flex flex-col h-screen text-gray-100 pt-16 px-6 overflow-hidden">

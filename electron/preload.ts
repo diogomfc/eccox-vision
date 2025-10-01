@@ -45,6 +45,12 @@ contextBridge.exposeInMainWorld('electronAPI', {
 
     selectDatabasePath: (): Promise<string | null> => ipcRenderer.invoke('select-database-path'),
 
+    // Saved DBs management
+    getSavedDatabases: () => ipcRenderer.invoke('get-saved-databases'),
+    addSavedDatabase: (entry: any) => ipcRenderer.invoke('add-saved-database', entry),
+    removeSavedDatabase: (id: string) => ipcRenderer.invoke('remove-saved-database', id),
+    setActiveDatabase: (id: string | null) => ipcRenderer.invoke('set-active-database', id),
+
 
     // ========================
     // MACHINES APIs

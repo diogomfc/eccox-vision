@@ -864,9 +864,9 @@ export function ReportsTable({ initialData }: { initialData: ReportData[] }) {
   };
 
   return (
-    <div className="h-full bg-[#111113] text-gray-200 flex flex-col border border-blue-500/30 rounded-2xl">
+    <div className="h-full bg-[#111113] text-gray-200 flex flex-col border border-blue-500/30 rounded-lg">
       {/* Header */}
-      <div className="flex-none p-6 border-b border-gray-800 space-y-4 bg-gradient-to-r from-blue-600/10 to-blue-700/5">
+      <div className="flex-none p-6 border-b border-gray-800 space-y-4 bg-gradient-to-r from-blue-600/10 to-blue-700/5 rounded-t-lg">
         <div className="flex items-center gap-3 justify-between">
           <div className="relative flex-1 max-w-sm">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
@@ -1144,7 +1144,7 @@ export function ReportsTable({ initialData }: { initialData: ReportData[] }) {
         </div>
       </div>
       {/* Footer com Paginação */}
-      <div className="flex-none px-6 py-4 border-t rounded-b-2xl border-gray-800 bg-[#0F0F11]">
+      <div className="flex-none px-6 py-4 border-t rounded-b-lg border-gray-800 bg-[#0F0F11]">
         <div className="flex items-center justify-between">
           <div className="text-sm text-gray-400">
             Mostrando {table.getRowModel().rows.length} de

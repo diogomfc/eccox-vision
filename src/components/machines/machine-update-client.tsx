@@ -2,7 +2,9 @@
 "use client";
 
 import { useState, useMemo, useEffect, useCallback } from "react";
+import Image from "next/image";
 import { useElectronHashRouter } from "@/lib/simple-hash-router";
+import BgOverview from '@/assets/images/bg-overview.svg';
 
 import {
   Loader2,
@@ -165,9 +167,16 @@ export default function MachineUpdateClient({
   }
 
   return (
-    <div className="h-screen text-gray-100 flex flex-col pt-15 pb-20">
+    <main className="relative h-screen text-gray-100 flex flex-col pt-15 pb-20">
+      <Image
+        src={BgOverview}
+        alt="Background"
+        fill
+        className="object-cover z-0"
+        priority
+      />
       {/* Main Content Area (Scrollable) */}
-      <div className="flex-1 overflow-hidden ">
+      <div className="relative z-10 flex-1 overflow-hidden">
         <div className="max-w-6xl mx-auto h-full  flex flex-col">
           <Card className="bg-gradient-to-br pt-0 from-[#111113] to-[#0F0F11] border-amber-500/30 shadow-2xl flex flex-col flex-1 overflow-hidden">
             {/* Header Integrado: Progress Steps dentro do Card Header */}
@@ -227,6 +236,6 @@ export default function MachineUpdateClient({
           </Card>
         </div>
       </div>
-    </div>
+    </main>
   );
 }

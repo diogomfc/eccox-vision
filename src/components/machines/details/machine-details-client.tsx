@@ -3,10 +3,11 @@
 "use client";
 
 import React, { useState, useMemo, useEffect, useCallback } from 'react';
-
+import Image from "next/image";
 import { motion } from "framer-motion";
 import type { Machines, Application, Service } from "@/types/machines";
 import { Loader2 } from "lucide-react";
+import BgDetalhesMachine from '@/assets/images/bg-detalhes-machine.svg';
 import { ApplicationList } from './application-list';
 import { MachineStats } from './machine-stats';
 import { MachineImage } from './machine-image';
@@ -121,8 +122,13 @@ export function MachineDetailsClient({ machineId }: MachineDetailsClientProps) {
 
     if (isLoading) {
         return (
-            <div className="flex items-center justify-center h-screen text-gray-400">
-                <Loader2 className="animate-spin mr-2" /> Carregando detalhes da máquina...
+            <div className="flex items-center justify-center h-screen">
+                <div className="text-center text-gray-400">
+                    <div className="animate-pulse">
+                        <div className="w-6 h-6 bg-blue-500/20 rounded-full mx-auto mb-2"></div>
+                        <p className="text-sm">Carregando...</p>
+                    </div>
+                </div>
             </div>
         );
     }
@@ -136,9 +142,17 @@ export function MachineDetailsClient({ machineId }: MachineDetailsClientProps) {
     }
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 items-start py-15 px-5">
-            <motion.div
-                className="md:col-span-1"
+        <main className="relative text-gray-100 py-16 px-6 overflow-hidden min-h-screen">
+            <Image
+                src={BgDetalhesMachine}
+                alt="Background"
+                fill
+                className="object-cover z-0"
+                priority
+            />
+            <div className="relative z-10 grid grid-cols-1 md:grid-cols-4 gap-4 lg:gap-6 items-start">
+                <motion.div
+                className="md:col-span-1 h-fit"
                 initial={{ opacity: 0, x: -40 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
@@ -157,29 +171,34 @@ export function MachineDetailsClient({ machineId }: MachineDetailsClientProps) {
                     onApplicationsUpdated={handleApplicationsUpdated}
                 />
             </motion.div>
+            
             <motion.div
-                className="md:col-span-2 flex flex-col items-center gap-8"
+                className="md:col-span-2 flex flex-col items-center justify-center min-h-[calc(100vh-8rem)]"
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
             >
-                <MachineStats
-                    total={statsData.total}
-                    percent={statsData.percent}
-                    pendentes={statsData.pendentes}
-                    instalados={statsData.instalados}
-                    offsetY={20}
-                />
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
-                >
-                    <MachineImage {...mainInfo} offsetY={20} />
-                </motion.div>
+                <div className="w-full flex flex-col items-center space-y-4 lg:space-y-6 -mt-16">
+                    <MachineStats
+                        total={statsData.total}
+                        percent={statsData.percent}
+                        pendentes={statsData.pendentes}
+                        instalados={statsData.instalados}
+                        offsetY={0}
+                    />
+                    <motion.div
+                        className="flex-1 flex items-center justify-center w-full"
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+                    >
+                        <MachineImage {...mainInfo} offsetY={0} />
+                    </motion.div>
+                </div>
             </motion.div>
+            
             <motion.div
-                className="md:col-span-1"
+                className="md:col-span-1 h-fit"
                 initial={{ opacity: 0, x: 40 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
@@ -189,6 +208,7 @@ export function MachineDetailsClient({ machineId }: MachineDetailsClientProps) {
                     onServicesUpdated={handleServicesUpdated}
                 />
             </motion.div>
-        </div>
+            </div>
+        </main>
     );
 }

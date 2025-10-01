@@ -150,7 +150,7 @@ export default function ServiceEditModal({
             </div>
 
             <div className="space-y-2">
-              <Label className="text-xs text-gray-200">Responsável Homologação</Label>
+              <Label className="text-xs text-gray-200">Resp. Homologação</Label>
               <Input
                 value={editService.responsibleHomologacao ?? ""}
                 onChange={(e) => handleServiceChange(e.target.value, "responsibleHomologacao")}
@@ -182,7 +182,7 @@ export default function ServiceEditModal({
                     {editService.updatedAt ? (
                       format(new Date(editService.updatedAt), "dd/MM/yyyy", { locale: ptBR })
                     ) : (
-                      <span className="text-gray-400">Selecione a data</span>
+                      <span className="text-gray-400 font-mono text-xs">Selecione a data</span>
                     )}
                   </Button>
                 </PopoverTrigger>
