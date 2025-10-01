@@ -93,10 +93,167 @@ npm run dev:electron
 
 ---
 
+## 🏗️ **GUIA COMPLETO DE BUILD - FLUXO CORRETO**
+
+### � **Pré-requisitos**
+- Node.js (versão 18+)
+- Yarn ou NPM
+- Windows (para gerar executável .exe)
+
+### 🔄 **Fluxo de Desenvolvimento**
+
+#### 1️⃣ **Setup Inicial**
+```bash
+# Clone e instale dependências
+git clone <repo>
+cd eccox-vision
+yarn install
+
+# Reconstruir dependências nativas
+yarn rebuild
+```
+
+#### 2️⃣ **Desenvolvimento Local**
+```bash
+# Modo desenvolvimento (Next.js + Electron)
+yarn dev:electron
+
+# OU individual:
+yarn dev              # Só Next.js (localhost:3000)
+yarn build:electron   # Compilar Electron
+electron .           # Executar Electron
+```
+
+### �🚀 **Fluxo de Build para Produção**
+
+#### **Comando Único (RECOMENDADO)**
+```bash
+yarn build:app
+```
+
+#### **OU Passo a Passo Manual:**
+```bash
+# 1. Build do Next.js + correção de paths
+yarn build:next
+
+# 2. Mover arquivos para Electron
+yarn move:out
+
+# 3. Compilar TypeScript do Electron
+yarn build:electron
+
+# 4. Gerar executável
+electron-builder
+```
+
+### 📁 **Estrutura de Arquivos Após Build**
+
+```
+📦 eccox-vision/
+├── 📁 out/                    # Build Next.js (temporário)
+├── 📁 electron/dist/          # Arquivos finais Electron
+│   ├── 📁 out/               # Frontend compilado
+│   ├── 📁 assets/            # Ícones e recursos
+│   ├── main.js               # Processo principal
+│   └── preload.js            # Script de preload
+└── 📁 dist/                   # 🎯 EXECUTÁVEIS FINAIS
+    ├── EccoxVision 1.0.0.exe     # Portable
+    ├── EccoxVision Setup 1.0.0.exe  # Instalador
+    └── win-unpacked/              # Versão descompactada
+```
+
+### ⚙️ **Configurações Importantes**
+
+#### **next.config.ts**
+```typescript
+const nextConfig: NextConfig = {
+  output: "export",           // Gerar arquivos estáticos
+  assetPrefix: ".",          // Assets relativos
+  basePath: "",              
+  images: { unoptimized: true },
+  devIndicators: false,
+  trailingSlash: false,
+  distDir: 'out'             // Pasta de saída
+};
+```
+
+#### **package.json - Scripts Essenciais**
+```json
+{
+  "scripts": {
+    "build:next": "next build && node fix-paths.js",
+    "move:out": "node move-out.js", 
+    "build:electron": "tsc -p tsconfig.electron.json && node move-assets.js",
+    "build:app": "yarn build:next && yarn move:out && yarn build:electron && electron-builder"
+  }
+}
+```
+
+### 🔧 **Scripts Auxiliares Automáticos**
+
+#### **fix-paths.js** - Correção de Assets
+- Converte `/_next/` → `./_next/`
+- Essencial para funcionamento no Electron
+- Executado automaticamente no `build:next`
+
+#### **move-out.js** - Organização de Arquivos  
+- Move `out/` → `electron/dist/out/`
+- Prepara estrutura para o Electron
+
+#### **move-assets.js** - Recursos Visuais
+- Copia `electron/assets/` → `electron/dist/assets/`
+- Inclui ícones e imagens
+
+### ✅ **Validação do Build**
+
+#### **Checklist Pós-Build:**
+- [ ] Pasta `dist/` criada com executáveis
+- [ ] `EccoxVision 1.0.0.exe` funcional
+- [ ] Interface carrega sem tela branca
+- [ ] Navegação entre páginas funciona
+- [ ] Banco de dados conecta
+- [ ] Relatórios mostram dados
+- [ ] Criação de máquinas disponível
+
+#### **Teste Rápido:**
+```bash
+# Executar o portable
+& ".\dist\EccoxVision 1.0.0.exe"
+
+# Debug no console (F12):
+ElectronDebug.runFullDiagnostic()
+```
+
+### 🐛 **Resolução de Problemas**
+
+#### **Tela Branca:**
+- ✅ Verificar `assetPrefix: "."` 
+- ✅ Script `fix-paths.js` executado
+- ✅ Arquivos em `electron/dist/out/`
+
+#### **Routing Issues:**
+- ✅ Usar `useElectronHashRouter` 
+- ✅ Não usar `useRouter` do Next.js
+- ✅ Hash routing (#/machines/create)
+
+#### **Database Issues:**
+- ✅ Verificar `electronAPI` disponível
+- ✅ Handlers IPC configurados
+- ✅ Permissões de arquivo
+
+### 🎯 **Resultado Final**
+
+Após `yarn build:app`, você terá:
+- 📱 **EccoxVision 1.0.0.exe** - Aplicação portable
+- 💿 **EccoxVision Setup 1.0.0.exe** - Instalador completo
+- ✅ **Aplicação 100% funcional** sem telas brancas
+
+---
+
 ## 🚀 Para gerar o executável (.exe)
 
 ```bash
-npm run build:app
+yarn build:app
 ```
 
 ---

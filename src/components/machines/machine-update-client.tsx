@@ -165,10 +165,10 @@ export default function MachineUpdateClient({
   }
 
   return (
-    <div className="h-screen text-gray-100 flex flex-col">
+    <div className="h-screen text-gray-100 flex flex-col pt-15 pb-20">
       {/* Main Content Area (Scrollable) */}
-      <div className="flex-1 overflow-hidden pb-10">
-        <div className="max-w-6xl mx-auto h-full pb-20 flex flex-col">
+      <div className="flex-1 overflow-hidden ">
+        <div className="max-w-6xl mx-auto h-full  flex flex-col">
           <Card className="bg-gradient-to-br pt-0 from-[#111113] to-[#0F0F11] border-amber-500/30 shadow-2xl flex flex-col flex-1 overflow-hidden">
             {/* Header Integrado: Progress Steps dentro do Card Header */}
              <MachineFormHeader
