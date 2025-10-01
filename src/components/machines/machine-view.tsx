@@ -18,7 +18,7 @@ import ImgServerStatus from '@/assets/images/img-server-status.svg';
 import ImgServerStatusWarning from '@/assets/images/img-server-status-warning.svg';
 import AppStatusOk from '@/assets/images/img-app-status-ok.svg';
 import AppStatusWarning from '@/assets/images/img-app-status-warning.svg';
-import { useRouter } from "next/navigation";
+import { useElectronHashRouter } from "@/lib/simple-hash-router";
 import { DeleteMachineModal } from "./modals/delete-machine-modal";
 
 export function MachineView() {
@@ -35,7 +35,7 @@ export function MachineView() {
     const [isDeleting, setIsDeleting] = useState(false);
 
     const dropdownRef = useRef<HTMLDivElement>(null);
-    const router = useRouter();
+    const router = useElectronHashRouter();
 
     const fetchMachines = async () => {
         setIsLoading(true);

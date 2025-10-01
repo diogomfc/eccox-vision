@@ -2,7 +2,7 @@
 "use client";
 
 import { useState, useMemo, useEffect, useCallback } from "react";
-import { useRouter } from "next/navigation";
+import { useElectronHashRouter } from "@/lib/simple-hash-router";
 
 import {
   Loader2,
@@ -37,7 +37,7 @@ interface MachineUpdateClientProps {
 export default function MachineUpdateClient({
   machineId,
 }: MachineUpdateClientProps) {
-  const router = useRouter();
+  const router = useElectronHashRouter();
   const [activeStep, setActiveStep] = useState(1);
   const [isSaving, setIsSaving] = useState(false);
   const [isLoading, setIsLoading] = useState(true);

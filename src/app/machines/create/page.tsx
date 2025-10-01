@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
+import { useElectronHashRouter } from "@/lib/simple-hash-router";
+import { ElectronDebug } from "@/lib/electron-debug";
 import {
   Loader2,
   Plus,
@@ -23,12 +24,16 @@ import MessageDisplay from "@/components/machines/message-display";
 import MachineFormFooter from "@/components/machines/machine-form-footer";
 
 export default function CreateMachinePage() {
-  const router = useRouter();
+  const { push } = useElectronHashRouter();
 
   // Estados para controle do formulário e navegação
   const [activeStep, setActiveStep] = useState(1);
   const [isSaving, setIsSaving] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
+  
+  useEffect(() => {
+    ElectronDebug.log('Componente CreateMachinePage carregado');
+  }, []);
 
   // Estado dos dados da Máquina
   const [newMachine, setNewMachine] = useState<Partial<Machines>>({
@@ -107,7 +112,7 @@ export default function CreateMachinePage() {
       if (result.success) {
         setMessage("Máquina criada com sucesso!");
         setTimeout(() => {
-          router.push("/");
+          push("/");
         }, 2000);
       } else {
         setMessage(`Erro ao criar máquina: ${result.message}`);

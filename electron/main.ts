@@ -84,20 +84,31 @@ function createWindow() {
         icon: path.join(__dirname, 'logo.ico'),
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'),
+            nodeIntegration: false,
+            contextIsolation: true,
+            webSecurity: false, // Necessário para caregar recursos locais
         },
     });
 
     win.center();
     win.removeMenu();
 
-    const startUrl = app.isPackaged
-        ? path.join(__dirname, "out", "index.html")
-        : "http://localhost:3000";
+    // Detecção melhorada do modo de desenvolvimento
+    const isDev = !app.isPackaged && process.env.NODE_ENV !== 'production';
 
-    if (app.isPackaged) {
-        win.loadFile(startUrl);
+    if (isDev) {
+        win.loadURL("http://localhost:3000");
     } else {
-        win.loadURL(startUrl);
+        // Caminho correto para produção usando file:// protocol
+        const htmlPath = path.resolve(__dirname, '..', 'out', 'index.html');
+        const fileUrl = `file://${htmlPath.replace(/\\/g, '/')}`;
+        console.log('Loading file URL:', fileUrl);
+        win.loadURL(fileUrl);
+    }
+
+    // DevTools apenas em desenvolvimento
+    if (isDev) {
+        win.webContents.openDevTools();
     }
     // createDevMenu(win);
 }

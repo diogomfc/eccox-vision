@@ -42,7 +42,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-dallas-1",
                         "application_id": "app-apt-dallas",
                         "name": "APT Change Alert",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "Lucas/Milene",
@@ -54,7 +54,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-dallas-2",
                         "application_id": "app-apt-dallas",
                         "name": "APT Datamover",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "Lucas/Milene",
@@ -78,7 +78,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-dallas-4",
                         "application_id": "app-apt-dallas",
                         "name": "APT For CICS (Multi region)",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "Lucas/Milene",
@@ -102,7 +102,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-dallas-6",
                         "application_id": "app-apt-dallas",
                         "name": "APT for Discovery  Programs",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "Lucas/Milene",
@@ -114,7 +114,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-dallas-7",
                         "application_id": "app-apt-dallas",
                         "name": "APT for Discovery  Tables",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "Lucas/Milene",
@@ -126,7 +126,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-dallas-8",
                         "application_id": "app-apt-dallas",
                         "name": "APT for Discovery  Transaction",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "Lucas",
@@ -138,7 +138,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-dallas-9",
                         "application_id": "app-apt-dallas",
                         "name": "APT for Discovery Changeman",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "Lucas/Milene",
@@ -150,7 +150,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-dallas-10",
                         "application_id": "app-apt-dallas",
                         "name": "APT for Discovery DLI",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "Lucas/Milene",
@@ -186,7 +186,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-dallas-13",
                         "application_id": "app-apt-dallas",
                         "name": "APT for Discovery JOB",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "Lucas/Milene",
@@ -198,7 +198,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-dallas-14",
                         "application_id": "app-apt-dallas",
                         "name": "APT for Discovery Library",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "Lucas",
@@ -222,7 +222,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-dallas-16",
                         "application_id": "app-apt-dallas",
                         "name": "APT for Discovery Typing",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "",
@@ -246,7 +246,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-dallas-18",
                         "application_id": "app-apt-dallas",
                         "name": "APT For IMS (DB)",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "Lucas/Milene",
@@ -258,7 +258,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-dallas-19",
                         "application_id": "app-apt-dallas",
                         "name": "APT For IMS (DC)",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "Lucas/Milene",
@@ -270,7 +270,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-dallas-20",
                         "application_id": "app-apt-dallas",
                         "name": "APT Logstream",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "Lucas/Milene",
@@ -282,7 +282,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-dallas-21",
                         "application_id": "app-apt-dallas",
                         "name": "APT SnapShot",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "Lucas/Milene",
@@ -294,7 +294,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-dallas-22",
                         "application_id": "app-apt-dallas",
                         "name": "LDAP (YES/NO)",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "Lucas/Milene",
@@ -309,7 +309,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-dallas",
                 "name": "BITBUCKET",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-bitbucket-dallas-1",
@@ -330,7 +330,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-dallas",
                 "name": "CA-Endevor",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-ca-endevor-dallas-1",
@@ -351,7 +351,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-dallas",
                 "name": "CICS 5.2 (Multi Region)",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-cics52-dallas-1",
@@ -468,13 +468,13 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-dallas",
                 "name": "CICS 5.5 (Multi Region)",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-cics55-dallas-1",
                         "application_id": "app-cics55-dallas",
                         "name": "Conexão com DB2",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "",
@@ -486,7 +486,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-cics55-dallas-2",
                         "application_id": "app-cics55-dallas",
                         "name": "Conexão com IMS DB",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "",
@@ -510,7 +510,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-cics55-dallas-4",
                         "application_id": "app-cics55-dallas",
                         "name": "Conexão MQ",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "",
@@ -522,7 +522,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-cics55-dallas-5",
                         "application_id": "app-cics55-dallas",
                         "name": "Eza TCP SOCKET",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "",
@@ -534,7 +534,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-cics55-dallas-6",
                         "application_id": "app-cics55-dallas",
                         "name": "LOGIN via CESN",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "",
@@ -546,7 +546,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-cics55-dallas-7",
                         "application_id": "app-cics55-dallas",
                         "name": "PLTPI",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "",
@@ -558,7 +558,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-cics55-dallas-8",
                         "application_id": "app-cics55-dallas",
                         "name": "PLTPS",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "",
@@ -570,7 +570,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-cics55-dallas-9",
                         "application_id": "app-cics55-dallas",
                         "name": "z/OS Connect",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "",
@@ -585,7 +585,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-dallas",
                 "name": "CICS 5.6 (Multi Region)",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-cics56-dallas-1",
@@ -702,7 +702,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-dallas",
                 "name": "Changeman (Simulador)",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-changeman-dallas-1",
@@ -747,7 +747,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-dallas",
                 "name": "DB2 Connect",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-db2connect-dallas-1",
@@ -768,7 +768,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-dallas",
                 "name": "DB2 Connect Aplicativo",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-db2connectapp-dallas-1",
@@ -788,14 +788,14 @@ export const mockMachines: Machines[] = [
                 "id": "app-db2v12c-dallas",
                 "machine_id": "machine-dallas",
                 "name": "DB2 V12 (C/Vírgula)",
-                "status": "Concluida",
-                "tipo": "IBM",
+                "status": "Concluída",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-db2v12c-dallas-1",
                         "application_id": "app-db2v12c-dallas",
                         "name": "Funcional",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "",
@@ -810,7 +810,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-dallas",
                 "name": "DB2 V12 (S/Vírgula)",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-db2v12s-dallas-1",
@@ -831,7 +831,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-dallas",
                 "name": "DB2 V13 (C/Vírgula)",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-db2v13c-dallas-1",
@@ -852,7 +852,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-dallas",
                 "name": "DB2 V13 (S/Vírgula)",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-db2v13s-dallas-1",
@@ -872,14 +872,14 @@ export const mockMachines: Machines[] = [
                 "id": "app-ebkmainframe-dallas",
                 "machine_id": "machine-dallas",
                 "name": "EBK Mainframe",
-                "status": "Concluida",
+                "status": "Concluída",
                 "tipo": "ECCOX",
                 "services": [
                     {
                         "id": "service-ebkmainframe-dallas-1",
                         "application_id": "app-ebkmainframe-dallas",
                         "name": "Mainframe (SMPE, CICS, TABELAS)",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "",
@@ -893,14 +893,14 @@ export const mockMachines: Machines[] = [
                 "id": "app-ebkweb-dallas",
                 "machine_id": "machine-dallas",
                 "name": "EBK Web",
-                "status": "Concluida",
+                "status": "Concluída",
                 "tipo": "ECCOX",
                 "services": [
                     {
                         "id": "service-ebkweb-dallas-1",
                         "application_id": "app-ebkweb-dallas",
                         "name": "WEB (MYSQL, DEPLOY)",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "",
@@ -914,14 +914,14 @@ export const mockMachines: Machines[] = [
                 "id": "app-ecs-dallas",
                 "machine_id": "machine-dallas",
                 "name": "ECS",
-                "status": "Concluida",
+                "status": "Concluída",
                 "tipo": "ECCOX",
                 "services": [
                     {
                         "id": "service-ecs-dallas-1",
                         "application_id": "app-ecs-dallas",
                         "name": "Instalação (SMPE, CICS)",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "",
@@ -942,7 +942,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-eqc-dallas-1",
                         "application_id": "app-eqc-dallas",
                         "name": "Abono",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "",
@@ -954,7 +954,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-eqc-dallas-2",
                         "application_id": "app-eqc-dallas",
                         "name": "Avaliações",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "",
@@ -966,7 +966,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-eqc-dallas-3",
                         "application_id": "app-eqc-dallas",
                         "name": "Cadastro de Legado",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "",
@@ -990,7 +990,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-eqc-dallas-5",
                         "application_id": "app-eqc-dallas",
                         "name": "Exceção",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "",
@@ -1035,7 +1035,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-eqd-dallas-1",
                         "application_id": "app-eqd-dallas",
                         "name": "Abono",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "",
@@ -1047,7 +1047,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-eqd-dallas-2",
                         "application_id": "app-eqd-dallas",
                         "name": "Avaliações",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "",
@@ -1059,7 +1059,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-eqd-dallas-3",
                         "application_id": "app-eqd-dallas",
                         "name": "Cadastro de Legado",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "",
@@ -1083,7 +1083,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-eqd-dallas-5",
                         "application_id": "app-eqd-dallas",
                         "name": "Exceção",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "",
@@ -1121,14 +1121,14 @@ export const mockMachines: Machines[] = [
                 "id": "app-eqf-dallas",
                 "machine_id": "machine-dallas",
                 "name": "EQF",
-                "status": "Concluida",
+                "status": "Concluída",
                 "tipo": "ECCOX",
                 "services": [
                     {
                         "id": "service-eqf-dallas-1",
                         "application_id": "app-eqf-dallas",
                         "name": "Config Melhor Nota",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "",
@@ -1142,14 +1142,14 @@ export const mockMachines: Machines[] = [
                 "id": "app-esv-dallas",
                 "machine_id": "machine-dallas",
                 "name": "ESV",
-                "status": "Concluida",
+                "status": "Concluída",
                 "tipo": "ECCOX",
                 "services": [
                     {
                         "id": "service-esv-dallas-1",
                         "application_id": "app-esv-dallas",
                         "name": "Instalação",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "",
@@ -1185,7 +1185,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-dallas",
                 "name": "GIT Azure",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-gitazure-dallas-1",
@@ -1206,7 +1206,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-dallas",
                 "name": "GIT LAB",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-gitlab-dallas-1",
@@ -1227,7 +1227,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-dallas",
                 "name": "IMS/DB 14",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-imsdb14-dallas-1",
@@ -1260,7 +1260,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-dallas",
                 "name": "IMS/DB 15",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-imsdb15-dallas-1",
@@ -1278,7 +1278,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-imsdb15-dallas-2",
                         "application_id": "app-imsdb15-dallas",
                         "name": "SPOC",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "",
@@ -1293,7 +1293,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-dallas",
                 "name": "IMS/DC 14",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-imsdc14-dallas-1",
@@ -1350,13 +1350,13 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-dallas",
                 "name": "IMS/DC 15",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-imsdc15-dallas-1",
                         "application_id": "app-imsdc15-dallas",
                         "name": "Conexão DB2",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "",
@@ -1392,7 +1392,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-imsdc15-dallas-4",
                         "application_id": "app-imsdc15-dallas",
                         "name": "SPOC",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "",
@@ -1406,14 +1406,14 @@ export const mockMachines: Machines[] = [
                 "id": "app-ivp-dallas",
                 "machine_id": "machine-dallas",
                 "name": "IVP",
-                "status": "Concluida",
+                "status": "Concluída",
                 "tipo": "ECCOX",
                 "services": [
                     {
                         "id": "service-ivp-dallas-1",
                         "application_id": "app-ivp-dallas",
                         "name": "IVP1, IVP2, IVP3",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "",
@@ -1427,14 +1427,14 @@ export const mockMachines: Machines[] = [
                 "id": "app-mqcics-dallas",
                 "machine_id": "machine-dallas",
                 "name": "MQ CICS",
-                "status": "Concluida",
-                "tipo": "IBM",
+                "status": "Concluída",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-mqcics-dallas-1",
                         "application_id": "app-mqcics-dallas",
                         "name": "Instalação",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "",
@@ -1449,7 +1449,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-dallas",
                 "name": "MQ IMS",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-mqims-dallas-1",
@@ -1490,14 +1490,14 @@ export const mockMachines: Machines[] = [
                 "id": "app-pwd-dallas",
                 "machine_id": "machine-dallas",
                 "name": "PWD",
-                "status": "Concluida",
+                "status": "Concluída",
                 "tipo": "ECCOX",
                 "services": [
                     {
                         "id": "service-pwd-dallas-1",
                         "application_id": "app-pwd-dallas",
                         "name": "Instalação",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "",
@@ -1512,7 +1512,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-dallas",
                 "name": "Produtos BMC",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-bmcp-dallas-1",
@@ -1532,14 +1532,14 @@ export const mockMachines: Machines[] = [
                 "id": "app-qcweb-dallas",
                 "machine_id": "machine-dallas",
                 "name": "QCWEB",
-                "status": "Concluida",
+                "status": "Concluída",
                 "tipo": "ECCOX",
                 "services": [
                     {
                         "id": "service-qcweb-dallas-1",
                         "application_id": "app-qcweb-dallas",
                         "name": "Instalação (DEPLOY)",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "",
@@ -1554,13 +1554,13 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-dallas",
                 "name": "SHP",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-shp-dallas-1",
                         "application_id": "app-shp-dallas",
                         "name": "SH01-SH20",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "",
@@ -1572,7 +1572,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-shp-dallas-2",
                         "application_id": "app-shp-dallas",
                         "name": "SH22-SH23 (CICS - IMS DB)",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "",
@@ -1584,7 +1584,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-shp-dallas-3",
                         "application_id": "app-shp-dallas",
                         "name": "SHPI01 e SHPI12 (IMS)",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "",
@@ -1596,7 +1596,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-shp-dallas-4",
                         "application_id": "app-shp-dallas",
                         "name": "SHPI22",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "",
@@ -1608,7 +1608,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-shp-dallas-5",
                         "application_id": "app-shp-dallas",
                         "name": "SHPI90 (IMS)",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "",
@@ -1632,7 +1632,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-shp-dallas-7",
                         "application_id": "app-shp-dallas",
                         "name": "SHPS",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "",
@@ -1644,7 +1644,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-shp-dallas-8",
                         "application_id": "app-shp-dallas",
                         "name": "SHPS1 (IMS)",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "",
@@ -1656,7 +1656,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-shp-dallas-9",
                         "application_id": "app-shp-dallas",
                         "name": "SHPS1J (IMS)",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "",
@@ -1668,7 +1668,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-shp-dallas-10",
                         "application_id": "app-shp-dallas",
                         "name": "SHPS1X (IMS)",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "",
@@ -1680,7 +1680,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-shp-dallas-11",
                         "application_id": "app-shp-dallas",
                         "name": "SHPX ST03 ST13 STWQ STH3",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "",
@@ -1692,7 +1692,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-shp-dallas-12",
                         "application_id": "app-shp-dallas",
                         "name": "SHQ2 SHQT",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "",
@@ -1704,7 +1704,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-shp-dallas-13",
                         "application_id": "app-shp-dallas",
                         "name": "SHS1 SHS2 SHS3",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "",
@@ -1716,7 +1716,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-shp-dallas-14",
                         "application_id": "app-shp-dallas",
                         "name": "SHSJ",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "",
@@ -1728,7 +1728,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-shp-dallas-15",
                         "application_id": "app-shp-dallas",
                         "name": "SHSX",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "",
@@ -1740,7 +1740,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-shp-dallas-16",
                         "application_id": "app-shp-dallas",
                         "name": "SJ52",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "",
@@ -1752,7 +1752,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-shp-dallas-17",
                         "application_id": "app-shp-dallas",
                         "name": "SN01 SN02 SN03",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:45:47.022Z",
                         "responsible": "",
@@ -1767,7 +1767,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-dallas",
                 "name": "z/OS Connect",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-zosconnect-dallas-1",
@@ -1824,7 +1824,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-dallas",
                 "name": "z/OS Connect Aplicativo",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-zosconnectapp-dallas-1",
@@ -1845,7 +1845,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-dallas",
                 "name": "z/OS Connect Aplicativo IMS",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-zosconnectapp-ims-dallas-1",
@@ -1875,14 +1875,14 @@ export const mockMachines: Machines[] = [
                 "id": "app-abn-mf03",
                 "machine_id": "machine-mf03",
                 "name": "ABN",
-                "status": "Concluida",
+                "status": "Concluída",
                 "tipo": "ECCOX",
                 "services": [
                     {
                         "id": "service-abn-mf03-1",
                         "application_id": "app-abn-mf03",
                         "name": "Instalação",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -1903,7 +1903,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-mf03-1",
                         "application_id": "app-apt-mf03",
                         "name": "APT Change Alert",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -1915,7 +1915,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-mf03-2",
                         "application_id": "app-apt-mf03",
                         "name": "APT Datamover",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -1927,7 +1927,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-mf03-3",
                         "application_id": "app-apt-mf03",
                         "name": "APT for Batch (JCL e PGM BATCH)",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -1939,7 +1939,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-mf03-4",
                         "application_id": "app-apt-mf03",
                         "name": "APT For CICS (Multi region)",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -1963,7 +1963,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-mf03-6",
                         "application_id": "app-apt-mf03",
                         "name": "APT for Discovery  Programs",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -1975,7 +1975,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-mf03-7",
                         "application_id": "app-apt-mf03",
                         "name": "APT for Discovery  Tables",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -1999,7 +1999,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-mf03-9",
                         "application_id": "app-apt-mf03",
                         "name": "APT for Discovery Changeman",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -2035,7 +2035,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-mf03-12",
                         "application_id": "app-apt-mf03",
                         "name": "APT for Discovery GIT",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -2047,7 +2047,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-mf03-13",
                         "application_id": "app-apt-mf03",
                         "name": "APT for Discovery JOB",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -2083,7 +2083,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-mf03-16",
                         "application_id": "app-apt-mf03",
                         "name": "APT for Discovery Typing",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -2131,7 +2131,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-mf03-20",
                         "application_id": "app-apt-mf03",
                         "name": "APT Logstream",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -2143,7 +2143,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-mf03-21",
                         "application_id": "app-apt-mf03",
                         "name": "APT SnapShot",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -2155,7 +2155,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-mf03-22",
                         "application_id": "app-apt-mf03",
                         "name": "LDAP (YES/NO)",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -2170,7 +2170,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf03",
                 "name": "BITBUCKET",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-bitbucket-mf03-1",
@@ -2191,7 +2191,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf03",
                 "name": "CA-Endevor",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-ca-endevor-mf03-1",
@@ -2212,7 +2212,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf03",
                 "name": "CICS 5.2 (Multi Region)",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-cics52-mf03-1",
@@ -2329,7 +2329,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf03",
                 "name": "CICS 5.5 (Multi Region)",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-cics55-mf03-1",
@@ -2446,7 +2446,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf03",
                 "name": "CICS 5.6 (Multi Region)",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-cics56-mf03-1",
@@ -2551,7 +2551,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf03",
                 "name": "Changeman (Simulador)",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-changeman-mf03-1",
@@ -2596,7 +2596,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf03",
                 "name": "DB2 Connect",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-db2connect-mf03-1",
@@ -2617,7 +2617,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf03",
                 "name": "DB2 Connect Aplicativo",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-db2connectapp-mf03-1",
@@ -2638,7 +2638,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf03",
                 "name": "DB2 V12 (C/Vírgula)",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-db2v12c-mf03-1",
@@ -2658,14 +2658,14 @@ export const mockMachines: Machines[] = [
                 "id": "app-db2v12s-mf03",
                 "machine_id": "machine-mf03",
                 "name": "DB2 V12 (S/Vírgula)",
-                "status": "Concluida",
-                "tipo": "IBM",
+                "status": "Concluída",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-db2v12s-mf03-1",
                         "application_id": "app-db2v12s-mf03",
                         "name": "Funcional",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -2680,7 +2680,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf03",
                 "name": "DB2 V13 (C/Vírgula)",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-db2v13c-mf03-1",
@@ -2701,7 +2701,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf03",
                 "name": "DB2 V13 (S/Vírgula)",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-db2v13s-mf03-1",
@@ -2763,14 +2763,14 @@ export const mockMachines: Machines[] = [
                 "id": "app-ecs-mf03",
                 "machine_id": "machine-mf03",
                 "name": "ECS",
-                "status": "Concluida",
+                "status": "Concluída",
                 "tipo": "ECCOX",
                 "services": [
                     {
                         "id": "service-ecs-mf03-1",
                         "application_id": "app-ecs-mf03",
                         "name": "Instalação (SMPE, CICS)",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -2791,7 +2791,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-eqc-mf03-1",
                         "application_id": "app-eqc-mf03",
                         "name": "Abono",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -2803,7 +2803,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-eqc-mf03-2",
                         "application_id": "app-eqc-mf03",
                         "name": "Avaliações",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -2815,7 +2815,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-eqc-mf03-3",
                         "application_id": "app-eqc-mf03",
                         "name": "Cadastro de Legado",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -2839,7 +2839,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-eqc-mf03-5",
                         "application_id": "app-eqc-mf03",
                         "name": "Exceção",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -2884,7 +2884,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-eqd-mf03-1",
                         "application_id": "app-eqd-mf03",
                         "name": "Abono",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -2896,7 +2896,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-eqd-mf03-2",
                         "application_id": "app-eqd-mf03",
                         "name": "Avaliações",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -2908,7 +2908,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-eqd-mf03-3",
                         "application_id": "app-eqd-mf03",
                         "name": "Cadastro de Legado",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -2932,7 +2932,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-eqd-mf03-5",
                         "application_id": "app-eqd-mf03",
                         "name": "Exceção",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -2956,7 +2956,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-eqd-mf03-7",
                         "application_id": "app-eqd-mf03",
                         "name": "Nota Vigente",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -2991,14 +2991,14 @@ export const mockMachines: Machines[] = [
                 "id": "app-esv-mf03",
                 "machine_id": "machine-mf03",
                 "name": "ESV",
-                "status": "Concluida",
+                "status": "Concluída",
                 "tipo": "ECCOX",
                 "services": [
                     {
                         "id": "service-esv-mf03-1",
                         "application_id": "app-esv-mf03",
                         "name": "Instalação",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -3012,14 +3012,14 @@ export const mockMachines: Machines[] = [
                 "id": "app-esx-mf03",
                 "machine_id": "machine-mf03",
                 "name": "ESX",
-                "status": "Concluida",
+                "status": "Concluída",
                 "tipo": "ECCOX",
                 "services": [
                     {
                         "id": "service-esx-mf03-1",
                         "application_id": "app-esx-mf03",
                         "name": "Instalação",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -3033,14 +3033,14 @@ export const mockMachines: Machines[] = [
                 "id": "app-gitazure-mf03",
                 "machine_id": "machine-mf03",
                 "name": "GIT Azure",
-                "status": "Concluida",
-                "tipo": "IBM",
+                "status": "Concluída",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-gitazure-mf03-1",
                         "application_id": "app-gitazure-mf03",
                         "name": "Instalação e definição de branchs",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -3055,7 +3055,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf03",
                 "name": "GIT LAB",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-gitlab-mf03-1",
@@ -3076,7 +3076,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf03",
                 "name": "IMS/DB 14",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-imsdb14-mf03-1",
@@ -3109,7 +3109,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf03",
                 "name": "IMS/DB 15",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-imsdb15-mf03-1",
@@ -3142,7 +3142,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf03",
                 "name": "IMS/DC 14",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-imsdc14-mf03-1",
@@ -3199,7 +3199,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf03",
                 "name": "IMS/DC 15",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-imsdc15-mf03-1",
@@ -3277,7 +3277,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf03",
                 "name": "MQ CICS",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-mqcics-mf03-1",
@@ -3298,7 +3298,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf03",
                 "name": "MQ IMS",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-mqims-mf03-1",
@@ -3339,14 +3339,14 @@ export const mockMachines: Machines[] = [
                 "id": "app-pwd-mf03",
                 "machine_id": "machine-mf03",
                 "name": "PWD",
-                "status": "Concluida",
+                "status": "Concluída",
                 "tipo": "ECCOX",
                 "services": [
                     {
                         "id": "service-pwd-mf03-1",
                         "application_id": "app-pwd-mf03",
                         "name": "Instalação",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -3360,14 +3360,14 @@ export const mockMachines: Machines[] = [
                 "id": "app-bmcp-mf03",
                 "machine_id": "machine-mf03",
                 "name": "Produtos BMC",
-                "status": "Concluida",
-                "tipo": "IBM",
+                "status": "Concluída",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-bmcp-mf03-1",
                         "application_id": "app-bmcp-mf03",
                         "name": "Instalação",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -3381,14 +3381,14 @@ export const mockMachines: Machines[] = [
                 "id": "app-qcweb-mf03",
                 "machine_id": "machine-mf03",
                 "name": "QCWEB",
-                "status": "Concluida",
+                "status": "Concluída",
                 "tipo": "ECCOX",
                 "services": [
                     {
                         "id": "service-qcweb-mf03-1",
                         "application_id": "app-qcweb-mf03",
                         "name": "Instalação (DEPLOY)",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -3403,7 +3403,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf03",
                 "name": "SHP",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-shp-mf03-1",
@@ -3616,7 +3616,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf03",
                 "name": "z/OS Connect",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-zosconnect-mf03-1",
@@ -3673,7 +3673,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf03",
                 "name": "z/OS Connect Aplicativo",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-zosconnectapp-mf03-1",
@@ -3693,14 +3693,14 @@ export const mockMachines: Machines[] = [
                 "id": "app-zosconnectapp-cics-mf03",
                 "machine_id": "machine-mf03",
                 "name": "z/OS Connect Aplicativo CICS",
-                "status": "Concluida",
-                "tipo": "IBM",
+                "status": "Concluída",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-zosconnectapp-cics-mf03-1",
                         "application_id": "app-zosconnectapp-cics-mf03",
                         "name": "Instalação( Deploy)",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -3715,7 +3715,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf03",
                 "name": "z/OS Connect Aplicativo IMS",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-zosconnectapp-ims-mf03-1",
@@ -3797,7 +3797,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-mf05-3",
                         "application_id": "app-apt-mf05",
                         "name": "APT for Batch (JCL e PGM BATCH)",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -3833,7 +3833,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-mf05-6",
                         "application_id": "app-apt-mf05",
                         "name": "APT for Discovery  Programs",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -3845,7 +3845,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-mf05-7",
                         "application_id": "app-apt-mf05",
                         "name": "APT for Discovery  Tables",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -3869,7 +3869,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-mf05-9",
                         "application_id": "app-apt-mf05",
                         "name": "APT for Discovery Changeman",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -3917,7 +3917,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-mf05-13",
                         "application_id": "app-apt-mf05",
                         "name": "APT for Discovery JOB",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -3953,7 +3953,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-mf05-16",
                         "application_id": "app-apt-mf05",
                         "name": "APT for Discovery Typing",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -4025,7 +4025,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-mf05-22",
                         "application_id": "app-apt-mf05",
                         "name": "LDAP (YES/NO)",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -4040,7 +4040,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf05",
                 "name": "BITBUCKET",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-bitbucket-mf05-1",
@@ -4061,7 +4061,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf05",
                 "name": "CA-Endevor",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-ca-endevor-mf05-1",
@@ -4082,7 +4082,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf05",
                 "name": "CICS 5.2 (Multi Region)",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-cics52-mf05-1",
@@ -4199,7 +4199,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf05",
                 "name": "CICS 5.5 (Multi Region)",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-cics55-mf05-1",
@@ -4316,7 +4316,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf05",
                 "name": "CICS 5.6 (Multi Region)",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-cics56-mf05-1",
@@ -4421,7 +4421,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf05",
                 "name": "Changeman (Simulador)",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-changeman-mf05-1",
@@ -4466,7 +4466,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf05",
                 "name": "DB2 Connect",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-db2connect-mf05-1",
@@ -4487,7 +4487,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf05",
                 "name": "DB2 Connect Aplicativo",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-db2connectapp-mf05-1",
@@ -4508,7 +4508,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf05",
                 "name": "DB2 V12 (C/Vírgula)",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-db2v12c-mf05-1",
@@ -4528,14 +4528,14 @@ export const mockMachines: Machines[] = [
                 "id": "app-db2v12s-mf05",
                 "machine_id": "machine-mf05",
                 "name": "DB2 V12 (S/Vírgula)",
-                "status": "Concluida",
-                "tipo": "IBM",
+                "status": "Concluída",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-db2v12s-mf05-1",
                         "application_id": "app-db2v12s-mf05",
                         "name": "Funcional",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -4550,7 +4550,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf05",
                 "name": "DB2 V13 (C/Vírgula)",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-db2v13c-mf05-1",
@@ -4571,7 +4571,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf05",
                 "name": "DB2 V13 (S/Vírgula)",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-db2v13s-mf05-1",
@@ -4633,14 +4633,14 @@ export const mockMachines: Machines[] = [
                 "id": "app-ecs-mf05",
                 "machine_id": "machine-mf05",
                 "name": "ECS",
-                "status": "Concluida",
+                "status": "Concluída",
                 "tipo": "ECCOX",
                 "services": [
                     {
                         "id": "service-ecs-mf05-1",
                         "application_id": "app-ecs-mf05",
                         "name": "Instalação (SMPE, CICS)",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -4661,7 +4661,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-eqc-mf05-1",
                         "application_id": "app-eqc-mf05",
                         "name": "Abono",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -4673,7 +4673,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-eqc-mf05-2",
                         "application_id": "app-eqc-mf05",
                         "name": "Avaliações",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -4685,7 +4685,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-eqc-mf05-3",
                         "application_id": "app-eqc-mf05",
                         "name": "Cadastro de Legado",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -4697,7 +4697,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-eqc-mf05-4",
                         "application_id": "app-eqc-mf05",
                         "name": "Delta",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -4709,7 +4709,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-eqc-mf05-5",
                         "application_id": "app-eqc-mf05",
                         "name": "Exceção",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -4754,7 +4754,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-eqd-mf05-1",
                         "application_id": "app-eqd-mf05",
                         "name": "Abono",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -4766,7 +4766,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-eqd-mf05-2",
                         "application_id": "app-eqd-mf05",
                         "name": "Avaliações",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -4778,7 +4778,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-eqd-mf05-3",
                         "application_id": "app-eqd-mf05",
                         "name": "Cadastro de Legado",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -4861,14 +4861,14 @@ export const mockMachines: Machines[] = [
                 "id": "app-esv-mf05",
                 "machine_id": "machine-mf05",
                 "name": "ESV",
-                "status": "Concluida",
+                "status": "Concluída",
                 "tipo": "ECCOX",
                 "services": [
                     {
                         "id": "service-esv-mf05-1",
                         "application_id": "app-esv-mf05",
                         "name": "Instalação",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -4904,7 +4904,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf05",
                 "name": "GIT Azure",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-gitazure-mf05-1",
@@ -4925,7 +4925,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf05",
                 "name": "GIT LAB",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-gitlab-mf05-1",
@@ -4946,7 +4946,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf05",
                 "name": "IMS/DB 14",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-imsdb14-mf05-1",
@@ -4979,7 +4979,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf05",
                 "name": "IMS/DB 15",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-imsdb15-mf05-1",
@@ -5012,7 +5012,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf05",
                 "name": "IMS/DC 14",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-imsdc14-mf05-1",
@@ -5069,7 +5069,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf05",
                 "name": "IMS/DC 15",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-imsdc15-mf05-1",
@@ -5147,7 +5147,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf05",
                 "name": "MQ CICS",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-mqcics-mf05-1",
@@ -5168,7 +5168,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf05",
                 "name": "MQ IMS",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-mqims-mf05-1",
@@ -5209,14 +5209,14 @@ export const mockMachines: Machines[] = [
                 "id": "app-pwd-mf05",
                 "machine_id": "machine-mf05",
                 "name": "PWD",
-                "status": "Concluida",
+                "status": "Concluída",
                 "tipo": "ECCOX",
                 "services": [
                     {
                         "id": "service-pwd-mf05-1",
                         "application_id": "app-pwd-mf05",
                         "name": "Instalação",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -5230,14 +5230,14 @@ export const mockMachines: Machines[] = [
                 "id": "app-bmcp-mf05",
                 "machine_id": "machine-mf05",
                 "name": "Produtos BMC",
-                "status": "Concluida",
-                "tipo": "IBM",
+                "status": "Concluída",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-bmcp-mf05-1",
                         "application_id": "app-bmcp-mf05",
                         "name": "Instalação",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -5251,14 +5251,14 @@ export const mockMachines: Machines[] = [
                 "id": "app-qcweb-mf05",
                 "machine_id": "machine-mf05",
                 "name": "QCWEB",
-                "status": "Concluida",
+                "status": "Concluída",
                 "tipo": "ECCOX",
                 "services": [
                     {
                         "id": "service-qcweb-mf05-1",
                         "application_id": "app-qcweb-mf05",
                         "name": "Instalação (DEPLOY)",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -5273,7 +5273,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf05",
                 "name": "SHP",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-shp-mf05-1",
@@ -5399,7 +5399,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-shp-mf05-11",
                         "application_id": "app-shp-mf05",
                         "name": "SHPX ST03 ST13 STWQ STH3 (CICS)",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -5411,7 +5411,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-shp-mf05-12",
                         "application_id": "app-shp-mf05",
                         "name": "SHQ2 SHQT (CICS)",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -5423,7 +5423,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-shp-mf05-13",
                         "application_id": "app-shp-mf05",
                         "name": "SHS1 SHS2 SHS3 (CICS)",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -5435,7 +5435,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-shp-mf05-14",
                         "application_id": "app-shp-mf05",
                         "name": "SHSJ (CICS)",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -5447,7 +5447,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-shp-mf05-15",
                         "application_id": "app-shp-mf05",
                         "name": "SHSX (CICS)",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -5459,7 +5459,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-shp-mf05-16",
                         "application_id": "app-shp-mf05",
                         "name": "SJ52 (CICS)",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -5471,7 +5471,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-shp-mf05-17",
                         "application_id": "app-shp-mf05",
                         "name": "SN01 SN02 SN03 (CICS)",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -5486,7 +5486,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf05",
                 "name": "z/OS Connect",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-zosconnect-mf05-1",
@@ -5543,7 +5543,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf05",
                 "name": "z/OS Connect Aplicativo",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-zosconnectapp-mf05-1",
@@ -5563,14 +5563,14 @@ export const mockMachines: Machines[] = [
                 "id": "app-zosconnectapp-cics-mf05",
                 "machine_id": "machine-mf05",
                 "name": "z/OS Connect Aplicativo CICS",
-                "status": "Concluida",
-                "tipo": "IBM",
+                "status": "Concluída",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-zosconnectapp-cics-mf05-1",
                         "application_id": "app-zosconnectapp-cics-mf05",
                         "name": "Instalação( Deploy)",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -5585,7 +5585,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf05",
                 "name": "z/OS Connect Aplicativo IMS",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-zosconnectapp-ims-mf05-1",
@@ -5655,7 +5655,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-mf07-2",
                         "application_id": "app-apt-mf07",
                         "name": "APT Datamover",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -5667,7 +5667,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-mf07-3",
                         "application_id": "app-apt-mf07",
                         "name": "APT for Batch (JCL e PGM BATCH)",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -5679,7 +5679,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-mf07-4",
                         "application_id": "app-apt-mf07",
                         "name": "APT For CICS (Multi region)",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -5703,7 +5703,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-mf07-6",
                         "application_id": "app-apt-mf07",
                         "name": "APT for Discovery  Programs",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -5715,7 +5715,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-mf07-7",
                         "application_id": "app-apt-mf07",
                         "name": "APT for Discovery  Tables",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -5727,7 +5727,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-mf07-8",
                         "application_id": "app-apt-mf07",
                         "name": "APT for Discovery  Transaction",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -5775,7 +5775,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-mf07-12",
                         "application_id": "app-apt-mf07",
                         "name": "APT for Discovery GIT",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -5787,7 +5787,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-mf07-13",
                         "application_id": "app-apt-mf07",
                         "name": "APT for Discovery JOB",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -5823,7 +5823,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-mf07-16",
                         "application_id": "app-apt-mf07",
                         "name": "APT for Discovery Typing",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -5871,7 +5871,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-mf07-20",
                         "application_id": "app-apt-mf07",
                         "name": "APT Logstream",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -5883,7 +5883,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-mf07-21",
                         "application_id": "app-apt-mf07",
                         "name": "APT SnapShot",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -5895,7 +5895,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-apt-mf07-22",
                         "application_id": "app-apt-mf07",
                         "name": "LDAP (YES/NO)",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -5910,7 +5910,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf07",
                 "name": "BITBUCKET",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-bitbucket-mf07-1",
@@ -5931,7 +5931,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf07",
                 "name": "CA-Endevor",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-ca-endevor-mf07-1",
@@ -5951,14 +5951,14 @@ export const mockMachines: Machines[] = [
                 "id": "app-cics52-mf07",
                 "machine_id": "machine-mf07",
                 "name": "CICS 5.2 (Multi Region)",
-                "status": "Concluida",
-                "tipo": "IBM",
+                "status": "Concluída",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-cics52-mf07-1",
                         "application_id": "app-cics52-mf07",
                         "name": "Conexão com DB2",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -5970,7 +5970,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-cics52-mf07-2",
                         "application_id": "app-cics52-mf07",
                         "name": "Conexão com IMS DB",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -5982,7 +5982,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-cics52-mf07-3",
                         "application_id": "app-cics52-mf07",
                         "name": "Conexão EXCI",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -5994,7 +5994,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-cics52-mf07-4",
                         "application_id": "app-cics52-mf07",
                         "name": "Conexão MQ",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -6006,7 +6006,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-cics52-mf07-5",
                         "application_id": "app-cics52-mf07",
                         "name": "Eza TCP SOCKET",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -6018,7 +6018,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-cics52-mf07-6",
                         "application_id": "app-cics52-mf07",
                         "name": "LOGIN via CESN",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -6030,7 +6030,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-cics52-mf07-7",
                         "application_id": "app-cics52-mf07",
                         "name": "PLTPI",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -6042,7 +6042,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-cics52-mf07-8",
                         "application_id": "app-cics52-mf07",
                         "name": "PLTPS",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -6054,7 +6054,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-cics52-mf07-9",
                         "application_id": "app-cics52-mf07",
                         "name": "z/OS Connect",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -6069,7 +6069,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf07",
                 "name": "CICS 5.5 (Multi Region)",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-cics55-mf07-1",
@@ -6186,7 +6186,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf07",
                 "name": "CICS 5.6 (Multi Region)",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-cics56-mf07-1",
@@ -6291,7 +6291,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf07",
                 "name": "Changeman (Simulador)",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-changeman-mf07-1",
@@ -6336,7 +6336,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf07",
                 "name": "DB2 Connect",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-db2connect-mf07-1",
@@ -6357,7 +6357,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf07",
                 "name": "DB2 Connect Aplicativo",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-db2connectapp-mf07-1",
@@ -6378,7 +6378,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf07",
                 "name": "DB2 V12 (C/Vírgula)",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-db2v12c-mf07-1",
@@ -6398,14 +6398,14 @@ export const mockMachines: Machines[] = [
                 "id": "app-db2v12s-mf07",
                 "machine_id": "machine-mf07",
                 "name": "DB2 V12 (S/Vírgula)",
-                "status": "Concluida",
-                "tipo": "IBM",
+                "status": "Concluída",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-db2v12s-mf07-1",
                         "application_id": "app-db2v12s-mf07",
                         "name": "Funcional",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -6420,7 +6420,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf07",
                 "name": "DB2 V13 (C/Vírgula)",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-db2v13c-mf07-1",
@@ -6441,7 +6441,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf07",
                 "name": "DB2 V13 (S/Vírgula)",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-db2v13s-mf07-1",
@@ -6503,14 +6503,14 @@ export const mockMachines: Machines[] = [
                 "id": "app-ecs-mf07",
                 "machine_id": "machine-mf07",
                 "name": "ECS",
-                "status": "Concluida",
+                "status": "Concluída",
                 "tipo": "ECCOX",
                 "services": [
                     {
                         "id": "service-ecs-mf07-1",
                         "application_id": "app-ecs-mf07",
                         "name": "Instalação (SMPE, CICS)",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -6531,7 +6531,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-eqc-mf07-1",
                         "application_id": "app-eqc-mf07",
                         "name": "Abono",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -6543,7 +6543,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-eqc-mf07-2",
                         "application_id": "app-eqc-mf07",
                         "name": "Avaliações",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -6555,7 +6555,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-eqc-mf07-3",
                         "application_id": "app-eqc-mf07",
                         "name": "Cadastro de Legado",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -6731,14 +6731,14 @@ export const mockMachines: Machines[] = [
                 "id": "app-esv-mf07",
                 "machine_id": "machine-mf07",
                 "name": "ESV",
-                "status": "Concluida",
+                "status": "Concluída",
                 "tipo": "ECCOX",
                 "services": [
                     {
                         "id": "service-esv-mf07-1",
                         "application_id": "app-esv-mf07",
                         "name": "Instalação",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -6773,14 +6773,14 @@ export const mockMachines: Machines[] = [
                 "id": "app-gitazure-mf07",
                 "machine_id": "machine-mf07",
                 "name": "GIT Azure",
-                "status": "Concluida",
-                "tipo": "IBM",
+                "status": "Concluída",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-gitazure-mf07-1",
                         "application_id": "app-gitazure-mf07",
                         "name": "Instalação e definição de branchs",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -6795,7 +6795,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf07",
                 "name": "GIT LAB",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-gitlab-mf07-1",
@@ -6816,7 +6816,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf07",
                 "name": "IMS/DB 14",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-imsdb14-mf07-1",
@@ -6849,7 +6849,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf07",
                 "name": "IMS/DB 15",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-imsdb15-mf07-1",
@@ -6882,7 +6882,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf07",
                 "name": "IMS/DC 14",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-imsdc14-mf07-1",
@@ -6939,7 +6939,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf07",
                 "name": "IMS/DC 15",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-imsdc15-mf07-1",
@@ -7017,7 +7017,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf07",
                 "name": "MQ CICS",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-mqcics-mf07-1",
@@ -7038,7 +7038,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf07",
                 "name": "MQ IMS",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-mqims-mf07-1",
@@ -7079,14 +7079,14 @@ export const mockMachines: Machines[] = [
                 "id": "app-pwd-mf07",
                 "machine_id": "machine-mf07",
                 "name": "PWD",
-                "status": "Concluida",
+                "status": "Concluída",
                 "tipo": "ECCOX",
                 "services": [
                     {
                         "id": "service-pwd-mf07-1",
                         "application_id": "app-pwd-mf07",
                         "name": "Instalação",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -7101,7 +7101,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf07",
                 "name": "Produtos BMC",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-bmcp-mf07-1",
@@ -7121,14 +7121,14 @@ export const mockMachines: Machines[] = [
                 "id": "app-qcweb-mf07",
                 "machine_id": "machine-mf07",
                 "name": "QCWEB",
-                "status": "Concluida",
+                "status": "Concluída",
                 "tipo": "ECCOX",
                 "services": [
                     {
                         "id": "service-qcweb-mf07-1",
                         "application_id": "app-qcweb-mf07",
                         "name": "Instalação (DEPLOY)",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -7143,7 +7143,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf07",
                 "name": "SHP",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-shp-mf07-1",
@@ -7356,13 +7356,13 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf07",
                 "name": "z/OS Connect",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-zosconnect-mf07-1",
                         "application_id": "app-zosconnect-mf07",
                         "name": "Conexão com Aplicativo de teste",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -7374,7 +7374,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-zosconnect-mf07-2",
                         "application_id": "app-zosconnect-mf07",
                         "name": "Conexão com CICS",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -7386,7 +7386,7 @@ export const mockMachines: Machines[] = [
                         "id": "service-zosconnect-mf07-3",
                         "application_id": "app-zosconnect-mf07",
                         "name": "Conexão com DB2",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -7413,7 +7413,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf07",
                 "name": "z/OS Connect Aplicativo",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-zosconnectapp-mf07-1",
@@ -7433,14 +7433,14 @@ export const mockMachines: Machines[] = [
                 "id": "app-zosconnectapp-cics-mf07",
                 "machine_id": "machine-mf07",
                 "name": "z/OS Connect Aplicativo CICS",
-                "status": "Concluida",
-                "tipo": "IBM",
+                "status": "Concluída",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-zosconnectapp-cics-mf07-1",
                         "application_id": "app-zosconnectapp-cics-mf07",
                         "name": "Instalação( Deploy)",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -7455,7 +7455,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf07",
                 "name": "z/OS Connect Aplicativo IMS",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-zosconnectapp-ims-mf07-1",
@@ -7780,7 +7780,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf08",
                 "name": "BITBUCKET",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-bitbucket-mf08-1",
@@ -7801,7 +7801,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf08",
                 "name": "CA-Endevor",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-ca-endevor-mf08-1",
@@ -7822,7 +7822,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf08",
                 "name": "CICS 5.2 (Multi Region)",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-cics52-mf08-1",
@@ -7939,7 +7939,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf08",
                 "name": "CICS 5.5 (Multi Region)",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-cics55-mf08-1",
@@ -8044,7 +8044,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf08",
                 "name": "CICS 5.6 (Multi Region)",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-cics56-mf08-1",
@@ -8149,7 +8149,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf08",
                 "name": "Changeman (Simulador)",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-changeman-mf08-1",
@@ -8194,7 +8194,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf08",
                 "name": "DB2 Connect",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-db2connect-mf08-1",
@@ -8215,7 +8215,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf08",
                 "name": "DB2 Connect Aplicativo",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-db2connectapp-mf08-1",
@@ -8236,7 +8236,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf08",
                 "name": "DB2 V12 (C/Vírgula)",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-db2v12c-mf08-1",
@@ -8256,14 +8256,14 @@ export const mockMachines: Machines[] = [
                 "id": "app-db2v12s-mf08",
                 "machine_id": "machine-mf08",
                 "name": "DB2 V12 (S/Vírgula)",
-                "status": "Concluida",
-                "tipo": "IBM",
+                "status": "Concluída",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-db2v12s-mf08-1",
                         "application_id": "app-db2v12s-mf08",
                         "name": "Funcional",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Não",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -8278,7 +8278,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf08",
                 "name": "DB2 V13 (C/Vírgula)",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-db2v13c-mf08-1",
@@ -8299,7 +8299,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf08",
                 "name": "DB2 V13 (S/Vírgula)",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-db2v13s-mf08-1",
@@ -8361,14 +8361,14 @@ export const mockMachines: Machines[] = [
                 "id": "app-ecs-mf08",
                 "machine_id": "machine-mf08",
                 "name": "ECS",
-                "status": "Concluida",
+                "status": "Concluída",
                 "tipo": "ECCOX",
                 "services": [
                     {
                         "id": "service-ecs-mf08-1",
                         "application_id": "app-ecs-mf08",
                         "name": "Instalação (SMPE, CICS)",
-                        "status": "Concluida",
+                        "status": "Concluída",
                         "itemObrigatorio": "Sim",
                         "updatedAt": "2025-09-21T14:56:34.784Z",
                         "responsible": "",
@@ -8632,7 +8632,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf08",
                 "name": "GIT Azure",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-gitazure-mf08-1",
@@ -8653,7 +8653,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf08",
                 "name": "GIT LAB",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-gitlab-mf08-1",
@@ -8674,7 +8674,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf08",
                 "name": "IMS/DB 14",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-imsdb14-mf08-1",
@@ -8707,7 +8707,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf08",
                 "name": "IMS/DB 15",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-imsdb15-mf08-1",
@@ -8740,7 +8740,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf08",
                 "name": "IMS/DC 14",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-imsdc14-mf08-1",
@@ -8797,7 +8797,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf08",
                 "name": "IMS/DC 15",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-imsdc15-mf08-1",
@@ -8875,7 +8875,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf08",
                 "name": "MQ CICS",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-mqcics-mf08-1",
@@ -8896,7 +8896,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf08",
                 "name": "MQ IMS",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-mqims-mf08-1",
@@ -8959,7 +8959,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf08",
                 "name": "Produtos BMC",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-bmcp-mf08-1",
@@ -9001,7 +9001,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf08",
                 "name": "SHP",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-shp-mf08-1",
@@ -9214,7 +9214,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf08",
                 "name": "z/OS Connect",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-zosconnect-mf08-1",
@@ -9271,7 +9271,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf08",
                 "name": "z/OS Connect Aplicativo",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-zosconnectapp-mf08-1",
@@ -9292,7 +9292,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf08",
                 "name": "z/OS Connect Aplicativo CICS",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-zosconnectapp-cics-mf08-1",
@@ -9313,7 +9313,7 @@ export const mockMachines: Machines[] = [
                 "machine_id": "machine-mf08",
                 "name": "z/OS Connect Aplicativo IMS",
                 "status": "Pendente",
-                "tipo": "IBM",
+                "tipo": "MAINFRAME",
                 "services": [
                     {
                         "id": "service-zosconnectapp-ims-mf08-1",

@@ -2,13 +2,15 @@ import type { NextConfig } from "next";
 
 /** @type {import('next').NextConfig} */
 const nextConfig: NextConfig = {
-  //output: "export",
-  // assetPrefix: "./",
+  output: "export",
+  assetPrefix: ".",
   basePath: "",
   images: {
     unoptimized: true,
   },
-  devIndicators: false
+  devIndicators: false,
+  trailingSlash: false,
+  distDir: 'out'
 };
 
 export default nextConfig;

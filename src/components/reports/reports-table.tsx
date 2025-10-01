@@ -79,7 +79,7 @@ import { logoBase64 } from "../machines/shared/logo-base64";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "../ui/dialog";
 import { Textarea } from "../ui/textarea";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useElectronHashRouter } from "@/lib/simple-hash-router";
 
 const FilterDropdown = ({
   label,
@@ -538,7 +538,7 @@ const CommentsCell = (props: CellContext<ReportData, unknown>) => {
 };
 
 const MachineLinkCell = (props: CellContext<ReportData, unknown>) => {
-  const router = useRouter();
+  const router = useElectronHashRouter();
   const { row: { original } } = props;
 
   return (
@@ -865,6 +865,7 @@ export function ReportsTable({ initialData }: { initialData: ReportData[] }) {
 
   return (
     <div className="h-full bg-[#111113] text-gray-200 flex flex-col border border-blue-500/30 rounded-2xl">
+      {/* Header */}
       <div className="flex-none p-6 border-b border-gray-800 space-y-4 bg-gradient-to-r from-blue-600/10 to-blue-700/5">
         <div className="flex items-center gap-3 justify-between">
           <div className="relative flex-1 max-w-sm">
@@ -1082,6 +1083,7 @@ export function ReportsTable({ initialData }: { initialData: ReportData[] }) {
           </div>
         )} */}
       </div>
+      {/* Tabela */}
       <div className="flex-1 overflow-hidden">
         <div className="h-full w-full overflow-x-auto overflow-y-auto reports-table-container">
           <Table className="min-w-full">
@@ -1141,6 +1143,7 @@ export function ReportsTable({ initialData }: { initialData: ReportData[] }) {
           </Table>
         </div>
       </div>
+      {/* Footer com Paginação */}
       <div className="flex-none px-6 py-4 border-t rounded-b-2xl border-gray-800 bg-[#0F0F11]">
         <div className="flex items-center justify-between">
           <div className="text-sm text-gray-400">

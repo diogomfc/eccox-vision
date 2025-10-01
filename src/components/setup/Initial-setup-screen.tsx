@@ -81,10 +81,10 @@ const InitialSetupScreen: React.FC<InitialSetupScreenProps> = ({ onSetupComplete
 
   return (
     <div className="min-h-screen bg-[#121214] flex items-center justify-center p-4">
-      <div className="bg-gray-900 border border-gray-700 rounded-2xl shadow-2xl w-full max-w-2xl">
+      <div className="bg-gradient-to-br from-[#111113] to-[#0F0F11] border border-blue-500/30 rounded-2xl shadow-2xl w-full max-w-2xl">
         
         {/* Header */}
-        <div className="text-center p-8 border-b border-gray-700">
+        <div className="text-center p-8 border-b bg-gradient-to-r from-blue-600/10 to-blue-700/5  border-blue-500/30">
           <div className="mx-auto w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mb-4">
             <Settings className="w-8 h-8 text-white" />
           </div>
@@ -179,7 +179,7 @@ const InitialSetupScreen: React.FC<InitialSetupScreenProps> = ({ onSetupComplete
             <button
               onClick={handleTestConnection}
               disabled={isLoading || !databasePath.trim()}
-              className="px-6 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-600 disabled:cursor-not-allowed text-white rounded-lg font-medium transition-colors flex items-center space-x-2"
+              className="px-6 py-2 bg-blue-600 hover:bg-blue-700 cursor-pointer disabled:bg-gray-600 disabled:cursor-not-allowed text-white rounded-lg font-medium transition-colors flex items-center space-x-2"
             >
               {isLoading ? (
                 <Loader className="w-4 h-4 animate-spin" />
@@ -192,7 +192,7 @@ const InitialSetupScreen: React.FC<InitialSetupScreenProps> = ({ onSetupComplete
             <button
               onClick={handleCompleteSetup}
               disabled={isLoading || !testResult?.success}
-              className="px-6 py-2 bg-green-600 hover:bg-green-700 disabled:bg-gray-600 disabled:cursor-not-allowed text-white rounded-lg font-medium transition-colors flex items-center space-x-2"
+              className="px-6 py-2 bg-green-600 hover:bg-green-700 cursor-pointer disabled:bg-gray-600 disabled:cursor-not-allowed text-white rounded-lg font-medium transition-colors flex items-center space-x-2"
             >
               {isLoading ? (
                 <Loader className="w-4 h-4 animate-spin" />

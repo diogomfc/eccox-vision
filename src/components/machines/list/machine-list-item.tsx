@@ -5,9 +5,9 @@
 import Image from "next/image";
 import { Machines } from "@/types/machines";
 import { motion } from "framer-motion";
-import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import { ProgressCircle } from "@/components/ui/progress-circle";
+import { useElectronHashRouter } from "@/lib/simple-hash-router";
 
 // Import icons for the new actions
 import { SquarePen, Eye, Trash2, User } from "lucide-react";
@@ -27,7 +27,7 @@ export function MachineListItem({
   index,
   onDelete,
 }: MachineListItemProps) {
-  const router = useRouter();
+  const router = useElectronHashRouter();
   const [isPending, startTransition] = useTransition();
   const [isHovered, setIsHovered] = useState(false);
   const [loadingAction, setLoadingAction] = useState<"view" | "edit" | null>(

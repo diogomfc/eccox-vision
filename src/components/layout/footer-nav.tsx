@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition, useEffect } from "react";
-import { useRouter, usePathname } from "next/navigation";
+import { useElectronHashRouter } from "@/lib/simple-hash-router";
 import {
     LayoutDashboard,
     PackagePlus,
@@ -20,8 +20,7 @@ const navItems = [
 ];
 
 export function FooterNav() {
-    const pathname = usePathname();
-    const router = useRouter();
+    const { pathname, push } = useElectronHashRouter();
     const [isOpen, setIsOpen] = useState(false);
     const [isPending, startTransition] = useTransition();
     const [loadingRoute, setLoadingRoute] = useState<string | null>(null);
@@ -59,7 +58,7 @@ export function FooterNav() {
         setIsOpen(false);
         
         startTransition(() => {
-            router.push(href);
+            push(href);
         });
     };
 
@@ -94,6 +93,7 @@ export function FooterNav() {
 
             {/* Footer Navigation */}
             <motion.nav
+                data-testid="footer-nav"
                 initial={{ y: 96 }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}

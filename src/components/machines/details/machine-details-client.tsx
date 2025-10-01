@@ -136,7 +136,7 @@ export function MachineDetailsClient({ machineId }: MachineDetailsClientProps) {
     }
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 items-start py-15 px-5">
             <motion.div
                 className="md:col-span-1"
                 initial={{ opacity: 0, x: -40 }}

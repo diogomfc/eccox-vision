@@ -5,6 +5,7 @@ import { ReportsTable } from "@/components/reports/reports-table";
 import { toast } from "sonner";
 import { Machines } from "@/types/machines";
 import { DashboardStats } from "@/components/reports/dashboard-stats";
+import { ElectronDebug } from "@/lib/electron-debug";
 
 // ALTERADO: Adicionado 'applicationResponsible' à interface de dados do relatório
 export interface ReportData {
@@ -48,8 +49,16 @@ export default function ReportsPage() {
   const loadData = async () => {
     try {
       setIsLoading(true);
+      ElectronDebug.log('Carregando dados de relatórios...');
+      
+      // Verificar se Electron API está disponível
+      if (!window.electronAPI || !window.electronAPI.getAllMachines) {
+        throw new Error('Electron API não disponível');
+      }
       
       const machines: Machines[] = await window.electronAPI.getAllMachines();
+      ElectronDebug.log('Máquinas carregadas:', machines.length);
+      ElectronDebug.log('Primeira máquina:', machines[0]);
 
       const processedData: ReportData[] = [];
       let totalApplications = 0;
@@ -85,6 +94,7 @@ export default function ReportsPage() {
       });
 
       setReportData(processedData);
+      ElectronDebug.log('Dados processados para relatório:', processedData.length);
 
       const completedCount = processedData.filter(item => item.status === "Concluída").length;
       const pendingCount = processedData.filter(item => item.status === "Pendente").length;
@@ -101,6 +111,7 @@ export default function ReportsPage() {
 
     } catch (error) {
       console.error("Erro ao carregar dados:", error);
+      ElectronDebug.error("Erro ao carregar dados de relatórios:", error);
       toast.error("Erro ao carregar dados dos relatórios");
     } finally {
       setIsLoading(false);
@@ -123,14 +134,14 @@ export default function ReportsPage() {
   }
 
   return (
-    <div className="h-screen  text-gray-100 flex flex-col">
+    <div className="h-screen  text-gray-100 flex flex-col py-15 px-5">
       {/* Header com Stats */}
       <div className="flex-none px-6 pt-2 border-gray-800">
         <DashboardStats {...stats} />
       </div>
 
       {/* Tabela */}
-      <div className="flex-1  overflow-hidden px-6 pb-30">
+      <div className="flex-1 overflow-hidden px-6">
         <ReportsTable initialData={reportData} />
       </div>
     </div>

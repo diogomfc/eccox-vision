@@ -1,8 +1,15 @@
 {
   "compilerOptions": {
     "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "typeRoots": ["./types", "./node_modules/@types"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "typeRoots": [
+      "./types",
+      "./node_modules/@types"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -20,16 +27,25 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"],
-      "@/electron/*": ["./electron/*"]
+      "@/*": [
+        "./src/*"
+      ],
+      "@/electron/*": [
+        "./electron/*"
+      ]
     }
   },
   "include": [
-    "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src"
+    "next-env.d.ts",
+    "src",
+    "out/types/**/*.ts"
   ],
-  "exclude": ["node_modules", "electron", "scripts"]
+  "exclude": [
+    "node_modules",
+    "electron",
+    "scripts"
+  ]
 }

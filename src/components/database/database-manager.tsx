@@ -190,33 +190,26 @@ const DatabaseConfigModal: React.FC<{
   };
 
   const handleAutoReload = () => {
-     if (typeof window !== 'undefined') {
-        try {
-          // Primeira tentativa: redirecionar para rota raiz
-          if (window.location && window.location.href) {
-            const baseUrl = window.location.origin;
-            window.location.href = baseUrl + '/';
-            return;
-          }
-          
-          // Segunda tentativa: replace para rota raiz
-          if (window.location && window.location.replace) {
-            const baseUrl = window.location.origin;
-            window.location.replace(baseUrl + '/');
-            return;
-          }
-          
-          // Terceira tentativa: reload simples (fallback)
+    try {
+      console.log('Iniciando reload após mudança de banco de dados...');
+      
+      // Para Electron, limpa o hash e vai para raiz
+      if (typeof window !== 'undefined') {
+        // Limpar o hash primeiro
+        window.location.hash = '/';
+        
+        // Aguardar um frame e então recarregar a página
+        requestAnimationFrame(() => {
           if (window.location && window.location.reload) {
             window.location.reload();
-            return;
           }
-        } catch (reloadError) {
-          console.error('Erro ao recarregar automaticamente:', reloadError);
-          // Se falhar, mantém o prompt manual
-          //setIsReloading(false);
-        }
+        });
       }
+    } catch (reloadError) {
+      console.error('Erro ao recarregar automaticamente:', reloadError);
+      // Fallback: apenas fecha o modal e deixa o usuário navegar manualmente
+      onClose();
+    }
   };
 
   return (

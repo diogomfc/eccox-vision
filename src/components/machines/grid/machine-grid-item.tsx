@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useElectronHashRouter } from "@/lib/simple-hash-router";
 import { useState, useTransition } from "react";
 import { motion } from "framer-motion";
 import { SquarePen, Trash2, Eye, User } from "lucide-react";
@@ -22,7 +22,7 @@ export function MachineGridItem({
   index,
   onDelete,
 }: MachineGridItemProps) {
-  const router = useRouter();
+  const router = useElectronHashRouter();
   const [isPending, startTransition] = useTransition();
   const [isHovered, setIsHovered] = useState(false);
   const [loadingAction, setLoadingAction] = useState<"view" | "edit" | null>(
