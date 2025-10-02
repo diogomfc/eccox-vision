@@ -194,10 +194,10 @@ export function ApplicationList({
             <Button
               onClick={handleCreateClick}
               size="sm"
-              className="bg-blue-600/50 hover:bg-blue-700 text-xs h-7 px-2 cursor-pointer z-10"
+              className="bg-blue-600/50 hover:bg-blue-700 rounded-md text-xs h-7  cursor-pointer z-10"
               disabled={isLoading}
             >
-              <Plus size={12} className="mr-1" />
+              <Plus size={12} className="" />
               Nova
             </Button>
           </div>

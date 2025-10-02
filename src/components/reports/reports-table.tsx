@@ -99,7 +99,7 @@ const FilterDropdown = ({
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-3 py-2 bg-[#1A1A1E] border border-gray-700 rounded-lg text-sm text-gray-300 hover:bg-[#202024] transition-colors min-w-[140px] justify-between cursor-pointer"
+        className="flex items-center gap-2 px-3 py-2 bg-[#1A1A1E] border border-gray-700 rounded-md text-sm text-gray-300 hover:bg-[#202024] transition-colors min-w-[140px] justify-between cursor-pointer"
       >
         <span className="truncate">{value || placeholder}</span>
         <ChevronDown
@@ -953,7 +953,7 @@ export function ReportsTable({ initialData }: { initialData: ReportData[] }) {
           
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button className="bg-blue-600 hover:bg-blue-700 cursor-pointer">
+              <Button className="bg-blue-600 rounded-md hover:bg-blue-700 cursor-pointer">
                 <Download className="mr-2 h-4 w-4" /> Exportar
               </Button>
             </DropdownMenuTrigger>
@@ -964,7 +964,7 @@ export function ReportsTable({ initialData }: { initialData: ReportData[] }) {
               <Button
                 variant="ghost"
                 onClick={exportToExcel}
-                className="w-full justify-start text-gray-200 hover:bg-gray-700/50 hover:text-gray-100 cursor-pointer"
+                className="w-full justify-start text-gray-200  hover:bg-gray-700/50 hover:text-gray-100 cursor-pointer"
               >
                 <FileSpreadsheet className="mr-2 h-4 w-4 text-green-500" />
                 Excel (.xlsx)
@@ -982,7 +982,7 @@ export function ReportsTable({ initialData }: { initialData: ReportData[] }) {
             <DropdownMenuTrigger asChild>
               <Button
                 variant="outline"
-                className="bg-[#1A1A1E] border-gray-700 hover:bg-[#202024] cursor-pointer hover:text-gray-100"
+                className="bg-[#1A1A1E] border-gray-700 rounded-md hover:bg-[#202024] cursor-pointer hover:text-gray-100"
               >
                 <Columns className="h-4 w-4" />
               </Button>
@@ -1085,7 +1085,7 @@ export function ReportsTable({ initialData }: { initialData: ReportData[] }) {
       </div>
       {/* Tabela */}
       <div className="flex-1 overflow-hidden">
-        <div className="h-full w-full overflow-x-auto overflow-y-auto reports-table-container">
+        <div className="h-full w-full overflow-auto reports-table-container">
           <Table className="min-w-full">
             <TableHeader className="sticky top-0 bg-[#0F0F11] z-10">
               {table.getHeaderGroups().map((headerGroup) => (

@@ -31,6 +31,7 @@ import MessageDisplay from "./message-display";
 import MachineFormFooter from "./machine-form-footer";
 
 import ImgServerNew from "@/assets/images/img-server-status.svg";
+import AppLoader from "../layout/app-loader";
 
 interface MachineUpdateClientProps {
   machineId: string;
@@ -159,10 +160,13 @@ export default function MachineUpdateClient({
 
   if (isLoading) {
     return (
-      <div className="h-screen flex items-center justify-center text-gray-400">
-        <Loader2 className="h-8 w-8 animate-spin mr-2 text-amber-500" />
-        Carregando dados da máquina...
-      </div>
+      <AppLoader 
+        title="EccoxVision"
+        subtitle="Carregando dados da máquina..."
+        size="medium"
+        showParticles={true}
+        overlay={true}
+      />
     );
   }
 

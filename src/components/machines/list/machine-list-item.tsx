@@ -10,7 +10,7 @@ import { ProgressCircle } from "@/components/ui/progress-circle";
 import { useElectronHashRouter } from "@/lib/simple-hash-router";
 
 // Import icons for the new actions
-import { SquarePen, Eye, Trash2, User } from "lucide-react";
+import { SquarePen, Eye, Trash2, User, CalendarCheck } from "lucide-react";
 
 // Import image assets
 import ImgServerStatusConcluida from "@/assets/images/img-server-status-ok.svg";
@@ -39,6 +39,23 @@ export function MachineListItem({
   const installed = allServices.filter((s) => s.status === "Concluída").length;
   const pending = allServices.filter((s) => s.status !== "Concluída").length;
   const percent = total > 0 ? Math.round((installed / total) * 100) : 0;
+  // Função para verificar e formatar data
+  const getFormattedDate = (dateString: string) => {
+    if (!dateString || dateString === null || dateString === undefined) {
+      return null;
+    }
+    
+    const date = new Date(dateString);
+    
+    // Verifica se a data é válida
+    if (isNaN(date.getTime())) {
+      return null;
+    }
+    
+    return date;
+  };
+  
+  const dateComplete = getFormattedDate(machine.updatedAt);
 
   const borderClasses =
     machine.status === "Concluída"
@@ -123,9 +140,9 @@ export function MachineListItem({
           height={38}
         />
         <div className="flex flex-col">
-          <span className="text-xs text-[#6C6C6C]">{machine.version}</span>
+          <span className="text-xs text-[#6C6C6C]">{machine.version || "versão não definida"}</span>
           <h3 className="text-white font-medium">{machine.name}</h3>
-          <p className="text-xs text-[#6C6C6C]">{machine.description}</p>
+          <p className="text-xs text-[#6C6C6C]">{machine.description || "sem descrição"}</p>
           {/* ====================================================== */}
           {/* INÍCIO DO NOVO CAMPO ADICIONADO                      */}
           {/* ====================================================== */}
@@ -143,7 +160,6 @@ export function MachineListItem({
         </div>
       </div>
 
-      {/* Column 2 - Badges */}
       {/* Column 2 - Badges */}
       <div className="flex flex-wrap gap-1">
         {machine.applications
@@ -197,8 +213,14 @@ export function MachineListItem({
           <span className="text-[#6C6C6C]">Apps pendentes</span>
           <span className="text-[#F04438]">{pending}</span>
         </div>
+     
         <div className="flex justify-between">
-          <span className="text-[#6C6C6C]">Total de apps</span>
+          <div className="flex gap-1 items-center pt-0.5">
+            <CalendarCheck size={12} className="text-gray-500" />
+            <span className="text-gray-300">
+              {dateComplete === null ? "Sem previsão" : dateComplete.toLocaleDateString('pt-BR')}
+            </span>
+          </div>
           <span className="text-white">{total}</span>
         </div>
       </div>

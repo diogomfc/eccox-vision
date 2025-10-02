@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useElectronHashRouter } from "@/lib/simple-hash-router";
 import { useState, useTransition } from "react";
 import { motion } from "framer-motion";
-import { SquarePen, Trash2, Eye, User } from "lucide-react";
+import { SquarePen, Trash2, Eye, User, CalendarCheck } from "lucide-react";
 import { ProgressCircle } from "@/components/ui/progress-circle";
 import { Machines } from "@/types/machines";
 
@@ -40,6 +40,26 @@ export function MachineGridItem({
   const ibmWarnings = ibmApps.filter(
     (app) => app.status !== "Concluída"
   ).length;
+
+  // Função para verificar e formatar data
+  const getFormattedDate = (dateString: string) => {
+    if (!dateString || dateString === null || dateString === undefined) {
+      return null;
+    }
+    
+    const date = new Date(dateString);
+    
+    // Verifica se a data é válida
+    if (isNaN(date.getTime())) {
+      return null;
+    }
+    
+    return date;
+  };
+  
+  const dateComplete = getFormattedDate(machine.updatedAt);
+
+
 
   const borderColor =
     machine.status === "Concluída"
@@ -118,7 +138,7 @@ export function MachineGridItem({
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.8 }}
           transition={{ duration: 0.2 }}
-          className="absolute top-2 right-2 flex flex-col z-20 p-1 shadow-lg"
+          className="absolute top-10 right-2 flex flex-col z-20 p-1 shadow-lg"
         >
           <button
             onClick={handleEyeClick}
@@ -159,8 +179,9 @@ export function MachineGridItem({
       )}
 
       {/* Conteúdo do card */}
-      <div className="flex items-center gap-3 mb-4">
-        <Image
+      <div className="flex start justify-between items-start">
+       <div className="flex items-center gap-3 mb-4">
+           <Image
           src={
             machine.status === "Concluída"
               ? ImgServerStatusConcluida
@@ -173,9 +194,21 @@ export function MachineGridItem({
         <div>
           <h3 className="text-white font-medium">{machine.name}</h3>
           <span className="text-xs text-[#6C6C6C]">
-            {machine.version || "v1.0"}
+            {machine.version || "versão não definida"}
           </span>
         </div>
+       
+       </div>
+
+
+          <div className="flex gap-1 items-center pt-0.5">
+            <CalendarCheck size={12} className="text-gray-500" />
+            <span className="text-gray-300">
+              {dateComplete === null ? "Sem previsão" : dateComplete.toLocaleDateString('pt-BR')}
+            </span>
+          </div>
+         
+    
       </div>
 
       <p className="text-sm text-[#6C6C6C] mb-4 line-clamp-2">

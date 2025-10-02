@@ -51,7 +51,16 @@ const MachineFormHeader: React.FC<MachineFormHeaderProps> = ({
     if (!step) return "";
     
     if (stepId === 1 && machineData.name?.trim()) {
-      return `Máquina ${machineData.name.length > 12 ? machineData.name.slice(0, 8) + "..." : machineData.name}`;
+      //return `Máquina ${machineData.name.length > 12 ? machineData.name.slice(0, 8) + "..." : machineData.name}`;
+
+       //Caso o modo seja create, mostrar "Criando: {nome da máquina}"
+       //Caso o modo seja edit, mostrar "Editando: {nome da máquina}"
+      return (
+        mode === 'create' 
+        ? `Criando: ${machineData.name.length > 20 ? machineData.name.slice(0, 17) + "..." : machineData.name}` 
+        : `Editando: ${machineData.name.length > 20 ? machineData.name.slice(0, 17) + "..." : machineData.name}`
+      )
+
     }
     
     return mode === 'create' ? step.createTitle : step.title;

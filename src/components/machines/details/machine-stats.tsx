@@ -23,7 +23,7 @@ export function MachineStats({ total, percent, pendentes, instalados, offsetY = 
     const pendingBackgroundColor = pendentes === 0 ? "#2D3748" : "#2D3748";
   
     return (
-        <div className="flex justify-around items-center w-full max-w-4xl" style={{ transform: `translateY(${offsetY}px)` }}>
+        <div className="flex justify-around items-center w-full max-w-2xl  md:max-w-3xl lg:max-w-4xl scale-90 md:scale-95 lg:scale-100" style={{ transform: `translateY(${offsetY}px)` }}>
             {/* Velocímetro para Serviços Instalados */}
             <CustomGauge
                 value={instalados}

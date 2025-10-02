@@ -4,6 +4,7 @@ import Image from "next/image";
 import topDock from "@/assets/images/img-top-dock.svg";
 import ReloadButton from "./reload-button";
 import DatabaseManager from "../database/database-manager";
+import { HelpCard } from "./help-card";
 
 
 export function TopNav() {
@@ -27,9 +28,10 @@ export function TopNav() {
                 <ReloadButton />
             </div>
 
-            {/* DatabaseManager no canto superior direito */}
-            <div className="fixed top-4 right-4 z-20">
+            {/* DatabaseManager e Help no canto superior direito */}
+            <div className="fixed top-4 right-4 z-20 flex items-center gap-2">
                 <DatabaseManager />
+                <HelpCard />
             </div>
         </>
     );

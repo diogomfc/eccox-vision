@@ -61,7 +61,7 @@ export function CustomGauge({ value, total, description, percentage, colorProgre
     }, [percentage, circumference]);
 
     return (
-        <div className="flex flex-col items-center justify-center p-4 text-white">
+        <div className="flex flex-col items-center justify-center pt-20 px-4 text-white">
             <div className="relative w-40 h-40">
                 <svg className="w-full h-full" viewBox="0 0 100 100">
                     {/* Círculo de fundo */}

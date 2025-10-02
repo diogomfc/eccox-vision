@@ -34,10 +34,10 @@ export function MachineImage({
   return (
     <div className="flex flex-col items-center justify-center cursor-pointer py-4">
       {/* Container principal centralizado */}
-      <div className="flex flex-col items-center space-y-4 lg:space-y-6">
+      <div className="flex flex-col items-center space-y-2 lg:space-y-4">
         
         {/* Nome e descrição - com quebra de texto otimizada */}
-        <div className="text-center max-w-[280px] sm:max-w-[320px] lg:max-w-[380px]">
+        <div className="text-center max-w-[240px] sm:max-w-[280px] md:max-w-[320px] lg:max-w-[380px]">
           <h2 className="text-base sm:text-lg lg:text-xl xl:text-2xl font-bold text-gray-200 leading-tight break-words hyphens-auto">
             {name}
           </h2>
@@ -49,18 +49,18 @@ export function MachineImage({
         </div>
 
         {/* Imagem do servidor - sempre centralizada e responsiva */}
-        <div className="flex items-center justify-center my-2 lg:my-4">
+        <div className="flex items-center justify-center my-1 lg:my-2">
           <HoverCard>
             <HoverCardTrigger asChild>
               <div className="flex items-center justify-center transition-transform hover:scale-105 duration-300">
                 <ServerSvg
                   status={status}
                   className="
-                    w-[100px] h-[170px]     /* padrão - mobile */
-                    sm:w-[120px] sm:h-[200px]  /* telas pequenas */
-                    md:w-[140px] md:h-[230px]  /* tablets */
-                    lg:w-[160px] lg:h-[270px]  /* desktop */
-                    xl:w-[180px] xl:h-[300px]  /* telas grandes */
+                    w-[90px] h-[150px]
+                    sm:w-[100px] sm:h-[170px]
+                    md:w-[120px] md:h-[200px]
+                    lg:w-[160px] lg:h-[270px]
+                    xl:w-[180px] xl:h-[300px]
                   "
                 />
               </div>
@@ -78,7 +78,7 @@ export function MachineImage({
                 <div className="flex justify-between">
                   <span className="text-gray-400">Sistema</span>
                   <span className="text-white font-semibold truncate max-w-[120px]" title={system}>
-                    {system}
+                    {system || "Não definido"}
                   </span>
                 </div>
                 
@@ -108,7 +108,7 @@ export function MachineImage({
                       ? format(new Date(update), "dd/MM/yy", {
                           locale: ptBR,
                         })
-                      : "N/A"}
+                      : "00/00/00"}
                   </span>
                 </div>
               </div>
@@ -117,9 +117,9 @@ export function MachineImage({
         </div>
         
         {/* Informações adicionais - posição fixa abaixo (opcional) */}
-        <div className="text-center text-xs text-gray-500 max-w-xs sm:max-w-sm">
-          <p>Previsão de conclusão: {update ? format(new Date(update), "dd/MM/yy", { locale: ptBR }) : "N/A"}</p>
-        </div>
+        {/* <div className="text-center text-xs text-gray-500 max-w-xs sm:max-w-sm">
+          <p>Previsão de conclusão: {update ? format(new Date(update), "dd/MM/yy", { locale: ptBR }) : "00/00/00"}</p>
+        </div> */}
         
       </div>
     </div>

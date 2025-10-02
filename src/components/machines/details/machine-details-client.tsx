@@ -12,6 +12,7 @@ import { ApplicationList } from './application-list';
 import { MachineStats } from './machine-stats';
 import { MachineImage } from './machine-image';
 import { ServiceList } from './service-list';
+import AppLoader from '@/components/layout/app-loader';
 
 interface MachineDetailsClientProps {
     machineId: string;
@@ -106,9 +107,9 @@ export function MachineDetailsClient({ machineId }: MachineDetailsClientProps) {
             name: machine.name,
             description: machine.description || "",
             responsible: machine.machineResponsible || "Não definido",
-            system: machine.version || "Z/OS 3.1",
-            status: machine.status || "Concluída",
-            update: machine.updatedAt || "12/09/2025"
+            system: machine.version, 
+            status: machine.status,
+            update: machine.updatedAt,
         };
     }, [machine]);
     
@@ -122,14 +123,14 @@ export function MachineDetailsClient({ machineId }: MachineDetailsClientProps) {
 
     if (isLoading) {
         return (
-            <div className="flex items-center justify-center h-screen">
-                <div className="text-center text-gray-400">
-                    <div className="animate-pulse">
-                        <div className="w-6 h-6 bg-blue-500/20 rounded-full mx-auto mb-2"></div>
-                        <p className="text-sm">Carregando...</p>
-                    </div>
-                </div>
-            </div>
+
+              <AppLoader 
+                title="EccoxVision"
+                subtitle="Carregando detalhes da máquina..."
+                size="medium"
+                showParticles={true}
+                overlay={true}
+               />
         );
     }
     
@@ -178,7 +179,7 @@ export function MachineDetailsClient({ machineId }: MachineDetailsClientProps) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
             >
-                <div className="w-full flex flex-col items-center space-y-4 lg:space-y-6 -mt-16">
+                <div className="w-full flex flex-col items-center space-y-3 md:space-y-4 lg:space-y-6 -mt-20 md:-mt-20 scale-90 md:scale-95 lg:scale-100">
                     <MachineStats
                         total={statsData.total}
                         percent={statsData.percent}

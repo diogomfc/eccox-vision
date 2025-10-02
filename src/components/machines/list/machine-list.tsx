@@ -4,9 +4,7 @@
 
 import { Machines } from "@/types/machines";
 import { MachineListItem } from "./machine-list-item";
-import { DeleteMachineModal } from "../modals/delete-machine-modal";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+
 
 // Definimos a interface de props para o componente `MachineList`
 interface MachineListProps {
